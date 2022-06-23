@@ -1,81 +1,79 @@
 package model;
+
 import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.Iterator;
 import java.util.stream.Stream;
-public class Mazzo implements Iterator<Carta>
-{
-	private int cont=0;
 
-	public static ArrayList<Carta> mazzo = new ArrayList<Carta>();
+public class Mazzo implements Iterator<Carta> {
+    private int cont = 0;
 
-    Iterator<Carta> it=mazzo.iterator();
-	public Mazzo() 
-	{
-			int s=0;
-			int c=0;
-			int v=0;
-			for ( c=0;c<= 3;c++) // rimettere 'c' a 3
-				for ( v=1; v<=12;v++)
-				{		
-					mazzo.add(new Carta(v, c));mazzo.add(new Carta(v,c));	
-				}
-			c=0;
-			v=0;
-			for (c=0; c<=1;c++) //rimettere 'c' a 3
-				{
-				 mazzo.add( new Carta(v,c));
-				}
-			c=4;
-			//	for ( v=13; v<=14;v++)
-				//{		
-					//mazzo.add(new Carta(v, c));mazzo.add(new Carta(v,c));mazzo.add(new Carta(v, c));mazzo.add(new Carta(v,c));	
-				//}
-			//for (s=0;s<2;s++)                                       //scommentare
-			//	for (int i=0;i<4;i++) mazzo.add( new Carta(s));       //scommentare
-			mescola();
-	}	
-			
-	public void scambia(int i, int j)
-	{
-			Carta x; 
-			x=mazzo.get(i);
-			mazzo.set(i,mazzo.get(j));
-			mazzo.set(j,x);
-	}
-	
-	public void mescola() 
-	{
-			for (int i = mazzo.size()-1; i>0; i--)
-			{
-				int j=(int)(Math.random()*(i));
-				this.scambia(i,j);
-			}
-	}
+    public static ArrayList<Carta> mazzo = new ArrayList<Carta>();
 
-	
-	public String toString() {
-		String st="";
-		for (int i=0;i<mazzo.size(); i++)
-		st+=this.mazzo.get(i)+"\n";
-		return st;
-		}
+    Iterator<Carta> it = mazzo.iterator();
 
-	@Override
-	public boolean hasNext() {
-		if (cont<mazzo.size())  return true;
-			return false;
-	}
+    public Mazzo() {
+        int s = 0;
+        int c = 0;
+        int v = 0;
+        for (c = 0; c <= 3; c++) // rimettere 'c' a 3
+            for (v = 1; v <= 12; v++) {
+                mazzo.add(new Carta(v, c));
+                mazzo.add(new Carta(v, c));
+            }
+        c = 0;
+        v = 0;
+        for (c = 0; c <= 1; c++) //rimettere 'c' a 3
+        {
+            mazzo.add(new Carta(v, c));
+        }
+        c = 4;
+        //	for ( v=13; v<=14;v++)
+        //{
+        //mazzo.add(new Carta(v, c));mazzo.add(new Carta(v,c));mazzo.add(new Carta(v, c));mazzo.add(new Carta(v,c));
+        //}
+        //for (s=0;s<2;s++)                                       //scommentare
+        //	for (int i=0;i<4;i++) mazzo.add( new Carta(s));       //scommentare
+        mescola();
+    }
 
-	@Override
-	public Carta next() {
-		return mazzo.get(cont++);
-	}
-	
-	public Carta pesca()
-	{  
-		Carta cartaPescata=mazzo.get(mazzo.size()-1);
-		mazzo.remove(mazzo.size()-1);
-		return cartaPescata;}
+    public void scambia(int i, int j) {
+        Carta x;
+        x = mazzo.get(i);
+        mazzo.set(i, mazzo.get(j));
+        mazzo.set(j, x);
+    }
+
+    public void mescola() {
+        for (int i = mazzo.size() - 1; i > 0; i--) {
+            int j = (int) (Math.random() * (i));
+            this.scambia(i, j);
+        }
+    }
+
+
+    public String toString() {
+        String st = "";
+        for (int i = 0; i < mazzo.size(); i++)
+            st += this.mazzo.get(i) + "\n";
+        return st;
+    }
+
+    @Override
+    public boolean hasNext() {
+        if (cont < mazzo.size()) return true;
+        return false;
+    }
+
+    @Override
+    public Carta next() {
+        return mazzo.get(cont++);
+    }
+
+    public Carta pesca() {
+        Carta cartaPescata = mazzo.get(mazzo.size() - 1);
+        mazzo.remove(mazzo.size() - 1);
+        return cartaPescata;
+    }
 }
