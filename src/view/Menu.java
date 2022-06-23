@@ -24,7 +24,7 @@ public class Menu extends JFrame {
     
     private JLabel label1, label2, label3;
     public static JPanel menu;
-    //ciaooooooooooooooooooooooo
+    //fabietto gay
     
     private PostazioneGiocatore postazione;
 	private PostazioneGiocatore postazioneNord;
