@@ -15,7 +15,6 @@ public class Carta extends Thread {
     private int y;
     private int altezza;
     private int larghezza;
-
     String path;
     BufferedImage dorso;
     BufferedImage faccia;

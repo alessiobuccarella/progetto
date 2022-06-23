@@ -1,15 +1,13 @@
 package view;
 
 import javax.swing.*;
-
+import java.awt.*;
 import controller.DisegnaCarta;
 import controller.Eventi;
 import model.Carta;
 import model.Mano;
 import model.Mazzo;
 import model.Senso;
-
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,9 +15,7 @@ public class Menu extends JFrame {
     public static int coloreSpeciale = 4;
     private JButton nuovoProfilo, caricaProfilo, esci, nuovaPartita, opzioniProfilo, esci2, classica, mod2, mod3, esci3;
     private JButton indietroButton, indietroButton2, indietroButton3, indietroButton4, inviaButton, inviaButton2;
-    private JLabel label1, label2, label3;
     public static JPanel menu;
-
     private PostazioneGiocatore postazione;
     private PostazioneGiocatore postazioneNord;
     private static PostazioneLaterale postazioneOvest;
@@ -75,7 +71,6 @@ public class Menu extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         scartoButton = new JButton();
-
         Mazzo mazzo = new Mazzo();
         Mano mano = new Mano(mazzo);
         Mano manoOvest = new Mano(mazzo);
@@ -89,7 +84,6 @@ public class Menu extends JFrame {
         blu.setBackground(Color.blue);
         verde = new JButton("");
         verde.setBackground(Color.green);
-
         posto0 = DisegnaCarta.disegnaCarta(mano.mano.get(0));
         posto1 = DisegnaCarta.disegnaCarta(mano.mano.get(1));
         posto2 = DisegnaCarta.disegnaCarta(mano.mano.get(2));
@@ -114,19 +108,15 @@ public class Menu extends JFrame {
         posto20 = new JButton();
         cartaScarto = mazzo.pesca();
         scartoButton = DisegnaCarta.disegnaCarta(cartaScarto);
-
-
         menu = new JPanel();
         CardLayout cl = new CardLayout();
         menu.setLayout(cl);
-
         Audio audio = new Audio();
         Audio audio2 = new Audio();
         Audio audio3 = new Audio();
         Audio audio4 = new Audio();
         Audio audio5 = new Audio();
         Audio audio6 = new Audio();
-
         //PAGE INIZIALE
         JPanel inizio = new JPanel();
         JPanel nce = new JPanel();
@@ -152,7 +142,6 @@ public class Menu extends JFrame {
         inizio.add(audio, BorderLayout.PAGE_START);
         add(menu);
         menu.add(inizio, "1");
-
         //PAGE CARICAPROFILO
         JPanel caricaProfilo = new JPanel();
         JPanel nickname = new JPanel();
@@ -179,7 +168,6 @@ public class Menu extends JFrame {
         caricaProfilo.add(audio2, BorderLayout.PAGE_START);
         caricaProfilo.add(indietro, BorderLayout.PAGE_END);
         menu.add(caricaProfilo, "2");
-
         //PAGE NUOVOPROFILO
         JPanel nuovoProfilo = new JPanel();
         JPanel nickname2 = new JPanel();
@@ -202,31 +190,22 @@ public class Menu extends JFrame {
         Image image1 = avatar1png.getImage();
         Image newimg1 = image1.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar1png = new ImageIcon(newimg1);
-        //label1 = new JLabel(avatar1png);
         JButton radio1 = new JButton(avatar1png);
         radio1.setName("Avatar1");
         ImageIcon avatar2png = new ImageIcon("./src/immagini/avatar2.png");
         Image image2 = avatar2png.getImage();
-        avatar2png = new ImageIcon(image2);
         Image newimg2 = image2.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar2png = new ImageIcon(newimg2);
         JButton radio2 = new JButton(avatar2png);
-        label2 = new JLabel(avatar2png);
-        //radio2 = new JRadioButton("");
+        JLabel label2 = new JLabel(avatar2png);
         radio2.setName("Avatar2");
         ImageIcon avatar3png = new ImageIcon("./src/immagini/avatar3.png");
-
         Image image3 = avatar3png.getImage();
         Image newimg3 = image3.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar3png = new ImageIcon(newimg3);
-        label3 = new JLabel(avatar3png);
-        //radio3 = new JRadioButton("");
+        JLabel label3 = new JLabel(avatar3png);
         JButton radio3 = new JButton(avatar3png);
-        //radio3.setName("Avatar3");
         ButtonGroup group = new ButtonGroup();
-        //group.add(radio1);
-        //group.add(radio2);
-        //group.add(radio3);
         nuovoProfilo.setLayout(new BorderLayout());
         nickname2.setLayout(new GridBagLayout());
         image.setLayout(new GridBagLayout());
@@ -244,13 +223,6 @@ public class Menu extends JFrame {
         image.add(radio2, gbc4);
         image.add(Box.createRigidArea(new Dimension(5, 0)));
         image.add(radio3, gbc4);
-
-        //image.add(label1, gbc4);
-        //image.add(radio2, gbc4);
-        //image.add(label2, gbc4);
-        //image.add(radio3, gbc4);
-        //image.add(label3, gbc4);
-
         nickname2.add(image, gbc3);
         nickname2.add(Box.createRigidArea(new Dimension(0, 70)));
         nickname2.add(inviaButton2, gbc3);
@@ -259,7 +231,6 @@ public class Menu extends JFrame {
         nuovoProfilo.add(audio3, BorderLayout.PAGE_START);
         nuovoProfilo.add(indietro2, BorderLayout.PAGE_END);
         menu.add(nuovoProfilo, "3");
-
         //PAGE INIZIALE2
         JPanel inizio2 = new JPanel();
         JPanel noe = new JPanel();
@@ -283,7 +254,6 @@ public class Menu extends JFrame {
         inizio2.add(noe, BorderLayout.CENTER);
         inizio2.add(audio4, BorderLayout.PAGE_START);
         menu.add(inizio2, "4");
-
         //PAGE MODALITA'
         JPanel modalita = new JPanel();
         JPanel cmm = new JPanel();
@@ -293,7 +263,6 @@ public class Menu extends JFrame {
         GridBagConstraints gbc6 = new GridBagConstraints();
         gbc6.gridwidth = GridBagConstraints.REMAINDER;
         gbc6.fill = GridBagConstraints.HORIZONTAL;
-        //gbc.anchor = GridBagConstraints.CENTER;
         classica = new JButton("CLASSICA");
         mod2 = new JButton("MOD2");
         mod3 = new JButton("MOD3");
@@ -318,7 +287,6 @@ public class Menu extends JFrame {
         modalita.add(audio5, BorderLayout.PAGE_START);
         modalita.add(indietro3, BorderLayout.PAGE_END);
         menu.add(modalita, "5");
-
         //PAGE ACCOUNT
         JPanel account = new JPanel();
         JPanel oa = new JPanel();
@@ -371,10 +339,7 @@ public class Menu extends JFrame {
         account.add(audio6, BorderLayout.PAGE_START);
         account.add(indietro4, BorderLayout.PAGE_END);
         menu.add(account, "6");
-
-
         //PAGE PARTITA
-
         JLabel deckLabel = new JLabel(new ImageIcon("./src/immagini/dorso.png"));
         JButton deckButton = new JButton();
         deckButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -399,15 +364,10 @@ public class Menu extends JFrame {
         listaBottoni[17] = posto17;
         listaBottoni[18] = posto18;
         listaBottoni[19] = posto19;
-
         Campo campo = new Campo();
         postazione = new PostazioneGiocatore();
-
         campo.add(postazione, BorderLayout.PAGE_END);
-
         postazione.setBackground(colore);
-
-
         postazione.add(posto0);
         postazione.add(posto1);
         postazione.add(posto2);
@@ -415,40 +375,30 @@ public class Menu extends JFrame {
         postazione.add(posto4);
         postazione.add(posto5);
         postazione.add(posto6);
-
-
         postazioneOvest = new PostazioneLaterale();
         campo.add(postazioneOvest, BorderLayout.WEST);
         for (int i = 0; i < 7; i++) {
             postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
             postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));
         }
-        ;
         postazioneOvest.setBackground(colore);
-
         postazioneNord = new PostazioneGiocatore();
         campo.add(postazioneNord, BorderLayout.PAGE_START);
         for (int i = 0; i < 7; i++) postazioneNord.add(new JLabel(new ImageIcon("./src/immagini/dorso180.png")));
         postazioneNord.setBackground(colore);
-
-
         piatto = new Piatto();
         campo.add(piatto, BorderLayout.CENTER);
         piatto.setBackground(colore);
-        //piatto.add(fatto);
         deckButton.setBorder(null);
         piatto.add(passo);
         piatto.add(deckButton);
         piatto.add(scartoButton);
-
-
         postazioneEst = new PostazioneLaterale();
         campo.add(postazioneEst, BorderLayout.EAST);
         for (int i = 0; i < 7; i++) {
             postazioneEst.add(new JLabel(new ImageIcon("./src/immagini/dorso90s.png")));
             postazioneEst.add(Box.createRigidArea(new Dimension(0, 5)));
         }
-        ;
         postazioneEst.setBackground(colore);
         menu.add(campo, "7");
         ActionListener avanti = new ActionListener() {
@@ -461,128 +411,103 @@ public class Menu extends JFrame {
                 else {
                     firstTime = false;
                 }
-
             }
         };
         Timer t = new Timer(2000, avanti);
-
-
         this.nuovoProfilo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cl.show(menu, "3");
             }
         });
-
         this.caricaProfilo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cl.show(menu, "2");
             }
         });
-
         nuovaPartita.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cl.show(menu, "5");
             }
         });
-
         opzioniProfilo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cl.show(menu, "6");
             }
         });
-
         esci.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
-
         esci2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
-
         esci3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
-
         indietroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cl.show(menu, "1");
             }
         });
-
         indietroButton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cl.show(menu, "1");
             }
         });
-
         indietroButton3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cl.show(menu, "4");
             }
         });
-
         indietroButton4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cl.show(menu, "4");
             }
         });
-
         inviaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cl.show(menu, "4");
             }
         });
-
         inviaButton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cl.show(menu, "4");
             }
         });
-
         classica.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cl.show(menu, "7");
-
-
             }
         });
-
-
         deckButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 mano.mano.add(mazzo.pesca());
-
                 listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
                 listaBottoni[mano.mano.size() - 1].setBorder(null);
                 postazione.add(listaBottoni[mano.mano.size() - 1]);
-
                 postazione.invalidate();
                 postazione.validate();
-
-
             }
         });
-
         passo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println();
@@ -591,7 +516,6 @@ public class Menu extends JFrame {
                 Eventi.passo(mano, 0, posto0, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo);
             }
         });
-
         posto0.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println();
@@ -601,7 +525,6 @@ public class Menu extends JFrame {
                 t.start();
             }
         });
-
         posto1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println();
@@ -770,7 +693,6 @@ public class Menu extends JFrame {
                 t.start();
             }
         });
-
         giallo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 coloreSpeciale = 1;
@@ -807,7 +729,6 @@ public class Menu extends JFrame {
                 t.start();
             }
         });
-
     }
 }
 		

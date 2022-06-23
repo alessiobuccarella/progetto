@@ -10,13 +10,12 @@ public class Mano implements Iterator<Carta> {
     private int cont = 0;
     public ArrayList<Carta> mano = new ArrayList<Carta>();
 
-
     public Mano(Mazzo m) {
         this.m = m;
         distribuisci();
     }
 
-    /**
+    /*
      * pesca dal mazzo le 8 carte della mano del giocatore
      */
     public void distribuisci() {
@@ -26,7 +25,8 @@ public class Mano implements Iterator<Carta> {
 
     @Override
     public boolean hasNext() {
-        if (cont < mano.size()) return true;
+        if (cont < mano.size())
+            return true;
         return false;
     }
 
@@ -36,7 +36,6 @@ public class Mano implements Iterator<Carta> {
     }
 
     public String toString() {
-
         String st = "";
         for (int i = 0; i < mano.size(); i++)
             st += this.mano.get(i) + "\n";

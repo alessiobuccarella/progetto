@@ -8,23 +8,20 @@ import java.util.stream.Stream;
 
 public class Mazzo implements Iterator<Carta> {
     private int cont = 0;
-
     public static ArrayList<Carta> mazzo = new ArrayList<Carta>();
-
     Iterator<Carta> it = mazzo.iterator();
-
     public Mazzo() {
         int s = 0;
         int c = 0;
         int v = 0;
-        for (c = 0; c <= 3; c++) // rimettere 'c' a 3
+        for (c = 0; c <= 3; c++)
             for (v = 1; v <= 12; v++) {
                 mazzo.add(new Carta(v, c));
                 mazzo.add(new Carta(v, c));
             }
         c = 0;
         v = 0;
-        for (c = 0; c <= 1; c++) //rimettere 'c' a 3
+        for (c = 0; c <= 1; c++)
         {
             mazzo.add(new Carta(v, c));
         }
@@ -33,8 +30,6 @@ public class Mazzo implements Iterator<Carta> {
         //{
         //mazzo.add(new Carta(v, c));mazzo.add(new Carta(v,c));mazzo.add(new Carta(v, c));mazzo.add(new Carta(v,c));
         //}
-        //for (s=0;s<2;s++)                                       //scommentare
-        //	for (int i=0;i<4;i++) mazzo.add( new Carta(s));       //scommentare
         mescola();
     }
 
@@ -52,7 +47,6 @@ public class Mazzo implements Iterator<Carta> {
         }
     }
 
-
     public String toString() {
         String st = "";
         for (int i = 0; i < mazzo.size(); i++)
@@ -62,7 +56,8 @@ public class Mazzo implements Iterator<Carta> {
 
     @Override
     public boolean hasNext() {
-        if (cont < mazzo.size()) return true;
+        if (cont < mazzo.size())
+            return true;
         return false;
     }
 

@@ -1,19 +1,10 @@
 package controller;
 
-import javax.swing.*;
-
-import java.awt.Color;
 import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.Timer;
-
 import model.Carta;
 import model.Mano;
 import model.Mazzo;
@@ -25,12 +16,10 @@ import view.PostazioneLaterale;
 
 public class Eventi {
     public static void cliccato(Mano mano, int indiceCarta, JButton bottone, PostazioneGiocatore postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, PostazioneLaterale postazioneOvest, PostazioneGiocatore postazioneNord, PostazioneLaterale postazioneEst, JButton[] listaBottoni, Mazzo mazzo) {
-
         for (int i = 0; i < listaBottoni.length; i++) {
             if (listaBottoni[i] == null) System.out.println(1);
         }
         if (mano.mano.get(indiceCarta).getC() == Menu.cartaScarto.getC() || mano.mano.get(indiceCarta).getV() == Menu.cartaScarto.getV() || mano.mano.get(indiceCarta).getC() == 4) {
-
             System.out.println(postazione.getComponentZOrder(bottone));
             Menu.cartaScarto = mano.mano.get(indiceCarta);
             aggiornaPostazione(indiceCarta, listaBottoni, mano, postazione);
@@ -41,23 +30,19 @@ public class Eventi {
             piatto.validate();
             postazione.invalidate();
             postazione.validate();
-
-            if (Menu.cartaScarto.getV() == 11) cambiaSenso();
-            if (Menu.senso == Senso.ORARIO) {
+            if (Menu.cartaScarto.getV() == 11)
+                cambiaSenso();
+            if (Menu.senso == Senso.ORARIO)
                 Menu.turno = 1;
-            }
-            if (Menu.senso == Senso.ANTIORARIO) {
+            if (Menu.senso == Senso.ANTIORARIO)
                 Menu.turno = 3;
-            }
-            if (Menu.cartaScarto.getV() == 10) {
+            if (Menu.cartaScarto.getV() == 10)
                 Menu.turno = 2;
-            }
-
-
             if (Menu.cartaScarto.getV() == 14) {
                 Menu.firstTime = true;
                 if (Menu.turno == 1) {
-                    for (int i = 0; i < 4; i++) manoOvest.mano.add(mazzo.pesca());
+                    for (int i = 0; i < 4; i++)
+                        manoOvest.mano.add(mazzo.pesca());
                     postazioneOvest.removeAll();
                     for (Carta y : manoOvest.mano) {
                         postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
@@ -79,7 +64,6 @@ public class Eventi {
                 piatto.add(Menu.giallo);
                 piatto.add(Menu.blu);
                 piatto.add(Menu.verde);
-
             }
             if (Menu.cartaScarto.getV() == 13) {
                 Menu.firstTime = true;
@@ -88,12 +72,11 @@ public class Eventi {
                 piatto.add(Menu.blu);
                 piatto.add(Menu.verde);
             }
-
-
             if (Menu.cartaScarto.getV() == 12) {
                 Menu.firstTime = true;
                 if (Menu.turno == 1) {
-                    for (int i = 0; i < 2; i++) manoOvest.mano.add(mazzo.pesca());
+                    for (int i = 0; i < 2; i++)
+                        manoOvest.mano.add(mazzo.pesca());
                     postazioneOvest.removeAll();
                     for (Carta y : manoOvest.mano) {
                         postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
@@ -102,7 +85,8 @@ public class Eventi {
                     postazioneOvest.invalidate();
                     postazioneOvest.validate();
                 } else {
-                    for (int i = 0; i < 2; i++) manoEst.mano.add(mazzo.pesca());
+                    for (int i = 0; i < 2; i++)
+                        manoEst.mano.add(mazzo.pesca());
                     postazioneEst.removeAll();
                     for (Carta y : manoEst.mano) {
                         postazioneEst.add(new JLabel(new ImageIcon("./src/immagini/dorso90s.png")));
@@ -112,33 +96,26 @@ public class Eventi {
                     postazioneEst.validate();
                 }
             }
-
-
             piatto.invalidate();
             piatto.validate();
             postazione.invalidate();
             postazione.validate();
-            //if (Menu.pronto==true) avanti(turno,manoOvest, manoNord, manoEst, piatto, postazioneOvest, postazioneNord, postazioneEst, mazzo);
         } else
             System.out.println("mossa non valida: " + Menu.cartaScarto.toString() + " non  compatibile con " + mano.mano.get(indiceCarta).toString());
 
     }
 
     public static void aggiornaPostazione(int indiceCarta, JButton[] listaBottoni, Mano mano, PostazioneGiocatore postazione) {
-
-
         postazione.removeAll();
         if (indiceCarta != -1) {
             mano.mano.remove(indiceCarta);
             elimina(listaBottoni, indiceCarta);
         }
-
         for (int j = 0; j < mano.mano.size(); j++) {
             {
                 aggiornaBottone(listaBottoni[j], DisegnaCarta.disegnaCarta(mano.mano.get(j)));
                 postazione.add(listaBottoni[j]);
             }
-
         }
         postazione.invalidate();
         postazione.validate();
@@ -150,10 +127,7 @@ public class Eventi {
 
     }
 
-
     public static void avanti(int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, PostazioneLaterale postazioneOvest, PostazioneGiocatore postazioneNord, PostazioneLaterale postazioneEst, Mazzo mazzo, PostazioneGiocatore postazione, Mano mano) {
-
-
         switch (turno) {
             case 1:
                 mossaOvest(mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord);
@@ -167,7 +141,6 @@ public class Eventi {
             default:
                 break;
         }
-
     }
 
     public static void aggiornaBottone(JButton bottone, JButton disegno) {
@@ -179,10 +152,8 @@ public class Eventi {
         else Menu.senso = Senso.ANTIORARIO;
     }
 
-
     public static void mossaOvest(Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, PostazioneLaterale postazioneOvest, Mazzo mazzo, PostazioneGiocatore postazione, PostazioneGiocatore postazioneNord) {
         int celo = 0;
-
         Menu.pronto = false;
         System.out.println("OVEST: " + manoOvest.mano.toString());
         for (Carta x : manoOvest.mano) {
@@ -196,15 +167,14 @@ public class Eventi {
                 piatto.add(Menu.scartoButton);
                 manoOvest.mano.remove(x);
                 postazioneOvest.removeAll();
-
-
-                if (Menu.cartaScarto.getV() == 11) {
+                if (Menu.cartaScarto.getV() == 11)
                     cambiaSenso();
-                }
-                if (Menu.senso == Senso.ORARIO) Menu.turno = 2;
-                if (Menu.cartaScarto.getV() == 10) Menu.turno = 3;
-                if (Menu.senso == Senso.ANTIORARIO) Menu.turno = 0;
-                //System.out.println("turno: "+Menu.turno);
+                if (Menu.senso == Senso.ORARIO)
+                    Menu.turno = 2;
+                if (Menu.cartaScarto.getV() == 10)
+                    Menu.turno = 3;
+                if (Menu.senso == Senso.ANTIORARIO)
+                    Menu.turno = 0;
                 for (Carta y : manoOvest.mano) {
                     postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
                     postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));
@@ -212,7 +182,8 @@ public class Eventi {
                 if (Menu.cartaScarto.getV() == 14) {
                     Menu.firstTime = true;
                     if (Menu.turno == 2) {
-                        for (int i = 0; i < 4; i++) manoNord.mano.add(mazzo.pesca());
+                        for (int i = 0; i < 4; i++)
+                            manoNord.mano.add(mazzo.pesca());
                         postazioneNord.removeAll();
                         for (Carta y : manoEst.mano) {
                             postazioneNord.add(new JLabel(new ImageIcon("./src/immagini/dorso180.png")));
@@ -221,7 +192,8 @@ public class Eventi {
                         postazioneNord.invalidate();
                         postazioneNord.validate();
                     } else {
-                        for (int i = 0; i < 4; i++) mano.mano.add(mazzo.pesca());
+                        for (int i = 0; i < 4; i++)
+                            mano.mano.add(mazzo.pesca());
                         postazione.removeAll();
                         for (int i = 0; i <= mano.mano.size() - 1; i++) {
                             postazione.add(Menu.listaBottoni[i]);
@@ -235,10 +207,7 @@ public class Eventi {
                             System.out.println("colore: " + y.getC());
                         }
                     }
-
                 }
-
-
                 piatto.invalidate();
                 piatto.validate();
                 postazioneOvest.invalidate();
@@ -257,7 +226,6 @@ public class Eventi {
             mossaOvest(mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord);
             postazioneOvest.invalidate();
             postazioneOvest.validate();
-            //avanti(1,manoOvest, manoNord, manoEst, piatto, postazioneOvest, null, null, mazzo);;
         }
         piatto.invalidate();
         piatto.validate();
@@ -265,11 +233,12 @@ public class Eventi {
         postazioneOvest.validate();
         if (celo == 0 && Menu.pescato == 1) {
             Menu.pescato = 0;
-            if (Menu.senso == Senso.ORARIO) Menu.turno = 2;
-            if (Menu.senso == Senso.ANTIORARIO) Menu.turno = 0;
+            if (Menu.senso == Senso.ORARIO)
+                Menu.turno = 2;
+            if (Menu.senso == Senso.ANTIORARIO)
+                Menu.turno = 0;
             System.out.println("OVEST: " + manoOvest.mano.toString());
         }
-
     }
 
     private static void mossaNord(Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, PostazioneGiocatore postazioneNord, Mazzo mazzo) {
@@ -287,14 +256,14 @@ public class Eventi {
                 piatto.add(Menu.scartoButton);
                 manoNord.mano.remove(x);
                 postazioneNord.removeAll();
-
-
-                if (Menu.cartaScarto.getV() == 11) {
+                if (Menu.cartaScarto.getV() == 11)
                     cambiaSenso();
-                }
-                if (Menu.senso == Senso.ORARIO) Menu.turno = 3;
-                if (Menu.senso == Senso.ANTIORARIO) Menu.turno = 1;
-                if (Menu.cartaScarto.getV() == 10) Menu.turno = 0;
+                if (Menu.senso == Senso.ORARIO)
+                    Menu.turno = 3;
+                if (Menu.senso == Senso.ANTIORARIO)
+                    Menu.turno = 1;
+                if (Menu.cartaScarto.getV() == 10)
+                    Menu.turno = 0;
                 for (Carta y : manoNord.mano) {
                     postazioneNord.add(new JLabel(new ImageIcon("./src/immagini/dorso180.png")));
                     postazioneNord.add(Box.createRigidArea(new Dimension(0, 5)));
@@ -304,7 +273,6 @@ public class Eventi {
                 postazioneNord.invalidate();
                 postazioneNord.validate();
                 break;
-
             }
         }
         if (celo == 0 && Menu.pescato == 0) {
@@ -315,10 +283,8 @@ public class Eventi {
                 postazioneNord.add(new JLabel(new ImageIcon("./src/immagini/dorso180.png")));
                 postazioneNord.add(Box.createRigidArea(new Dimension(0, 5)));
             }
-
             postazioneNord.invalidate();
             postazioneNord.validate();
-            //avanti(1,manoOvest, manoNord, manoEst, piatto, postazioneOvest, null, null, mazzo);;
         }
         piatto.invalidate();
         piatto.validate();
@@ -326,13 +292,13 @@ public class Eventi {
         postazioneNord.validate();
         if (celo == 0 && Menu.pescato == 1) {
             Menu.pescato = 0;
-            if (Menu.senso == Senso.ORARIO) Menu.turno = 3;
-            if (Menu.senso == Senso.ANTIORARIO) Menu.turno = 1;
+            if (Menu.senso == Senso.ORARIO)
+                Menu.turno = 3;
+            if (Menu.senso == Senso.ANTIORARIO)
+                Menu.turno = 1;
             System.out.println("OVEST: " + manoNord.mano.toString());
         }
-
     }
-
 
     public static void mossaEst(Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, PostazioneLaterale postazioneEst, Mazzo mazzo) {
         int celo = 0;
@@ -349,13 +315,14 @@ public class Eventi {
                 piatto.add(Menu.scartoButton);
                 manoEst.mano.remove(x);
                 postazioneEst.removeAll();
-
-
-                if (Menu.cartaScarto.getV() == 11) Eventi.cambiaSenso();
-                if (Menu.senso == Senso.ANTIORARIO) Menu.turno = 2;
-                if (Menu.senso == Senso.ORARIO) Menu.turno = 0;
-
-                if (Menu.cartaScarto.getV() == 10) Menu.turno = 1;
+                if (Menu.cartaScarto.getV() == 11)
+                    Eventi.cambiaSenso();
+                if (Menu.senso == Senso.ANTIORARIO)
+                    Menu.turno = 2;
+                if (Menu.senso == Senso.ORARIO)
+                    Menu.turno = 0;
+                if (Menu.cartaScarto.getV() == 10)
+                    Menu.turno = 1;
                 for (Carta y : manoEst.mano) {
                     postazioneEst.add(new JLabel(new ImageIcon("./src/immagini/dorso90s.png")));
                     postazioneEst.add(Box.createRigidArea(new Dimension(0, 5)));
@@ -375,10 +342,8 @@ public class Eventi {
                 postazioneEst.add(new JLabel(new ImageIcon("./src/immagini/dorso90s.png")));
                 postazioneEst.add(Box.createRigidArea(new Dimension(0, 5)));
             }
-
             postazioneEst.invalidate();
             postazioneEst.validate();
-            //avanti(1,manoOvest, manoNord, manoEst, piatto, postazioneOvest, null, null, mazzo);;
         }
         piatto.invalidate();
         piatto.validate();
@@ -386,19 +351,19 @@ public class Eventi {
         postazioneEst.validate();
         if (celo == 0 && Menu.pescato == 1) {
             Menu.pescato = 0;
-            if (Menu.senso == Senso.ORARIO) Menu.turno = 0;
-            if (Menu.senso == Senso.ANTIORARIO) Menu.turno = 2;
+            if (Menu.senso == Senso.ORARIO)
+                Menu.turno = 0;
+            if (Menu.senso == Senso.ANTIORARIO)
+                Menu.turno = 2;
             System.out.println("EST: " + manoEst.mano.toString());
         }
-
-
     }
 
     public static void passo(Mano mano, int i, JButton posto0, PostazioneGiocatore postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, PostazioneLaterale postazioneOvest, PostazioneGiocatore postazioneNord, PostazioneLaterale postazioneEst, Mazzo mazzo) {
-        if (Menu.senso == Senso.ANTIORARIO) Menu.turno = 3;
-        if (Menu.senso == Senso.ORARIO) Menu.turno = 1;
+        if (Menu.senso == Senso.ANTIORARIO)
+            Menu.turno = 3;
+        if (Menu.senso == Senso.ORARIO)
+            Menu.turno = 1;
         avanti(turno, manoOvest, manoNord, manoEst, piatto, postazioneOvest, postazioneNord, postazioneEst, mazzo, postazioneNord, manoEst);
-
     }
-
 }
