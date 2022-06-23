@@ -33,9 +33,6 @@ public class Eventi {
 			
 			System.out.println(postazione.getComponentZOrder(bottone));
 			Menu.cartaScarto=mano.mano.get(indiceCarta);
-			
-			//mano.mano.remove(indiceCarta);
-			//postazione.remove(indiceCarta);
 			aggiornaPostazione(indiceCarta,listaBottoni,mano,postazione);
 			piatto.remove(Menu.scartoButton);
 			Menu.scartoButton=bottone;
