@@ -21,7 +21,7 @@ public class Menu extends JFrame {
 	public static int coloreSpeciale=4;
     private JButton nuovoProfilo, caricaProfilo, esci, nuovaPartita, opzioniProfilo, esci2, classica, mod2, mod3, esci3;
     private JButton indietroButton, indietroButton2, indietroButton3, indietroButton4, inviaButton, inviaButton2;
-    private JRadioButton radio1, radio2, radio3;
+    
     private JLabel label1, label2, label3;
     public static JPanel menu;
     
