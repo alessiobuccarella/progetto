@@ -239,6 +239,24 @@ public class Eventi {
                 Menu.turno = 0;
             System.out.println("OVEST: " + manoOvest.mano.toString());
         }
+        if (celo == 1 && Menu.pescato == 1)
+        {
+            Menu.pescato = 0;
+            if (Menu.senso == Senso.ORARIO)
+                Menu.turno = 2;
+            if (Menu.senso == Senso.ANTIORARIO)
+                Menu.turno = 0;
+            piatto.remove(Menu.scartoButton);
+            Menu.scartoButton = DisegnaCarta.disegnaCarta(manoOvest.mano.get(-1));
+            Menu.cartaScarto = manoOvest.mano.get(-1);
+            piatto.add(Menu.scartoButton);
+            manoOvest.mano.remove(-1);
+            postazioneOvest.removeAll();
+            for (Carta y : manoOvest.mano) {
+                postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
+                postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));}
+            System.out.println("OVEST: ho tirato quella che ho pescato");
+        }
     }
 
     private static void mossaNord(Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, PostazioneGiocatore postazioneNord, Mazzo mazzo) {
