@@ -15,9 +15,6 @@ public class Mano implements Iterator<Carta> {
         distribuisci();
     }
 
-    /*
-     * pesca dal mazzo le 8 carte della mano del giocatore
-     */
     public void distribuisci() {
         for (int i = 0; i < 7; i++)
             mano.add(m.pesca());
@@ -41,6 +38,4 @@ public class Mano implements Iterator<Carta> {
             st += this.mano.get(i) + "\n";
         return st;
     }
-
-
 }

@@ -67,7 +67,6 @@ public class Carta extends Thread {
     }
 
     private void aggiorna() {
-
     }
 
     public void disegna(Graphics g) {

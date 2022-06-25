@@ -5,19 +5,60 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe1338a7-f09c-4ae5-9d6a-46f46bba2166" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/DisegnaCarta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisegnaCarta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Eventi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Eventi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Prova.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Prova.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/Eventi.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/Eventi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/Prova.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/Carta.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/Carta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/Mano.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/Mano.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Audio.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$18.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$19.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$20.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$20.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$21.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$22.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$23.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$24.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$25.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$26.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$27.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$28.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$29.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$30.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$31.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$32.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$33.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$34.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$35.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$36.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$37.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$38.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$39.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$40.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$41.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Prova.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Carta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Carta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Mano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Mano.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Mazzo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Mazzo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Senso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Senso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Campo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Campo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/Audio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/BarraAudio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Piatto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Piatto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/PostazioneGiocatore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PostazioneGiocatore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/PostazioneLaterale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PostazioneLaterale.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +84,8 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="Prova" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="controller.Prova" />
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="controller.Test" />
       <module name="progetto" />
       <extension name="coverage">
         <pattern>
@@ -58,7 +99,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Prova" />
+        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>

@@ -8,8 +8,8 @@ import model.Carta;
 import model.Mano;
 import model.Mazzo;
 import model.Senso;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
+import java.util.ArrayList;
 
 public class Menu extends JFrame {
     public static int coloreSpeciale = 4;
@@ -23,7 +23,6 @@ public class Menu extends JFrame {
     private static Piatto piatto;
     public static Senso senso = Senso.ORARIO;
     private Color colore = new Color(128, 128, 128);
-
     public static JButton posto0;
     public static JButton posto1;
     public static JButton posto2;
@@ -106,17 +105,43 @@ public class Menu extends JFrame {
         posto18 = new JButton();
         posto19 = new JButton();
         posto20 = new JButton();
+        ArrayList<JButton> posti = new ArrayList<>();
+        posti.add(posto0);
+        posti.add(posto1);
+        posti.add(posto2);
+        posti.add(posto3);
+        posti.add(posto4);
+        posti.add(posto5);
+        posti.add(posto6);
+        posti.add(posto7);
+        posti.add(posto8);
+        posti.add(posto9);
+        posti.add(posto10);
+        posti.add(posto11);
+        posti.add(posto12);
+        posti.add(posto13);
+        posti.add(posto14);
+        posti.add(posto15);
+        posti.add(posto16);
+        posti.add(posto17);
+        posti.add(posto18);
+        posti.add(posto19);
+        ArrayList<JButton> colori = new ArrayList<>();
+        colori.add(rosso);
+        colori.add(giallo);
+        colori.add(blu);
+        colori.add(verde);
         cartaScarto = mazzo.pesca();
         scartoButton = DisegnaCarta.disegnaCarta(cartaScarto);
         menu = new JPanel();
         CardLayout cl = new CardLayout();
         menu.setLayout(cl);
-        Audio audio = new Audio();
-        Audio audio2 = new Audio();
-        Audio audio3 = new Audio();
-        Audio audio4 = new Audio();
-        Audio audio5 = new Audio();
-        Audio audio6 = new Audio();
+        BarraAudio audio = new BarraAudio();
+        BarraAudio audio2 = new BarraAudio();
+        BarraAudio audio3 = new BarraAudio();
+        BarraAudio audio4 = new BarraAudio();
+        BarraAudio audio5 = new BarraAudio();
+        BarraAudio audio6 = new BarraAudio();
         //PAGE INIZIALE
         JPanel inizio = new JPanel();
         JPanel nce = new JPanel();
@@ -124,7 +149,6 @@ public class Menu extends JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        //gbc.anchor = GridBagConstraints.CENTER;
         nuovoProfilo = new JButton("NUOVO PROFILO");
         caricaProfilo = new JButton("CARICA PROFILO");
         esci = new JButton("ESCI");
@@ -197,15 +221,12 @@ public class Menu extends JFrame {
         Image newimg2 = image2.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar2png = new ImageIcon(newimg2);
         JButton radio2 = new JButton(avatar2png);
-        JLabel label2 = new JLabel(avatar2png);
         radio2.setName("Avatar2");
         ImageIcon avatar3png = new ImageIcon("./src/immagini/avatar3.png");
         Image image3 = avatar3png.getImage();
         Image newimg3 = image3.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar3png = new ImageIcon(newimg3);
-        JLabel label3 = new JLabel(avatar3png);
         JButton radio3 = new JButton(avatar3png);
-        ButtonGroup group = new ButtonGroup();
         nuovoProfilo.setLayout(new BorderLayout());
         nickname2.setLayout(new GridBagLayout());
         image.setLayout(new GridBagLayout());
@@ -413,7 +434,6 @@ public class Menu extends JFrame {
                 }
             }
         };
-        Timer t = new Timer(2000, avanti);
         this.nuovoProfilo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -508,6 +528,7 @@ public class Menu extends JFrame {
                 postazione.validate();
             }
         });
+        Timer t = new Timer(3000, avanti);
         passo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println();
@@ -516,219 +537,39 @@ public class Menu extends JFrame {
                 Eventi.passo(mano, 0, posto0, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo);
             }
         });
-        posto0.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto0), posto0, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-                t.start();
-            }
-        });
-        posto1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto1), posto1, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-            }
-        });
-        posto2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto2), posto2, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-            }
-        });
-        posto3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto3), posto3, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-            }
-        });
-        posto4.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto4), posto4, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-            }
-        });
-        posto5.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto5), posto5, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-            }
-        });
-        posto6.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto6), posto6, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-            }
-        });
-        posto7.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto7), posto7, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-            }
-        });
-        posto8.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto8), posto8, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-            }
-        });
-        posto9.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto9), posto9, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-            }
-        });
-        posto10.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto10), posto10, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-            }
-        });
-        posto11.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto11), posto11, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-            }
-        });
-        posto12.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto12), posto12, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-            }
-        });
-        posto13.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto13), posto13, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-            }
-        });
-        posto14.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto14), posto14, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-            }
-        });
-        posto15.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto15), posto15, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-            }
-        });
-        posto16.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto16), posto16, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-                t.start();
-            }
-        });
-        posto17.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto17), posto17, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-                t.start();
-            }
-        });
-        posto18.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto18), posto18, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-                t.start();
-            }
-        });
-        posto19.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println();
-                repaint();
-                t.start();
-                Eventi.cliccato(mano, postazione.getComponentZOrder(posto19), posto19, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-                t.start();
-            }
-        });
-        rosso.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                coloreSpeciale = 0;
-                piatto.remove(rosso);
-                piatto.remove(giallo);
-                piatto.remove(verde);
-                piatto.remove(blu);
-                Menu.cartaScarto.setC(0);
-                repaint();
-                t.start();
-            }
-        });
-        giallo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                coloreSpeciale = 1;
-                piatto.remove(rosso);
-                piatto.remove(giallo);
-                piatto.remove(verde);
-                piatto.remove(blu);
-                Menu.cartaScarto.setC(1);
-                repaint();
-                t.start();
-            }
-        });
-        blu.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                coloreSpeciale = 2;
-                piatto.remove(rosso);
-                piatto.remove(giallo);
-                piatto.remove(verde);
-                piatto.remove(blu);
-                Menu.cartaScarto.setC(2);
-                repaint();
-                t.start();
-            }
-        });
-        verde.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                coloreSpeciale = 3;
-                piatto.remove(rosso);
-                piatto.remove(giallo);
-                piatto.remove(verde);
-                piatto.remove(blu);
-                Menu.cartaScarto.setC(3);
-                repaint();
-                t.start();
-            }
-        });
+        for (JButton posto : posti){
+            posto.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println();
+                    repaint();
+                    t.start();
+                    Eventi.cliccato(mano, postazione.getComponentZOrder(posto), posto, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
+                }
+            });
+            posto.addMouseListener(new MouseAdapter() {
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    posto.setLocation(posto.getX(), posto.getY()-5);
+                }
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    posto.setLocation(posto.getX(), posto.getY()+5);
+                }
+            });
+        }
+        for(int colore = 0; colore < colori.size(); colore++){
+            int finalColore = colore;
+            colori.get(colore).addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    coloreSpeciale = finalColore;
+                    piatto.remove(rosso);
+                    piatto.remove(giallo);
+                    piatto.remove(verde);
+                    piatto.remove(blu);
+                    Menu.cartaScarto.setC(finalColore);
+                    repaint();
+                    t.start();
+                }
+            });
+        }
     }
 }
 		
