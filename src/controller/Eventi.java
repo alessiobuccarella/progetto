@@ -232,11 +232,11 @@ public class Eventi {
     		manoVittima.mano.add(mazzo.pesca());manoVittima.mano.add(mazzo.pesca());
     		aggiornaPostazione(postazioneVittima, manoVittima,path );
     	}
-    	if (x.getV()==13) {Menu.cartaScarto.setC((int)Math.random()*4);System.out.println("colore: "+Menu.cartaScarto.getC());};
+    	if (x.getV()==13) {Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println("colore: "+Menu.cartaScarto.getC());};
     	if (x.getV()==14) 
     	{
     		manoVittima.mano.add(mazzo.pesca());manoVittima.mano.add(mazzo.pesca());manoVittima.mano.add(mazzo.pesca());manoVittima.mano.add(mazzo.pesca());
-    		Menu.cartaScarto.setC((int)Math.random()*4);
+    		Menu.cartaScarto.setC((int)(Math.random()*4));
     	    System.out.println("colore: "+Menu.cartaScarto.getC());
     	};
     }
@@ -263,13 +263,16 @@ public class Eventi {
     {
     	if (x.getV()==12)
     	{
-    		mano.mano.add(mazzo.pesca());mano.mano.add(mazzo.pesca());
-    		  postazione.invalidate();
-              postazione.validate();;
+    		mano.mano.add(mazzo.pesca());
+            Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+            Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
+            mano.mano.add(mazzo.pesca());
+            Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+            Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
     	}
-    	if (x.getV()==13) {Menu.cartaScarto.setC((int)Math.random()*4);System.out.println("colore: "+Menu.cartaScarto.getC());};
+    	if (x.getV()==13) {Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println("colore: "+Menu.cartaScarto.getC());};
     	if (x.getV()==14)	
-    		{Menu.cartaScarto.setC((int)Math.random()*40);
+    		{Menu.cartaScarto.setC((int)(Math.random()*4));
     		System.out.println("colore: "+Menu.cartaScarto.getC());
     		mano.mano.add(mazzo.pesca());
             Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
