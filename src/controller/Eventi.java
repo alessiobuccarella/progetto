@@ -11,11 +11,12 @@ import model.Mazzo;
 import model.Senso;
 import view.Menu;
 import view.Piatto;
-import view.PostazioneGiocatore;
-import view.PostazioneLaterale;
+
+import view.Postazione;
 
 public class Eventi {
-    public static void cliccato(Mano mano, int indiceCarta, JButton bottone, PostazioneGiocatore postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, PostazioneLaterale postazioneOvest, PostazioneGiocatore postazioneNord, PostazioneLaterale postazioneEst, JButton[] listaBottoni, Mazzo mazzo) {
+	private static boolean pescato=false;
+    public static void cliccato(Mano mano, int indiceCarta, JButton bottone, Postazione postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, JButton[] listaBottoni, Mazzo mazzo) {
         for (int i = 0; i < listaBottoni.length; i++) {
             if (listaBottoni[i] == null) System.out.println(1);
         }
@@ -74,7 +75,7 @@ public class Eventi {
             }
             if (Menu.cartaScarto.getV() == 12) {
                 Menu.firstTime = true;
-                if (Menu.turno == 1) {
+                if (Menu.turno %4== 1) {
                     for (int i = 0; i < 2; i++)
                         manoOvest.mano.add(mazzo.pesca());
                     postazioneOvest.removeAll();
@@ -105,7 +106,7 @@ public class Eventi {
 
     }
 
-    public static void aggiornaPostazione(int indiceCarta, JButton[] listaBottoni, Mano mano, PostazioneGiocatore postazione) {
+    public static void aggiornaPostazione(int indiceCarta, JButton[] listaBottoni, Mano mano, Postazione postazione) {
         postazione.removeAll();
         if (indiceCarta != -1) {
             mano.mano.remove(indiceCarta);
@@ -127,16 +128,16 @@ public class Eventi {
 
     }
 
-    public static void avanti(int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, PostazioneLaterale postazioneOvest, PostazioneGiocatore postazioneNord, PostazioneLaterale postazioneEst, Mazzo mazzo, PostazioneGiocatore postazione, Mano mano) {
-        switch (turno) {
+    public static void avanti(int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, Mazzo mazzo, Postazione postazione, Mano mano) {
+        switch (turno%4) {
             case 1:
-                mossaOvest(mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord);
+                mossaOvest(mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst);
                 break;
             case 2:
-                mossaNord(manoOvest, manoNord, manoEst, piatto, postazioneNord, mazzo);
+                mossaNord(mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst);
                 break;
             case 3:
-                mossaEst(manoOvest, manoNord, manoEst, piatto, postazioneEst, mazzo);
+                mossaEst(mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst);
                 break;
             default:
                 break;
@@ -146,238 +147,191 @@ public class Eventi {
     public static void aggiornaBottone(JButton bottone, JButton disegno) {
         bottone = disegno;
     }
-
+    //cambia il senso del giro di mano
     public static void cambiaSenso() {
         if (Menu.senso == Senso.ANTIORARIO) Menu.senso = Senso.ORARIO;
         else Menu.senso = Senso.ANTIORARIO;
     }
-
-    public static void mossaOvest(Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, PostazioneLaterale postazioneOvest, Mazzo mazzo, PostazioneGiocatore postazione, PostazioneGiocatore postazioneNord) {
-        int celo = 0;
-        Menu.pronto = false;
+    // calcola se nella mano di un giocatore c'è una carta lanciabile
+    public static Carta cartaUtile(Mano manoGiocatore)
+    {
+    	for (Carta x : manoGiocatore.mano) 
+    		if (x.getV() == Menu.cartaScarto.getV() || x.getC() == Menu.cartaScarto.getC()||x.getC() ==4)return x;
+    	return null;
+    }
+    //aggiorna graficamente il campo in seguito alla scelta delal carta di un giocatore
+    public static void lanciaCarta(Piatto piatto, Mano mano, Postazione postazione, Carta carta,String pathDorso) 
+    {
+    	piatto.remove(Menu.scartoButton);
+        Menu.scartoButton = DisegnaCarta.disegnaCarta(carta);
+        Menu.cartaScarto = carta;
+        piatto.add(Menu.scartoButton);
+        mano.mano.remove(carta);
+        postazione.removeAll();
+        for (Carta y : mano.mano) {
+            postazione.add(new JLabel(new ImageIcon(pathDorso)));
+            postazione.add(Box.createRigidArea(new Dimension(0, 5)));
+        }
+        postazione.invalidate();
+        postazione.validate();
+    }
+    //calcola di quale giocatore sarà il turno successivo
+    public static void aggiornaTurno() 
+    {
+        
+        if (Menu.cartaScarto.getV() == 11)
+            {
+        	cambiaSenso();
+        	if(Menu.senso==Senso.ORARIO)Menu.turno += 1;
+        	else Menu.turno -= 1;
+            }
+            
+        if (Menu.cartaScarto.getV() == 10) 
+            Menu.turno += 2;
+        
+        if (Menu.senso == Senso.ORARIO&&Menu.cartaScarto.getV() != 10&&Menu.cartaScarto.getV() != 11)
+            Menu.turno += 1;
+        
+        if (Menu.senso == Senso.ANTIORARIO&&Menu.cartaScarto.getV() != 10&&Menu.cartaScarto.getV() != 11)
+            Menu.turno -= 1;
+    }
+    //aggiorna le man dei giocatori in caso di una carta speciale
+    public static void aggiornaSpeciale(Mano manoVittima, Postazione postazioneVittima, Piatto piatto, Carta x, Mazzo mazzo, String path) 
+    {
+    	if (x.getV()==12)
+    	{
+    		manoVittima.mano.add(mazzo.pesca());manoVittima.mano.add(mazzo.pesca());
+    		aggiornaPostazione(postazioneVittima, manoVittima,path );
+    	}
+    	if (x.getV()==13) {Menu.cartaScarto.setC((int)Math.random()*4);System.out.println("colore: "+Menu.cartaScarto.getC());};
+    	if (x.getV()==14) 
+    	{
+    		manoVittima.mano.add(mazzo.pesca());manoVittima.mano.add(mazzo.pesca());manoVittima.mano.add(mazzo.pesca());manoVittima.mano.add(mazzo.pesca());
+    		Menu.cartaScarto.setC((int)Math.random()*4);
+    	    System.out.println("colore: "+Menu.cartaScarto.getC());
+    	};
+    }
+    //aggiorna graficamente piatto e postazione in input
+    public static void aggiornaVista(Piatto piatto, Postazione postazione)
+    {
+    	piatto.invalidate();
+        piatto.validate();
+        postazione.invalidate();
+        postazione.validate();
+    } 
+    // aggiorna graficamente la postazione di un giocatore
+    public static void aggiornaPostazione(Postazione postazione, Mano mano,String pathImmagine)
+    {
+    	 postazione.removeAll();
+         for (Carta y : mano.mano) {
+             postazione.add(new JLabel(new ImageIcon(pathImmagine)));
+             postazione.add(Box.createRigidArea(new Dimension(0, 5)));
+             postazione.invalidate();
+             postazione.validate();
+         }
+    }
+    public static void aggiornaSpecialeUmano(Mano mano,Mazzo mazzo,Carta x,Postazione postazione)
+    {
+    	if (x.getV()==12)
+    	{
+    		mano.mano.add(mazzo.pesca());mano.mano.add(mazzo.pesca());
+    		  postazione.invalidate();
+              postazione.validate();;
+    	}
+    	if (x.getV()==13) {Menu.cartaScarto.setC((int)Math.random()*4);System.out.println("colore: "+Menu.cartaScarto.getC());};
+    	if (x.getV()==13)	
+    		{Menu.cartaScarto.setC((int)Math.random()*4);
+    		 System.out.println("colore: "+Menu.cartaScarto.getC());
+    		 mano.mano.add(mazzo.pesca());mano.mano.add(mazzo.pesca());mano.mano.add(mazzo.pesca());mano.mano.add(mazzo.pesca());
+     		
+    			
+    		};
+    }
+    
+    
+    public static void mossaOvest(Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst)
+    {	
         System.out.println("OVEST: " + manoOvest.mano.toString());
-        for (Carta x : manoOvest.mano) {
-            if (x.getV() == Menu.cartaScarto.getV() || x.getC() == Menu.cartaScarto.getC() || x.getC() == 4) {
-                celo++;
-                Menu.pescato = 0;
-                System.out.println("Ovest ha tirato " + x.toString());
-                piatto.remove(Menu.scartoButton);
-                Menu.scartoButton = DisegnaCarta.disegnaCarta(x);
-                Menu.cartaScarto = x;
-                piatto.add(Menu.scartoButton);
-                manoOvest.mano.remove(x);
-                postazioneOvest.removeAll();
-                if (Menu.cartaScarto.getV() == 11)
-                    cambiaSenso();
-                if (Menu.senso == Senso.ORARIO)
-                    Menu.turno = 2;
-                if (Menu.cartaScarto.getV() == 10)
-                    Menu.turno = 3;
-                if (Menu.senso == Senso.ANTIORARIO)
-                    Menu.turno = 0;
-                for (Carta y : manoOvest.mano) {
-                    postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
-                    postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));
-                }
-                if (Menu.cartaScarto.getV() == 14) {
-                    Menu.firstTime = true;
-                    if (Menu.turno == 2) {
-                        for (int i = 0; i < 4; i++)
-                            manoNord.mano.add(mazzo.pesca());
-                        postazioneNord.removeAll();
-                        for (Carta y : manoEst.mano) {
-                            postazioneNord.add(new JLabel(new ImageIcon("./src/immagini/dorso180.png")));
-                            postazioneNord.add(Box.createRigidArea(new Dimension(0, 5)));
-                        }
-                        postazioneNord.invalidate();
-                        postazioneNord.validate();
-                    } else {
-                        for (int i = 0; i < 4; i++)
-                            mano.mano.add(mazzo.pesca());
-                        postazione.removeAll();
-                        for (int i = 0; i <= mano.mano.size() - 1; i++) {
-                            postazione.add(Menu.listaBottoni[i]);
-                        }
-                        postazione.invalidate();
-                        postazione.validate();
-                    }
-                    for (Carta y : manoOvest.mano) {
-                        if (y.getC() != 4) {
-                            Menu.cartaScarto.setC(y.getC());
-                            System.out.println("colore: " + y.getC());
-                        }
-                    }
-                }
-                piatto.invalidate();
-                piatto.validate();
-                postazioneOvest.invalidate();
-                postazioneOvest.validate();
-                break;
-            }
-        }
-        if (celo == 0 && Menu.pescato == 0) {
-            manoOvest.mano.add(mazzo.pesca());
-            Menu.pescato = 1;
-            postazioneOvest.removeAll();
-            for (Carta y : manoOvest.mano) {
-                postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
-                postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));
-            }
-            mossaOvest(mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord);
-            postazioneOvest.invalidate();
-            postazioneOvest.validate();
-        }
-        piatto.invalidate();
-        piatto.validate();
-        postazioneOvest.invalidate();
-        postazioneOvest.validate();
-        if (celo == 0 && Menu.pescato == 1) {
-            Menu.pescato = 0;
-            if (Menu.senso == Senso.ORARIO)
-                Menu.turno = 2;
-            if (Menu.senso == Senso.ANTIORARIO)
-                Menu.turno = 0;
-            System.out.println("OVEST: " + manoOvest.mano.toString());
-        }
-        if (celo == 1 && Menu.pescato == 1)
+        Carta x=cartaUtile(manoOvest);
+        if (x!=null)                								        // se il giocatore ha una carta utile
         {
-            Menu.pescato = 0;
-            if (Menu.senso == Senso.ORARIO)
-                Menu.turno = 2;
-            if (Menu.senso == Senso.ANTIORARIO)
-                Menu.turno = 0;
-            piatto.remove(Menu.scartoButton);
-            Menu.scartoButton = DisegnaCarta.disegnaCarta(manoOvest.mano.get(-1));
-            Menu.cartaScarto = manoOvest.mano.get(-1);
-            piatto.add(Menu.scartoButton);
-            manoOvest.mano.remove(-1);
-            postazioneOvest.removeAll();
-            for (Carta y : manoOvest.mano) {
-                postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
-                postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));}
-            System.out.println("OVEST: ho tirato quella che ho pescato");
+            lanciaCarta(piatto,manoOvest,postazioneOvest,x,"./src/immagini/dorso90.png");                // lancia la carta
+            System.out.println("Ovest ha tirato " + x.toString());
+            aggiornaTurno(); 
+            if(x.getV()>=12&&Menu.senso==Senso.ORARIO) aggiornaSpeciale(manoNord,postazioneNord,piatto, x,mazzo,"./src/immagini/dorso180.png");
+            if(x.getV()>=12&&Menu.senso==Senso.ANTIORARIO) aggiornaSpecialeUmano(mano,mazzo,x,postazione);
+            aggiornaVista(piatto, postazioneOvest);
+        }
+        else if (pescato == false)                                   //se il giocatore non ha una carta utile e non ha ancora pescato
+        {
+            manoOvest.mano.add(mazzo.pesca());                       //pesca
+            aggiornaPostazione(postazioneOvest, manoOvest,"./src/immagini/dorso90.png" );
+            pescato = true;
+            mossaOvest(mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst);
+        }
+        if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha già pescato
+           pescato = false;
+           if (Menu.senso == Senso.ORARIO) Menu.turno += 1;
+           else Menu.turno-=1;
+           System.out.println("OVEST: " + manoOvest.mano.toString());
         }
     }
 
-    private static void mossaNord(Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, PostazioneGiocatore postazioneNord, Mazzo mazzo) {
-        int celo = 0;
+    private static void mossaNord(Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst)
+    {	
         System.out.println("NORD: " + manoNord.mano.toString());
-        Menu.pronto = false;
-        for (Carta x : manoNord.mano) {
-            if (x.getV() == Menu.cartaScarto.getV() || x.getC() == Menu.cartaScarto.getC()) {
-                celo++;
-                Menu.pescato = 0;
-                System.out.println("Nord ha tirato " + x.toString());
-                piatto.remove(Menu.scartoButton);
-                Menu.scartoButton = DisegnaCarta.disegnaCarta(x);
-                Menu.cartaScarto = x;
-                piatto.add(Menu.scartoButton);
-                manoNord.mano.remove(x);
-                postazioneNord.removeAll();
-                if (Menu.cartaScarto.getV() == 11)
-                    cambiaSenso();
-                if (Menu.senso == Senso.ORARIO)
-                    Menu.turno = 3;
-                if (Menu.senso == Senso.ANTIORARIO)
-                    Menu.turno = 1;
-                if (Menu.cartaScarto.getV() == 10)
-                    Menu.turno = 0;
-                for (Carta y : manoNord.mano) {
-                    postazioneNord.add(new JLabel(new ImageIcon("./src/immagini/dorso180.png")));
-                    postazioneNord.add(Box.createRigidArea(new Dimension(0, 5)));
-                }
-                piatto.invalidate();
-                piatto.validate();
-                postazioneNord.invalidate();
-                postazioneNord.validate();
-                break;
-            }
+        Carta x=cartaUtile(manoNord);
+        if (x!=null)                								        // se il giocatore ha una carta utile
+        {
+            lanciaCarta(piatto,manoNord,postazioneNord,x,"./src/immagini/dorso180.png");                // lancia la carta
+            System.out.println("Nord ha tirato " + x.toString());
+            aggiornaTurno();
+            if(x.getV()>=12&&Menu.senso==Senso.ORARIO) aggiornaSpeciale(manoEst,postazioneEst,piatto, x,mazzo,"./src/immagini/dorso90s.png");
+            if(x.getV()>=12&&Menu.senso==Senso.ANTIORARIO) aggiornaSpeciale(manoOvest,postazioneOvest,piatto, x,mazzo,"./src/immagini/dorso90.png");
+            aggiornaVista(piatto, postazioneNord);
         }
-        if (celo == 0 && Menu.pescato == 0) {
-            manoNord.mano.add(mazzo.pesca());
-            Menu.pescato = 1;
-            postazioneNord.removeAll();
-            for (Carta y : manoNord.mano) {
-                postazioneNord.add(new JLabel(new ImageIcon("./src/immagini/dorso180.png")));
-                postazioneNord.add(Box.createRigidArea(new Dimension(0, 5)));
-            }
-            postazioneNord.invalidate();
-            postazioneNord.validate();
+        else if (pescato == false)                                   //se il giocatore non ha una carta utile e non ha ancora pescato
+        {
+            manoNord.mano.add(mazzo.pesca());                       //pesca
+            aggiornaPostazione(postazioneNord, manoNord,"./src/immagini/dorso180.png" );
+            pescato = true;
+            mossaNord(mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst);
         }
-        piatto.invalidate();
-        piatto.validate();
-        postazioneNord.invalidate();
-        postazioneNord.validate();
-        if (celo == 0 && Menu.pescato == 1) {
-            Menu.pescato = 0;
-            if (Menu.senso == Senso.ORARIO)
-                Menu.turno = 3;
-            if (Menu.senso == Senso.ANTIORARIO)
-                Menu.turno = 1;
-            System.out.println("OVEST: " + manoNord.mano.toString());
+        if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha già pescato
+           pescato = false;
+           if (Menu.senso == Senso.ORARIO) Menu.turno += 1;
+           else Menu.turno-=1;
+           System.out.println("NORD: " + manoNord.mano.toString());
         }
     }
-
-    public static void mossaEst(Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, PostazioneLaterale postazioneEst, Mazzo mazzo) {
-        int celo = 0;
+    public static void mossaEst(Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst)
+    {	
         System.out.println("EST: " + manoEst.mano.toString());
-        Menu.pronto = false;
-        for (Carta x : manoEst.mano) {
-            if (x.getV() == Menu.cartaScarto.getV() || x.getC() == Menu.cartaScarto.getC()) {
-                celo++;
-                Menu.pescato = 0;
-                System.out.println("Est ha tirato " + x.toString());
-                piatto.remove(Menu.scartoButton);
-                Menu.scartoButton = DisegnaCarta.disegnaCarta(x);
-                Menu.cartaScarto = x;
-                piatto.add(Menu.scartoButton);
-                manoEst.mano.remove(x);
-                postazioneEst.removeAll();
-                if (Menu.cartaScarto.getV() == 11)
-                    Eventi.cambiaSenso();
-                if (Menu.senso == Senso.ANTIORARIO)
-                    Menu.turno = 2;
-                if (Menu.senso == Senso.ORARIO)
-                    Menu.turno = 0;
-                if (Menu.cartaScarto.getV() == 10)
-                    Menu.turno = 1;
-                for (Carta y : manoEst.mano) {
-                    postazioneEst.add(new JLabel(new ImageIcon("./src/immagini/dorso90s.png")));
-                    postazioneEst.add(Box.createRigidArea(new Dimension(0, 5)));
-                }
-                piatto.invalidate();
-                piatto.validate();
-                postazioneEst.invalidate();
-                postazioneEst.validate();
-                break;
-            }
+        Carta x=cartaUtile(manoEst);
+        if (x!=null)                								        // se il giocatore ha una carta utile
+        {
+            lanciaCarta(piatto,manoEst,postazioneEst,x,"./src/immagini/dorso90s.png");                // lancia la carta
+            System.out.println("Est ha tirato " + x.toString());
+            aggiornaTurno();
+            if(x.getV()>=12&&Menu.senso==Senso.ORARIO) aggiornaSpecialeUmano(mano,mazzo,x,postazione);
+            if(x.getV()>=12&&Menu.senso==Senso.ANTIORARIO) aggiornaSpeciale(manoNord,postazioneNord,piatto, x,mazzo,"./src/immagini/dorso180.png");
+            aggiornaVista(piatto, postazioneEst);
         }
-        if (celo == 0 && Menu.pescato == 0) {
-            manoEst.mano.add(mazzo.pesca());
-            Menu.pescato = 1;
-            postazioneEst.removeAll();
-            for (Carta y : manoEst.mano) {
-                postazioneEst.add(new JLabel(new ImageIcon("./src/immagini/dorso90s.png")));
-                postazioneEst.add(Box.createRigidArea(new Dimension(0, 5)));
-            }
-            postazioneEst.invalidate();
-            postazioneEst.validate();
+        else if (pescato == false)                                   //se il giocatore non ha una carta utile e non ha ancora pescato
+        {
+            manoEst.mano.add(mazzo.pesca());                       //pesca
+            aggiornaPostazione(postazioneEst, manoEst,"./src/immagini/dorso90s.png" );
+            pescato = true;
+            mossaEst(mano, manoOvest, manoNord, manoEst, piatto, postazioneEst, mazzo, postazione, postazioneNord, postazioneEst);
         }
-        piatto.invalidate();
-        piatto.validate();
-        postazioneEst.invalidate();
-        postazioneEst.validate();
-        if (celo == 0 && Menu.pescato == 1) {
-            Menu.pescato = 0;
-            if (Menu.senso == Senso.ORARIO)
-                Menu.turno = 0;
-            if (Menu.senso == Senso.ANTIORARIO)
-                Menu.turno = 2;
-            System.out.println("EST: " + manoEst.mano.toString());
+        if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha già pescato
+           pescato = false;
+           if (Menu.senso == Senso.ORARIO) Menu.turno += 1;
+           else Menu.turno-=1;
+           System.out.println("EST: " + manoEst.mano.toString());
         }
     }
-
-    public static void passo(Mano mano, int i, JButton posto0, PostazioneGiocatore postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, PostazioneLaterale postazioneOvest, PostazioneGiocatore postazioneNord, PostazioneLaterale postazioneEst, Mazzo mazzo) {
+    public static void passo(Mano mano, int i, JButton posto0, Postazione postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, Mazzo mazzo) {
         if (Menu.senso == Senso.ANTIORARIO)
             Menu.turno = 3;
         if (Menu.senso == Senso.ORARIO)

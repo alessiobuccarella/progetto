@@ -16,10 +16,10 @@ public class Menu extends JFrame {
     private JButton nuovoProfilo, caricaProfilo, esci, nuovaPartita, opzioniProfilo, esci2, classica, mod2, mod3, esci3;
     private JButton indietroButton, indietroButton2, indietroButton3, indietroButton4, inviaButton, inviaButton2;
     public static JPanel menu;
-    private PostazioneGiocatore postazione;
-    private PostazioneGiocatore postazioneNord;
-    private static PostazioneLaterale postazioneOvest;
-    private PostazioneLaterale postazioneEst;
+    private Postazione postazione;
+    private Postazione postazioneNord;
+    private static Postazione postazioneOvest;
+    private Postazione postazioneEst;
     private static Piatto piatto;
     public static Senso senso = Senso.ORARIO;
     private Color colore = new Color(128, 128, 128);
@@ -386,7 +386,7 @@ public class Menu extends JFrame {
         listaBottoni[18] = posto18;
         listaBottoni[19] = posto19;
         Campo campo = new Campo();
-        postazione = new PostazioneGiocatore();
+        postazione = new Postazione(1);
         campo.add(postazione, BorderLayout.PAGE_END);
         postazione.setBackground(colore);
         postazione.add(posto0);
@@ -396,14 +396,14 @@ public class Menu extends JFrame {
         postazione.add(posto4);
         postazione.add(posto5);
         postazione.add(posto6);
-        postazioneOvest = new PostazioneLaterale();
+        postazioneOvest = new Postazione(0);
         campo.add(postazioneOvest, BorderLayout.WEST);
         for (int i = 0; i < 7; i++) {
             postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
             postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));
         }
         postazioneOvest.setBackground(colore);
-        postazioneNord = new PostazioneGiocatore();
+        postazioneNord = new Postazione(1);
         campo.add(postazioneNord, BorderLayout.PAGE_START);
         for (int i = 0; i < 7; i++) postazioneNord.add(new JLabel(new ImageIcon("./src/immagini/dorso180.png")));
         postazioneNord.setBackground(colore);
@@ -414,7 +414,7 @@ public class Menu extends JFrame {
         piatto.add(passo);
         piatto.add(deckButton);
         piatto.add(scartoButton);
-        postazioneEst = new PostazioneLaterale();
+        postazioneEst = new Postazione(0);
         campo.add(postazioneEst, BorderLayout.EAST);
         for (int i = 0; i < 7; i++) {
             postazioneEst.add(new JLabel(new ImageIcon("./src/immagini/dorso90s.png")));
@@ -528,7 +528,7 @@ public class Menu extends JFrame {
                 postazione.validate();
             }
         });
-        Timer t = new Timer(3000, avanti);
+        Timer t = new Timer(2000, avanti);
         passo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println();

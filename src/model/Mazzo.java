@@ -26,11 +26,11 @@ public class Mazzo implements Iterator<Carta> {
             mazzo.add(new Carta(v, c));
         }
         c = 4;
-        //	for ( v=13; v<=14;v++)
-        //{
-        //mazzo.add(new Carta(v, c));mazzo.add(new Carta(v,c));mazzo.add(new Carta(v, c));mazzo.add(new Carta(v,c));
-        //}
-        mescola();
+        for ( v=13; v<=14;v++)
+       	{
+       		mazzo.add(new Carta(v, c));mazzo.add(new Carta(v,c));mazzo.add(new Carta(v, c));mazzo.add(new Carta(v,c));
+       	}
+       	mescola();
     }
 
     public void scambia(int i, int j) {
