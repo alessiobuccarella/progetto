@@ -122,16 +122,7 @@ public class Eventi {
     public static void fine(Piatto piatto, Postazione a, Postazione b, Postazione c, Postazione d) 
     {
     	Menu.finito=true;
-    	piatto.removeAll();
-    	a.removeAll();
-    	b.removeAll();
-    	c.removeAll();
-    	d.removeAll();
-    	piatto.invalidate();piatto.validate();
-    	a.invalidate();a.validate();
-    	b.invalidate();b.validate();
-    	c.invalidate();c.validate();
-    	d.invalidate();d.validate();
+    	System.out.println("PARTITA TERMINATA");
     	
     }
 
@@ -264,11 +255,20 @@ public class Eventi {
     	if (x.getV()==12)
     	{
     		mano.mano.add(mazzo.pesca());
-            Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-            Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
+    		for (int i = 0; i < mano.mano.size(); i++) 
+                {
+                    aggiornaBottone(Menu.listaBottoni[i], DisegnaCarta.disegnaCarta(mano.mano.get(i)));
+                    postazione.add(Menu.listaBottoni[i]);
+                }
             mano.mano.add(mazzo.pesca());
-            Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-            Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
+        	for (int j = 0; j < mano.mano.size(); j++) 
+                {
+                    aggiornaBottone(Menu.listaBottoni[j], DisegnaCarta.disegnaCarta(mano.mano.get(j)));
+                    postazione.add(Menu.listaBottoni[j]);
+                }
+        	postazione.invalidate();
+        	postazione.validate();
+    		
     	}
     	if (x.getV()==13) {Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println("colore: "+Menu.cartaScarto.getC());};
     	if (x.getV()==14)	
