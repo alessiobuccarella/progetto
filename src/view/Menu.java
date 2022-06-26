@@ -12,6 +12,8 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class Menu extends JFrame {
+	public static boolean gridatoUno=false;
+	public static boolean deviGridareUno=false;
     public static int coloreSpeciale = 4;
     private JButton nuovoProfilo, caricaProfilo, esci, nuovaPartita, opzioniProfilo, esci2, classica, mod2, mod3, esci3;
     private JButton indietroButton, indietroButton2, indietroButton3, indietroButton4, inviaButton, inviaButton2;
@@ -23,6 +25,7 @@ public class Menu extends JFrame {
     private static Piatto piatto;
     public static Senso senso = Senso.ORARIO;
     private Color colore = new Color(128, 128, 128);
+    public static JButton uno;
     public static JButton posto0;
     public static JButton posto1;
     public static JButton posto2;
@@ -83,6 +86,7 @@ public class Menu extends JFrame {
         blu.setBackground(Color.blue);
         verde = new JButton("");
         verde.setBackground(Color.green);
+        uno= new JButton("1!");
         posto0 = DisegnaCarta.disegnaCarta(mano.mano.get(0));
         posto1 = DisegnaCarta.disegnaCarta(mano.mano.get(1));
         posto2 = DisegnaCarta.disegnaCarta(mano.mano.get(2));
@@ -411,6 +415,7 @@ public class Menu extends JFrame {
         campo.add(piatto, BorderLayout.CENTER);
         piatto.setBackground(colore);
         deckButton.setBorder(null);
+        piatto.add(uno);
         piatto.add(passo);
         piatto.add(deckButton);
         piatto.add(scartoButton);
@@ -516,6 +521,15 @@ public class Menu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cl.show(menu, "7");
+            }
+        });
+        uno.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	if (deviGridareUno==true) 
+            		{gridatoUno=true;
+            		 System.out.println("hai urlato 1!");
+            		}
             }
         });
         deckButton.addActionListener(new ActionListener() {

@@ -17,7 +17,18 @@ import view.Postazione;
 public class Eventi {
 	private static boolean pescato=false;
     public static void cliccato(Mano mano, int indiceCarta, JButton bottone, Postazione postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, JButton[] listaBottoni, Mazzo mazzo) {
-        for (int i = 0; i < listaBottoni.length; i++) {
+    	if (mano.mano.size()>1) Menu.deviGridareUno=false;
+    	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false)
+    	{
+    		System.out.println("Penalità: non hai gridato 1!");
+    		mano.mano.add(mazzo.pesca());
+            listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+            listaBottoni[mano.mano.size() - 1].setBorder(null);
+            mano.mano.add(mazzo.pesca());
+            listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+            listaBottoni[mano.mano.size() - 1].setBorder(null);
+    	}
+    	for (int i = 0; i < listaBottoni.length; i++) {
             if (listaBottoni[i] == null) System.out.println(1);
         }
         if (mano.mano.get(indiceCarta).getC() == Menu.cartaScarto.getC() || mano.mano.get(indiceCarta).getV() == Menu.cartaScarto.getV() || mano.mano.get(indiceCarta).getC() == 4) {
@@ -32,6 +43,8 @@ public class Eventi {
             piatto.validate();
             postazione.invalidate();
             postazione.validate();
+            if (mano.mano.size()==1) Menu.deviGridareUno=true;
+            
             if (Menu.cartaScarto.getV() == 11)
                 cambiaSenso();
             if (Menu.senso == Senso.ORARIO)
@@ -240,11 +253,11 @@ public class Eventi {
               postazione.validate();;
     	}
     	if (x.getV()==13) {Menu.cartaScarto.setC((int)Math.random()*4);System.out.println("colore: "+Menu.cartaScarto.getC());};
-    	if (x.getV()==13)	
+    	if (x.getV()==14)	
     		{Menu.cartaScarto.setC((int)Math.random()*4);
     		 System.out.println("colore: "+Menu.cartaScarto.getC());
     		 mano.mano.add(mazzo.pesca());mano.mano.add(mazzo.pesca());mano.mano.add(mazzo.pesca());mano.mano.add(mazzo.pesca());
-     		
+     		aggiornaPostazione(-1, Menu.listaBottoni, mano, postazione);
     			
     		};
     }
