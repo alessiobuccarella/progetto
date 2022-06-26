@@ -117,7 +117,22 @@ public class Eventi {
             postazione.validate();
         } else
             System.out.println("mossa non valida: " + Menu.cartaScarto.toString() + " non  compatibile con " + mano.mano.get(indiceCarta).toString());
-
+        if (mano.mano.size()==0) fine(piatto, postazioneOvest, postazioneNord, postazioneEst, postazione);
+    }
+    public static void fine(Piatto piatto, Postazione a, Postazione b, Postazione c, Postazione d) 
+    {
+    	Menu.finito=true;
+    	piatto.removeAll();
+    	a.removeAll();
+    	b.removeAll();
+    	c.removeAll();
+    	d.removeAll();
+    	piatto.invalidate();piatto.validate();
+    	a.invalidate();a.validate();
+    	b.invalidate();b.validate();
+    	c.invalidate();c.validate();
+    	d.invalidate();d.validate();
+    	
     }
 
     public static void aggiornaPostazione(int indiceCarta, JButton[] listaBottoni, Mano mano, Postazione postazione) {
@@ -254,10 +269,21 @@ public class Eventi {
     	}
     	if (x.getV()==13) {Menu.cartaScarto.setC((int)Math.random()*4);System.out.println("colore: "+Menu.cartaScarto.getC());};
     	if (x.getV()==14)	
-    		{Menu.cartaScarto.setC((int)Math.random()*4);
-    		 System.out.println("colore: "+Menu.cartaScarto.getC());
-    		 mano.mano.add(mazzo.pesca());mano.mano.add(mazzo.pesca());mano.mano.add(mazzo.pesca());mano.mano.add(mazzo.pesca());
-     		aggiornaPostazione(-1, Menu.listaBottoni, mano, postazione);
+    		{Menu.cartaScarto.setC((int)Math.random()*40);
+    		System.out.println("colore: "+Menu.cartaScarto.getC());
+    		mano.mano.add(mazzo.pesca());
+            Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+            Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
+            mano.mano.add(mazzo.pesca());
+            Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+            Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
+            mano.mano.add(mazzo.pesca());
+            Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+            Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
+            mano.mano.add(mazzo.pesca());
+            Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+            Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
+    		
     			
     		};
     }
@@ -265,6 +291,7 @@ public class Eventi {
     
     public static void mossaOvest(Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst)
     {	
+    	
         System.out.println("OVEST: " + manoOvest.mano.toString());
         Carta x=cartaUtile(manoOvest);
         if (x!=null)                								        // se il giocatore ha una carta utile
@@ -289,6 +316,7 @@ public class Eventi {
            else Menu.turno-=1;
            System.out.println("OVEST: " + manoOvest.mano.toString());
         }
+        if (manoOvest.mano.size()==0) fine(piatto, postazioneOvest, postazioneNord, postazioneEst, postazione);
     }
 
     private static void mossaNord(Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst)
@@ -317,6 +345,7 @@ public class Eventi {
            else Menu.turno-=1;
            System.out.println("NORD: " + manoNord.mano.toString());
         }
+        if (manoNord.mano.size()==0) fine(piatto, postazioneOvest, postazioneNord, postazioneEst, postazione);
     }
     public static void mossaEst(Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst)
     {	
@@ -344,6 +373,7 @@ public class Eventi {
            else Menu.turno-=1;
            System.out.println("EST: " + manoEst.mano.toString());
         }
+        if (manoEst.mano.size()==0) fine(piatto, postazioneOvest, postazioneNord, postazioneEst, postazione);
     }
     public static void passo(Mano mano, int i, JButton posto0, Postazione postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, Mazzo mazzo) {
         if (Menu.senso == Senso.ANTIORARIO)

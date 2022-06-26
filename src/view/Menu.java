@@ -12,6 +12,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class Menu extends JFrame {
+	public static boolean finito=false;
 	public static boolean gridatoUno=false;
 	public static boolean deviGridareUno=false;
     public static int coloreSpeciale = 4;
@@ -429,6 +430,7 @@ public class Menu extends JFrame {
         menu.add(campo, "7");
         ActionListener avanti = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+        
                 invalidate();
                 validate();
                 repaint();
@@ -548,6 +550,7 @@ public class Menu extends JFrame {
                 System.out.println();
                 repaint();
                 t.start();
+               
                 Eventi.passo(mano, 0, posto0, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo);
             }
         });
@@ -557,6 +560,7 @@ public class Menu extends JFrame {
                     System.out.println();
                     repaint();
                     t.start();
+               
                     Eventi.cliccato(mano, postazione.getComponentZOrder(posto), posto, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
                 }
             });
@@ -581,6 +585,7 @@ public class Menu extends JFrame {
                     Menu.cartaScarto.setC(finalColore);
                     repaint();
                     t.start();
+                  
                 }
             });
         }
