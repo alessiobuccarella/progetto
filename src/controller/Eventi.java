@@ -27,6 +27,7 @@ public class Eventi {
             piatto.remove(Menu.scartoButton);
             Menu.scartoButton = bottone;
             piatto.add(Menu.scartoButton);
+            //
             piatto.invalidate();
             piatto.validate();
             postazione.invalidate();
