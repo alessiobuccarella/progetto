@@ -130,7 +130,8 @@ public class Eventi {
         postazione.removeAll();
         if (indiceCarta != -1) {
             mano.mano.remove(indiceCarta);
-            elimina(listaBottoni, indiceCarta);
+            elimina(listaBottoni
+            		, indiceCarta);
         }
         for (int j = 0; j < mano.mano.size(); j++) {
             {
@@ -253,14 +254,48 @@ public class Eventi {
     public static void aggiornaSpecialeUmano(Mano mano,Mazzo mazzo,Carta x,Postazione postazione)
     {
     	if (x.getV()==12)
-    	{
-
+    	{ 
+    		mano.mano.add(mazzo.pesca());
+    		Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+    		Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
+    		postazione.add(Menu.listaBottoni[mano.mano.size() - 1]);
+    		postazione.invalidate();
+    		postazione.validate();
+    		mano.mano.add(mazzo.pesca());
+    		Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+    		Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
+    		postazione.add(Menu.listaBottoni[mano.mano.size() - 1]);
+    		postazione.invalidate();
+    		postazione.validate();
     	}
     	if (x.getV()==13) {Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println("colore: "+Menu.cartaScarto.getC());};
     	if (x.getV()==14)	
-    	{
-   
-    		
+    	{ 
+    		Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println("colore: "+Menu.cartaScarto.getC());
+    		mano.mano.add(mazzo.pesca());
+    		Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+    		Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
+    		postazione.add(Menu.listaBottoni[mano.mano.size() - 1]);
+    		postazione.invalidate();
+    		postazione.validate();
+    		mano.mano.add(mazzo.pesca());
+    		Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+    		Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
+    		postazione.add(Menu.listaBottoni[mano.mano.size() - 1]);
+    		postazione.invalidate();
+    		postazione.validate();
+    		mano.mano.add(mazzo.pesca());
+    		Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+    		Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
+    		postazione.add(Menu.listaBottoni[mano.mano.size() - 1]);
+    		postazione.invalidate();
+    		postazione.validate();
+    		mano.mano.add(mazzo.pesca());
+    		Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+    		Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
+    		postazione.add(Menu.listaBottoni[mano.mano.size() - 1]);
+    		postazione.invalidate();
+    		postazione.validate();
     	}
     			
     		};

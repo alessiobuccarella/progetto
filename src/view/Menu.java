@@ -559,10 +559,12 @@ public class Menu extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     System.out.println();
                     repaint();
-                    t.start();
-               
-                    Eventi.cliccato(mano, postazione.getComponentZOrder(posto), posto, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
-                }
+                    if (cartaScarto.getV()<13)
+                    {
+                    	t.start();
+                    	Eventi.cliccato(mano, postazione.getComponentZOrder(posto), posto, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
+                    }
+                    	}
             });
             posto.addMouseListener(new MouseAdapter() {
                 public void mouseEntered(java.awt.event.MouseEvent evt) {
