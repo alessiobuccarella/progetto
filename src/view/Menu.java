@@ -19,7 +19,7 @@ public class Menu extends JFrame {
     private JButton nuovoProfilo, caricaProfilo, esci, nuovaPartita, opzioniProfilo, esci2, classica, mod2, mod3, esci3;
     private JButton indietroButton, indietroButton2, indietroButton3, indietroButton4, inviaButton, inviaButton2;
     public static JPanel menu;
-    private Postazione postazione;
+    private static Postazione postazione;
     private Postazione postazioneNord;
     private static Postazione postazioneOvest;
     private Postazione postazioneEst;
@@ -544,15 +544,10 @@ public class Menu extends JFrame {
             		}
             }
         });
+ 
         deckButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                mano.mano.add(mazzo.pesca());
-                listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-                listaBottoni[mano.mano.size() - 1].setBorder(null);
-                posti.set(mano.mano.size() - 1,listaBottoni[mano.mano.size() - 1]);
-                postazione.add(posti.get(mano.mano.size() - 1));
-                postazione.invalidate();
-                postazione.validate();
+              pesca(mazzo,mano);
             }
         });
         Timer t = new Timer(1000, avanti);
@@ -604,13 +599,17 @@ public class Menu extends JFrame {
             });
         }
     }
+    public static void pesca(Mazzo mazzo, Mano mano) {
+    	  postazione.removeAll();
+    	  mano.mano.add(mazzo.pesca());
+          listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+          listaBottoni[mano.mano.size() - 1].setBorder(null);
+          posti.set(mano.mano.size() - 1,listaBottoni[mano.mano.size() - 1]);
+          for (int i= 0; i<mano.mano.size();i++) postazione.add(posti.get(i));
+          postazione.invalidate();
+          postazione.validate();
+    }
 }
-		
-
-
-		
-        
-        
         
     
     

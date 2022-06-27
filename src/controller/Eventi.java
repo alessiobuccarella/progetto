@@ -256,13 +256,8 @@ public class Eventi {
     	if (x.getV()==12)
     	{ 
     	
-    			mano.mano.add(mazzo.pesca());
-                Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-                Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
-                Menu.posti.set(mano.mano.size() - 1,Menu.listaBottoni[mano.mano.size() - 1]);
-                postazione.add(Menu.posti.get(mano.mano.size() - 1));
-                postazione.invalidate();
-                postazione.validate();
+    			Menu.pesca(mazzo, mano);
+    			Menu.pesca(mazzo, mano);
 
     		
     		}
@@ -271,13 +266,10 @@ public class Eventi {
     	{ 
     		Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println("colore: "+Menu.cartaScarto.getC());
     			
-    			mano.mano.add(mazzo.pesca());
-                Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-                Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
-                Menu.posti.set(mano.mano.size() - 1,Menu.listaBottoni[mano.mano.size() - 1]);
-                postazione.add(Menu.posti.get(mano.mano.size() - 1));
-                postazione.invalidate();
-                postazione.validate();
+    		Menu.pesca(mazzo, mano);
+    		Menu.pesca(mazzo, mano);
+    		Menu.pesca(mazzo, mano);
+    		Menu.pesca(mazzo, mano);
 
     	}
     			
