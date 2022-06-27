@@ -430,7 +430,7 @@ public class Menu extends JFrame {
         menu.add(campo, "7");
         ActionListener avanti = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (turno%4!=0) 
+            /*    if (turno%4!=0) 
                 {
                 	for(JButton posto:listaBottoni) posto.setEnabled(false);
                 	scartoButton.setEnabled(true);
@@ -438,6 +438,7 @@ public class Menu extends JFrame {
                 else for(JButton posto:listaBottoni) posto.setEnabled(true);
                 invalidate();
                 validate();
+               */
                 repaint();
                 if (firstTime == false)
                     Eventi.avanti(turno, manoOvest, manoNord, manoEst, piatto, postazioneOvest, postazioneNord, postazioneEst, mazzo, postazione, manoEst);
@@ -550,7 +551,7 @@ public class Menu extends JFrame {
                 postazione.validate();
             }
         });
-        Timer t = new Timer(2000, avanti);
+        Timer t = new Timer(500, avanti);
         passo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println();

@@ -31,7 +31,7 @@ public class Eventi {
     	for (int i = 0; i < listaBottoni.length; i++) {
             if (listaBottoni[i] == null) System.out.println(1);
         }
-        if (mano.mano.get(indiceCarta).getC() == Menu.cartaScarto.getC() || mano.mano.get(indiceCarta).getV() == Menu.cartaScarto.getV() || mano.mano.get(indiceCarta).getC() == 4) {
+        if ((mano.mano.get(indiceCarta).getC() == Menu.cartaScarto.getC() || mano.mano.get(indiceCarta).getV() == Menu.cartaScarto.getV() || mano.mano.get(indiceCarta).getC() == 4)&&(Menu.turno%4==0)) {
             System.out.println(postazione.getComponentZOrder(bottone));
             Menu.cartaScarto = mano.mano.get(indiceCarta);
             aggiornaPostazione(indiceCarta, listaBottoni, mano, postazione);
@@ -314,6 +314,7 @@ public class Eventi {
            System.out.println("OVEST: " + manoOvest.mano.toString());
         }
         if (manoOvest.mano.size()==0) fine(piatto, postazioneOvest, postazioneNord, postazioneEst, postazione);
+        System.out.println("turno: "+Menu.turno);
     }
 
     private static void mossaNord(Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst)
@@ -343,6 +344,7 @@ public class Eventi {
            System.out.println("NORD: " + manoNord.mano.toString());
         }
         if (manoNord.mano.size()==0) fine(piatto, postazioneOvest, postazioneNord, postazioneEst, postazione);
+        System.out.println("turno: "+Menu.turno);
     }
     public static void mossaEst(Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst)
     {	
@@ -371,6 +373,7 @@ public class Eventi {
            System.out.println("EST: " + manoEst.mano.toString());
         }
         if (manoEst.mano.size()==0) fine(piatto, postazioneOvest, postazioneNord, postazioneEst, postazione);
+        System.out.println("turno: "+Menu.turno);
     }
     public static void passo(Mano mano, int i, JButton posto0, Postazione postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, Mazzo mazzo) {
         if (Menu.senso == Senso.ANTIORARIO)
