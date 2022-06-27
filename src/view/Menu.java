@@ -118,6 +118,7 @@ public class Menu extends JFrame {
         posti.add(posto4);
         posti.add(posto5);
         posti.add(posto6);
+        
         posti.add(posto7);
         posti.add(posto8);
         posti.add(posto9);
@@ -131,6 +132,7 @@ public class Menu extends JFrame {
         posti.add(posto17);
         posti.add(posto18);
         posti.add(posto19);
+      
         ArrayList<JButton> colori = new ArrayList<>();
         colori.add(rosso);
         colori.add(giallo);
@@ -370,6 +372,7 @@ public class Menu extends JFrame {
         JButton deckButton = new JButton();
         deckButton.setHorizontalTextPosition(SwingConstants.CENTER);
         deckButton.add(deckLabel);
+        
         listaBottoni[0] = posto0;
         listaBottoni[1] = posto1;
         listaBottoni[2] = posto2;
@@ -390,6 +393,7 @@ public class Menu extends JFrame {
         listaBottoni[17] = posto17;
         listaBottoni[18] = posto18;
         listaBottoni[19] = posto19;
+        
         Campo campo = new Campo();
         postazione = new Postazione(1);
         campo.add(postazione, BorderLayout.PAGE_END);
@@ -545,13 +549,13 @@ public class Menu extends JFrame {
                 mano.mano.add(mazzo.pesca());
                 listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
                 listaBottoni[mano.mano.size() - 1].setBorder(null);
-                posti.add(listaBottoni[mano.mano.size() - 1]);
-                postazione.add(listaBottoni[mano.mano.size() - 1]);
+                posti.set(mano.mano.size() - 1,listaBottoni[mano.mano.size() - 1]);
+                postazione.add(posti.get(mano.mano.size() - 1));
                 postazione.invalidate();
                 postazione.validate();
             }
         });
-        Timer t = new Timer(500, avanti);
+        Timer t = new Timer(1000, avanti);
         passo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println();

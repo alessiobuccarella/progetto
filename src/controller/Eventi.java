@@ -255,31 +255,30 @@ public class Eventi {
     {
     	if (x.getV()==12)
     	{ 
-    		for(int i=0;i<2;i++)
-    		{
-    			   mano.mano.add(mazzo.pesca());
-    			   Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-    			   Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
-    			   Menu.posti.add(Menu.listaBottoni[mano.mano.size() - 1]);
-    			   postazione.add(Menu.listaBottoni[mano.mano.size() - 1]);
-    			   postazione.invalidate();
-    			   postazione.validate();
-    		}
+    	
+    			mano.mano.add(mazzo.pesca());
+                Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+                Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
+                Menu.posti.set(mano.mano.size() - 1,Menu.listaBottoni[mano.mano.size() - 1]);
+                postazione.add(Menu.posti.get(mano.mano.size() - 1));
+                postazione.invalidate();
+                postazione.validate();
+
+    		
     		}
     	if (x.getV()==13) {Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println("colore: "+Menu.cartaScarto.getC());};
     	if (x.getV()==14)	
     	{ 
     		Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println("colore: "+Menu.cartaScarto.getC());
-    		for(int i=0;i<4;i++)
-    		{
-    			   mano.mano.add(mazzo.pesca());
-    			   Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-    			   Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
-    			   Menu.posti.add(Menu.listaBottoni[mano.mano.size() - 1]);
-    			   postazione.add(Menu.listaBottoni[mano.mano.size() - 1]);
-    			   postazione.invalidate();
-    			   postazione.validate();
-    		}
+    			
+    			mano.mano.add(mazzo.pesca());
+                Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+                Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
+                Menu.posti.set(mano.mano.size() - 1,Menu.listaBottoni[mano.mano.size() - 1]);
+                postazione.add(Menu.posti.get(mano.mano.size() - 1));
+                postazione.invalidate();
+                postazione.validate();
+
     	}
     			
     		};
@@ -308,7 +307,7 @@ public class Eventi {
             pescato = true;
             mossaOvest(mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst);
         }
-        if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha già pescato
+        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha già pescato
            pescato = false;
            aggiornaTurno(); 
            System.out.println("OVEST: " + manoOvest.mano.toString());
@@ -337,10 +336,9 @@ public class Eventi {
             pescato = true;
             mossaNord(mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst);
         }
-        if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha già pescato
+        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha già pescato
            pescato = false;
-           if (Menu.senso == Senso.ORARIO) Menu.turno += 1;
-           else Menu.turno-=1;
+           aggiornaTurno(); 
            System.out.println("NORD: " + manoNord.mano.toString());
         }
         if (manoNord.mano.size()==0) fine(piatto, postazioneOvest, postazioneNord, postazioneEst, postazione);
@@ -366,7 +364,7 @@ public class Eventi {
             pescato = true;
             mossaEst(mano, manoOvest, manoNord, manoEst, piatto, postazioneEst, mazzo, postazione, postazioneNord, postazioneEst);
         }
-        if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha già pescato
+        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha già pescato
            pescato = false;
            if (Menu.senso == Senso.ORARIO) Menu.turno += 1;
            else Menu.turno-=1;
