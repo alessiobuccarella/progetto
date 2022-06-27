@@ -255,47 +255,31 @@ public class Eventi {
     {
     	if (x.getV()==12)
     	{ 
-    		mano.mano.add(mazzo.pesca());
-    		Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-    		Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
-    		postazione.add(Menu.listaBottoni[mano.mano.size() - 1]);
-    		postazione.invalidate();
-    		postazione.validate();
-    		mano.mano.add(mazzo.pesca());
-    		Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-    		Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
-    		postazione.add(Menu.listaBottoni[mano.mano.size() - 1]);
-    		postazione.invalidate();
-    		postazione.validate();
-    	}
+    		for(int i=0;i<2;i++)
+    		{
+    			   mano.mano.add(mazzo.pesca());
+    			   Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+    			   Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
+    			   Menu.posti.add(Menu.listaBottoni[mano.mano.size() - 1]);
+    			   postazione.add(Menu.listaBottoni[mano.mano.size() - 1]);
+    			   postazione.invalidate();
+    			   postazione.validate();
+    		}
+    		}
     	if (x.getV()==13) {Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println("colore: "+Menu.cartaScarto.getC());};
     	if (x.getV()==14)	
     	{ 
     		Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println("colore: "+Menu.cartaScarto.getC());
-    		mano.mano.add(mazzo.pesca());
-    		Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-    		Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
-    		postazione.add(Menu.listaBottoni[mano.mano.size() - 1]);
-    		postazione.invalidate();
-    		postazione.validate();
-    		mano.mano.add(mazzo.pesca());
-    		Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-    		Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
-    		postazione.add(Menu.listaBottoni[mano.mano.size() - 1]);
-    		postazione.invalidate();
-    		postazione.validate();
-    		mano.mano.add(mazzo.pesca());
-    		Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-    		Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
-    		postazione.add(Menu.listaBottoni[mano.mano.size() - 1]);
-    		postazione.invalidate();
-    		postazione.validate();
-    		mano.mano.add(mazzo.pesca());
-    		Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-    		Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
-    		postazione.add(Menu.listaBottoni[mano.mano.size() - 1]);
-    		postazione.invalidate();
-    		postazione.validate();
+    		for(int i=0;i<4;i++)
+    		{
+    			   mano.mano.add(mazzo.pesca());
+    			   Menu.listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
+    			   Menu.listaBottoni[mano.mano.size() - 1].setBorder(null);
+    			   Menu.posti.add(Menu.listaBottoni[mano.mano.size() - 1]);
+    			   postazione.add(Menu.listaBottoni[mano.mano.size() - 1]);
+    			   postazione.invalidate();
+    			   postazione.validate();
+    		}
     	}
     			
     		};
@@ -311,10 +295,11 @@ public class Eventi {
         {
             lanciaCarta(piatto,manoOvest,postazioneOvest,x,"./src/immagini/dorso90.png");                // lancia la carta
             System.out.println("Ovest ha tirato " + x.toString());
-            aggiornaTurno(); 
+            
             if(x.getV()>=12&&Menu.senso==Senso.ORARIO) aggiornaSpeciale(manoNord,postazioneNord,piatto, x,mazzo,"./src/immagini/dorso180.png");
             if(x.getV()>=12&&Menu.senso==Senso.ANTIORARIO) aggiornaSpecialeUmano(mano,mazzo,x,postazione);
             aggiornaVista(piatto, postazioneOvest);
+            aggiornaTurno(); 
         }
         else if (pescato == false)                                   //se il giocatore non ha una carta utile e non ha ancora pescato
         {
@@ -325,8 +310,7 @@ public class Eventi {
         }
         if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha già pescato
            pescato = false;
-           if (Menu.senso == Senso.ORARIO) Menu.turno += 1;
-           else Menu.turno-=1;
+           aggiornaTurno(); 
            System.out.println("OVEST: " + manoOvest.mano.toString());
         }
         if (manoOvest.mano.size()==0) fine(piatto, postazioneOvest, postazioneNord, postazioneEst, postazione);

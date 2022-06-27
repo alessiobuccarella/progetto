@@ -64,7 +64,7 @@ public class Menu extends JFrame {
     public static boolean firstTime = true;
     public static boolean pronto = false;
     public static int pescato = 0;
-
+    public static ArrayList<JButton> posti = new ArrayList<>();
     public Menu() {
         super("JUno");
         setVisible(true);
@@ -110,7 +110,7 @@ public class Menu extends JFrame {
         posto18 = new JButton();
         posto19 = new JButton();
         posto20 = new JButton();
-        ArrayList<JButton> posti = new ArrayList<>();
+        
         posti.add(posto0);
         posti.add(posto1);
         posti.add(posto2);
@@ -430,7 +430,12 @@ public class Menu extends JFrame {
         menu.add(campo, "7");
         ActionListener avanti = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-        
+                if (turno%4!=0) 
+                {
+                	for(JButton posto:listaBottoni) posto.setEnabled(false);
+                	scartoButton.setEnabled(true);
+                }
+                else for(JButton posto:listaBottoni) posto.setEnabled(true);
                 invalidate();
                 validate();
                 repaint();
@@ -539,6 +544,7 @@ public class Menu extends JFrame {
                 mano.mano.add(mazzo.pesca());
                 listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
                 listaBottoni[mano.mano.size() - 1].setBorder(null);
+                posti.add(listaBottoni[mano.mano.size() - 1]);
                 postazione.add(listaBottoni[mano.mano.size() - 1]);
                 postazione.invalidate();
                 postazione.validate();
@@ -559,13 +565,14 @@ public class Menu extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     System.out.println();
                     repaint();
-                    if (cartaScarto.getV()<13)
-                    {
                     	t.start();
                     	Eventi.cliccato(mano, postazione.getComponentZOrder(posto), posto, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
+                    	if (cartaScarto.getC()==4) t.stop();
+                    	
+                    
+             	
                     }
-                    	}
-            });
+            }); 
             posto.addMouseListener(new MouseAdapter() {
                 public void mouseEntered(java.awt.event.MouseEvent evt) {
                     posto.setLocation(posto.getX(), posto.getY()-5);
