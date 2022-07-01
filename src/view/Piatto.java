@@ -1,13 +1,18 @@
 package view;
 
+import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+
 import javax.swing.JPanel;
 
 public class Piatto extends JPanel {
     public Piatto() {
-        FlowLayout flowLayout = new FlowLayout();
-        setLayout(flowLayout);
-        flowLayout.setVgap(150);
-        flowLayout.setHgap(20);
-    }
+    	setLayout(new GridBagLayout());
+    	
+    	
+    	
+     }
 }

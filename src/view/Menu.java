@@ -12,6 +12,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class Menu extends JFrame {
+
 	public static boolean finito=false;
 	public static boolean gridatoUno=false;
 	public static boolean deviGridareUno=false;
@@ -23,36 +24,16 @@ public class Menu extends JFrame {
     private Postazione postazioneNord;
     private static Postazione postazioneOvest;
     private Postazione postazioneEst;
-    private static Piatto piatto;
+    private  Piatto piatto;
     public static Senso senso = Senso.ORARIO;
-    private Color colore = new Color(128, 128, 128);
+    private Color colore = new Color(255, 0, 0);
     public static JButton uno;
-    public static JButton posto0;
-    public static JButton posto1;
-    public static JButton posto2;
-    public static JButton posto3;
-    public static JButton posto4;
-    public static JButton posto5;
-    public static JButton posto6;
-    public static JButton posto7;
-    public static JButton posto8;
-    public static JButton posto9;
-    public static JButton posto10;
-    public static JButton posto11;
-    public static JButton posto12;
-    public static JButton posto13;
-    public static JButton posto14;
-    public static JButton posto15;
-    public static JButton posto16;
-    public static JButton posto17;
-    public static JButton posto18;
-    public static JButton posto19;
-    public static JButton posto20;
+
     public static JButton rosso;
     public static JButton giallo;
     public static JButton blu;
     public static JButton verde;
-    public static JButton[] listaBottoni = new JButton[20];
+  
     public static JButton scartoButton = new JButton();
     public static JButton passo = new JButton("PASSO");
     public static Carta cartaScarto = new Carta(0, 0);
@@ -65,14 +46,18 @@ public class Menu extends JFrame {
     public static boolean pronto = false;
     public static int pescato = 0;
     public static ArrayList<JButton> posti = new ArrayList<>();
+    
+    
+    
     public Menu() {
         super("JUno");
         setVisible(true);
-        setSize(1000, 600);
+        setSize(1000, 700);
         setLayout(new BorderLayout());
-        setResizable(true);
+        setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        for (int i=0;i<30;i++)posti.add(new JButton());
         scartoButton = new JButton();
         Mazzo mazzo = new Mazzo();
         Mano mano = new Mano(mazzo);
@@ -88,57 +73,13 @@ public class Menu extends JFrame {
         verde = new JButton("");
         verde.setBackground(Color.green);
         uno= new JButton("1!");
-        posto0 = DisegnaCarta.disegnaCarta(mano.mano.get(0));
-        posto1 = DisegnaCarta.disegnaCarta(mano.mano.get(1));
-        posto2 = DisegnaCarta.disegnaCarta(mano.mano.get(2));
-        posto3 = DisegnaCarta.disegnaCarta(mano.mano.get(3));
-        posto4 = DisegnaCarta.disegnaCarta(mano.mano.get(4));
-        posto5 = DisegnaCarta.disegnaCarta(mano.mano.get(5));
-        posto6 = DisegnaCarta.disegnaCarta(mano.mano.get(6));
-        posto7 = new JButton();
-        posto8 = new JButton();
-        posto8 = new JButton();
-        posto9 = new JButton();
-        posto10 = new JButton();
-        posto11 = new JButton();
-        posto12 = new JButton();
-        posto13 = new JButton();
-        posto14 = new JButton();
-        posto15 = new JButton();
-        posto16 = new JButton();
-        posto17 = new JButton();
-        posto18 = new JButton();
-        posto19 = new JButton();
-        posto20 = new JButton();
         
-        posti.add(posto0);
-        posti.add(posto1);
-        posti.add(posto2);
-        posti.add(posto3);
-        posti.add(posto4);
-        posti.add(posto5);
-        posti.add(posto6);
-        
-        posti.add(posto7);
-        posti.add(posto8);
-        posti.add(posto9);
-        posti.add(posto10);
-        posti.add(posto11);
-        posti.add(posto12);
-        posti.add(posto13);
-        posti.add(posto14);
-        posti.add(posto15);
-        posti.add(posto16);
-        posti.add(posto17);
-        posti.add(posto18);
-        posti.add(posto19);
-      
         ArrayList<JButton> colori = new ArrayList<>();
         colori.add(rosso);
         colori.add(giallo);
         colori.add(blu);
         colori.add(verde);
-        cartaScarto = mazzo.pesca();
+        do cartaScarto=mazzo.next(); while(cartaScarto.getV()>12);
         scartoButton = DisegnaCarta.disegnaCarta(cartaScarto);
         menu = new JPanel();
         CardLayout cl = new CardLayout();
@@ -368,43 +309,24 @@ public class Menu extends JFrame {
         account.add(indietro4, BorderLayout.PAGE_END);
         menu.add(account, "6");
         //PAGE PARTITA
+        
+    
+        
         JLabel deckLabel = new JLabel(new ImageIcon("./src/immagini/dorso.png"));
         JButton deckButton = new JButton();
         deckButton.setHorizontalTextPosition(SwingConstants.CENTER);
         deckButton.add(deckLabel);
         
-        listaBottoni[0] = posto0;
-        listaBottoni[1] = posto1;
-        listaBottoni[2] = posto2;
-        listaBottoni[3] = posto3;
-        listaBottoni[4] = posto4;
-        listaBottoni[5] = posto5;
-        listaBottoni[6] = posto6;
-        listaBottoni[7] = posto7;
-        listaBottoni[8] = posto8;
-        listaBottoni[9] = posto9;
-        listaBottoni[10] = posto10;
-        listaBottoni[11] = posto11;
-        listaBottoni[12] = posto12;
-        listaBottoni[13] = posto13;
-        listaBottoni[14] = posto14;
-        listaBottoni[15] = posto15;
-        listaBottoni[16] = posto16;
-        listaBottoni[17] = posto17;
-        listaBottoni[18] = posto18;
-        listaBottoni[19] = posto19;
+       
         
         Campo campo = new Campo();
         postazione = new Postazione(1);
         campo.add(postazione, BorderLayout.PAGE_END);
         postazione.setBackground(colore);
-        postazione.add(posto0);
-        postazione.add(posto1);
-        postazione.add(posto2);
-        postazione.add(posto3);
-        postazione.add(posto4);
-        postazione.add(posto5);
-        postazione.add(posto6);
+        for (int i=0;i<mano.mano.size();i++)posti.set(i,DisegnaCarta.disegnaCarta(mano.mano.get(i)));
+        for (int i=0;i<mano.mano.size();i++)postazione.add(posti.get(i));
+        //for (Carta x:mano.mano)posti.add(DisegnaCarta.disegnaCarta(x));
+        //for (JButton x:posti)postazione.add(x);
         postazioneOvest = new Postazione(0);
         campo.add(postazioneOvest, BorderLayout.WEST);
         for (int i = 0; i < 7; i++) {
@@ -417,13 +339,95 @@ public class Menu extends JFrame {
         for (int i = 0; i < 7; i++) postazioneNord.add(new JLabel(new ImageIcon("./src/immagini/dorso180.png")));
         postazioneNord.setBackground(colore);
         piatto = new Piatto();
-        campo.add(piatto, BorderLayout.CENTER);
         piatto.setBackground(colore);
+        //ImageIcon avatar1png = new ImageIcon("./src/immagini/avatar1.png");JLabel nick = new JLabel("Nickname:");
+        JLabel foto = new JLabel(avatar1png);
+        JLabel foto1 = new JLabel(avatar1png);
+        JLabel foto2 = new JLabel(avatar1png);
+        JLabel foto3 = new JLabel(avatar1png);
+        GridBagConstraints gbc10= new GridBagConstraints();
+        campo.add(piatto, BorderLayout.CENTER);
+        
+        gbc10.anchor=GridBagConstraints.FIRST_LINE_END;
+        gbc10.gridx=4;
+        gbc10.gridy=1;
+        gbc10.weightx=0.0;
+        gbc10.weighty=0;
+        piatto.add(new JLabel("Heap"),gbc10);
+        gbc10.anchor=GridBagConstraints.PAGE_START;
+        gbc10.gridx=4;
+        gbc10.gridy=0;
+        gbc10.weightx=0.0;
+        gbc10.weighty=0;
+        piatto.add(foto1,gbc10);
+        
+        gbc10.anchor=GridBagConstraints.PAGE_END;
+        gbc10.gridx=0;
+        gbc10.gridy=1;
+        gbc10.weightx=0.0;
+        gbc10.weighty=0;
+        piatto.add(foto,gbc10);
+        gbc10.anchor=GridBagConstraints.PAGE_START;
+        gbc10.gridx=0;
+        gbc10.gridy=2;
+        gbc10.weightx=0;
+        gbc10.weighty=0;
+        piatto.add(new JLabel("Stack"),gbc10);
+        
+     
+        gbc10.anchor=GridBagConstraints.LAST_LINE_END;
+        gbc10.gridx=6;
+        gbc10.gridy=1;
+        gbc10.weightx=1;
+        gbc10.weighty=1;
+        piatto.add(foto2,gbc10);
+        gbc10.anchor=GridBagConstraints.FIRST_LINE_END;
+        gbc10.gridx=6;
+        gbc10.gridy=2;
+        gbc10.weightx=1;
+        gbc10.weighty=1;
+        piatto.add(new JLabel("MetaSpace"),gbc10);
+        
+        gbc10.anchor=GridBagConstraints.LAST_LINE_END;
+        gbc10.gridx=3;
+        gbc10.gridy=4;
+        gbc10.weightx=0.5;
+        gbc10.weighty=0;
+        piatto.add(new JLabel("Alessietto"),gbc10);
+        
+        gbc10.gridx=3;
+        gbc10.gridy=3;
+        gbc10.weightx=0.0;
+        gbc10.weighty=0;
+        piatto.add(foto3,gbc10);
+        
+        gbc10.anchor=GridBagConstraints.LINE_END;
+        gbc10.gridx=5;
+        gbc10.gridy=3;
+        gbc10.weightx=0.0;
+        gbc10.weighty=0;
+        piatto.add(uno,gbc10);
+        gbc10.anchor=GridBagConstraints.LINE_START;
         deckButton.setBorder(null);
-        piatto.add(uno);
-        piatto.add(passo);
-        piatto.add(deckButton);
-        piatto.add(scartoButton);
+        gbc10.gridx=6;
+        gbc10.gridy=3;
+        gbc10.weightx=0;
+        gbc10.weighty=0;
+        piatto.add(passo,gbc10);       
+  
+        gbc10.anchor=GridBagConstraints.LINE_START;
+        gbc10.weightx=0;
+        gbc10.weighty=0;
+        gbc10.gridx=4;
+        gbc10.gridy=1;
+        piatto.add(deckButton,gbc10);
+        gbc10.anchor=GridBagConstraints.LINE_START;
+        gbc10.weightx=0;
+        gbc10.weighty=0;
+        gbc10.gridx=5;
+        gbc10.gridy=1;
+        piatto.add(scartoButton,gbc10);
+        
         postazioneEst = new Postazione(0);
         campo.add(postazioneEst, BorderLayout.EAST);
         for (int i = 0; i < 7; i++) {
@@ -434,7 +438,8 @@ public class Menu extends JFrame {
         menu.add(campo, "7");
         ActionListener avanti = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            /*    if (turno%4!=0) 
+            	
+                /*if (turno%4!=0) 
                 {
                 	for(JButton posto:listaBottoni) posto.setEnabled(false);
                 	scartoButton.setEnabled(true);
@@ -445,7 +450,7 @@ public class Menu extends JFrame {
                */
                 repaint();
                 if (firstTime == false)
-                    Eventi.avanti(turno, manoOvest, manoNord, manoEst, piatto, postazioneOvest, postazioneNord, postazioneEst, mazzo, postazione, manoEst);
+                    Eventi.avanti(gbc10, turno, manoOvest, manoNord, manoEst, piatto, postazioneOvest, postazioneNord, postazioneEst, mazzo, postazione, mano);
                 else {
                     firstTime = false;
                 }
@@ -542,6 +547,9 @@ public class Menu extends JFrame {
             		{gridatoUno=true;
             		 System.out.println("hai urlato 1!");
             		}
+            	System.out.println("mano: "+mano.mano.size());
+
+            	System.out.println("posti: "+posti.size());
             }
         });
  
@@ -553,11 +561,12 @@ public class Menu extends JFrame {
         Timer t = new Timer(1000, avanti);
         passo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+           
                 System.out.println();
                 repaint();
                 t.start();
                
-                Eventi.passo(mano, 0, posto0, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo);
+                Eventi.passo(gbc10, mano, 0, null, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo);
             }
         });
         for (JButton posto : posti){
@@ -566,7 +575,8 @@ public class Menu extends JFrame {
                     System.out.println();
                     repaint();
                     	t.start();
-                    	Eventi.cliccato(mano, postazione.getComponentZOrder(posto), posto, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, listaBottoni, mazzo);
+                    
+                    	Eventi.cliccato(gbc10, mano, postazione.getComponentZOrder(posto), posto, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, posti, mazzo);
                     	if (cartaScarto.getC()==4) t.stop();
                     	
                     
@@ -587,10 +597,10 @@ public class Menu extends JFrame {
             colori.get(colore).addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     coloreSpeciale = finalColore;
-                    piatto.remove(rosso);
-                    piatto.remove(giallo);
-                    piatto.remove(verde);
-                    piatto.remove(blu);
+                    postazione.remove(rosso);
+                    postazione.remove(giallo);
+                    postazione.remove(verde);
+                    postazione.remove(blu);
                     Menu.cartaScarto.setC(finalColore);
                     repaint();
                     t.start();
@@ -600,16 +610,21 @@ public class Menu extends JFrame {
         }
     }
     public static void pesca(Mazzo mazzo, Mano mano) {
-    	  postazione.removeAll();
-    	  mano.mano.add(mazzo.pesca());
-          listaBottoni[mano.mano.size() - 1].add(new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-          listaBottoni[mano.mano.size() - 1].setBorder(null);
-          posti.set(mano.mano.size() - 1,listaBottoni[mano.mano.size() - 1]);
-          for (int i= 0; i<mano.mano.size();i++) postazione.add(posti.get(i));
-          postazione.invalidate();
-          postazione.validate();
+    	 
+    	  Carta carta=mazzo.pesca();
+    	  mano.mano.add(carta);
+    	 
+    		  
+    		  //posti.set(mano.mano.size()-1,DisegnaCarta.disegnaCarta(mano.mano.get(mano.mano.size()-1)));
+    	  Icon immagine= new ImageIcon("./src/immagini/" + carta.getV() + carta.getC() + ".png");
+          posti.get(mano.mano.size()-1).setIcon(immagine);posti.get(mano.mano.size()-1).setBorder(null);
+        	  postazione.add(posti.get(mano.mano.size()-1));
+        	  postazione.invalidate();
+              postazione.validate();
+    	  }
+         
     }
-}
+
         
     
     
