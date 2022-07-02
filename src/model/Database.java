@@ -46,8 +46,7 @@ public class Database {
                 try {
                     String query2 = "SELECT * FROM jUno.Profilo"
                                   + " WHERE nickname = '"+nick+"'";
-                    System.out.println(query2.toString());
-                    Statement statement= (PreparedStatement) connection.prepareStatement(query2);
+                    Statement statement = connection.prepareStatement(query2);
                     ResultSet rs = statement.executeQuery(query2);
                     while (rs.next()) {
                         valido3 = true;

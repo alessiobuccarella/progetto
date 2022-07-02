@@ -5,31 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dfb10fc4-cf90-42ee-bd68-09ff1d090acc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controller/Eventi.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/Eventi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controller/Prova.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/Prova.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$12.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$13.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$14.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$15.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$16.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$17.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$18.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$19.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$20.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$20.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$21.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$21.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/DisegnaCarta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisegnaCarta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Eventi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Eventi.java" afterDir="false" />

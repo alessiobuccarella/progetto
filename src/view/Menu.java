@@ -505,6 +505,7 @@ public class Menu extends JFrame {
                 String nickname = textnickname.getText();
                 db.updateDB2(nickname);
                 if(valido3 == true) {
+                    JOptionPane.showMessageDialog(null, "Benvenuto " + nickname + "!");
                     cl.show(menu, "4");
                 } else {
                     JOptionPane.showMessageDialog(null, "Nickname inesistente");
