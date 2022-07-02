@@ -2,10 +2,7 @@ package controller;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.util.ArrayList;
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 import javax.swing.Box;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -18,23 +15,16 @@ import model.Senso;
 import view.Menu;
 import view.Piatto;
 import view.Postazione;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 public class Eventi {
 	private static boolean pescato=false;
     public static void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo) {
-    	
+    	Carta c=mano.mano.get(indiceCarta);
     	System.out.println("hai cliccato "+mano.mano.get(indiceCarta).getV()+" "+mano.mano.get(indiceCarta).getC()+" CONTRO "+Menu.cartaScarto.getV());
     	if (mano.mano.size()>1) Menu.deviGridareUno=false;
+    	else Menu.deviGridareUno=true;
     	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false)
     	{
-<<<<<<< Updated upstream
-    		System.out.println("Penalit‡: non hai gridato 1!");
-=======
-    		System.out.println("PenalitÔøΩ: non hai gridato 1!");
->>>>>>> Stashed changes
+    		System.out.println("Penalit√†: non hai gridato 1!");
     		mano.mano.add(mazzo.pesca());
            // posti.set(mano.mano.size() - 1,new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
             
@@ -94,7 +84,7 @@ public class Eventi {
                 }
             }  
             
-            if (Menu.cartaScarto.getV() == 13) {
+            if (c.getV() == 13) {
                 Menu.firstTime = true;
                 postazione.add(Menu.rosso);
                 postazione.add(Menu.giallo);
@@ -103,7 +93,7 @@ public class Eventi {
                 postazione.invalidate();
                 postazione.validate();
             }
-            if (Menu.cartaScarto.getV() == 14) {
+            if (c.getV() == 14) {
                 Menu.firstTime = true;
                 if (Menu.turno == 1) {
                     for (int i = 0; i < 4; i++)
@@ -142,11 +132,7 @@ public class Eventi {
     	/*if (mano.mano.size()>1) Menu.deviGridareUno=false;
     	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false)
     	{
-<<<<<<< Updated upstream
-    		System.out.println("Penalit‡: non hai gridato 1!");
-=======
     		System.out.println("PenalitÔøΩ: non hai gridato 1!");
->>>>>>> Stashed changes
     		mano.mano.add(mazzo.pesca());
            // posti.set(mano.mano.size() - 1,new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
             
@@ -295,11 +281,7 @@ public class Eventi {
         if (Menu.senso == Senso.ANTIORARIO) Menu.senso = Senso.ORARIO;
         else Menu.senso = Senso.ANTIORARIO;
     }
-<<<<<<< Updated upstream
-    // calcola se nella mano di un giocatore c'Ë una carta lanciabile
-=======
     // calcola se nella mano di un giocatore c'ÔøΩ una carta lanciabile
->>>>>>> Stashed changes
     public static Carta cartaUtile(Mano manoGiocatore)
     {
     	for (Carta x : manoGiocatore.mano) 
@@ -322,11 +304,7 @@ public class Eventi {
         postazione.invalidate();
         postazione.validate();
     }
-<<<<<<< Updated upstream
-    //calcola di quale giocatore sar‡ il turno successivo
-=======
     //calcola di quale giocatore sarÔøΩ il turno successivo
->>>>>>> Stashed changes
     public static void aggiornaTurno() 
     {
         
@@ -384,22 +362,14 @@ public class Eventi {
     public static void aggiornaSpecialeUmano(Mano mano,Mazzo mazzo,Carta x,Postazione postazione)
     {
     	if (x.getV()==12)
-<<<<<<< Updated upstream
-    	{System.out.print("considero che la tua mano Ë: "+mano.mano.toString()); Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);System.out.println(" e dopo diventa: "+mano.mano.toString());
-=======
     	{System.out.print("considero che la tua mano ÔøΩ: "+mano.mano.toString()); Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);System.out.println(" e dopo diventa: "+mano.mano.toString());
->>>>>>> Stashed changes
 
     		
 
 
     		}
     	if (x.getV()==13) {Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println(Menu.cartaScarto.getC());}
-<<<<<<< Updated upstream
-    	if (x.getV()==14) {Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println(Menu.cartaScarto.getC());System.out.print("considero che la tua mano Ë: "+mano.mano.toString());Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);System.out.println(" e dopo diventa: "+mano.mano.toString());} 
-=======
     	if (x.getV()==14) {Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println(Menu.cartaScarto.getC());System.out.print("considero che la tua mano ÔøΩ: "+mano.mano.toString());Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);System.out.println(" e dopo diventa: "+mano.mano.toString());} 
->>>>>>> Stashed changes
     		};
     
     
@@ -426,11 +396,7 @@ public class Eventi {
             pescato = true;
             mossaOvest(gbc10, mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst);
         }
-<<<<<<< Updated upstream
-        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha gi‡ pescato
-=======
         else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha giÔøΩ pescato
->>>>>>> Stashed changes
            pescato = false;
            aggiornaTurno(); 
            System.out.println("OVEST: " + manoOvest.mano.toString());
@@ -458,11 +424,7 @@ public class Eventi {
             pescato = true;
             mossaNord(gbc10, mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst);
         }
-<<<<<<< Updated upstream
-        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha gi‡ pescato
-=======
         else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha giÔøΩ pescato
->>>>>>> Stashed changes
            pescato = false;
            aggiornaTurno(); 
            System.out.println("NORD: " + manoNord.mano.toString());
@@ -490,11 +452,7 @@ public class Eventi {
             pescato = true;
             mossaEst(gbc10, mano, manoOvest, manoNord, manoEst, piatto, postazioneEst, mazzo, postazione, postazioneNord, postazioneEst);
         }
-<<<<<<< Updated upstream
-        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha gi‡ pescato
-=======
         else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha giÔøΩ pescato
->>>>>>> Stashed changes
            pescato = false;
            if (Menu.senso == Senso.ORARIO) Menu.turno += 1;
            else Menu.turno-=1;
