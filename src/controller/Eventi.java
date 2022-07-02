@@ -1,8 +1,8 @@
 package controller;
+
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.util.ArrayList;
-
 import javax.swing.Box;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -18,7 +18,7 @@ import view.Postazione;
 public class Eventi {
 	private static boolean pescato=false;
     public static void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo) {
-    	
+
     	System.out.println("hai cliccato "+mano.mano.get(indiceCarta).getV()+" "+mano.mano.get(indiceCarta).getC()+" CONTRO "+Menu.cartaScarto.getV());
     	if (mano.mano.size()>1) Menu.deviGridareUno=false;
     	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false)
@@ -32,7 +32,6 @@ public class Eventi {
            // posti.set(mano.mano.size() - 1,new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
             posti.get(mano.mano.size() - 1).setBorder(null);
     	}
-
     	if ((mano.mano.get(indiceCarta).getC() == Menu.cartaScarto.getC() || mano.mano.get(indiceCarta).getV() == Menu.cartaScarto.getV() || mano.mano.get(indiceCarta).getC() == 4)&&(Menu.turno%4==0)) 
     	{
     		Menu.cartaScarto=mano.mano.get(indiceCarta);piatto.remove(Menu.scartoButton);Menu.scartoButton=DisegnaCarta.disegnaCarta(Menu.cartaScarto);piatto.add(Menu.scartoButton,gbc10);piatto.invalidate();piatto.validate();piatto.repaint();
@@ -122,114 +121,7 @@ public class Eventi {
                 postazione.validate();
             }            
             if (mano.mano.size()==0) fine(piatto, postazioneOvest, postazioneNord, postazioneEst, postazione);
-
 }
-    	
-    	
-    	
-    
-    	/*if (mano.mano.size()>1) Menu.deviGridareUno=false;
-    	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false)
-    	{
-    		System.out.println("Penalit�: non hai gridato 1!");
-    		mano.mano.add(mazzo.pesca());
-           // posti.set(mano.mano.size() - 1,new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-            
-            posti.get(mano.mano.size() - 1).setBorder(null);
-            mano.mano.add(mazzo.pesca());
-           // posti.set(mano.mano.size() - 1,new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-            posti.get(mano.mano.size() - 1).setBorder(null);
-    	}
-
-  //      }
-        if ((mano.mano.get(indiceCarta).getC() == Menu.cartaScarto.getC() || mano.mano.get(indiceCarta).getV() == Menu.cartaScarto.getV() || mano.mano.get(indiceCarta).getC() == 4)&&(Menu.turno%4==0)) {
-            System.out.println(postazione.getComponentZOrder(posto));
-            Menu.cartaScarto = mano.mano.get(indiceCarta);
-           // aggiornaPostazione(indiceCarta, posti, mano, postazione);
-            piatto.remove(Menu.scartoButton);
-            Menu.scartoButton = posto;
-            piatto.add(Menu.scartoButton);
-            //
-            piatto.invalidate();
-            piatto.validate();
-            postazione.invalidate();
-            postazione.validate();
-            if (mano.mano.size()==1) Menu.deviGridareUno=true;
-            
-            if (Menu.cartaScarto.getV() == 11)
-                cambiaSenso();
-            if (Menu.senso == Senso.ORARIO)
-                Menu.turno = 1;
-            if (Menu.senso == Senso.ANTIORARIO)
-                Menu.turno = 3;
-            if (Menu.cartaScarto.getV() == 10)
-                Menu.turno = 2;
-            if (Menu.cartaScarto.getV() == 14) {
-                Menu.firstTime = true;
-                if (Menu.turno == 1) {
-                    for (int i = 0; i < 4; i++)
-                        manoOvest.mano.add(mazzo.pesca());
-                    postazioneOvest.removeAll();
-                    for (Carta y : manoOvest.mano) {
-                        postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
-                        postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));
-                    }
-                    postazioneOvest.invalidate();
-                    postazioneOvest.validate();
-                } else {
-                    for (int i = 0; i < 4; i++) manoEst.mano.add(mazzo.pesca());
-                    postazioneEst.removeAll();
-                    for (Carta y : manoEst.mano) {
-                        postazioneEst.add(new JLabel(new ImageIcon("./src/immagini/dorso90s.png")));
-                        postazioneEst.add(Box.createRigidArea(new Dimension(0, 5)));
-                    }
-                    postazioneEst.invalidate();
-                    postazioneEst.validate();
-                }
-                piatto.add(Menu.rosso);
-                piatto.add(Menu.giallo);
-                piatto.add(Menu.blu);
-                piatto.add(Menu.verde);
-            }
-            if (Menu.cartaScarto.getV() == 13) {
-                Menu.firstTime = true;
-                piatto.add(Menu.rosso);
-                piatto.add(Menu.giallo);
-                piatto.add(Menu.blu);
-                piatto.add(Menu.verde);
-            }
-            if (Menu.cartaScarto.getV() == 12) {
-                Menu.firstTime = true;
-                if (Menu.turno %4== 1) {
-                    for (int i = 0; i < 2; i++)
-                        manoOvest.mano.add(mazzo.pesca());
-                    postazioneOvest.removeAll();
-                    for (Carta y : manoOvest.mano) {
-                        postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
-                        postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));
-                    }
-                    postazioneOvest.invalidate();
-                    postazioneOvest.validate();
-                } else {
-                    for (int i = 0; i < 2; i++)
-                        manoEst.mano.add(mazzo.pesca());
-                    postazioneEst.removeAll();
-                    for (Carta y : manoEst.mano) {
-                        postazioneEst.add(new JLabel(new ImageIcon("./src/immagini/dorso90s.png")));
-                        postazioneEst.add(Box.createRigidArea(new Dimension(0, 5)));
-                    }
-                    postazioneEst.invalidate();
-                    postazioneEst.validate();
-                }
-            }
-            piatto.invalidate();
-            piatto.validate();
-            postazione.invalidate();
-            postazione.validate();
-        } else
-            System.out.println("mossa non valida: " + Menu.cartaScarto.toString() + " non  compatibile con " + mano.mano.get(indiceCarta).toString());
-        if (mano.mano.size()==0) fine(piatto, postazioneOvest, postazioneNord, postazioneEst, postazione);
-    }*/
     public static void fine(Piatto piatto, Postazione a, Postazione b, Postazione c, Postazione d) 
     {
     	Menu.finito=true;
