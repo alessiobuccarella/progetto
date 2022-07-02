@@ -393,7 +393,11 @@ public class Menu extends JFrame {
         gbc10.gridy=4;
         gbc10.weightx=0.5;
         gbc10.weighty=0;
+<<<<<<< Updated upstream
         piatto.add(new JLabel("Alessietto"),gbc10);
+=======
+        piatto.add(new JLabel("Fabio"),gbc10);
+>>>>>>> Stashed changes
         
         gbc10.gridx=3;
         gbc10.gridy=3;
