@@ -23,7 +23,7 @@ public class Eventi {
     	if (mano.mano.size()>1) Menu.deviGridareUno=false;
     	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false)
     	{
-    		System.out.println("Penalità: non hai gridato 1!");
+    		System.out.println("Penalitï¿½: non hai gridato 1!");
     		mano.mano.add(mazzo.pesca());
            // posti.set(mano.mano.size() - 1,new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
             
@@ -121,7 +121,7 @@ public class Eventi {
                 postazione.invalidate();
                 postazione.validate();
             }            
-            
+            if (mano.mano.size()==0) fine(piatto, postazioneOvest, postazioneNord, postazioneEst, postazione);
 
 }
     	
@@ -131,7 +131,7 @@ public class Eventi {
     	/*if (mano.mano.size()>1) Menu.deviGridareUno=false;
     	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false)
     	{
-    		System.out.println("Penalità: non hai gridato 1!");
+    		System.out.println("Penalitï¿½: non hai gridato 1!");
     		mano.mano.add(mazzo.pesca());
            // posti.set(mano.mano.size() - 1,new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
             
@@ -280,7 +280,7 @@ public class Eventi {
         if (Menu.senso == Senso.ANTIORARIO) Menu.senso = Senso.ORARIO;
         else Menu.senso = Senso.ANTIORARIO;
     }
-    // calcola se nella mano di un giocatore c'è una carta lanciabile
+    // calcola se nella mano di un giocatore c'ï¿½ una carta lanciabile
     public static Carta cartaUtile(Mano manoGiocatore)
     {
     	for (Carta x : manoGiocatore.mano) 
@@ -303,7 +303,7 @@ public class Eventi {
         postazione.invalidate();
         postazione.validate();
     }
-    //calcola di quale giocatore sarà il turno successivo
+    //calcola di quale giocatore sarï¿½ il turno successivo
     public static void aggiornaTurno() 
     {
         
@@ -361,14 +361,14 @@ public class Eventi {
     public static void aggiornaSpecialeUmano(Mano mano,Mazzo mazzo,Carta x,Postazione postazione)
     {
     	if (x.getV()==12)
-    	{System.out.print("considero che la tua mano è: "+mano.mano.toString()); Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);System.out.println(" e dopo diventa: "+mano.mano.toString());
+    	{System.out.print("considero che la tua mano ï¿½: "+mano.mano.toString()); Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);System.out.println(" e dopo diventa: "+mano.mano.toString());
 
     		
 
 
     		}
     	if (x.getV()==13) {Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println(Menu.cartaScarto.getC());}
-    	if (x.getV()==14) {Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println(Menu.cartaScarto.getC());System.out.print("considero che la tua mano è: "+mano.mano.toString());Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);System.out.println(" e dopo diventa: "+mano.mano.toString());} 
+    	if (x.getV()==14) {Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println(Menu.cartaScarto.getC());System.out.print("considero che la tua mano ï¿½: "+mano.mano.toString());Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);System.out.println(" e dopo diventa: "+mano.mano.toString());} 
     		};
     
     
@@ -395,7 +395,7 @@ public class Eventi {
             pescato = true;
             mossaOvest(gbc10, mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst);
         }
-        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha già pescato
+        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha giï¿½ pescato
            pescato = false;
            aggiornaTurno(); 
            System.out.println("OVEST: " + manoOvest.mano.toString());
@@ -423,7 +423,7 @@ public class Eventi {
             pescato = true;
             mossaNord(gbc10, mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst);
         }
-        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha già pescato
+        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha giï¿½ pescato
            pescato = false;
            aggiornaTurno(); 
            System.out.println("NORD: " + manoNord.mano.toString());
@@ -451,7 +451,7 @@ public class Eventi {
             pescato = true;
             mossaEst(gbc10, mano, manoOvest, manoNord, manoEst, piatto, postazioneEst, mazzo, postazione, postazioneNord, postazioneEst);
         }
-        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha già pescato
+        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha giï¿½ pescato
            pescato = false;
            if (Menu.senso == Senso.ORARIO) Menu.turno += 1;
            else Menu.turno-=1;
