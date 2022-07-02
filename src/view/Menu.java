@@ -536,7 +536,7 @@ public class Menu extends JFrame {
                     JOptionPane.showMessageDialog(null, "Seleziona un avatar");
                 }
                 if(valido == true && valido2 == true) {
-                    JOptionPane.showMessageDialog(null, "Profilo creato con successo!");
+                    JOptionPane.showMessageDialog(null, "Benvenuto " + nickname2 + "!");
                     cl.show(menu, "4");
                 }
             }

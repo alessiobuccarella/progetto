@@ -15,25 +15,23 @@ import model.Senso;
 import view.Menu;
 import view.Piatto;
 import view.Postazione;
+
 public class Eventi {
 	private static boolean pescato=false;
     public static void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo) {
 
     	System.out.println("hai cliccato "+mano.mano.get(indiceCarta).getV()+" "+mano.mano.get(indiceCarta).getC()+" CONTRO "+Menu.cartaScarto.getV());
     	if (mano.mano.size()>1) Menu.deviGridareUno=false;
-    	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false)
-    	{
-    		System.out.println("Penalit�: non hai gridato 1!");
+    	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false) {
+    		System.out.println("Penalità: non hai gridato 1!");
     		mano.mano.add(mazzo.pesca());
            // posti.set(mano.mano.size() - 1,new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-            
             posti.get(mano.mano.size() - 1).setBorder(null);
             mano.mano.add(mazzo.pesca());
            // posti.set(mano.mano.size() - 1,new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
             posti.get(mano.mano.size() - 1).setBorder(null);
     	}
-    	if ((mano.mano.get(indiceCarta).getC() == Menu.cartaScarto.getC() || mano.mano.get(indiceCarta).getV() == Menu.cartaScarto.getV() || mano.mano.get(indiceCarta).getC() == 4)&&(Menu.turno%4==0)) 
-    	{
+    	if ((mano.mano.get(indiceCarta).getC() == Menu.cartaScarto.getC() || mano.mano.get(indiceCarta).getV() == Menu.cartaScarto.getV() || mano.mano.get(indiceCarta).getC() == 4)&&(Menu.turno%4==0)) {
     		Menu.cartaScarto=mano.mano.get(indiceCarta);piatto.remove(Menu.scartoButton);Menu.scartoButton=DisegnaCarta.disegnaCarta(Menu.cartaScarto);piatto.add(Menu.scartoButton,gbc10);piatto.invalidate();piatto.validate();piatto.repaint();
     		mano.mano.remove(indiceCarta);postazione.removeAll();/*Menu.posti.clear();*/postazione.invalidate();postazione.validate();
     		int count=0;
@@ -46,7 +44,6 @@ public class Eventi {
     		}
             postazione.invalidate();
             postazione.validate();
-    		
             if (Menu.cartaScarto.getV() == 11)
                 cambiaSenso();
             if (Menu.senso == Senso.ORARIO)
@@ -55,8 +52,7 @@ public class Eventi {
                 Menu.turno = 3;
             if (Menu.cartaScarto.getV() == 10)
                 Menu.turno = 2;
-            
-            }
+        }
             if (Menu.cartaScarto.getV() == 12) {
                 Menu.firstTime = true;
                 if (Menu.turno %4== 1) {
@@ -80,8 +76,7 @@ public class Eventi {
                     postazioneEst.invalidate();
                     postazioneEst.validate();
                 }
-            }  
-            
+            }
             if (Menu.cartaScarto.getV() == 13) {
                 Menu.firstTime = true;
                 postazione.add(Menu.rosso);
@@ -121,26 +116,19 @@ public class Eventi {
                 postazione.validate();
             }            
             if (mano.mano.size()==0) fine(piatto, postazioneOvest, postazioneNord, postazioneEst, postazione);
-}
-    public static void fine(Piatto piatto, Postazione a, Postazione b, Postazione c, Postazione d) 
-    {
+    }
+    public static void fine(Piatto piatto, Postazione a, Postazione b, Postazione c, Postazione d) {
     	Menu.finito=true;
     	System.out.println("PARTITA TERMINATA");
-    	
     }
     public static void aggiornaPostazione(int indiceCarta, ArrayList<JButton>posti, Mano mano, Postazione postazione) {
         postazione.removeAll();
         posti.clear();
-        /*if (indiceCarta != -1) {
-            mano.mano.remove(indiceCarta);
-        }*/
-        
         for (int j = 0; j < mano.mano.size(); j++) {
             {
             	for (Carta x:mano.mano)posti.add(DisegnaCarta.disegnaCarta(x));
                 for (JButton x:posti)postazione.add(x);
             }
-            
         }
         postazione.invalidate();
         postazione.validate();
@@ -198,20 +186,15 @@ public class Eventi {
     //calcola di quale giocatore sar� il turno successivo
     public static void aggiornaTurno() 
     {
-        
-        if (Menu.cartaScarto.getV() == 11)
-            {
-        	cambiaSenso();
-        	if(Menu.senso==Senso.ORARIO)Menu.turno += 1;
-        	else Menu.turno -= 1;
-            }
-            
+        if (Menu.cartaScarto.getV() == 11) {
+            cambiaSenso();
+            if (Menu.senso == Senso.ORARIO) Menu.turno += 1;
+            else Menu.turno -= 1;
+        }
         if (Menu.cartaScarto.getV() == 10) 
             Menu.turno += 2;
-        
         if (Menu.senso == Senso.ORARIO&&Menu.cartaScarto.getV() != 10&&Menu.cartaScarto.getV() != 11)
             Menu.turno += 1;
-        
         if (Menu.senso == Senso.ANTIORARIO&&Menu.cartaScarto.getV() != 10&&Menu.cartaScarto.getV() != 11)
             Menu.turno -= 1;
     }
@@ -252,29 +235,33 @@ public class Eventi {
     }
     public static void aggiornaSpecialeUmano(Mano mano,Mazzo mazzo,Carta x,Postazione postazione)
     {
-    	if (x.getV()==12)
-    	{System.out.print("considero che la tua mano �: "+mano.mano.toString()); Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);System.out.println(" e dopo diventa: "+mano.mano.toString());
+    	if (x.getV()==12) {
+            System.out.print("considero che la tua mano è: " + mano.mano.toString());
+            Menu.pesca(mazzo, mano);
+            Menu.pesca(mazzo, mano);
+            System.out.println(" e dopo diventa: " + mano.mano.toString());
+        }
+    	if (x.getV()==13) {
+            Menu.cartaScarto.setC((int)(Math.random()*4));
+            System.out.println(Menu.cartaScarto.getC());
+        }
+    	if (x.getV()==14) {
+            Menu.cartaScarto.setC((int)(Math.random()*4));
+            System.out.println(Menu.cartaScarto.getC());
+            System.out.print("considero che la tua mano è: "+mano.mano.toString());
+            Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);
+            Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);
+            System.out.println(" e dopo diventa: "+mano.mano.toString());}
+    }
 
-    		
-
-
-    		}
-    	if (x.getV()==13) {Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println(Menu.cartaScarto.getC());}
-    	if (x.getV()==14) {Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println(Menu.cartaScarto.getC());System.out.print("considero che la tua mano �: "+mano.mano.toString());Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);System.out.println(" e dopo diventa: "+mano.mano.toString());} 
-    		};
-    
-    
-    
     public static void mossaOvest(GridBagConstraints gbc10,Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst)
-    {	
-    	
+    {
         System.out.println("OVEST: " + manoOvest.mano.toString());
         Carta x=cartaUtile(manoOvest);
         if (x!=null)                								        // se il giocatore ha una carta utile
         {
             lanciaCarta(gbc10,piatto,manoOvest,postazioneOvest,x,"./src/immagini/dorso90.png");                // lancia la carta
             System.out.println("Ovest ha tirato " + x.toString());
-            
             if(x.getV()>=12&&Menu.senso==Senso.ORARIO) aggiornaSpeciale(manoNord,postazioneNord,piatto, x,mazzo,"./src/immagini/dorso180.png");
             if(x.getV()>=12&&Menu.senso==Senso.ANTIORARIO) aggiornaSpecialeUmano(mano,mazzo,x,postazione);
             aggiornaVista(piatto, postazioneOvest);

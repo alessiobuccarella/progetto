@@ -5,7 +5,6 @@ import java.sql.*;
 
 public class Database {
     public static boolean valido, valido2, valido3;
-    Profilo profilo = new Profilo();
     public void updateDB(String nick, String img) {
         if (nick.equals("") || nick.equals(null)) {
             JOptionPane.showMessageDialog(null, "Nickname Obbligatorio");
@@ -34,7 +33,6 @@ public class Database {
             }
         }
     }
-
     public void updateDB2(String nick) {
         if (nick.equals("") || nick.equals(null)) {
             JOptionPane.showMessageDialog(null, "Nickname Obbligatorio");
