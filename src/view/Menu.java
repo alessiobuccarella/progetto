@@ -581,9 +581,7 @@ public class Menu extends JFrame {
             		{gridatoUno=true;
             		 System.out.println("hai urlato 1!");
             		}
-            	System.out.println("mano: "+mano.mano.size());
-
-            	System.out.println("posti: "+posti.size());
+            	
             }
         });
  
