@@ -4,188 +4,50 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fe1338a7-f09c-4ae5-9d6a-46f46bba2166" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/bin/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/00.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/100.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/101.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/102.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/103.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/110.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/111.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/112.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/113.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/120.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/121.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/122.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/123.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/134.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/144.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/21.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/22.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/23.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/30.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/31.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/33.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/40.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/41.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/42.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/43.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/50.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/51.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/52.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/53.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/61.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/62.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/63.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/70.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/71.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/72.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/73.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/80.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/81.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/82.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/83.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/90.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/91.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/92.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/93.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/UNO_cards_deck.svg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/avatar1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/avatar2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/avatar3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/blank.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/dorso.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/dorso180.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/dorso90.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/immagini/dorso90s.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/out/production/progetto/progetto.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/progetto.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/immagini/0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/immagini/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/immagini/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/immagini/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/Audio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/Postazione.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controller/Eventi.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/Eventi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/model/Carta.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/Carta.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/model/Mazzo.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/Mazzo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$12.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$13.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$14.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$15.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$16.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$17.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$18.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$19.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$20.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$20.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Piatto.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Piatto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/PostazioneGiocatore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/PostazioneLaterale.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="dfb10fc4-cf90-42ee-bd68-09ff1d090acc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/src/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/DisegnaCarta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisegnaCarta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Eventi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Eventi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Prova.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Prova.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Carta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Carta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Database.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Mano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Mano.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Mazzo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Mazzo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/production/progetto/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/out/production/progetto/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/production/progetto/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/out/production/progetto/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/production/progetto/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/out/production/progetto/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/production/progetto/progetto.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/out/production/progetto/progetto.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/progetto.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/progetto.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/BarraAudio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/BarraAudio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Senso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Senso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/Campo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Campo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/Piatto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Piatto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/PostazioneGiocatore.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/PostazioneLaterale.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Profilo.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/src" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2AzEz8BJEWf0kEZW0jfp3rMD83S" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2BOI6o5OT71wc7ZeaUMcOIEBpE9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "/Users/alessiobuccarella/eclipse-workspace/progetto",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.Test">
-    <configuration name="Database" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="model.Database" />
-      <module name="progetto" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="controller.Test" />
+  <component name="RunManager">
+    <configuration name="Prova" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="controller.Prova" />
       <module name="progetto" />
       <extension name="coverage">
         <pattern>
@@ -199,19 +61,18 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Test" />
-        <item itemvalue="Application.Database" />
+        <item itemvalue="Application.Prova" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fe1338a7-f09c-4ae5-9d6a-46f46bba2166" name="Changes" comment="" />
-      <created>1656004275958</created>
+      <changelist id="dfb10fc4-cf90-42ee-bd68-09ff1d090acc" name="Changes" comment="" />
+      <created>1656770533528</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1656004275958</updated>
+      <updated>1656770533528</updated>
     </task>
     <servers />
   </component>
@@ -225,8 +86,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

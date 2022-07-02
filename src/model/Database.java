@@ -1,7 +1,5 @@
 package model;
 
-import model.Profilo;
-
 import javax.swing.*;
 import java.sql.*;
 

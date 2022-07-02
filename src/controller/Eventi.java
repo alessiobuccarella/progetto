@@ -18,13 +18,12 @@ import view.Postazione;
 public class Eventi {
 	private static boolean pescato=false;
     public static void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo) {
-    	Carta c=mano.mano.get(indiceCarta);
+    	
     	System.out.println("hai cliccato "+mano.mano.get(indiceCarta).getV()+" "+mano.mano.get(indiceCarta).getC()+" CONTRO "+Menu.cartaScarto.getV());
     	if (mano.mano.size()>1) Menu.deviGridareUno=false;
-    	else Menu.deviGridareUno=true;
     	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false)
     	{
-    		System.out.println("PenalitÃ : non hai gridato 1!");
+    		System.out.println("Penalità: non hai gridato 1!");
     		mano.mano.add(mazzo.pesca());
            // posti.set(mano.mano.size() - 1,new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
             
@@ -84,7 +83,7 @@ public class Eventi {
                 }
             }  
             
-            if (c.getV() == 13) {
+            if (Menu.cartaScarto.getV() == 13) {
                 Menu.firstTime = true;
                 postazione.add(Menu.rosso);
                 postazione.add(Menu.giallo);
@@ -93,7 +92,7 @@ public class Eventi {
                 postazione.invalidate();
                 postazione.validate();
             }
-            if (c.getV() == 14) {
+            if (Menu.cartaScarto.getV() == 14) {
                 Menu.firstTime = true;
                 if (Menu.turno == 1) {
                     for (int i = 0; i < 4; i++)
@@ -132,7 +131,7 @@ public class Eventi {
     	/*if (mano.mano.size()>1) Menu.deviGridareUno=false;
     	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false)
     	{
-    		System.out.println("Penalitï¿½: non hai gridato 1!");
+    		System.out.println("Penalità: non hai gridato 1!");
     		mano.mano.add(mazzo.pesca());
            // posti.set(mano.mano.size() - 1,new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
             
@@ -281,7 +280,7 @@ public class Eventi {
         if (Menu.senso == Senso.ANTIORARIO) Menu.senso = Senso.ORARIO;
         else Menu.senso = Senso.ANTIORARIO;
     }
-    // calcola se nella mano di un giocatore c'ï¿½ una carta lanciabile
+    // calcola se nella mano di un giocatore c'è una carta lanciabile
     public static Carta cartaUtile(Mano manoGiocatore)
     {
     	for (Carta x : manoGiocatore.mano) 
@@ -304,7 +303,7 @@ public class Eventi {
         postazione.invalidate();
         postazione.validate();
     }
-    //calcola di quale giocatore sarï¿½ il turno successivo
+    //calcola di quale giocatore sarà il turno successivo
     public static void aggiornaTurno() 
     {
         
@@ -362,14 +361,14 @@ public class Eventi {
     public static void aggiornaSpecialeUmano(Mano mano,Mazzo mazzo,Carta x,Postazione postazione)
     {
     	if (x.getV()==12)
-    	{System.out.print("considero che la tua mano ï¿½: "+mano.mano.toString()); Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);System.out.println(" e dopo diventa: "+mano.mano.toString());
+    	{System.out.print("considero che la tua mano è: "+mano.mano.toString()); Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);System.out.println(" e dopo diventa: "+mano.mano.toString());
 
     		
 
 
     		}
     	if (x.getV()==13) {Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println(Menu.cartaScarto.getC());}
-    	if (x.getV()==14) {Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println(Menu.cartaScarto.getC());System.out.print("considero che la tua mano ï¿½: "+mano.mano.toString());Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);System.out.println(" e dopo diventa: "+mano.mano.toString());} 
+    	if (x.getV()==14) {Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println(Menu.cartaScarto.getC());System.out.print("considero che la tua mano è: "+mano.mano.toString());Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);System.out.println(" e dopo diventa: "+mano.mano.toString());} 
     		};
     
     
@@ -396,7 +395,7 @@ public class Eventi {
             pescato = true;
             mossaOvest(gbc10, mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst);
         }
-        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha giï¿½ pescato
+        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha già pescato
            pescato = false;
            aggiornaTurno(); 
            System.out.println("OVEST: " + manoOvest.mano.toString());
@@ -424,7 +423,7 @@ public class Eventi {
             pescato = true;
             mossaNord(gbc10, mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst);
         }
-        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha giï¿½ pescato
+        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha già pescato
            pescato = false;
            aggiornaTurno(); 
            System.out.println("NORD: " + manoNord.mano.toString());
@@ -452,7 +451,7 @@ public class Eventi {
             pescato = true;
             mossaEst(gbc10, mano, manoOvest, manoNord, manoEst, piatto, postazioneEst, mazzo, postazione, postazioneNord, postazioneEst);
         }
-        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha giï¿½ pescato
+        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha già pescato
            pescato = false;
            if (Menu.senso == Senso.ORARIO) Menu.turno += 1;
            else Menu.turno-=1;
