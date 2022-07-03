@@ -24,6 +24,7 @@ public class Menu extends JFrame {
     private JButton nuovoProfilo, caricaProfilo, esci, nuovaPartita, opzioniProfilo, esci2, classica, mod2, mod3, esci3;
     private JButton indietroButton, indietroButton2, indietroButton3, indietroButton4, inviaButton, inviaButton2;
     public static JPanel menu;
+    public static String nomeutente;
     private static Postazione postazione;
     private Postazione postazioneNord;
     private static Postazione postazioneOvest;
@@ -36,7 +37,7 @@ public class Menu extends JFrame {
     public static JButton giallo;
     public static JButton blu;
     public static JButton verde;
-    public static JTextField textnickname, textnickname2 ;
+    public static JTextField textnickname, textnickname2;
     public static ImageIcon avatar1png, avatar2png, avatar3png;
     public static JButton scartoButton = new JButton();
     public static JButton passo = new JButton("PASSO");
@@ -118,7 +119,7 @@ public class Menu extends JFrame {
         gbc2.gridwidth = GridBagConstraints.REMAINDER;
         JLabel nick = new JLabel("Nickname:");
         nick.setFont(new Font("Dialog", Font.PLAIN, 15));
-        JTextField textnickname = new JTextField(10);
+        textnickname = new JTextField(10);
         inviaButton = new JButton("INVIA");
         indietroButton = new JButton("<");
         caricaProfilo.setLayout(new BorderLayout());
@@ -268,7 +269,7 @@ public class Menu extends JFrame {
         GridBagConstraints gbc9 = new GridBagConstraints();
         gbc9.gridwidth = GridBagConstraints.REMAINDER;
         gbc9.fill = GridBagConstraints.HORIZONTAL;
-        JLabel nick3 = new JLabel("NICKNAME: Alessio");
+        JLabel nick3 = new JLabel("NICKNAME: ");
         nick3.setFont(new Font("Dialog", Font.PLAIN, 20));
         ImageIcon avatar4png = new ImageIcon("./src/immagini/avatar3.png");
         Image image4 = avatar4png.getImage();
@@ -503,7 +504,7 @@ public class Menu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nickname = textnickname.getText();
-                db.updateDB2(nickname);
+                db.selectDB(nickname);
                 if(valido3 == true) {
                     JOptionPane.showMessageDialog(null, "Benvenuto " + nickname + "!");
                     cl.show(menu, "4");

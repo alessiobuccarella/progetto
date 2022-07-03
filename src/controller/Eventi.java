@@ -8,18 +8,16 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import model.Carta;
-import model.Mano;
-import model.Mazzo;
-import model.Senso;
+import model.*;
 import view.Menu;
 import view.Piatto;
 import view.Postazione;
 
+import static view.Menu.nomeutente;
+
 public class Eventi {
 	private static boolean pescato=false;
     public static void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo) {
-
     	System.out.println("hai cliccato "+mano.mano.get(indiceCarta).getV()+" "+mano.mano.get(indiceCarta).getC()+" CONTRO "+Menu.cartaScarto.getV());
     	if (mano.mano.size()>1) Menu.deviGridareUno=false;
     	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false) {
@@ -115,12 +113,12 @@ public class Eventi {
                 postazione.invalidate();
                 postazione.validate();
             }            
-            if (mano.mano.size()==0) fine(piatto, postazioneOvest, postazioneNord, postazioneEst, postazione);
+            if (mano.mano.size()==0) {
+                Database db2 = new Database();
+                //db2.updateBD2(nomeutente, true);
+            }
     }
-    public static void fine(Piatto piatto, Postazione a, Postazione b, Postazione c, Postazione d) {
-    	Menu.finito=true;
-    	System.out.println("PARTITA TERMINATA");
-    }
+
     public static void aggiornaPostazione(int indiceCarta, ArrayList<JButton>posti, Mano mano, Postazione postazione) {
         postazione.removeAll();
         posti.clear();
@@ -279,7 +277,10 @@ public class Eventi {
            aggiornaTurno(); 
            System.out.println("OVEST: " + manoOvest.mano.toString());
         }
-        if (manoOvest.mano.size()==0) fine(piatto, postazioneOvest, postazioneNord, postazioneEst, postazione);
+        if (manoOvest.mano.size()==0) {
+            Database db2 = new Database();
+            //db2.updateBD2(nomeutente, true);
+        }
         System.out.println("turno: "+Menu.turno);
     }
     private static void mossaNord(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst)
@@ -307,7 +308,10 @@ public class Eventi {
            aggiornaTurno(); 
            System.out.println("NORD: " + manoNord.mano.toString());
         }
-        if (manoNord.mano.size()==0) fine(piatto, postazioneOvest, postazioneNord, postazioneEst, postazione);
+        if (manoNord.mano.size()==0) {
+            Database db2 = new Database();
+            //db2.updateBD2(nomeutente, true);
+        }
         System.out.println("turno: "+Menu.turno);
     }
     public static void mossaEst(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst)
@@ -336,7 +340,10 @@ public class Eventi {
            else Menu.turno-=1;
            System.out.println("EST: " + manoEst.mano.toString());
         }
-        if (manoEst.mano.size()==0) fine(piatto, postazioneOvest, postazioneNord, postazioneEst, postazione);
+        if (manoEst.mano.size()==0) {
+            Database db2 = new Database();
+            //db2.updateBD2(nomeutente, true);
+        }
         System.out.println("turno: "+Menu.turno);
     }
     public static void passo(GridBagConstraints gbc10,Mano mano, int i, JButton posto0, Postazione postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, Mazzo mazzo) {
