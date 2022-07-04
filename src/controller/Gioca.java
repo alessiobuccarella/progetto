@@ -2,7 +2,7 @@ package controller;
 
 import view.Menu;
 
-public class Prova {
+public class Gioca {
 	public static void main(String[] args) {
 		new Menu();
 	}

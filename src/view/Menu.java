@@ -6,23 +6,19 @@ import controller.DisegnaCarta;
 import controller.Eventi;
 import model.Carta;
 import model.Database;
-
-
 import model.Mano;
 import model.Mazzo;
 import model.Senso;
 import java.awt.event.*;
 import java.util.ArrayList;
-
 import static model.Database.*;
 
 public class Menu extends JFrame {
-	public static boolean finito=false;
-	public static boolean gridatoUno=false;
-	public static boolean deviGridareUno=false;
+	public static boolean gridatoUno = false;
+	public static boolean deviGridareUno = false;
     public static int coloreSpeciale = 4;
-    private JButton nuovoProfilo, caricaProfilo, esci, nuovaPartita, opzioniProfilo, esci2, classica, mod2, mod3, esci3;
-    private JButton indietroButton, indietroButton2, indietroButton3, indietroButton4, inviaButton, inviaButton2;
+    public static JButton nuovoProfilo, caricaProfilo, esci, nuovaPartita, opzioniProfilo, esci2, classica, mod2, mod3, esci3;
+    public static JButton indietroButton, indietroButton2, indietroButton3, indietroButton4, inviaButton, inviaButton2;
     public static JPanel menu;
     public static String nomeutente;
     private static Postazione postazione;
@@ -45,6 +41,7 @@ public class Menu extends JFrame {
     public static int turno;
     public static boolean firstTime = true;
     public static ArrayList<JButton> posti = new ArrayList<>();
+    Database db = new Database();
     public Menu() {
         super("JUno");
         setVisible(true);
@@ -85,6 +82,7 @@ public class Menu extends JFrame {
         BarraAudio audio4 = new BarraAudio();
         BarraAudio audio5 = new BarraAudio();
         BarraAudio audio6 = new BarraAudio();
+
         //PAGE INIZIALE
         JPanel inizio = new JPanel();
         JPanel nce = new JPanel();
@@ -109,6 +107,7 @@ public class Menu extends JFrame {
         inizio.add(audio, BorderLayout.PAGE_START);
         add(menu);
         menu.add(inizio, "1");
+
         //PAGE CARICAPROFILO
         JPanel caricaProfilo = new JPanel();
         JPanel nickname = new JPanel();
@@ -135,6 +134,7 @@ public class Menu extends JFrame {
         caricaProfilo.add(audio2, BorderLayout.PAGE_START);
         caricaProfilo.add(indietro, BorderLayout.PAGE_END);
         menu.add(caricaProfilo, "2");
+
         //PAGE NUOVOPROFILO
         JPanel nuovoProfilo = new JPanel();
         JPanel nickname2 = new JPanel();
@@ -196,6 +196,7 @@ public class Menu extends JFrame {
         nuovoProfilo.add(audio3, BorderLayout.PAGE_START);
         nuovoProfilo.add(indietro2, BorderLayout.PAGE_END);
         menu.add(nuovoProfilo, "3");
+
         //PAGE INIZIALE2
         JPanel inizio2 = new JPanel();
         JPanel noe = new JPanel();
@@ -219,6 +220,7 @@ public class Menu extends JFrame {
         inizio2.add(noe, BorderLayout.CENTER);
         inizio2.add(audio4, BorderLayout.PAGE_START);
         menu.add(inizio2, "4");
+
         //PAGE MODALITA'
         JPanel modalita = new JPanel();
         JPanel cmm = new JPanel();
@@ -252,6 +254,7 @@ public class Menu extends JFrame {
         modalita.add(audio5, BorderLayout.PAGE_START);
         modalita.add(indietro3, BorderLayout.PAGE_END);
         menu.add(modalita, "5");
+
         //PAGE ACCOUNT
         JPanel account = new JPanel();
         JPanel oa = new JPanel();
@@ -269,22 +272,23 @@ public class Menu extends JFrame {
         GridBagConstraints gbc9 = new GridBagConstraints();
         gbc9.gridwidth = GridBagConstraints.REMAINDER;
         gbc9.fill = GridBagConstraints.HORIZONTAL;
-        JLabel nick3 = new JLabel("NICKNAME: ");
+        JLabel nick3 = new JLabel("NICKNAME: " + nomeProfilo);
+        System.out.println("nickname: " + nomeProfilo);
         nick3.setFont(new Font("Dialog", Font.PLAIN, 20));
-        ImageIcon avatar4png = new ImageIcon("./src/immagini/avatar3.png");
+        ImageIcon avatar4png = new ImageIcon("" + fotoProfilo);
         Image image4 = avatar4png.getImage();
         Image newimg4 = image4.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar4png = new ImageIcon(newimg4);
         JLabel myavatar = new JLabel(avatar4png);
-        JLabel livello = new JLabel("LIVELLO: 23");
+        JLabel livello = new JLabel("LIVELLO: " + Database.livello);
         livello.setFont(new Font("Dialog", Font.PLAIN, 20));
-        JLabel partiteGiocate = new JLabel("PARTITE GIOCATE: 55");
+        JLabel partiteGiocate = new JLabel("PARTITE GIOCATE: " + Database.partiteGiocate);
         partiteGiocate.setFont(new Font("Dialog", Font.PLAIN, 15));
-        JLabel partiteVinte = new JLabel("PARTITE VINTE: 40");
+        JLabel partiteVinte = new JLabel("PARTITE VINTE: " + Database.partiteVinte);
         partiteVinte.setFont(new Font("Dialog", Font.PLAIN, 15));
-        JLabel partitePerse = new JLabel("PARTITE PERSE: 15");
+        JLabel partitePerse = new JLabel("PARTITE PERSE: " + Database.partitePerse);
         partitePerse.setFont(new Font("Dialog", Font.PLAIN, 15));
-        indietroButton4 = new JButton("<");
+        JButton indietroButton4 = new JButton("<");
         account.setLayout(new BorderLayout());
         oa.setLayout(new GridBagLayout());
         oa2.setLayout(new GridBagLayout());
@@ -304,6 +308,7 @@ public class Menu extends JFrame {
         account.add(audio6, BorderLayout.PAGE_START);
         account.add(indietro4, BorderLayout.PAGE_END);
         menu.add(account, "6");
+
         //PAGE PARTITA
         JLabel deckLabel = new JLabel(new ImageIcon("./src/immagini/dorso.png"));
         JButton deckButton = new JButton();
@@ -313,8 +318,10 @@ public class Menu extends JFrame {
         postazione = new Postazione(1);
         campo.add(postazione, BorderLayout.PAGE_END);
         postazione.setBackground(colore);
-        for (int i=0;i<mano.mano.size();i++)posti.set(i,DisegnaCarta.disegnaCarta(mano.mano.get(i)));
-        for (int i=0;i<mano.mano.size();i++)postazione.add(posti.get(i));
+        for (int i=0;i<mano.mano.size();i++)
+            posti.set(i,DisegnaCarta.disegnaCarta(mano.mano.get(i)));
+        for (int i=0;i<mano.mano.size();i++)
+            postazione.add(posti.get(i));
         postazioneOvest = new Postazione(0);
         campo.add(postazioneOvest, BorderLayout.WEST);
         for (int i = 0; i < 7; i++) {
@@ -328,14 +335,12 @@ public class Menu extends JFrame {
         postazioneNord.setBackground(colore);
         piatto = new Piatto();
         piatto.setBackground(colore);
-        //ImageIcon avatar1png = new ImageIcon("./src/immagini/avatar1.png");JLabel nick = new JLabel("Nickname:");
         JLabel foto = new JLabel(avatar1png);
         JLabel foto1 = new JLabel(avatar1png);
         JLabel foto2 = new JLabel(avatar1png);
-        JLabel foto3 = new JLabel(avatar1png);
+        JLabel foto3 = new JLabel(fotoProfilo);
         GridBagConstraints gbc10= new GridBagConstraints();
         campo.add(piatto, BorderLayout.CENTER);
-        
         gbc10.anchor=GridBagConstraints.FIRST_LINE_END;
         gbc10.gridx=4;
         gbc10.gridy=1;
@@ -348,7 +353,6 @@ public class Menu extends JFrame {
         gbc10.weightx=0.0;
         gbc10.weighty=0;
         piatto.add(foto1,gbc10);
-        
         gbc10.anchor=GridBagConstraints.PAGE_END;
         gbc10.gridx=0;
         gbc10.gridy=1;
@@ -361,7 +365,6 @@ public class Menu extends JFrame {
         gbc10.weightx=0;
         gbc10.weighty=0;
         piatto.add(new JLabel("Stack"),gbc10);
-
         gbc10.anchor=GridBagConstraints.LAST_LINE_END;
         gbc10.gridx=6;
         gbc10.gridy=1;
@@ -374,21 +377,17 @@ public class Menu extends JFrame {
         gbc10.weightx=1;
         gbc10.weighty=1;
         piatto.add(new JLabel("MetaSpace"),gbc10);
-        
         gbc10.anchor=GridBagConstraints.LAST_LINE_END;
         gbc10.gridx=3;
         gbc10.gridy=4;
         gbc10.weightx=0.5;
         gbc10.weighty=0;
-
-        piatto.add(new JLabel("Alessietto"),gbc10);
-
+        piatto.add(new JLabel(""+nomeProfilo),gbc10);
         gbc10.gridx=3;
         gbc10.gridy=3;
         gbc10.weightx=0.0;
         gbc10.weighty=0;
         piatto.add(foto3,gbc10);
-        
         gbc10.anchor=GridBagConstraints.LINE_END;
         gbc10.gridx=5;
         gbc10.gridy=3;
@@ -401,8 +400,7 @@ public class Menu extends JFrame {
         gbc10.gridy=3;
         gbc10.weightx=0;
         gbc10.weighty=0;
-        piatto.add(passo,gbc10);       
-  
+        piatto.add(passo,gbc10);
         gbc10.anchor=GridBagConstraints.LINE_START;
         gbc10.weightx=0;
         gbc10.weighty=0;
@@ -423,6 +421,8 @@ public class Menu extends JFrame {
         }
         postazioneEst.setBackground(colore);
         menu.add(campo, "7");
+
+        //ACTION LISTENER
         ActionListener avanti = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 repaint();
@@ -475,6 +475,50 @@ public class Menu extends JFrame {
                 System.exit(0);
             }
         });
+        inviaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nickname = textnickname.getText();
+                db.selectDB(nickname);
+                if(valido3 == true) {
+                    JOptionPane.showMessageDialog(null, "Benvenuto " + nickname + "!");
+                    db.exportDB(nickname);
+                    cl.show(menu, "4");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Nickname inesistente");
+                }
+            }
+        });
+        inviaButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nickname2 = textnickname2.getText();
+                String img = "";
+                if(radio1.isSelected()){
+                    String image1 = "./src/immagini/avatar1.png";
+                    img = image1;
+                    db.insertDB(nickname2, img);
+                }
+                if (radio2.isSelected()){
+                    String image2 = "./src/immagini/avatar2.png";
+                    img = image2;
+                    db.insertDB(nickname2, img);
+                }
+                if (radio3.isSelected()){
+                    String image3 = "./src/immagini/avatar3.png";
+                    img = image3;
+                    db.insertDB(nickname2, img);
+                }
+                if(!radio1.isSelected() && !radio2.isSelected() && !radio3.isSelected()){
+                    JOptionPane.showMessageDialog(null, "Seleziona un avatar");
+                }
+                if(valido == true && valido2 == true) {
+                    JOptionPane.showMessageDialog(null, "Benvenuto " + nickname2 + "!");
+                    db.exportDB(nickname2);
+                    cl.show(menu, "4");
+                }
+            }
+        });
         indietroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -499,49 +543,6 @@ public class Menu extends JFrame {
                 cl.show(menu, "4");
             }
         });
-        Database db = new Database();
-        inviaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String nickname = textnickname.getText();
-                db.selectDB(nickname);
-                if(valido3 == true) {
-                    JOptionPane.showMessageDialog(null, "Benvenuto " + nickname + "!");
-                    cl.show(menu, "4");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Nickname inesistente");
-                }
-            }
-        });
-        inviaButton2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String nickname2 = textnickname2.getText();
-                String img = "";
-                if(radio1.isSelected()){
-                    String image1 = "./src/immagini/avatar1.png";
-                    img = image1;
-                    db.updateDB(nickname2, img);
-                }
-                if (radio2.isSelected()){
-                    String image2 = "./src/immagini/avatar2.png";
-                    img = image2;
-                    db.updateDB(nickname2, img);
-                }
-                if (radio3.isSelected()){
-                    String image3 = "./src/immagini/avatar3.png";
-                    img = image3;
-                    db.updateDB(nickname2, img);
-                }
-                if(!radio1.isSelected() && !radio2.isSelected() && !radio3.isSelected()){
-                    JOptionPane.showMessageDialog(null, "Seleziona un avatar");
-                }
-                if(valido == true && valido2 == true) {
-                    JOptionPane.showMessageDialog(null, "Benvenuto " + nickname2 + "!");
-                    cl.show(menu, "4");
-                }
-            }
-        });
         classica.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -551,10 +552,10 @@ public class Menu extends JFrame {
         uno.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	if (deviGridareUno==true) 
-            		{gridatoUno=true;
-            		 System.out.println("hai urlato 1!");
-            		}
+            	if (deviGridareUno == true) {
+                    gridatoUno=true;
+                    System.out.println("hai urlato 1!");
+                }
             }
         });
         deckButton.addActionListener(new ActionListener() {
@@ -571,7 +572,7 @@ public class Menu extends JFrame {
                 Eventi.passo(gbc10, mano, 0, null, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo);
             }
         });
-        for (JButton posto : posti){
+        for (JButton posto : posti) {
             posto.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     System.out.println();
@@ -590,7 +591,7 @@ public class Menu extends JFrame {
                 }
             });
         }
-        for(int colore = 0; colore < colori.size(); colore++){
+        for(int colore = 0; colore < colori.size(); colore++) {
             int finalColore = colore;
             colori.get(colore).addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {

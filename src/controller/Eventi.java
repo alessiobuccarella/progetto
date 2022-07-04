@@ -12,7 +12,6 @@ import model.*;
 import view.Menu;
 import view.Piatto;
 import view.Postazione;
-
 import static view.Menu.nomeutente;
 
 public class Eventi {
@@ -115,26 +114,10 @@ public class Eventi {
             }            
             if (mano.mano.size()==0) {
                 Database db2 = new Database();
-                //db2.updateBD2(nomeutente, true);
+                db2.updateBD2(nomeutente, true);
             }
     }
 
-    public static void aggiornaPostazione(int indiceCarta, ArrayList<JButton>posti, Mano mano, Postazione postazione) {
-        postazione.removeAll();
-        posti.clear();
-        for (int j = 0; j < mano.mano.size(); j++) {
-            {
-            	for (Carta x:mano.mano)posti.add(DisegnaCarta.disegnaCarta(x));
-                for (JButton x:posti)postazione.add(x);
-            }
-        }
-        postazione.invalidate();
-        postazione.validate();
-    }
-    public static void elimina(JButton[] listaBottoni, int indiceCarta) {
-        for (int i = 0; i < listaBottoni.length - 1; i++)
-            if (i >= indiceCarta) listaBottoni[i] = listaBottoni[i + 1];
-    }
     public static void avanti(GridBagConstraints gbc10, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, Mazzo mazzo, Postazione postazione, Mano mano) {
         switch (turno%4) {
             case 1:
@@ -150,9 +133,6 @@ public class Eventi {
                 break;
         }
     }
-    public static void aggiornaBottone(JButton bottone, JButton disegno) {
-        bottone = disegno;
-    }
     //cambia il senso del giro di mano
     public static void cambiaSenso() {
         if (Menu.senso == Senso.ANTIORARIO) Menu.senso = Senso.ORARIO;
@@ -162,7 +142,8 @@ public class Eventi {
     public static Carta cartaUtile(Mano manoGiocatore)
     {
     	for (Carta x : manoGiocatore.mano) 
-    		if (x.getV() == Menu.cartaScarto.getV() || x.getC() == Menu.cartaScarto.getC()||x.getC() ==4)return x;
+    		if (x.getV() == Menu.cartaScarto.getV() || x.getC() == Menu.cartaScarto.getC()||x.getC() ==4)
+                return x;
     	return null;
     }
     //aggiorna graficamente il campo in seguito alla scelta delal carta di un giocatore
@@ -199,18 +180,22 @@ public class Eventi {
     //aggiorna le man dei giocatori in caso di una carta speciale
     public static void aggiornaSpeciale(Mano manoVittima, Postazione postazioneVittima, Piatto piatto, Carta x, Mazzo mazzo, String path) 
     {
-    	if (x.getV()==12)
-    	{
+    	if (x.getV()==12) {
     		manoVittima.mano.add(mazzo.pesca());manoVittima.mano.add(mazzo.pesca());
     		aggiornaPostazione(postazioneVittima, manoVittima,path );
     	}
-    	if (x.getV()==13) {Menu.cartaScarto.setC((int)(Math.random()*4));System.out.println("colore: "+Menu.cartaScarto.getC());};
-    	if (x.getV()==14) 
-    	{
-    		manoVittima.mano.add(mazzo.pesca());manoVittima.mano.add(mazzo.pesca());manoVittima.mano.add(mazzo.pesca());manoVittima.mano.add(mazzo.pesca());
+    	if (x.getV()==13) {
+            Menu.cartaScarto.setC((int)(Math.random()*4));
+            System.out.println("colore: "+Menu.cartaScarto.getC());
+        }
+    	if (x.getV()==14) {
+    		manoVittima.mano.add(mazzo.pesca());
+            manoVittima.mano.add(mazzo.pesca());
+            manoVittima.mano.add(mazzo.pesca());
+            manoVittima.mano.add(mazzo.pesca());
     		Menu.cartaScarto.setC((int)(Math.random()*4));
     	    System.out.println("colore: "+Menu.cartaScarto.getC());
-    	};
+    	}
     }
     //aggiorna graficamente piatto e postazione in input
     public static void aggiornaVista(Piatto piatto, Postazione postazione)
@@ -249,7 +234,8 @@ public class Eventi {
             System.out.print("considero che la tua mano è: "+mano.mano.toString());
             Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);
             Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);
-            System.out.println(" e dopo diventa: "+mano.mano.toString());}
+            System.out.println(" e dopo diventa: "+mano.mano.toString());
+        }
     }
 
     public static void mossaOvest(GridBagConstraints gbc10,Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst)
@@ -279,7 +265,6 @@ public class Eventi {
         }
         if (manoOvest.mano.size()==0) {
             Database db2 = new Database();
-            //db2.updateBD2(nomeutente, true);
         }
         System.out.println("turno: "+Menu.turno);
     }
@@ -310,7 +295,6 @@ public class Eventi {
         }
         if (manoNord.mano.size()==0) {
             Database db2 = new Database();
-            //db2.updateBD2(nomeutente, true);
         }
         System.out.println("turno: "+Menu.turno);
     }
@@ -342,7 +326,6 @@ public class Eventi {
         }
         if (manoEst.mano.size()==0) {
             Database db2 = new Database();
-            //db2.updateBD2(nomeutente, true);
         }
         System.out.println("turno: "+Menu.turno);
     }
