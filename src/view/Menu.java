@@ -22,6 +22,7 @@ public class Menu extends JFrame {
     public static JPanel menu;
     public static String nomeutente;
     private static Postazione postazione;
+    private static Postazione postazioneColori;
     private Postazione postazioneNord;
     private static Postazione postazioneOvest;
     private Postazione postazioneEst;
@@ -33,6 +34,8 @@ public class Menu extends JFrame {
     public static JButton giallo;
     public static JButton blu;
     public static JButton verde;
+   
+   
     public static JTextField textnickname, textnickname2;
     public static ImageIcon avatar1png, avatar2png, avatar3png;
     public static JButton scartoButton = new JButton();
@@ -63,9 +66,14 @@ public class Menu extends JFrame {
         giallo.setBackground(Color.yellow);
         blu = new JButton("");
         blu.setBackground(Color.blue);
+        
         verde = new JButton("");
         verde.setBackground(Color.green);
-        uno= new JButton("1!");
+        rosso.setEnabled(false);
+        giallo.setEnabled(false);
+        verde.setEnabled(false);
+        blu.setEnabled(false);
+        uno= new JButton("UNO!");
         ArrayList<JButton> colori = new ArrayList<>();
         colori.add(rosso);
         colori.add(giallo);
@@ -316,6 +324,7 @@ public class Menu extends JFrame {
         deckButton.add(deckLabel);
         Campo campo = new Campo();
         postazione = new Postazione(1);
+        postazioneColori = new Postazione(1);
         campo.add(postazione, BorderLayout.PAGE_END);
         postazione.setBackground(colore);
         for (int i=0;i<mano.mano.size();i++)
@@ -366,13 +375,13 @@ public class Menu extends JFrame {
         gbc10.weighty=0;
         piatto.add(new JLabel("Stack"),gbc10);
         gbc10.anchor=GridBagConstraints.LAST_LINE_END;
-        gbc10.gridx=6;
+        gbc10.gridx=8;
         gbc10.gridy=1;
         gbc10.weightx=1;
         gbc10.weighty=1;
         piatto.add(foto2,gbc10);
         gbc10.anchor=GridBagConstraints.FIRST_LINE_END;
-        gbc10.gridx=6;
+        gbc10.gridx=8;
         gbc10.gridy=2;
         gbc10.weightx=1;
         gbc10.weighty=1;
@@ -388,31 +397,39 @@ public class Menu extends JFrame {
         gbc10.weightx=0.0;
         gbc10.weighty=0;
         piatto.add(foto3,gbc10);
-        gbc10.anchor=GridBagConstraints.LINE_END;
-        gbc10.gridx=5;
+        gbc10.anchor=GridBagConstraints.LINE_START;
+        gbc10.gridx=7;
         gbc10.gridy=3;
         gbc10.weightx=0.0;
         gbc10.weighty=0;
         piatto.add(uno,gbc10);
-        gbc10.anchor=GridBagConstraints.LINE_START;
+        gbc10.anchor=GridBagConstraints.LINE_END;
         deckButton.setBorder(null);
-        gbc10.gridx=6;
+        gbc10.gridx=7;
         gbc10.gridy=3;
         gbc10.weightx=0;
         gbc10.weighty=0;
         piatto.add(passo,gbc10);
+      
+      
+       
+       
+       
         gbc10.anchor=GridBagConstraints.LINE_START;
         gbc10.weightx=0;
         gbc10.weighty=0;
-        gbc10.gridx=4;
+        gbc10.gridx=7;
         gbc10.gridy=1;
         piatto.add(deckButton,gbc10);
-        gbc10.anchor=GridBagConstraints.LINE_START;
+        gbc10.anchor=GridBagConstraints.LINE_END;
         gbc10.weightx=0;
         gbc10.weighty=0;
-        gbc10.gridx=5;
+        gbc10.gridx=7;
         gbc10.gridy=1;
         piatto.add(scartoButton,gbc10);
+        gbc10.gridy=2;
+        gbc10.gridx=7;        gbc10.anchor=GridBagConstraints.LINE_START;piatto.add(postazioneColori,gbc10);
+        for(JButton colore:colori)postazioneColori.add(colore);
         postazioneEst = new Postazione(0);
         campo.add(postazioneEst, BorderLayout.EAST);
         for (int i = 0; i < 7; i++) {
@@ -596,10 +613,7 @@ public class Menu extends JFrame {
             colori.get(colore).addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     coloreSpeciale = finalColore;
-                    postazione.remove(rosso);
-                    postazione.remove(giallo);
-                    postazione.remove(verde);
-                    postazione.remove(blu);
+                    rosso.setEnabled(false);giallo.setEnabled(false);verde.setEnabled(false);blu.setEnabled(false);
                     Menu.cartaScarto.setC(finalColore);
                     repaint();
                     t.start();

@@ -29,7 +29,14 @@ public class Eventi {
             posti.get(mano.mano.size() - 1).setBorder(null);
     	}
     	if ((mano.mano.get(indiceCarta).getC() == Menu.cartaScarto.getC() || mano.mano.get(indiceCarta).getV() == Menu.cartaScarto.getV() || mano.mano.get(indiceCarta).getC() == 4)&&(Menu.turno%4==0)) {
-    		Menu.cartaScarto=mano.mano.get(indiceCarta);piatto.remove(Menu.scartoButton);Menu.scartoButton=DisegnaCarta.disegnaCarta(Menu.cartaScarto);piatto.add(Menu.scartoButton,gbc10);piatto.invalidate();piatto.validate();piatto.repaint();
+    		Menu.cartaScarto=mano.mano.get(indiceCarta);piatto.remove(Menu.scartoButton);Menu.scartoButton=DisegnaCarta.disegnaCarta(Menu.cartaScarto);
+    	    gbc10.anchor=GridBagConstraints.LINE_END;
+            gbc10.weightx=0;
+            gbc10.weighty=0;
+            gbc10.gridx=7;
+            gbc10.gridy=1;
+            piatto.add(Menu.scartoButton,gbc10);
+    		piatto.invalidate();piatto.validate();piatto.repaint();
     		mano.mano.remove(indiceCarta);postazione.removeAll();/*Menu.posti.clear();*/postazione.invalidate();postazione.validate();
     		int count=0;
     		for (Carta x:mano.mano)
@@ -76,12 +83,8 @@ public class Eventi {
             }
             if (Menu.cartaScarto.getV() == 13) {
                 Menu.firstTime = true;
-                postazione.add(Menu.rosso);
-                postazione.add(Menu.giallo);
-                postazione.add(Menu.blu);
-                postazione.add(Menu.verde);
-                postazione.invalidate();
-                postazione.validate();
+                Menu.rosso.setEnabled(true);Menu.giallo.setEnabled(true);Menu.verde.setEnabled(true);Menu.blu.setEnabled(true);
+                
             }
             if (Menu.cartaScarto.getV() == 14) {
                 Menu.firstTime = true;
@@ -105,12 +108,7 @@ public class Eventi {
                     postazioneEst.invalidate();
                     postazioneEst.validate();
                 }
-                postazione.add(Menu.rosso);
-                postazione.add(Menu.giallo);
-                postazione.add(Menu.blu);
-                postazione.add(Menu.verde);
-                postazione.invalidate();
-                postazione.validate();
+                Menu.rosso.setEnabled(true);Menu.giallo.setEnabled(true);Menu.verde.setEnabled(true);Menu.blu.setEnabled(true);
             }            
             if (mano.mano.size()==0) {
                 Database db2 = new Database();
@@ -178,9 +176,12 @@ public class Eventi {
             Menu.turno -= 1;
     }
     //aggiorna le man dei giocatori in caso di una carta speciale
+
+    
     public static void aggiornaSpeciale(Mano manoVittima, Postazione postazioneVittima, Piatto piatto, Carta x, Mazzo mazzo, String path) 
     {
     	if (x.getV()==12) {
+    		
     		manoVittima.mano.add(mazzo.pesca());manoVittima.mano.add(mazzo.pesca());
     		aggiornaPostazione(postazioneVittima, manoVittima,path );
     	}
