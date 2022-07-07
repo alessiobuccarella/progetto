@@ -15,6 +15,11 @@ import view.Postazione;
 import static view.Menu.nomeutente;
 
 public class Eventi {
+	static Icon redLabel = new ImageIcon("./src/immagini/0.png");
+	static Icon yellowLabel = new ImageIcon("./src/immagini/1.png");
+	static Icon blueLabel = new ImageIcon("./src/immagini/2.png");
+	static Icon greenLabel = new ImageIcon("./src/immagini/3.png");
+    
 	private static boolean pescato=false;
     public static void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo) {
     	System.out.println("hai cliccato "+mano.mano.get(indiceCarta).getV()+" "+mano.mano.get(indiceCarta).getC()+" CONTRO "+Menu.cartaScarto.getV());
@@ -83,8 +88,10 @@ public class Eventi {
             }
             if (Menu.cartaScarto.getV() == 13) {
                 Menu.firstTime = true;
+                Menu.rosso.setIcon(redLabel);Menu.giallo.setIcon(yellowLabel);Menu.verde.setIcon(greenLabel);Menu.blu.setIcon(blueLabel);
                 Menu.rosso.setEnabled(true);Menu.giallo.setEnabled(true);Menu.verde.setEnabled(true);Menu.blu.setEnabled(true);
-                
+                Menu.postazioneColori.invalidate();
+                Menu.postazioneColori.validate();
             }
             if (Menu.cartaScarto.getV() == 14) {
                 Menu.firstTime = true;

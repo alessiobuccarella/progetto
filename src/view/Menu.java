@@ -22,7 +22,7 @@ public class Menu extends JFrame {
     public static JPanel menu;
     public static String nomeutente;
     private static Postazione postazione;
-    private static Postazione postazioneColori;
+    public static Postazione postazioneColori;
     private Postazione postazioneNord;
     private static Postazione postazioneOvest;
     private Postazione postazioneEst;
@@ -64,18 +64,26 @@ public class Menu extends JFrame {
         JLabel yellowLabel = new JLabel(new ImageIcon("./src/immagini/1.png"));
         JLabel blueLabel = new JLabel(new ImageIcon("./src/immagini/2.png"));
         JLabel greenLabel = new JLabel(new ImageIcon("./src/immagini/3.png"));
+        JLabel deckLabel = new JLabel(new ImageIcon("./src/immagini/dorso.png"));
+        Icon deckLabel0 = new ImageIcon("./src/immagini/blank.png");
+        Icon deckLabel1 = new ImageIcon("./src/immagini/blank.png");
+        Icon deckLabel2 = new ImageIcon("./src/immagini/blank.png");
+        Icon deckLabel3 = new ImageIcon("./src/immagini/blank.png");
+     
         rosso = new JButton();
-        rosso.add(redLabel);
+        rosso.setIcon(deckLabel0);
         rosso.setBorder(null);
+        rosso.setContentAreaFilled(true);
         giallo = new JButton();
-        giallo.add(yellowLabel);
+        giallo.setIcon(deckLabel1);
         giallo.setBorder(null);
         blu = new JButton();
-        blu.add(blueLabel);
+        blu.setIcon(deckLabel2);
         blu.setBorder(null);
         verde = new JButton();
-        verde.add(greenLabel);
+        verde.setIcon(deckLabel3);
         verde.setBorder(null);
+        
         rosso.setEnabled(false);
         giallo.setEnabled(false);
         verde.setEnabled(false);
@@ -325,14 +333,15 @@ public class Menu extends JFrame {
         menu.add(account, "6");
 
         //PAGE PARTITA
-        JLabel deckLabel = new JLabel(new ImageIcon("./src/immagini/dorso.png"));
+        
         JButton deckButton = new JButton();
         deckButton.setHorizontalTextPosition(SwingConstants.CENTER);
         deckButton.add(deckLabel);
         Campo campo = new Campo();
         postazione = new Postazione(1);
         postazioneColori = new Postazione(1);
-        postazioneColori.setBackground(colore);
+        postazioneColori.setBackground(Color.red);
+       
         campo.add(postazione, BorderLayout.PAGE_END);
         postazione.setBackground(colore);
         for (int i=0;i<mano.mano.size();i++)
