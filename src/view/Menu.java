@@ -60,15 +60,22 @@ public class Menu extends JFrame {
         Mano manoOvest = new Mano(mazzo);
         Mano manoNord = new Mano(mazzo);
         Mano manoEst = new Mano(mazzo);
-        rosso = new JButton("");
-        rosso.setBackground(Color.red);
-        giallo = new JButton("");
-        giallo.setBackground(Color.yellow);
-        blu = new JButton("");
-        blu.setBackground(Color.blue);
-        
-        verde = new JButton("");
-        verde.setBackground(Color.green);
+        JLabel redLabel = new JLabel(new ImageIcon("./src/immagini/0.png"));
+        JLabel yellowLabel = new JLabel(new ImageIcon("./src/immagini/1.png"));
+        JLabel blueLabel = new JLabel(new ImageIcon("./src/immagini/2.png"));
+        JLabel greenLabel = new JLabel(new ImageIcon("./src/immagini/3.png"));
+        rosso = new JButton();
+        rosso.add(redLabel);
+        rosso.setBorder(null);
+        giallo = new JButton();
+        giallo.add(yellowLabel);
+        giallo.setBorder(null);
+        blu = new JButton();
+        blu.add(blueLabel);
+        blu.setBorder(null);
+        verde = new JButton();
+        verde.add(greenLabel);
+        verde.setBorder(null);
         rosso.setEnabled(false);
         giallo.setEnabled(false);
         verde.setEnabled(false);
@@ -325,6 +332,7 @@ public class Menu extends JFrame {
         Campo campo = new Campo();
         postazione = new Postazione(1);
         postazioneColori = new Postazione(1);
+        postazioneColori.setBackground(colore);
         campo.add(postazione, BorderLayout.PAGE_END);
         postazione.setBackground(colore);
         for (int i=0;i<mano.mano.size();i++)
