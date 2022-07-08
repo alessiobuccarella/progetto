@@ -336,7 +336,6 @@ public class Menu extends JFrame {
         menu.add(account, "6");
 
         //PAGE PARTITA
-        
         JButton deckButton = new JButton();
         deckButton.setHorizontalTextPosition(SwingConstants.CENTER);
         deckButton.add(deckLabel);
@@ -344,7 +343,6 @@ public class Menu extends JFrame {
         postazione = new Postazione(1);
         postazioneColori = new Postazione(1);
         postazioneColori.setBackground(Color.red);
-       
         campo.add(postazione, BorderLayout.PAGE_END);
         postazione.setBackground(colore);
         for (int i=0;i<mano.mano.size();i++)
@@ -406,7 +404,6 @@ public class Menu extends JFrame {
         gbc10.weightx=1;
         gbc10.weighty=1;
         piatto.add(new JLabel("MetaSpace"),gbc10);
- 
         gbc10.gridx=3;
         gbc10.gridy=3;
         gbc10.weightx=0.0;
@@ -425,11 +422,6 @@ public class Menu extends JFrame {
         gbc10.weightx=0;
         gbc10.weighty=0;
         piatto.add(passo,gbc10);
-      
-      
-       
-       
-       
         gbc10.anchor=GridBagConstraints.LINE_START;
         gbc10.weightx=0;
         gbc10.weighty=0;
@@ -443,7 +435,8 @@ public class Menu extends JFrame {
         gbc10.gridy=1;
         piatto.add(scartoButton,gbc10);
         gbc10.gridy=2;
-        gbc10.gridx=7;        gbc10.anchor=GridBagConstraints.LINE_START;piatto.add(postazioneColori,gbc10);
+        gbc10.gridx=7;
+        gbc10.anchor=GridBagConstraints.LINE_START;piatto.add(postazioneColori,gbc10);
         for(JButton colore:colori)postazioneColori.add(colore);
         postazioneEst = new Postazione(0);
         campo.add(postazioneEst, BorderLayout.EAST);
@@ -520,9 +513,8 @@ public class Menu extends JFrame {
                      gbc10.gridy=4;
                      gbc10.weightx=0.5;
                      gbc10.weighty=0;
-                     piatto.add(new JLabel(getNomeProfilo()),gbc10);
-          
-                    db.exportDB(nickname);
+                     piatto.add(new JLabel(getNomeProfilo()), gbc10);
+                     db.exportDB(nickname);
                     cl.show(menu, "4");
                 } else {
                     JOptionPane.showMessageDialog(null, "Nickname inesistente");
@@ -615,11 +607,11 @@ public class Menu extends JFrame {
         for (JButton posto : posti) {
             posto.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-             
                     repaint();
                     	t.start();
                     	Eventi.cliccato(gbc10, mano, postazione.getComponentZOrder(posto), posto, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, posti, mazzo);
-                    	if (cartaScarto.getC()==4) t.stop();
+                    	if (cartaScarto.getC()==4)
+                            t.stop();
                     }
             }); 
             posto.addMouseListener(new MouseAdapter() {
@@ -631,7 +623,7 @@ public class Menu extends JFrame {
                 }
             });
         }
-        for(int colore = 0; colore < colori.size(); colore++) {
+        for (int colore = 0; colore < colori.size(); colore++) {
             int finalColore = colore;
             colori.get(colore).addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -653,15 +645,13 @@ public class Menu extends JFrame {
         	  postazione.invalidate();
               postazione.validate();
     	  }
-    public void setNomeProfilo(String nomeProfilo) 
-    {
+    public void setNomeProfilo(String nomeProfilo) {
     	this.nomeProfilo=nomeProfilo;
     }
-    public String getNomeProfilo()
-    {
+    public String getNomeProfilo() {
     	return nomeProfilo;
     }
-    }
+}
 
         
     
