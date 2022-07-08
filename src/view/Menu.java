@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import static model.Database.*;
 
 public class Menu extends JFrame {
+	
 	public static boolean gridatoUno = false;
 	public static boolean deviGridareUno = false;
     public static int coloreSpeciale = 4;
@@ -45,8 +46,10 @@ public class Menu extends JFrame {
     public static boolean firstTime = true;
     public static ArrayList<JButton> posti = new ArrayList<>();
     Database db = new Database();
+	public String nomeProfilo;
     public Menu() {
         super("JUno");
+        
         setVisible(true);
         setSize(1000, 700);
         setLayout(new BorderLayout());
@@ -295,8 +298,8 @@ public class Menu extends JFrame {
         GridBagConstraints gbc9 = new GridBagConstraints();
         gbc9.gridwidth = GridBagConstraints.REMAINDER;
         gbc9.fill = GridBagConstraints.HORIZONTAL;
-        JLabel nick3 = new JLabel("NICKNAME: " + nomeProfilo);
-        System.out.println("nickname: " + nomeProfilo);
+        JLabel nick3 = new JLabel("NICKNAME: " + getNomeProfilo());
+        System.out.println("nickname: " + getNomeProfilo());
         nick3.setFont(new Font("Dialog", Font.PLAIN, 20));
         ImageIcon avatar4png = new ImageIcon("" + fotoProfilo);
         Image image4 = avatar4png.getImage();
@@ -403,12 +406,7 @@ public class Menu extends JFrame {
         gbc10.weightx=1;
         gbc10.weighty=1;
         piatto.add(new JLabel("MetaSpace"),gbc10);
-        gbc10.anchor=GridBagConstraints.LAST_LINE_END;
-        gbc10.gridx=3;
-        gbc10.gridy=4;
-        gbc10.weightx=0.5;
-        gbc10.weighty=0;
-        piatto.add(new JLabel(""+nomeProfilo),gbc10);
+ 
         gbc10.gridx=3;
         gbc10.gridy=3;
         gbc10.weightx=0.0;
@@ -516,6 +514,14 @@ public class Menu extends JFrame {
                 db.selectDB(nickname);
                 if(valido3 == true) {
                     JOptionPane.showMessageDialog(null, "Benvenuto " + nickname + "!");
+                     setNomeProfilo(nickname);
+                     gbc10.anchor=GridBagConstraints.LAST_LINE_END;
+                     gbc10.gridx=3;
+                     gbc10.gridy=4;
+                     gbc10.weightx=0.5;
+                     gbc10.weighty=0;
+                     piatto.add(new JLabel(getNomeProfilo()),gbc10);
+          
                     db.exportDB(nickname);
                     cl.show(menu, "4");
                 } else {
@@ -609,7 +615,7 @@ public class Menu extends JFrame {
         for (JButton posto : posti) {
             posto.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    System.out.println();
+             
                     repaint();
                     	t.start();
                     	Eventi.cliccato(gbc10, mano, postazione.getComponentZOrder(posto), posto, postazione, piatto, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, posti, mazzo);
@@ -647,6 +653,14 @@ public class Menu extends JFrame {
         	  postazione.invalidate();
               postazione.validate();
     	  }
+    public void setNomeProfilo(String nomeProfilo) 
+    {
+    	this.nomeProfilo=nomeProfilo;
+    }
+    public String getNomeProfilo()
+    {
+    	return nomeProfilo;
+    }
     }
 
         
