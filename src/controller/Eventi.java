@@ -19,7 +19,7 @@ public class Eventi {
 	static Icon yellowLabel = new ImageIcon("./src/immagini/1.png");
 	static Icon blueLabel = new ImageIcon("./src/immagini/2.png");
 	static Icon greenLabel = new ImageIcon("./src/immagini/3.png");
-    
+	public static boolean contrattaccoAttivo;
 	private static boolean pescato=false;
     public static void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo) {
     	System.out.println("hai cliccato "+mano.mano.get(indiceCarta).getV()+" "+mano.mano.get(indiceCarta).getC()+" CONTRO "+Menu.cartaScarto.getV());
@@ -34,6 +34,7 @@ public class Eventi {
             posti.get(mano.mano.size() - 1).setBorder(null);
     	}
     	if ((mano.mano.get(indiceCarta).getC() == Menu.cartaScarto.getC() || mano.mano.get(indiceCarta).getV() == Menu.cartaScarto.getV() || mano.mano.get(indiceCarta).getC() == 4)&&(Menu.turno%4==0)) {
+    		
     		Menu.cartaScarto=mano.mano.get(indiceCarta);piatto.remove(Menu.scartoButton);Menu.scartoButton=DisegnaCarta.disegnaCarta(Menu.cartaScarto);
     	    gbc10.anchor=GridBagConstraints.LINE_END;
             gbc10.weightx=0;
@@ -224,13 +225,23 @@ public class Eventi {
              postazione.validate();
          }
     }
+    public static boolean contrattacco(Mano mano) 
+    {
+    	for(Carta z:mano.mano)if (z.getV()==12||z.getV()==14)return true;
+    	return false;
+    }
     public static void aggiornaSpecialeUmano(Mano mano,Mazzo mazzo,Carta x,Postazione postazione)
     {
     	if (x.getV()==12) {
-            System.out.print("considero che la tua mano è: " + mano.mano.toString());
+          if (contrattacco(mano)==false)
+          {
             Menu.pesca(mazzo, mano);
             Menu.pesca(mazzo, mano);
-            System.out.println(" e dopo diventa: " + mano.mano.toString());
+          }
+          else 
+          {
+        	  contrattaccoAttivo=true;
+          }
         }
     	if (x.getV()==13) {
             Menu.cartaScarto.setC((int)(Math.random()*4));

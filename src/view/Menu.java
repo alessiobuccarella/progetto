@@ -404,11 +404,7 @@ public class Menu extends JFrame {
         gbc10.weightx=1;
         gbc10.weighty=1;
         piatto.add(new JLabel("MetaSpace"),gbc10);
-        gbc10.gridx=3;
-        gbc10.gridy=3;
-        gbc10.weightx=0.0;
-        gbc10.weighty=0;
-        piatto.add(foto3,gbc10);
+ 
         gbc10.anchor=GridBagConstraints.LINE_START;
         gbc10.gridx=7;
         gbc10.gridy=3;
@@ -505,16 +501,25 @@ public class Menu extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String nickname = textnickname.getText();
                 db.selectDB(nickname);
+                String foto = textnickname.getText();
+                db.selectDB(foto);
+                
                 if(valido3 == true) {
                     JOptionPane.showMessageDialog(null, "Benvenuto " + nickname + "!");
                      setNomeProfilo(nickname);
+                     setFotoProfilo(foto);
                      gbc10.anchor=GridBagConstraints.LAST_LINE_END;
                      gbc10.gridx=3;
                      gbc10.gridy=4;
                      gbc10.weightx=0.5;
                      gbc10.weighty=0;
                      piatto.add(new JLabel(getNomeProfilo()), gbc10);
-                     db.exportDB(nickname);
+                     gbc10.gridx=3;
+                     gbc10.gridy=3;
+                     gbc10.weightx=0.0;
+                     gbc10.weighty=0;
+                     piatto.add(foto3,gbc10);
+                     //db.exportDB(nickname);
                     cl.show(menu, "4");
                 } else {
                     JOptionPane.showMessageDialog(null, "Nickname inesistente");
@@ -649,6 +654,12 @@ public class Menu extends JFrame {
     	this.nomeProfilo=nomeProfilo;
     }
     public String getNomeProfilo() {
+    	return nomeProfilo;
+    }
+    public void setFotoProfilo(String nomeProfilo) {
+    	this.nomeProfilo=nomeProfilo;
+    }
+    public String getFotoProfilo() {
     	return nomeProfilo;
     }
 }
