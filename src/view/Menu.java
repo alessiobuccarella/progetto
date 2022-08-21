@@ -443,7 +443,7 @@ public class Menu extends JFrame {
         gbc10.weighty=0;
         gbc10.gridwidth=3;
         tavolo.add(postazioneColori,gbc10);
-        gbc10.gridx=2;
+        gbc10.gridx=3;
         gbc10.gridy=1;
         gbc10.weightx=0.0;
         gbc10.weighty=0;
@@ -468,15 +468,31 @@ public class Menu extends JFrame {
       postazionePiatto.add(scartoButton);
       postazionePiatto.setOpaque(false);
       deckButton.setBorder(null);
-        gbc10.gridx=2;
+        gbc10.gridx=3;
+        gbc10.gridy=4;
+        gbc10.weighty=0.5;
+        gbc10.weightx=1;
+        gbc10.gridwidth=3;
+        tavolo.add(postazionePiatto,gbc10);
+        ////////////////////////////////////////////////////
+        gbc10.gridx=0;
+        gbc10.gridy=4;
+        gbc10.weighty=1;
+        gbc10.weightx=0.2;
+        gbc10.gridwidth=3;
+        tavolo.add((new JLabel(new ImageIcon("./src/immagini/dorsodx.png"))),gbc10);
+        
+        gbc10.gridx=6;
         gbc10.gridy=4;
         gbc10.weighty=1;
         gbc10.weightx=1;
         gbc10.gridwidth=3;
-        tavolo.add(postazionePiatto,gbc10);
+        tavolo.add((new JLabel(new ImageIcon("./src/immagini/dorsodx7.png"))),gbc10);
+        
+        
         
         gbc10.anchor=GridBagConstraints.PAGE_START;
-        gbc10.gridx=2;
+        gbc10.gridx=3;
         gbc10.gridy=5;
         gbc10.weighty=0;
         //gbc10.gridwidth=4;
