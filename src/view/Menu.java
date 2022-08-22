@@ -67,7 +67,7 @@ public class Menu extends JFrame {
         JLabel yellowLabel = new JLabel(new ImageIcon("./src/immagini/1.png"));
         JLabel blueLabel = new JLabel(new ImageIcon("./src/immagini/2.png"));
         JLabel greenLabel = new JLabel(new ImageIcon("./src/immagini/3.png"));
-        JLabel deckLabel = new JLabel(new ImageIcon("./src/immagini/dorso.png"));
+        JLabel deckLabel = new JLabel(new ImageIcon("./src/immagini/mazzo.png"));
         Icon deckLabel0 = new ImageIcon("./src/immagini/blank.png");
         Icon deckLabel1 = new ImageIcon("./src/immagini/blank.png");
         Icon deckLabel2 = new ImageIcon("./src/immagini/blank.png");
@@ -337,6 +337,7 @@ public class Menu extends JFrame {
 
         //PAGE PARTITA
         JButton deckButton = new JButton();
+        deckButton.setBorder(null);
         deckButton.setHorizontalTextPosition(SwingConstants.CENTER);
         deckButton.add(deckLabel);
         Campo campo = new Campo();
@@ -464,7 +465,8 @@ public class Menu extends JFrame {
         gbc10.gridwidth=1;
         tavolo.add(passo,gbc10);
         gbc10.anchor=GridBagConstraints.CENTER;
-      postazionePiatto.add(deckButton);
+       
+      postazionePiatto.add(deckLabel);
       postazionePiatto.add(scartoButton);
       postazionePiatto.setOpaque(false);
       deckButton.setBorder(null);
@@ -480,7 +482,7 @@ public class Menu extends JFrame {
         gbc10.weighty=1;
         gbc10.weightx=0.2;
         gbc10.gridwidth=3;
-        tavolo.add((new JLabel(new ImageIcon("./src/immagini/dorsodx.png"))),gbc10);
+        tavolo.add((new JLabel(new ImageIcon("./src/immagini/dorsosx7.png"))),gbc10);
         
         gbc10.gridx=6;
         gbc10.gridy=4;
