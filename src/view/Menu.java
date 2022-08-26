@@ -361,7 +361,7 @@ public class Menu extends JFrame {
         postazioneOvest.setBackground(colore);
         postazioneNord = new Postazione(1);
         //campo.add(postazioneNord, BorderLayout.PAGE_START);
-        for (int i = 0; i < 7; i++) postazioneNord.add(new JLabel(new ImageIcon("./src/immagini/dorso.png")));
+        postazioneNord.add(new JLabel(new ImageIcon("./src/immagini/dorsonord7.png")));
         postazioneNord.setOpaque(false);
         tavolo = new Piatto();
         
@@ -438,16 +438,17 @@ public class Menu extends JFrame {
         * 
         */
         gbc10.anchor=GridBagConstraints.PAGE_START;
-        gbc10.gridx=0;
+        gbc10.gridx=3;
         gbc10.gridy=0;
         gbc10.weightx=0.0;
         gbc10.weighty=0;
         gbc10.gridwidth=3;
-        tavolo.add(postazioneColori,gbc10);
+        foto1.setBorder(BorderFactory.createLineBorder(Color.red));
+        tavolo.add(foto1,gbc10);
         gbc10.gridx=3;
-        gbc10.gridy=1;
+        gbc10.gridy=3;
         gbc10.weightx=0.0;
-        gbc10.weighty=0;
+        gbc10.weighty=1;
         gbc10.gridwidth=3;
         tavolo.add(postazioneNord,gbc10);
         gbc10.anchor=GridBagConstraints.LINE_END;
@@ -476,14 +477,20 @@ public class Menu extends JFrame {
         gbc10.weightx=1;
         gbc10.gridwidth=3;
         tavolo.add(postazionePiatto,gbc10);
-        ////////////////////////////////////////////////////
+        //////////////////////////////////////////////////// sinistra
+        
         gbc10.gridx=0;
         gbc10.gridy=4;
+        gbc10.weighty=0;
+        gbc10.weightx=0;
+        tavolo.add(foto,gbc10);
+        gbc10.gridx=2;
+        gbc10.gridy=4;
         gbc10.weighty=1;
-        gbc10.weightx=0.2;
+        gbc10.weightx=1;
         gbc10.gridwidth=3;
         tavolo.add((new JLabel(new ImageIcon("./src/immagini/dorsosx7.png"))),gbc10);
-        
+        ///////////////////////////////////////////////////////destra
         gbc10.gridx=6;
         gbc10.gridy=4;
         gbc10.weighty=1;
@@ -499,7 +506,7 @@ public class Menu extends JFrame {
         gbc10.weighty=0;
         //gbc10.gridwidth=4;
         //gbc10.anchor=GridBagConstraints.LINE_START;piatto.add(postazioneColori,gbc10);
-        for(JButton colore:colori)postazioneColori.add(colore);
+        //for(JButton colore:colori)postazioneColori.add(colore);
         tavolo.add(postazione,gbc10);
             
         postazioneEst = new Postazione(0);
