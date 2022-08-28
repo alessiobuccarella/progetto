@@ -66,27 +66,27 @@ public class Eventi {
             if (Menu.cartaScarto.getV() == 12) {
                 Menu.firstTime = true;
                 if (Menu.turno %4== 1) {
-                    for (int i = 0; i < 2; i++)
-                        manoOvest.mano.add(mazzo.pesca());
-                    postazioneOvest.removeAll();
-                    for (Carta y : manoOvest.mano) {
-                        postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
-                        postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));
+                   // for (int i = 0; i < 2; i++)
+                     //   manoOvest.mano.add(mazzo.pesca());
+                    //postazioneOvest.removeAll();
+                    //for (Carta y : manoOvest.mano) {
+                     //   postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
+                      //  postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));
                     }
-                    postazioneOvest.invalidate();
-                    postazioneOvest.validate();
+                    //postazioneOvest.invalidate();
+                    //postazioneOvest.validate();
                 } else {
-                    for (int i = 0; i < 2; i++)
-                        manoEst.mano.add(mazzo.pesca());
-                    postazioneEst.removeAll();
-                    for (Carta y : manoEst.mano) {
-                        postazioneEst.add(new JLabel(new ImageIcon("./src/immagini/dorso90s.png")));
-                        postazioneEst.add(Box.createRigidArea(new Dimension(0, 5)));
+                    //for (int i = 0; i < 2; i++)
+                      //  manoEst.mano.add(mazzo.pesca());
+                   // postazioneEst.removeAll();
+                  //  for (Carta y : manoEst.mano) {
+                    //    postazioneEst.add(new JLabel(new ImageIcon("./src/immagini/dorso90s.png")));
+                      //  postazioneEst.add(Box.createRigidArea(new Dimension(0, 5)));
                     }
-                    postazioneEst.invalidate();
-                    postazioneEst.validate();
-                }
-            }
+                    //postazioneEst.invalidate();
+                    //postazioneEst.validate();
+              //  }
+         //   }
             if (Menu.cartaScarto.getV() == 13) {
                 Menu.firstTime = true;
                 Menu.rosso.setIcon(redLabel);Menu.giallo.setIcon(yellowLabel);Menu.verde.setIcon(greenLabel);Menu.blu.setIcon(blueLabel);
@@ -160,14 +160,14 @@ public class Eventi {
         Menu.cartaScarto = carta;
         postazionePiatto.add(Menu.scartoButton);
         mano.mano.remove(carta);
-        postazione.removeAll();
-        for (Carta y : mano.mano) {
-            postazione.add(new JLabel(new ImageIcon(pathDorso)));
-            postazione.add(Box.createRigidArea(new Dimension(0, 5)));
+       // postazione.removeAll();
+       // for (Carta y : mano.mano) {
+        //    postazione.add(new JLabel(new ImageIcon(pathDorso)));
+         //   postazione.add(Box.createRigidArea(new Dimension(0, 5)));
         }
-        postazione.invalidate();
-        postazione.validate();
-    }
+     //   postazione.invalidate();
+      //  postazione.validate();
+    //}
     //calcola di quale giocatore sar� il turno successivo
     public static void aggiornaTurno() 
     {
@@ -191,7 +191,7 @@ public class Eventi {
     	if (x.getV()==12) {
     		
     		manoVittima.mano.add(mazzo.pesca());manoVittima.mano.add(mazzo.pesca());
-    		aggiornaPostazione(postazioneVittima, manoVittima,path );
+    		//aggiornaPostazione(postazioneVittima, manoVittima,path );
     	}
     	if (x.getV()==13) {
             Menu.cartaScarto.setC((int)(Math.random()*4));
@@ -216,14 +216,15 @@ public class Eventi {
     } 
     // aggiorna graficamente la postazione di un giocatore
     public static void aggiornaPostazione(Postazione postazione, Mano mano,String pathImmagine)
-    {
+    {/**
     	 postazione.removeAll();
          for (Carta y : mano.mano) {
              postazione.add(new JLabel(new ImageIcon(pathImmagine)));
              postazione.add(Box.createRigidArea(new Dimension(0, 5)));
              postazione.invalidate();
              postazione.validate();
-         }
+        
+         }*/
     }
     public static boolean contrattacco(Mano mano) 
     {
@@ -263,8 +264,36 @@ public class Eventi {
         Carta x=cartaUtile(manoOvest);
         if (x!=null)                								        // se il giocatore ha una carta utile
         {
+        	
             lanciaCarta(gbc10,piatto,manoOvest,postazioneOvest,x,"./src/immagini/dorso90.png",postazionePiatto);                // lancia la carta
             System.out.println("Ovest ha tirato " + x.toString());
+           postazioneOvest.removeAll();
+           switch(manoOvest.mano.size()) {
+           case 0: break;
+           case 1:
+             postazioneOvest.add((new JLabel(new ImageIcon("./src/immagini/dorsosx1.png"))),gbc10);
+             break;
+           case 2:
+        	 postazioneOvest.add((new JLabel(new ImageIcon("./src/immagini/dorsosx2.png"))),gbc10);
+             break;
+           case 3:
+          	 postazioneOvest.add((new JLabel(new ImageIcon("./src/immagini/dorsosx3.png"))),gbc10);
+               break;
+           case 4:
+          	 postazioneOvest.add((new JLabel(new ImageIcon("./src/immagini/dorsosx4.png"))),gbc10);
+               break;
+           case 5:
+          	 postazioneOvest.add((new JLabel(new ImageIcon("./src/immagini/dorsosx5.png"))),gbc10);
+               break;
+           case 6:
+          	 postazioneOvest.add((new JLabel(new ImageIcon("./src/immagini/dorsosx6.png"))),gbc10);
+               break;
+           case 7:
+          	 postazioneOvest.add((new JLabel(new ImageIcon("./src/immagini/dorsosx7.png"))),gbc10);
+               break;
+           default:
+        	   postazioneOvest.add((new JLabel(new ImageIcon("./src/immagini/dorsosx7+.png"))),gbc10);
+         }
             if(x.getV()>=12&&Menu.senso==Senso.ORARIO) aggiornaSpeciale(manoNord,postazioneNord,piatto, x,mazzo,"./src/immagini/dorso.png");
             if(x.getV()>=12&&Menu.senso==Senso.ANTIORARIO) aggiornaSpecialeUmano(mano,mazzo,x,postazione);
             aggiornaVista(piatto, postazioneOvest);
@@ -295,6 +324,33 @@ public class Eventi {
         {
             lanciaCarta(gbc10,piatto,manoNord,postazioneNord,x,"./src/immagini/dorso.png",postazionePiatto);                // lancia la carta
             System.out.println("Nord ha tirato " + x.toString());
+            postazioneNord.removeAll();
+            switch(manoNord.mano.size()) {
+            case 0: break;
+            case 1:
+              postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord1.png"))),gbc10);
+              break;
+            case 2:
+         	 postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord2.png"))),gbc10);
+              break;
+            case 3:
+           	 postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord3.png"))),gbc10);
+                break;
+            case 4:
+           	 postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord4.png"))),gbc10);
+                break;
+            case 5:
+           	 postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord5.png"))),gbc10);
+                break;
+            case 6:
+           	 postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord6.png"))),gbc10);
+                break;
+            case 7:
+           	 postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord7.png"))),gbc10);
+                break;
+            default:
+         	   postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord7+.png"))),gbc10);
+          }
             aggiornaTurno();
             if(x.getV()>=12&&Menu.senso==Senso.ORARIO) aggiornaSpeciale(manoEst,postazioneEst,piatto, x,mazzo,"./src/immagini/dorso90s.png");
             if(x.getV()>=12&&Menu.senso==Senso.ANTIORARIO) aggiornaSpeciale(manoOvest,postazioneOvest,piatto, x,mazzo,"./src/immagini/dorso90.png");
@@ -325,6 +381,33 @@ public class Eventi {
         {
             lanciaCarta(gbc10,piatto,manoEst,postazioneEst,x,"./src/immagini/dorso90s.png",postazionePiatto);                // lancia la carta
             System.out.println("Est ha tirato " + x.toString());
+            postazioneEst.removeAll();
+            switch(manoEst.mano.size()) {
+            case 0: break;
+            case 1:
+            	postazioneEst.add((new JLabel(new ImageIcon("./src/immagini/dorsodx1.png"))),gbc10);
+              break;
+            case 2:
+            	postazioneEst.add((new JLabel(new ImageIcon("./src/immagini/dorsodx2.png"))),gbc10);
+              break;
+            case 3:
+            	postazioneEst.add((new JLabel(new ImageIcon("./src/immagini/dorsodx3.png"))),gbc10);
+                break;
+            case 4:
+            	postazioneEst.add((new JLabel(new ImageIcon("./src/immagini/dorsodx4.png"))),gbc10);
+                break;
+            case 5:
+            	postazioneEst.add((new JLabel(new ImageIcon("./src/immagini/dorsodx5.png"))),gbc10);
+                break;
+            case 6:
+            	postazioneEst.add((new JLabel(new ImageIcon("./src/immagini/dorsodx6.png"))),gbc10);
+                break;
+            case 7:
+            	postazioneEst.add((new JLabel(new ImageIcon("./src/immagini/dorsodx7.png"))),gbc10);
+                break;
+            default:
+            	postazioneEst.add((new JLabel(new ImageIcon("./src/immagini/dorsodx7+.png"))),gbc10);
+          }
             aggiornaTurno();
             if(x.getV()>=12&&Menu.senso==Senso.ORARIO) aggiornaSpecialeUmano(mano,mazzo,x,postazione);
             if(x.getV()>=12&&Menu.senso==Senso.ANTIORARIO) aggiornaSpeciale(manoNord,postazioneNord,piatto, x,mazzo,"./src/immagini/dorso.png");
