@@ -349,7 +349,6 @@ public class Menu extends JFrame {
         postazione.setBackground(null);
         postazione.setOpaque(false);
 
-        () -> mano.mano
         for (int i=0;i<mano.mano.size();i++)
             posti.set(i,DisegnaCarta.disegnaCarta(mano.mano.get(i)));
         for (int i=0;i<mano.mano.size();i++)
