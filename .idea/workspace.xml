@@ -4,53 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfb10fc4-cf90-42ee-bd68-09ff1d090acc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controller/Gioca.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/immagini/dorsodx (2).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/immagini/dorsodx.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/immagini/dorsodx.xcf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/immagini/dorsodx7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/immagini/dorsoprova.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/immagini/dorsosx.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/out/production/progetto/progetto.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/progetto.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$12.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$13.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$14.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$15.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$16.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$17.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$18.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$19.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$20.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$20.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$21.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$21.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/view/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/DisegnaCarta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisegnaCarta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Eventi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Eventi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Prova.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Carta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Carta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Mano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Mano.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Mazzo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Mazzo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Senso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Senso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Campo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Campo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Piatto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Piatto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/PostazioneGiocatore.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/PostazioneLaterale.java" beforeDir="false" />
-    </list>
+    <list default="true" id="dfb10fc4-cf90-42ee-bd68-09ff1d090acc" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,10 +18,19 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/src" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/.classpath" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.project" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/progetto.iml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2BOI6o5OT71wc7ZeaUMcOIEBpE9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -83,12 +46,15 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/pi01962/DEV/git-local-repo/progetto",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.excludes"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Gioco">
     <configuration name="Gioca" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controller.Gioca" />
       <module name="progetto" />
@@ -102,8 +68,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Gioco" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.Gioco" />
+      <module name="progetto" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Gioco" />
         <item itemvalue="Application.Gioca" />
       </list>
     </recent_temporary>
@@ -116,8 +96,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656770533528</updated>
+      <workItem from="1661531303941" duration="6329000" />
+      <workItem from="1661777316349" duration="205000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -132,5 +117,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
