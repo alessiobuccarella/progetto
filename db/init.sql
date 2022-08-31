@@ -14,5 +14,6 @@ CREATE TABLE `Profilo` (
 	`partite_giocate` INT DEFAULT 0,
 	`partite_vinte` INT DEFAULT 0,
 	`partite_perse` INT DEFAULT 0,
+	UNIQUE (`nickname`),
 	PRIMARY KEY (`idProfilo`,`nickname`)
 );

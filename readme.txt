@@ -1,0 +1,6 @@
+- mettersi sul branch main
+- duplicare la certella del progetto
+- fare merge del main nel branch fix/organization
+- fare checkou sul branch fix/organization
+- copiare il contenuto della cartella duplicata nella cartelle del progetto
+- fare il discard di eventuali modifiche
