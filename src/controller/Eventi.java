@@ -169,7 +169,7 @@ public class Eventi {
       //  postazione.validate();
     //}
     //calcola di quale giocatore sar� il turno successivo
-    public static void aggiornaTurno() 
+    public static void aggiornaTurno(Mano mano,Mazzo mazzo) 
     {
         if (Menu.cartaScarto.getV() == 11) {
             cambiaSenso();
@@ -182,6 +182,9 @@ public class Eventi {
             Menu.turno += 1;
         if (Menu.senso == Senso.ANTIORARIO&&Menu.cartaScarto.getV() != 10&&Menu.cartaScarto.getV() != 11)
             Menu.turno -= 1;
+        Carta x=cartaUtile(mano);
+               
+        if (Menu.turno%4==0&&x==null) {System.out.println("non hai la carta da giocare");Menu.pesca(mazzo, mano);}
     }
     //aggiorna le man dei giocatori in caso di una carta speciale
 
@@ -297,7 +300,7 @@ public class Eventi {
             if(x.getV()>=12&&Menu.senso==Senso.ORARIO) aggiornaSpeciale(manoNord,postazioneNord,piatto, x,mazzo,"./src/immagini/dorso.png");
             if(x.getV()>=12&&Menu.senso==Senso.ANTIORARIO) aggiornaSpecialeUmano(mano,mazzo,x,postazione);
             aggiornaVista(piatto, postazioneOvest);
-            aggiornaTurno(); 
+            aggiornaTurno(mano,mazzo); 
         }
         else if (pescato == false)                                   //se il giocatore non ha una carta utile e non ha ancora pescato
         {
@@ -308,7 +311,7 @@ public class Eventi {
         }
         else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha gi� pescato
            pescato = false;
-           aggiornaTurno(); 
+           aggiornaTurno(mano,mazzo); 
            System.out.println("OVEST: " + manoOvest.mano.toString());
         }
         if (manoOvest.mano.size()==0) {
@@ -351,7 +354,7 @@ public class Eventi {
             default:
          	   postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord7+.png"))),gbc10);
           }
-            aggiornaTurno();
+            aggiornaTurno(mano,mazzo);
             if(x.getV()>=12&&Menu.senso==Senso.ORARIO) aggiornaSpeciale(manoEst,postazioneEst,piatto, x,mazzo,"./src/immagini/dorso90s.png");
             if(x.getV()>=12&&Menu.senso==Senso.ANTIORARIO) aggiornaSpeciale(manoOvest,postazioneOvest,piatto, x,mazzo,"./src/immagini/dorso90.png");
             aggiornaVista(piatto, postazioneNord);
@@ -365,7 +368,7 @@ public class Eventi {
         }
         else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha gi� pescato
            pescato = false;
-           aggiornaTurno(); 
+           aggiornaTurno(mano,mazzo); 
            System.out.println("NORD: " + manoNord.mano.toString());
         }
         if (manoNord.mano.size()==0) {
@@ -408,7 +411,7 @@ public class Eventi {
             default:
             	postazioneEst.add((new JLabel(new ImageIcon("./src/immagini/dorsodx7+.png"))),gbc10);
           }
-            aggiornaTurno();
+            aggiornaTurno(mano,mazzo);
             if(x.getV()>=12&&Menu.senso==Senso.ORARIO) aggiornaSpecialeUmano(mano,mazzo,x,postazione);
             if(x.getV()>=12&&Menu.senso==Senso.ANTIORARIO) aggiornaSpeciale(manoNord,postazioneNord,piatto, x,mazzo,"./src/immagini/dorso.png");
             aggiornaVista(piatto, postazioneEst);
