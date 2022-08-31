@@ -1,12 +1,12 @@
-CREATE USER 'app-user'@'localhost' IDENTIFIED BY 'password' ;
-CREATE DATABASE IF NOT EXISTS `jUno` ;
-GRANT ALL ON `jUno`.* TO 'app-user'@'localhost' ;
+CREATE USER 'app-user'@'localhost' IDENTIFIED BY 'password';
+CREATE DATABASE IF NOT EXISTS `jUno`;
+GRANT ALL ON `jUno`.* TO 'app-user'@'localhost';
 FLUSH PRIVILEGES ;
 
 USE `jUno`;
 
 DROP TABLE IF EXISTS `Profilo`;
-CREATE TABLE `Profilo` (
+CREATE TABLE `Profilo`(
 	`idProfilo` INT AUTO_INCREMENT NOT NULL,
 	`nickname` VARCHAR(45) NOT NULL,
 	`avatar` VARCHAR(45) NOT NULL,

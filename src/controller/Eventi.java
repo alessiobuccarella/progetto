@@ -119,7 +119,7 @@ public class Eventi {
                 Menu.rosso.setEnabled(true);Menu.giallo.setEnabled(true);Menu.verde.setEnabled(true);Menu.blu.setEnabled(true);
             }            
             if (mano.mano.size()==0) {
-                Database db2 = new Database();
+                Database db2 = Database.getInstance();
                 db2.updateBD2(nomeutente, true);
             }
     }
@@ -283,7 +283,7 @@ public class Eventi {
            System.out.println("OVEST: " + manoOvest.mano.toString());
         }
         if (manoOvest.mano.size()==0) {
-            Database db2 = new Database();
+            Database db2 = Database.getInstance();
         }
         System.out.println("turno: "+Menu.turno);
     }
@@ -313,7 +313,7 @@ public class Eventi {
            System.out.println("NORD: " + manoNord.mano.toString());
         }
         if (manoNord.mano.size()==0) {
-            Database db2 = new Database();
+            Database db2 = Database.getInstance();
         }
         System.out.println("turno: "+Menu.turno);
     }
@@ -344,7 +344,7 @@ public class Eventi {
            System.out.println("EST: " + manoEst.mano.toString());
         }
         if (manoEst.mano.size()==0) {
-            Database db2 = new Database();
+            Database db2 = Database.getInstance();
         }
         System.out.println("turno: "+Menu.turno);
     }

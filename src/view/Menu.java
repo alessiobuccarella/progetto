@@ -19,8 +19,8 @@ public class Menu extends JFrame {
 	public static boolean deviGridareUno = false;
     public static int coloreSpeciale = 4;
     public static JButton nuovoProfilo, caricaProfilo, esci, nuovaPartita, opzioniProfilo, esci2, classica, mod2, mod3, esci3;
-    public static JButton indietroButton, indietroButton2, indietroButton3, indietroButton4, inviaButton, inviaButton2;
-    public static JPanel menu;
+    public JButton indietroButton, indietroButton2, indietroButton3, inviaButton, inviaButton2;
+    public JPanel menu;
     public static String nomeutente;
     private static Postazione postazione;
     public static Postazione postazioneColori;
@@ -35,8 +35,7 @@ public class Menu extends JFrame {
     public static JButton giallo;
     public static JButton blu;
     public static JButton verde;
-   
-   
+    private JPanel account;
     public static JTextField textnickname, textnickname2;
     public static ImageIcon avatar1png, avatar2png, avatar3png;
     public static JButton scartoButton = new JButton();
@@ -45,11 +44,10 @@ public class Menu extends JFrame {
     public static int turno;
     public static boolean firstTime = true;
     public static ArrayList<JButton> posti = new ArrayList<>();
-    Database db = new Database();
+    Database db = Database.getInstance();
 	public String nomeProfilo;
     public Menu() {
         super("JUno");
-       
         setVisible(true);
         setSize(1200, 680);
         setLayout(new BorderLayout());
@@ -282,7 +280,7 @@ public class Menu extends JFrame {
         menu.add(modalita, "5");
 
         //PAGE ACCOUNT
-        JPanel account = new JPanel();
+        account = new JPanel();
         JPanel oa = new JPanel();
         JPanel oa2 = new JPanel();
         JPanel oa3 = new JPanel();
@@ -579,12 +577,11 @@ public class Menu extends JFrame {
                 db.selectDB(nickname);
                 String foto = textnickname.getText();
                 db.selectDB(foto);
-                
                 if(valido3 == true) {
                     JOptionPane.showMessageDialog(null, "Benvenuto " + nickname + "!");
-                     setNomeProfilo(nickname.toUpperCase());
-                     setFotoProfilo(foto);
-                     //gbc10.anchor=GridBagConstraints.LAST_LINE_END;
+                    setNomeProfilo(nickname.toUpperCase());
+                    setFotoProfilo(foto);
+                    //gbc10.anchor=GridBagConstraints.LAST_LINE_END;
                      gbc10.gridx=2;
                      gbc10.gridy=8;
                      gbc10.weightx=0;
@@ -725,8 +722,6 @@ public class Menu extends JFrame {
     	  Icon immagine= new ImageIcon("./src/immagini/" + carta.getV() + carta.getC() + ".png");
           posti.get(mano.mano.size()-1).setIcon(immagine);posti.get(mano.mano.size()-1).setBorder(null);
         	  postazione.add(posti.get(mano.mano.size()-1));
-        	  
-        	  
         	  postazione.invalidate();
               postazione.validate();
               tavolo.invalidate();
