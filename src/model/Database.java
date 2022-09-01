@@ -136,7 +136,7 @@ public class Database {
             String query = "SELECT * FROM jUno.Profilo WHERE nickname = '" + nick + "'";
             Statement statement = connection.prepareStatement(query);
 	        ResultSet rs = statement.executeQuery(query);
-	        if (rs.first()) {
+	        if (rs.next()) {
 	        	Profilo profilo = new Profilo();
 	        	profilo.setNickname(rs.getString(2));
 	        	profilo.setAvatarImg(rs.getString(3));
@@ -150,5 +150,37 @@ public class Database {
 			e1.printStackTrace();
 		}
 		return null;
+    }
+    
+    public Profilo creaProfilo(String nick, String img) {
+        try {
+            Statement statement = connection.createStatement();
+                String query1 = "INSERT INTO jUno.Profilo"
+                        + " (`nickname`, `avatar`)"
+                        + " VALUES ('" + nick + "','" + img + "')";
+                statement.executeUpdate(query1);
+                
+            Profilo profilo = new Profilo();
+            profilo.setNickname(nick);
+            profilo.setAvatarImg(img);
+            profilo.setLivello(0);
+            profilo.setPartiteGiocate(0);
+            profilo.setPartitePerse(0);
+            profilo.setPartiteVinte(0);
+            
+            return profilo;
+        } catch (SQLException e2) {
+            switch (e2.getSQLState()) {
+                case "22001":
+                    JOptionPane.showMessageDialog(null, "Nickname deve essere lungo massimo 45 caratteri");
+                    break;
+                case "23000":
+                    JOptionPane.showMessageDialog(null, "Nickname già  in uso");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "" + e2);
+            }
+        }
+        return null;
     }
 }

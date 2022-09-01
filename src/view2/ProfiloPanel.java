@@ -1,6 +1,8 @@
 package view2;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import model.Database;
 import model.Profilo;
@@ -8,6 +10,8 @@ import view.BarraAudio;
 
 public class ProfiloPanel extends JPanel {
 
+	private static final long serialVersionUID = 3960043400919881397L;
+	
 	private JLabel nickname;
 	private JLabel myavatar;
 	private JLabel livello;
@@ -15,13 +19,13 @@ public class ProfiloPanel extends JPanel {
 	private JLabel partiteVinte;
 	private JLabel partitePerse;
 	private BarraAudio audio;
-	JPanel indietro;
+	private JButton indietroButton;
 
 	public ProfiloPanel() {
         JPanel oa = new JPanel();
         JPanel oa2 = new JPanel();
         JPanel oa3 = new JPanel();
-        indietro = new JPanel();
+        JPanel indietro = new JPanel();
         indietro.setBackground(Color.black);
         oa.setBackground(Color.red);
         oa2.setBackground(Color.red);
@@ -44,7 +48,7 @@ public class ProfiloPanel extends JPanel {
         partiteVinte.setFont(new Font("Dialog", Font.PLAIN, 15));
         partitePerse = new JLabel("PARTITE PERSE: " + Database.partitePerse);
         partitePerse.setFont(new Font("Dialog", Font.PLAIN, 15));
-        JButton indietroButton4 = new JButton("<");
+        indietroButton = new JButton("<");
         setLayout(new BorderLayout());
         oa.setLayout(new GridBagLayout());
         oa2.setLayout(new GridBagLayout());
@@ -59,7 +63,7 @@ public class ProfiloPanel extends JPanel {
         oa.add(partiteGiocate, gbc7);
         oa.add(partiteVinte, gbc7);
         oa.add(partitePerse, gbc7);
-        indietro.add(indietroButton4);
+        indietro.add(indietroButton);
         this.add(oa, BorderLayout.CENTER);
         audio = new BarraAudio();
         this.add(audio, BorderLayout.PAGE_START);
@@ -78,4 +82,8 @@ public class ProfiloPanel extends JPanel {
         this.partitePerse.setText("PARTITE PERSE: " + profilo.getPartitePerse());
         this.partiteVinte.setText("PARTITE VINTE: " + profilo.getPartiteVinte());
 	}
+	
+    public void indietro(ActionListener actionListener) {
+    	indietroButton.addActionListener(actionListener);
+    }
 }

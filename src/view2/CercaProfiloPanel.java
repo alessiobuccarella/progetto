@@ -7,6 +7,8 @@ import view.BarraAudio;
 
 public class CercaProfiloPanel extends JPanel {
 	
+	private static final long serialVersionUID = 4831030812782264284L;
+
 	private JTextField textnickname;
 	private JButton inviaButton;
 	private JButton indietroButton;

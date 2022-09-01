@@ -7,27 +7,30 @@ import view.BarraAudio;
 
 public class NuovoProfiloPanel extends JPanel {
 
-    private JTextField textnickname2;
-    private JButton inviaButton2;
-    private JButton indietroButton2;
+	private static final long serialVersionUID = -4924450993476714670L;
+
+	private JTextField textnickname;
+	//FIXME: serve anche l'immagine dell'avatar
+    private JButton inviaButton;
+    private JButton indietroButton;
     private BarraAudio audio;
 
     public NuovoProfiloPanel(){
-        JPanel nickname2 = new JPanel();
+        JPanel nickname = new JPanel();
         JPanel image = new JPanel();
-        JPanel indietro2 = new JPanel();
-        indietro2.setBackground(Color.black);
-        nickname2.setBackground(Color.red);
+        JPanel indietro = new JPanel();
+        indietro.setBackground(Color.black);
+        nickname.setBackground(Color.red);
         image.setBackground(Color.red);
         GridBagConstraints gbc3 = new GridBagConstraints();
         gbc3.gridwidth = GridBagConstraints.REMAINDER;
         JLabel nick2 = new JLabel("Nickname:");
-        textnickname2  = new JTextField(10);
+        textnickname  = new JTextField(10);
         nick2.setFont(new Font("Dialog", Font.PLAIN, 15));
         JLabel avatar = new JLabel("Avatar:");
         avatar.setFont(new Font("Dialog", Font.PLAIN, 15));
-        inviaButton2 = new JButton("INVIA");
-        indietroButton2 = new JButton("<");
+        inviaButton = new JButton("INVIA");
+        indietroButton = new JButton("<");
         ButtonGroup avatari = new ButtonGroup();
         ImageIcon avatar1png = new ImageIcon("./src/immagini/avatar1.png");
         Image image1 = avatar1png.getImage();
@@ -51,38 +54,43 @@ public class NuovoProfiloPanel extends JPanel {
         avatari.add(radio2);
         avatari.add(radio3);
         this.setLayout(new BorderLayout());
-        nickname2.setLayout(new GridBagLayout());
+        nickname.setLayout(new GridBagLayout());
         image.setLayout(new GridBagLayout());
-        indietro2.setLayout(new FlowLayout(FlowLayout.LEFT));
-        nickname2.add(nick2, gbc3);
-        nickname2.add(Box.createRigidArea(new Dimension(0, 35)));
-        nickname2.add(textnickname2, gbc3);
-        nickname2.add(Box.createRigidArea(new Dimension(0, 35)));
-        nickname2.add(avatar, gbc3);
+        indietro.setLayout(new FlowLayout(FlowLayout.LEFT));
+        nickname.add(nick2, gbc3);
+        nickname.add(Box.createRigidArea(new Dimension(0, 35)));
+        nickname.add(textnickname, gbc3);
+        nickname.add(Box.createRigidArea(new Dimension(0, 35)));
+        nickname.add(avatar, gbc3);
         image.add(radio1);
         image.add(Box.createRigidArea(new Dimension(5, 0)));
         image.add(radio2);
         image.add(Box.createRigidArea(new Dimension(5, 0)));
         image.add(radio3);
-        nickname2.add(image, gbc3);
-        nickname2.add(Box.createRigidArea(new Dimension(0, 70)));
-        nickname2.add(inviaButton2, gbc3);
-        indietro2.add(indietroButton2);
-        this.add(nickname2, BorderLayout.CENTER);
+        nickname.add(image, gbc3);
+        nickname.add(Box.createRigidArea(new Dimension(0, 70)));
+        nickname.add(inviaButton, gbc3);
+        indietro.add(indietroButton);
+        this.add(nickname, BorderLayout.CENTER);
         this.audio = new BarraAudio();
         this.add(audio, BorderLayout.PAGE_START);
-        this.add(indietro2, BorderLayout.PAGE_END);
+        this.add(indietro, BorderLayout.PAGE_END);
     }
 
     public String getNickname() {
-        return this.textnickname2.getText();
+        return this.textnickname.getText();
+    }
+    
+    public String getVatarImg() {
+    	//FIXME: prendere l'mmagine scelta
+    	return "./src/immagini/avatar1.png";
     }
 
-    public void nuovoProfilo(ActionListener actionListener) {
-        inviaButton2.addActionListener(actionListener);
+    public void creaProfilo(ActionListener actionListener) {
+        inviaButton.addActionListener(actionListener);
     }
 
     public void paginaPrec(ActionListener actionListener) {
-        indietroButton2.addActionListener(actionListener);
+        indietroButton.addActionListener(actionListener);
     }
 }

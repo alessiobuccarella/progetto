@@ -5,7 +5,7 @@ import java.awt.CardLayout;
 
 import javax.swing.JFrame;
 
-import controller.CercaProfileController;
+import controller.CercaProfiloController;
 import controller.NuovoProfiloController;
 
 public class MainFrame extends JFrame {
@@ -23,26 +23,39 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
         cardLayout = new CardLayout();
+        
+        //Panel
         InizioPanel inzioPanel = new InizioPanel();
-        CercaProfiloPanel caricaProfilo = new CercaProfiloPanel();
+        CercaProfiloPanel cercaProfilo = new CercaProfiloPanel();
         NuovoProfiloPanel nuovoProfilo = new NuovoProfiloPanel();
         ProfiloPanel profilo = new ProfiloPanel();
-        // sets our layout as a card layout
-        setLayout(cardLayout);
+        MenuPanel menuPanel = new MenuPanel();
+        
         // initialize user controller
-        new CercaProfileController(caricaProfilo, profilo);
-        new NuovoProfiloController(nuovoProfilo, profilo);
-        // adds view to card layout with unique constraints
+        new CercaProfiloController(cercaProfilo, profilo, cardLayout, MainFrame.this.getContentPane());
+        new NuovoProfiloController(nuovoProfilo, profilo, cardLayout, MainFrame.this.getContentPane());
+        
+        // aggiunge i panel al layout
+        setLayout(cardLayout);
         add(inzioPanel, "inizio");
-        add(caricaProfilo, "caricaProfilo");
+        add(cercaProfilo, "cercaProfilo");
+        add(nuovoProfilo, "nuovoProfilo");
         add(profilo, "profilo");
-        // switch view according to its constraints on click
-        inzioPanel.caricaProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "caricaProfilo")); 
+        add(menuPanel, "menu");
+
+        //azioni inzioPanel
+        inzioPanel.caricaProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "cercaProfilo")); 
         inzioPanel.nuovoProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "nuovoProfilo"));
         inzioPanel.esci(e -> {
         	//chiudere conn db
         	System.exit(0);
         });
+        
+        cercaProfilo.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio"));
+        
+        profilo.indietro(e -> cardLayout.show(MainFrame.this.getContentPane(), "menu"));
+        
+        
     }
 }
 
