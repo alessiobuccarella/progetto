@@ -37,7 +37,11 @@ public class Menu extends JFrame {
     public static JButton verde;
     private JPanel account;
     public static JTextField textnickname, textnickname2;
-    public static ImageIcon avatar1png, avatar2png, avatar3png, tastouno, coloreRosso, coloreGiallo, coloreBlu, coloreVerde;
+    public static ImageIcon avatar1png, avatar2png, avatar3png, tastouno;
+	JButton coloreVerde;
+	JButton coloreBlu;
+	JButton coloreGiallo;
+	JButton coloreRosso;
     public static JButton scartoButton = new JButton();
     public static JButton passo = new JButton("PASSO");
     public static Carta cartaScarto = new Carta(0, 0);
@@ -91,10 +95,7 @@ public class Menu extends JFrame {
         blu.setEnabled(false);
         uno= new JButton("UNO!");
         ArrayList<JButton> colori = new ArrayList<>();
-        colori.add(rosso);
-        colori.add(giallo);
-        colori.add(blu);
-        colori.add(verde);
+  
         do cartaScarto=mazzo.next(); while(cartaScarto.getV()>12);
         scartoButton = DisegnaCarta.disegnaCarta(cartaScarto);
         menu = new JPanel();
@@ -334,10 +335,19 @@ public class Menu extends JFrame {
         menu.add(account, "6");
 
         //PAGE PARTITA
-        coloreRosso = new ImageIcon("./src/immagini/0.png");
-        coloreGiallo = new ImageIcon("./src/immagini/1.png");
-        coloreBlu = new ImageIcon("./src/immagini/2.png");
-        coloreVerde = new ImageIcon("./src/immagini/3.png");
+        coloreRosso = new JButton();
+        coloreRosso.add(redLabel);
+        coloreRosso.setBorder(null);
+        coloreGiallo = new JButton();
+        coloreGiallo.add(yellowLabel);
+        coloreGiallo.setBorder(null);
+        coloreBlu = new JButton();
+        coloreBlu.add(blueLabel);
+        coloreBlu.setBorder(null);
+        coloreVerde = new JButton();
+        coloreVerde.add(greenLabel);
+        coloreVerde.setBorder(null);
+
         JButton deckButton = new JButton();
         deckButton.setBorder(null);
         deckButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -422,10 +432,10 @@ public class Menu extends JFrame {
         
         postazioneColori.setBackground(null);
         postazioneColori.setOpaque(false);
-        postazioneColori.add(new JLabel(coloreRosso));
-        postazioneColori.add(new JLabel(coloreGiallo));
-        postazioneColori.add(new JLabel(coloreVerde));
-        postazioneColori.add(new JLabel(coloreBlu));
+        postazioneColori.add(coloreRosso);
+        postazioneColori.add((coloreGiallo));
+        postazioneColori.add((coloreVerde));
+        postazioneColori.add((coloreBlu));
         gbc10.anchor=GridBagConstraints.LINE_START;tavolo.add(postazioneColori,gbc10);
       postazionePiatto.add(deckLabel);
       postazionePiatto.add(scartoButton);
@@ -652,6 +662,26 @@ public class Menu extends JFrame {
                 repaint();
                 t.start();
                 Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
+            }
+        });
+        coloreRosso.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+              cartaScarto.setC(0);
+            }
+        });
+        coloreGiallo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+              cartaScarto.setC(1);
+            }
+        });
+        coloreVerde.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+              cartaScarto.setC(2);
+            }
+        });
+        coloreBlu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+              cartaScarto.setC(3);
             }
         });
         for (JButton posto : posti) {
