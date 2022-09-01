@@ -17,7 +17,7 @@ public class Database {
             Database.singleton = this;
         }
         catch (SQLException e) {
-
+        	e.printStackTrace();
         }
     }
     public static Database getInstance(){
@@ -137,5 +137,29 @@ public class Database {
                 JOptionPane.showMessageDialog(null, "" + e2);
             }
         }
+    }
+    
+    
+    public Profilo cercaProfilo(String nick) {
+    	try {
+	        String query = "SELECT * FROM jUno.Profilo WHERE nickname = '" + nick + "'";
+	        
+	        Statement statement = connection.prepareStatement(query);
+	        ResultSet rs = statement.executeQuery(query);
+	        if (rs.first()) {
+	        	Profilo profilo = new Profilo();
+	        	profilo.setNickname(rs.getString(2));
+	        	profilo.setAvatarImg(rs.getString(3));
+	        	profilo.setLivello(rs.getInt(4));
+	        	profilo.setPartiteGiocate(rs.getInt(5));
+	        	profilo.setPartiteVinte(rs.getInt(6));
+	        	profilo.setPartitePerse(rs.getInt(7));
+	        	return profilo;
+	        }
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+    	
+		return null;
     }
 }
