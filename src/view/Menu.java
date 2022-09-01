@@ -37,7 +37,7 @@ public class Menu extends JFrame {
     public static JButton verde;
     private JPanel account;
     public static JTextField textnickname, textnickname2;
-    public static ImageIcon avatar1png, avatar2png, avatar3png;
+    public static ImageIcon avatar1png, avatar2png, avatar3png, tastouno, coloreRosso, coloreGiallo, coloreBlu, coloreVerde;
     public static JButton scartoButton = new JButton();
     public static JButton passo = new JButton("PASSO");
     public static Carta cartaScarto = new Carta(0, 0);
@@ -177,6 +177,7 @@ public class Menu extends JFrame {
         inviaButton2 = new JButton("INVIA");
         indietroButton2 = new JButton("<");
         ButtonGroup avatari = new ButtonGroup();
+        tastouno = new ImageIcon("./src/immagini/tastouno.png");
         avatar1png = new ImageIcon("./src/immagini/avatar1.png");
         Image image1 = avatar1png.getImage();
         Image newimg1 = image1.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
@@ -334,6 +335,10 @@ public class Menu extends JFrame {
         menu.add(account, "6");
 
         //PAGE PARTITA
+        coloreRosso = new ImageIcon("./src/immagini/0.png");
+        coloreGiallo = new ImageIcon("./src/immagini/1.png");
+        coloreBlu = new ImageIcon("./src/immagini/2.png");
+        coloreVerde = new ImageIcon("./src/immagini/3.png");
         JButton deckButton = new JButton();
         deckButton.setBorder(null);
         deckButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -352,12 +357,16 @@ public class Menu extends JFrame {
         for (int i=0;i<mano.mano.size();i++)
             postazione.add(posti.get(i));
         postazioneOvest = new Postazione(0);
+        postazioneEst = new Postazione(0);
         //campo.add(postazioneOvest, BorderLayout.WEST);
         for (int i = 0; i < 7; i++) {
-            postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
-            postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));
+           // postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
+           // postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));
         }
-        postazioneOvest.setBackground(colore);
+        postazioneEst.setBackground(null);
+        postazioneEst.setOpaque(false);
+        postazioneOvest.setBackground(null);
+        postazioneOvest.setOpaque(false);
         postazioneNord = new Postazione(1);
         //campo.add(postazioneNord, BorderLayout.PAGE_START);
         postazioneNord.add(new JLabel(new ImageIcon("./src/immagini/dorsonord7.png")));
@@ -366,88 +375,24 @@ public class Menu extends JFrame {
         
         //piatto.setBackground(colore);
         JLabel foto = new JLabel(avatar1png);
-        JLabel foto1 = new JLabel(avatar1png);
-        JLabel foto2 = new JLabel(avatar1png);
+        JLabel foto1 = new JLabel(avatar2png);
+        JLabel foto2 = new JLabel(avatar3png);
         JLabel foto3 = new JLabel(fotoProfilo);
         GridBagConstraints gbc10= new GridBagConstraints();
         campo.add(tavolo, BorderLayout.CENTER);
-        /*
-        gbc10.anchor=GridBagConstraints.FIRST_LINE_END;
-        gbc10.gridx=4;
-        gbc10.gridy=1;
-        gbc10.weightx=0.0;
-        gbc10.weighty=0;
-       // piatto.add(new JLabel("Heap"),gbc10);
+        
         gbc10.anchor=GridBagConstraints.PAGE_START;
-        gbc10.gridx=4;
-        gbc10.gridy=0;
-        gbc10.weightx=0.0;
-        gbc10.weighty=0;
-        //piatto.add(foto1,gbc10);
-        gbc10.anchor=GridBagConstraints.PAGE_END;
-        gbc10.gridx=0;
-        gbc10.gridy=1;
-        gbc10.weightx=0.0;
-        gbc10.weighty=0;
-      //  piatto.add(foto,gbc10);
-        gbc10.anchor=GridBagConstraints.PAGE_START;
-        gbc10.gridx=0;
-        gbc10.gridy=2;
-        gbc10.weightx=0;
-        gbc10.weighty=0;
-       // piatto.add(new JLabel("Stack"),gbc10);
-        gbc10.anchor=GridBagConstraints.LAST_LINE_END;
-        gbc10.gridx=8;
-        gbc10.gridy=1;
-        gbc10.weightx=1;
-        gbc10.weighty=1;
-      //  piatto.add(foto2,gbc10);
-        gbc10.anchor=GridBagConstraints.FIRST_LINE_END;
-        gbc10.gridx=8;
-        gbc10.gridy=2;
-        gbc10.weightx=1;
-        gbc10.weighty=1;
-        //piatto.add(new JLabel("MetaSpace"),gbc10);
- 
-        gbc10.anchor=GridBagConstraints.LINE_START;
-        gbc10.gridx=7;
-        gbc10.gridy=3;
-        gbc10.weightx=0.0;
-        gbc10.weighty=0;
-        piatto.add(uno,gbc10);
-        gbc10.anchor=GridBagConstraints.LINE_END;
-        deckButton.setBorder(null);
-        gbc10.gridx=7;
-        gbc10.gridy=3;
-        gbc10.weightx=0;
-        gbc10.weighty=0;
-       // piatto.add(passo,gbc10);
-        gbc10.anchor=GridBagConstraints.LINE_START;
-        gbc10.weightx=0;
-        gbc10.weighty=0;
-        gbc10.gridx=7;
-        gbc10.gridy=1;
-        //piatto.add(deckButton,gbc10);
-        gbc10.anchor=GridBagConstraints.LINE_END;
-        gbc10.weightx=0;
-        gbc10.weighty=0;
-        gbc10.gridx=7;
-        gbc10.gridy=1;
-       // piatto.add(scartoButton,gbc10);
-        * 
-        */
-        gbc10.anchor=GridBagConstraints.PAGE_START;
-        gbc10.gridx=3;
+        gbc10.gridx=5;
         gbc10.gridy=0;
         gbc10.weightx=0.0;
         gbc10.weighty=0;
         gbc10.gridwidth=3;
-        foto1.setBorder(BorderFactory.createLineBorder(Color.red));
+       // foto1.setBorder(BorderFactory.createLineBorder(Color.red));
         tavolo.add(foto1,gbc10);
-        gbc10.gridx=3;
-        gbc10.gridy=3;
+        gbc10.gridx=5;
+        gbc10.gridy=2;
         gbc10.weightx=0.0;
-        gbc10.weighty=1;
+        gbc10.weighty=0;
         gbc10.gridwidth=3;
         tavolo.add(postazioneNord,gbc10);
         gbc10.anchor=GridBagConstraints.LINE_END;
@@ -466,15 +411,33 @@ public class Menu extends JFrame {
         tavolo.add(passo,gbc10);
         gbc10.anchor=GridBagConstraints.CENTER;
        
+        
+
+        
+        gbc10.gridx=0;
+        gbc10.gridy=0;
+        gbc10.weighty=1;
+        gbc10.weightx=0;
+        gbc10.gridwidth=3;
+        gbc10.gridheight=1;
+        
+        postazioneColori.setBackground(null);
+        postazioneColori.setOpaque(false);
+        postazioneColori.add(new JLabel(coloreRosso));
+        postazioneColori.add(new JLabel(coloreGiallo));
+        postazioneColori.add(new JLabel(coloreVerde));
+        postazioneColori.add(new JLabel(coloreBlu));
+        gbc10.anchor=GridBagConstraints.LINE_START;tavolo.add(postazioneColori,gbc10);
       postazionePiatto.add(deckLabel);
       postazionePiatto.add(scartoButton);
       postazionePiatto.setOpaque(false);
       deckButton.setBorder(null);
-        gbc10.gridx=3;
+        gbc10.gridx=5;
         gbc10.gridy=4;
-        gbc10.weighty=0.5;
-        gbc10.weightx=1;
-        gbc10.gridwidth=3;
+        gbc10.weighty=1;
+        gbc10.weightx=0;
+        gbc10.gridwidth=1;
+       
         tavolo.add(postazionePiatto,gbc10);
         //////////////////////////////////////////////////// sinistra
         
@@ -488,33 +451,40 @@ public class Menu extends JFrame {
         gbc10.weighty=1;
         gbc10.weightx=1;
         gbc10.gridwidth=3;
-        tavolo.add((new JLabel(new ImageIcon("./src/immagini/dorsosx7.png"))),gbc10);
+        tavolo.add(postazioneOvest,gbc10);
+        postazioneOvest.add((new JLabel(new ImageIcon("./src/immagini/dorsosx7.png"))),gbc10);
         ///////////////////////////////////////////////////////destra
         gbc10.gridx=6;
         gbc10.gridy=4;
         gbc10.weighty=1;
         gbc10.weightx=1;
         gbc10.gridwidth=3;
-        tavolo.add((new JLabel(new ImageIcon("./src/immagini/dorsodx7.png"))),gbc10);
-        
+        tavolo.add(postazioneEst,gbc10);
+        postazioneEst.add((new JLabel(new ImageIcon("./src/immagini/dorsodx7.png"))),gbc10);
+        gbc10.gridx=9;
+        gbc10.gridy=4;
+        gbc10.weighty=1;
+        gbc10.weightx=0;
+        gbc10.gridwidth=1;
+        tavolo.add(foto2,gbc10);
         
         
         gbc10.anchor=GridBagConstraints.PAGE_START;
-        gbc10.gridx=3;
+        gbc10.gridx=5;
         gbc10.gridy=5;
-        gbc10.weighty=0;
+        gbc10.weighty=2;
         //gbc10.gridwidth=4;
-        //gbc10.anchor=GridBagConstraints.LINE_START;piatto.add(postazioneColori,gbc10);
+       
         //for(JButton colore:colori)postazioneColori.add(colore);
         tavolo.add(postazione,gbc10);
             
-        postazioneEst = new Postazione(0);
+       // postazioneEst = new Postazione(0);
         //campo.add(postazioneEst, BorderLayout.EAST);
-        for (int i = 0; i < 7; i++) {
-            postazioneEst.add(new JLabel(new ImageIcon("./src/immagini/dorso90s.png")));
-            postazioneEst.add(Box.createRigidArea(new Dimension(0, 5)));
-        }
-        postazioneEst.setBackground(colore);
+      //  for (int i = 0; i < 7; i++) {
+        //    postazioneEst.add(new JLabel(new ImageIcon("./src/immagini/dorso90s.png")));
+         //   postazioneEst.add(Box.createRigidArea(new Dimension(0, 5)));
+       // }
+        //postazioneEst.setBackground(colore);
         menu.add(campo, "7");
 
         //ACTION LISTENER
@@ -660,6 +630,7 @@ public class Menu extends JFrame {
                 cl.show(menu, "7");
             }
         });
+        /**
         uno.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -668,7 +639,7 @@ public class Menu extends JFrame {
                     System.out.println("hai urlato 1!");
                 }
             }
-        });
+        });**/
         deckButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
               pesca(mazzo,mano);
