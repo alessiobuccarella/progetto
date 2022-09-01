@@ -297,7 +297,6 @@ public class Menu extends JFrame {
         gbc9.gridwidth = GridBagConstraints.REMAINDER;
         gbc9.fill = GridBagConstraints.HORIZONTAL;
         JLabel nick3 = new JLabel("NICKNAME: " + getNomeProfilo());
-        System.out.println("nickname: " + getNomeProfilo());
         nick3.setFont(new Font("Dialog", Font.PLAIN, 20));
         ImageIcon avatar4png = new ImageIcon("" + fotoProfilo);
         Image image4 = avatar4png.getImage();

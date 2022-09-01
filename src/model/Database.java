@@ -1,7 +1,5 @@
 package model;
 
-import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
-
 import javax.swing.*;
 import java.sql.*;
 
@@ -86,25 +84,17 @@ public class Database {
                 ResultSet rs = statement.executeQuery(query4);
                 if (rs.next()) {
                     nomeProfilo = rs.getString(2);
-                    System.out.println(nomeProfilo);
                     fotoProfilo = rs.getString(3);
-                    System.out.println(fotoProfilo);
                     livello = rs.getString(4);
-                    System.out.println(livello);
                     partiteGiocate = rs.getString(5);
-                    System.out.println(partiteGiocate);
                     partiteVinte = rs.getString(6);
-                    System.out.println(partiteVinte);
                     partitePerse = rs.getString(7);
-                    System.out.println(partitePerse);
                 }
             } catch (Exception e1) {
                 JOptionPane.showMessageDialog(null, "" + e1);
-                System.out.println("e1: " + e1);
             }
         } catch (Exception e2) {
             JOptionPane.showMessageDialog(null, "" + e2);
-            System.out.println("e2: " + e2);
         }
     }
     public void updateBD2(String nickname, boolean risultato) {
