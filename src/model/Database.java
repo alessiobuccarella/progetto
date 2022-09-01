@@ -6,7 +6,6 @@ import java.sql.*;
 public class Database {
     public static boolean valido, valido2, valido3;
     public static String nomeProfilo, fotoProfilo, livello, partiteGiocate, partiteVinte, partitePerse;
-
     private Connection connection;
     private static Database singleton;
     private Database() {
@@ -53,6 +52,7 @@ public class Database {
             }
         }
     }
+
     public void selectDB(String nick) {
         if (nick.equals("") || nick.equals(null)) {
             JOptionPane.showMessageDialog(null, "Nickname Obbligatorio");
@@ -75,6 +75,7 @@ public class Database {
             }
         }
     }
+
     public void exportDB(String nickname) {
         try {
             try {
@@ -97,6 +98,7 @@ public class Database {
             JOptionPane.showMessageDialog(null, "" + e2);
         }
     }
+
     public void updateBD2(String nickname, boolean risultato) {
         if (risultato == true) {
             try {
@@ -129,12 +131,10 @@ public class Database {
         }
     }
     
-    
     public Profilo cercaProfilo(String nick) {
-    	try {
-	        String query = "SELECT * FROM jUno.Profilo WHERE nickname = '" + nick + "'";
-	        
-	        Statement statement = connection.prepareStatement(query);
+        try {
+            String query = "SELECT * FROM jUno.Profilo WHERE nickname = '" + nick + "'";
+            Statement statement = connection.prepareStatement(query);
 	        ResultSet rs = statement.executeQuery(query);
 	        if (rs.first()) {
 	        	Profilo profilo = new Profilo();
@@ -146,10 +146,9 @@ public class Database {
 	        	profilo.setPartitePerse(rs.getInt(7));
 	        	return profilo;
 	        }
-		} catch (Exception e1) {
+        } catch (Exception e1) {
 			e1.printStackTrace();
 		}
-    	
 		return null;
     }
 }

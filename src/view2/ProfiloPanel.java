@@ -1,20 +1,7 @@
 package view2;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Image;
-
-import javax.swing.Box;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
+import java.awt.*;
+import javax.swing.*;
 import model.Database;
 import model.Profilo;
 import view.BarraAudio;
@@ -29,14 +16,11 @@ public class ProfiloPanel extends JPanel {
 	private JLabel partitePerse;
 	private BarraAudio audio;
 	JPanel indietro;
-		
-	
+
 	public ProfiloPanel() {
-        //PAGE ACCOUNT
         JPanel oa = new JPanel();
         JPanel oa2 = new JPanel();
         JPanel oa3 = new JPanel();
-        
         indietro = new JPanel();
         indietro.setBackground(Color.black);
         oa.setBackground(Color.red);
@@ -77,26 +61,21 @@ public class ProfiloPanel extends JPanel {
         oa.add(partitePerse, gbc7);
         indietro.add(indietroButton4);
         this.add(oa, BorderLayout.CENTER);
-        
         audio = new BarraAudio();
         this.add(audio, BorderLayout.PAGE_START);
         this.add(indietro, BorderLayout.PAGE_END);
 	}
 	
 	public void printProfilo(Profilo profilo) {
-		
 		this.nickname.setText("NICKNAME: " + profilo.getNickname());
-		
 		ImageIcon avatar4png = new ImageIcon(profilo.getAvatarImg());
         Image image4 = avatar4png.getImage();
         Image newimg4 = image4.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar4png = new ImageIcon(newimg4);
         this.myavatar.setIcon(avatar4png);
-        
         this.livello.setText("LIVELLO: " + profilo.getLivello());
         this.partiteGiocate.setText("PARTITE GIOCATE: " + profilo.getPartiteGiocate());
         this.partitePerse.setText("PARTITE PERSE: " + profilo.getPartitePerse());
         this.partiteVinte.setText("PARTITE VINTE: " + profilo.getPartiteVinte());
 	}
-
 }

@@ -1,20 +1,8 @@
 package view2;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.*;
+import javax.swing.*;
 import java.awt.event.ActionListener;
-
-import javax.swing.Box;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 import view.BarraAudio;
 
 public class CercaProfiloPanel extends JPanel {
@@ -46,18 +34,20 @@ public class CercaProfiloPanel extends JPanel {
         nickname.add(inviaButton, gbc2);
         indietro.add(indietroButton);
         this.add(nickname, BorderLayout.CENTER);
-        
         this.audio = new BarraAudio();
         this.add(audio, BorderLayout.PAGE_START);
         this.add(indietro, BorderLayout.PAGE_END);
-
 	}
 	
 	public String getNickname() {
 		return this.textnickname.getText();
 	}
-	
-	 public void cercaProfilo(ActionListener actionListener) {
+
+    public void cercaProfilo(ActionListener actionListener) {
 		 inviaButton.addActionListener(actionListener);
      }
+
+    public void paginaPrec(ActionListener actionListener) {
+        indietroButton.addActionListener(actionListener);
+    }
 }

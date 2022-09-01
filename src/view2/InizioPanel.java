@@ -1,29 +1,19 @@
 package view2;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.*;
 import java.awt.event.ActionListener;
-
-import javax.swing.Box;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-
+import javax.swing.*;
 import view.BarraAudio;
 
 public class InizioPanel extends JPanel {
 
 	private static final long serialVersionUID = -513177980532526192L;
-	
 	private JButton nuovoProfilo;
 	private JButton caricaProfiloBtn;
 	private JButton esci;
 	private BarraAudio audio;
 
 	public InizioPanel() {
-
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -34,7 +24,6 @@ public class InizioPanel extends JPanel {
         caricaProfiloBtn.setPreferredSize(new Dimension(150, 50));
         esci.setPreferredSize(new Dimension(150, 50));
         this.setLayout(new BorderLayout());
-        
         JPanel nce = new JPanel();
         nce.setBackground(Color.red);
         nce.setLayout(new GridBagLayout());
@@ -44,7 +33,6 @@ public class InizioPanel extends JPanel {
         nce.add(Box.createRigidArea(new Dimension(0, 40)));
         nce.add(esci, gbc);
         this.add(nce, BorderLayout.CENTER);
-        
         this.audio = new BarraAudio();
         this.add(audio, BorderLayout.PAGE_START);
 	}

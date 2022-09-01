@@ -1,16 +1,13 @@
 package model;
 
-
 //FIXME: fare il pattern builder
 public class Profilo {
-	
 	private String nickname;
 	private String avatarImg;
 	private int livello;
 	private int partiteGiocate;
 	private int partiteVinte;
 	private int partitePerse;
-	
 	public String getNickname() {
 		return nickname;
 	}
@@ -47,6 +44,4 @@ public class Profilo {
 	public void setPartitePerse(int partitePerse) {
 		this.partitePerse = partitePerse;
 	}
-
-
 }

@@ -6,6 +6,7 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 
 import controller.CercaProfileController;
+import controller.NuovoProfiloController;
 
 public class MainFrame extends JFrame {
 
@@ -21,26 +22,23 @@ public class MainFrame extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-        
         cardLayout = new CardLayout();
-        
         InizioPanel inzioPanel = new InizioPanel();
         CercaProfiloPanel caricaProfilo = new CercaProfiloPanel();
+        NuovoProfiloPanel nuovoProfilo = new NuovoProfiloPanel();
         ProfiloPanel profilo = new ProfiloPanel();
         // sets our layout as a card layout
         setLayout(cardLayout);
-
         // initialize user controller
         new CercaProfileController(caricaProfilo, profilo);
-
+        new NuovoProfiloController(nuovoProfilo, profilo);
         // adds view to card layout with unique constraints
         add(inzioPanel, "inizio");
         add(caricaProfilo, "caricaProfilo");
         add(profilo, "profilo");
         // switch view according to its constraints on click
-
         inzioPanel.caricaProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "caricaProfilo")); 
-        inzioPanel.nuovoProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "caricaProfilo"));
+        inzioPanel.nuovoProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "nuovoProfilo"));
         inzioPanel.esci(e -> {
         	//chiudere conn db
         	System.exit(0);
