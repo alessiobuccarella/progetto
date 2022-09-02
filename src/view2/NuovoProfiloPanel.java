@@ -82,7 +82,7 @@ public class NuovoProfiloPanel extends JPanel {
     }
     
     public String getVatarImg() {
-    	//FIXME: prendere l'mmagine scelta
+    	//FIXME: prendere l'immagine scelta
     	return "./src/immagini/avatar1.png";
     }
 

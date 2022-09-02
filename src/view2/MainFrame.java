@@ -3,10 +3,12 @@ package view2;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import controller.CercaProfiloController;
 import controller.NuovoProfiloController;
+import model.Database;
 
 public class MainFrame extends JFrame {
 
@@ -47,14 +49,23 @@ public class MainFrame extends JFrame {
         inzioPanel.caricaProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "cercaProfilo")); 
         inzioPanel.nuovoProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "nuovoProfilo"));
         inzioPanel.esci(e -> {
-        	//chiudere conn db
+        	Database.getInstance().close();
         	System.exit(0);
         });
         
         cercaProfilo.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio"));
         
+        nuovoProfilo.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio"));
+        
         profilo.indietro(e -> cardLayout.show(MainFrame.this.getContentPane(), "menu"));
         
+        menuPanel.esci(e -> {
+        	Database.getInstance().close();
+        	System.exit(0);
+        });
+        
+        //menuPanel.nuovaPartita va sul pannello della partita
+        //menuPanel.opzioniProfilo  legge il profilo e 
         
     }
 }

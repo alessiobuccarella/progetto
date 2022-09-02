@@ -23,7 +23,7 @@ public class Database {
         }
         return singleton;
     }
-
+    
     public void insertDB(String nick, String img) {
         if (nick.equals("") || nick.equals(null)) {
             JOptionPane.showMessageDialog(null, "Nickname Obbligatorio");
@@ -182,5 +182,16 @@ public class Database {
             }
         }
         return null;
+    }
+    
+    public void close() {
+    	if ( this.connection != null  ) {
+    		try {
+				this.connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
     }
 }
