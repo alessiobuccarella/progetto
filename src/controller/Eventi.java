@@ -24,6 +24,7 @@ public class Eventi {
 	static Icon greenLabel = new ImageIcon("./src/immagini/3.png");
 	public static boolean contrattaccoAttivo;
 	private static boolean pescato=false;
+	Mazzo mazzo = new Mazzo();
     public static void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo, Postazione postazionePiatto) {
     	if (mano.mano.size()>1) Menu.deviGridareUno=false;
     	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false) {
@@ -147,15 +148,9 @@ public class Eventi {
         Menu.cartaScarto = carta;
         postazionePiatto.add(Menu.scartoButton);
         mano.mano.remove(carta);
-       // postazione.removeAll();
-       // for (Carta y : mano.mano) {
-        //    postazione.add(new JLabel(new ImageIcon(pathDorso)));
-         //   postazione.add(Box.createRigidArea(new Dimension(0, 5)));
+
         }
-     //   postazione.invalidate();
-      //  postazione.validate();
-    //}
-    //calcola di quale giocatore sar� il turno successivo
+ 
     public static void aggiornaTurno(Mano mano,Mazzo mazzo) 
     {
         if (Menu.cartaScarto.getV() == 11) {

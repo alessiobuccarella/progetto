@@ -15,7 +15,7 @@ public class Piatto extends JPanel {
 
     private ImageIcon imgIconSfondo;
     public Piatto() {
-    	imgIconSfondo = new ImageIcon(getClass().getResource("/immagini/sfondo.png"));
+    	 imgIconSfondo = new ImageIcon(getClass().getResource("/immagini/sfondo.png"));
         //setLayout(null);
 
     	setLayout(new GridBagLayout());

@@ -40,6 +40,7 @@ public class ConfiguraPanel extends JPanel {
          this.audio = new BarraAudio();
          this.add(audio, BorderLayout.PAGE_START);
          this.add(indietro3, BorderLayout.PAGE_END);
+        
      }
 
     public void paginaPrec(ActionListener actionListener) {

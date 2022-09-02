@@ -3,12 +3,18 @@ package view2;
 import controller.DisegnaCarta;
 import controller.Eventi;
 import model.Carta;
+import model.Database;
 import model.Mano;
 import model.Mazzo;
+import model.Senso;
 import view.Campo;
+import view.Menu;
 import view.Piatto;
 import view.Postazione;
 import javax.swing.*;
+
+import static view.Menu.nomeutente;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,16 +22,25 @@ import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 
 public class PartitaPanel extends JPanel {
+	Mazzo mazzo = new Mazzo();
 	private boolean firstTime = true;
 	private int turno;
-	private Carta cartaScarto = new Carta(0, 0);
+	private static Carta cartaScarto = new Carta(0, 0);
+	static Icon redLabel = new ImageIcon("./src/immagini/0.png");
+	static Icon yellowLabel = new ImageIcon("./src/immagini/1.png");
+	static Icon blueLabel = new ImageIcon("./src/immagini/2.png");
+	static Icon greenLabel = new ImageIcon("./src/immagini/3.png");
+	static JButton scartoButton = new JButton();
     public PartitaPanel(){
+    	setLayout(new BorderLayout());
+    	do cartaScarto=mazzo.next(); while(cartaScarto.getV()>12);
         JLabel redLabel = new JLabel(new ImageIcon("./src/immagini/0.png"));
         JLabel yellowLabel = new JLabel(new ImageIcon("./src/immagini/1.png"));
         JLabel blueLabel = new JLabel(new ImageIcon("./src/immagini/2.png"));
         JLabel greenLabel = new JLabel(new ImageIcon("./src/immagini/3.png"));
         JLabel deckLabel = new JLabel(new ImageIcon("./src/immagini/mazzo.png"));
         JButton coloreRosso = new JButton();
+        
         coloreRosso.add(redLabel);
         coloreRosso.setBorder(null);
         JButton coloreGiallo = new JButton();
@@ -40,14 +55,13 @@ public class PartitaPanel extends JPanel {
         JButton deckButton = new JButton();
         deckButton.setBorder(null);
         deckButton.setHorizontalTextPosition(SwingConstants.CENTER);
-        deckButton.add(deckLabel);
-        Campo campo = new Campo();
+        deckButton.add(deckLabel); 
         Postazione postazione = new Postazione(1);
         Postazione postazionePiatto = new Postazione(1);
         Postazione postazioneColori = new Postazione(1);
         postazione.setBackground(null);
         postazione.setOpaque(false);
-        Mazzo mazzo = new Mazzo();
+        
         Mano mano = new Mano(mazzo);
         Mano manoOvest = new Mano(mazzo);
         Mano manoNord = new Mano(mazzo);
@@ -55,9 +69,24 @@ public class PartitaPanel extends JPanel {
         ArrayList<JButton> posti = new ArrayList<>();
         for (int i=0;i<30;i++)posti.add(new JButton());
         ImageIcon avatar1png = new ImageIcon("./src/immagini/avatar1.png");
+        avatar1png = new ImageIcon("./src/immagini/avatar1.png");
+        Image image1 = avatar1png.getImage();
+        Image newimg1 = image1.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+        avatar1png = new ImageIcon(newimg1);
+       
         ImageIcon avatar2png = new ImageIcon("./src/immagini/avatar1.png");
+        avatar2png = new ImageIcon("./src/immagini/avatar2.png");
+        Image image2 = avatar2png.getImage();
+        Image newimg2 = image2.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+        avatar2png = new ImageIcon(newimg2);
+        
         ImageIcon avatar3png = new ImageIcon("./src/immagini/avatar1.png");
-        JButton scartoButton = new JButton();
+        avatar3png = new ImageIcon("./src/immagini/avatar3.png");
+        Image image3 = avatar3png.getImage();
+        Image newimg3 = image3.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+        avatar3png = new ImageIcon(newimg3);
+        
+        scartoButton = DisegnaCarta.disegnaCarta(cartaScarto);
         
         for (int i=0;i<mano.mano.size();i++)
             posti.set(i, DisegnaCarta.disegnaCarta(mano.mano.get(i)));
@@ -78,9 +107,9 @@ public class PartitaPanel extends JPanel {
         JLabel foto = new JLabel(avatar1png);
         JLabel foto1 = new JLabel(avatar2png);
         JLabel foto2 = new JLabel(avatar3png);
-
+       
         GridBagConstraints gbc10= new GridBagConstraints();
-        campo.add(tavolo, BorderLayout.CENTER);
+        this.add(tavolo, BorderLayout.CENTER);
         JButton uno= new JButton("UNO!");
         JButton passo = new JButton("PASSO");
 
@@ -129,6 +158,7 @@ public class PartitaPanel extends JPanel {
         postazionePiatto.add(scartoButton);
         postazionePiatto.setOpaque(false);
         deckButton.setBorder(null);
+        
         gbc10.gridx=5;
         gbc10.gridy=4;
         gbc10.weighty=1;
@@ -222,7 +252,7 @@ public class PartitaPanel extends JPanel {
                 public void actionPerformed(ActionEvent e) {
                     repaint();
                     	t.start();
-                    	Eventi.cliccato(gbc10, mano, postazione.getComponentZOrder(posto), posto, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, posti, mazzo,postazionePiatto);
+                    	cliccato(gbc10, mano, postazione.getComponentZOrder(posto), posto, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, posti, mazzo,postazionePiatto);
                     	if (cartaScarto.getC()==4)
                             t.stop();
                     }
@@ -237,6 +267,87 @@ public class PartitaPanel extends JPanel {
             });
         }
         
+    }
+    public static void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo, Postazione postazionePiatto) {
+    	if (mano.mano.size()>1) Menu.deviGridareUno=false;
+    	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false) {
+    		System.out.println("Penalità: non hai gridato 1!");
+    		mano.mano.add(mazzo.pesca());
+             posti.get(mano.mano.size() - 1).setBorder(null);
+            mano.mano.add(mazzo.pesca());
+           posti.get(mano.mano.size() - 1).setBorder(null);
+    	}
+    	if ((mano.mano.get(indiceCarta).getC() == cartaScarto.getC() || mano.mano.get(indiceCarta).getV() == cartaScarto.getV() || mano.mano.get(indiceCarta).getC() == 4)&&(Menu.turno%4==0)) {
+    		
+    		cartaScarto=mano.mano.get(indiceCarta);postazionePiatto.remove(scartoButton);scartoButton=DisegnaCarta.disegnaCarta(cartaScarto);
+    	    gbc10.anchor=GridBagConstraints.LINE_END;
+            gbc10.weightx=0;
+            gbc10.weighty=0;
+            gbc10.gridx=7;
+            gbc10.gridy=1;
+            postazionePiatto.add(scartoButton);
+    		piatto.invalidate();piatto.validate();piatto.repaint();
+    		mano.mano.remove(indiceCarta);postazione.removeAll();/*Menu.posti.clear();*/postazione.invalidate();postazione.validate();
+    		int count=0;
+    		for (Carta x:mano.mano)
+    		{
+    			Icon immagine= new ImageIcon("./src/immagini/" + x.getV() + x.getC() + ".png");
+    			posti.get(count).setIcon(immagine);posti.get(count).setBorder(null);
+    			postazione.add(posti.get(count));
+    			count++;
+    		}
+            postazione.invalidate();
+            postazione.validate();
+            if (Menu.cartaScarto.getV() == 11)
+                Eventi.cambiaSenso();
+            if (Menu.senso == Senso.ORARIO)
+                Menu.turno = 1;
+            if (Menu.senso == Senso.ANTIORARIO)
+                Menu.turno = 3;
+            if (Menu.cartaScarto.getV() == 10)
+                Menu.turno = 2;
+        }
+            if (Menu.cartaScarto.getV() == 12) {
+                Menu.firstTime = true;
+                if (Menu.turno %4== 1) {
+                    for (int i = 0; i < 2; i++)
+                        manoOvest.mano.add(mazzo.pesca());
+                    }
+                    postazioneOvest.invalidate();
+                    postazioneOvest.validate();
+                } else {
+                    for (int i = 0; i < 2; i++)
+                        manoEst.mano.add(mazzo.pesca());
+                    }
+                    postazioneEst.invalidate();
+                    postazioneEst.validate();
+            if (Menu.cartaScarto.getV() == 13) {
+                Menu.firstTime = true;
+                Menu.rosso.setIcon(redLabel);Menu.giallo.setIcon(yellowLabel);Menu.verde.setIcon(greenLabel);Menu.blu.setIcon(blueLabel);
+                Menu.rosso.setEnabled(true);Menu.giallo.setEnabled(true);Menu.verde.setEnabled(true);Menu.blu.setEnabled(true);
+                Menu.postazioneColori.invalidate();
+                Menu.postazioneColori.validate();
+            }
+            if (Menu.cartaScarto.getV() == 14) {
+                Menu.firstTime = true;
+                if (Menu.turno == 1) {
+                    for (int i = 0; i < 4; i++)
+                        manoOvest.mano.add(mazzo.pesca());
+                
+                    postazioneOvest.invalidate();
+                    postazioneOvest.validate();
+                } else {
+                    for (int i = 0; i < 4; i++) manoEst.mano.add(mazzo.pesca());
+                  
+                    postazioneEst.invalidate();
+                    postazioneEst.validate();
+                }
+                Menu.rosso.setEnabled(true);Menu.giallo.setEnabled(true);Menu.verde.setEnabled(true);Menu.blu.setEnabled(true);
+            }            
+            if (mano.mano.size()==0) {
+                Database db2 = Database.getInstance();
+                db2.updateBD2(nomeutente, true);
+            }
     }
     
 }
