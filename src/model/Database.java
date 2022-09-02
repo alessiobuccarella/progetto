@@ -23,7 +23,7 @@ public class Database {
         }
         return singleton;
     }
-    
+
     public void insertDB(String nick, String img) {
         if (nick.equals("") || nick.equals(null)) {
             JOptionPane.showMessageDialog(null, "Nickname Obbligatorio");
@@ -130,7 +130,7 @@ public class Database {
             }
         }
     }
-    
+
     public Profilo cercaProfilo(String nick) {
         try {
             String query = "SELECT * FROM jUno.Profilo WHERE nickname = '" + nick + "'";
@@ -159,7 +159,7 @@ public class Database {
                         + " (`nickname`, `avatar`)"
                         + " VALUES ('" + nick + "','" + img + "')";
                 statement.executeUpdate(query1);
-                
+
             Profilo profilo = new Profilo();
             profilo.setNickname(nick);
             profilo.setAvatarImg(img);
@@ -167,7 +167,7 @@ public class Database {
             profilo.setPartiteGiocate(0);
             profilo.setPartitePerse(0);
             profilo.setPartiteVinte(0);
-            
+
             return profilo;
         } catch (SQLException e2) {
             switch (e2.getSQLState()) {
@@ -175,7 +175,7 @@ public class Database {
                     JOptionPane.showMessageDialog(null, "Nickname deve essere lungo massimo 45 caratteri");
                     break;
                 case "23000":
-                    JOptionPane.showMessageDialog(null, "Nickname già  in uso");
+                    JOptionPane.showMessageDialog(null, "Nickname giï¿½ in uso");
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "" + e2);
@@ -183,7 +183,7 @@ public class Database {
         }
         return null;
     }
-    
+
     public void close() {
     	if ( this.connection != null  ) {
     		try {

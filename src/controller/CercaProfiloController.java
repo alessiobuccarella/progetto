@@ -23,7 +23,8 @@ public class CercaProfiloController {
 				Profilo profilo = db.cercaProfilo(nickname);
 				if ( profilo != null ) {
 					profiloPanel.printProfilo(profilo);
-					cardLayout.show(parent, "profilo");
+					JOptionPane.showMessageDialog(null, "Benvenuto " + nickname);
+					cardLayout.show(parent, "inizio2");
 				} else {
 					JOptionPane.showMessageDialog(null, "Nessun profilo trovato per con il nickaname " + nickname);
 				}

@@ -31,7 +31,8 @@ public class MainFrame extends JFrame {
         CercaProfiloPanel cercaProfilo = new CercaProfiloPanel();
         NuovoProfiloPanel nuovoProfilo = new NuovoProfiloPanel();
         ProfiloPanel profilo = new ProfiloPanel();
-        MenuPanel menuPanel = new MenuPanel();
+        MenuPanel inizio2 = new MenuPanel();
+        ConfiguraPanel configuraPartita = new ConfiguraPanel();
         
         // initialize user controller
         new CercaProfiloController(cercaProfilo, profilo, cardLayout, MainFrame.this.getContentPane());
@@ -43,7 +44,8 @@ public class MainFrame extends JFrame {
         add(cercaProfilo, "cercaProfilo");
         add(nuovoProfilo, "nuovoProfilo");
         add(profilo, "profilo");
-        add(menuPanel, "menu");
+        add(inizio2, "inizio2");
+        add(configuraPartita, "configuraPartita");
 
         //azioni inzioPanel
         inzioPanel.caricaProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "cercaProfilo")); 
@@ -54,18 +56,17 @@ public class MainFrame extends JFrame {
         });
         
         cercaProfilo.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio"));
-        
         nuovoProfilo.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio"));
-        
-        profilo.indietro(e -> cardLayout.show(MainFrame.this.getContentPane(), "menu"));
-        
-        menuPanel.esci(e -> {
-        	Database.getInstance().close();
-        	System.exit(0);
+        profilo.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio2"));
+
+        inizio2.opzioniProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "profilo"));
+        inizio2.nuovaPartita(e -> cardLayout.show(MainFrame.this.getContentPane(), "configuraPartita"));
+        inizio2.esci(e -> {
+            Database.getInstance().close();
+            System.exit(0);
         });
-        
-        //menuPanel.nuovaPartita va sul pannello della partita
-        menuPanel.opzioniProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "profilo"));
+
+        configuraPartita.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio2"));
         
     }
 }
