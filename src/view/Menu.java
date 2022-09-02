@@ -667,21 +667,29 @@ public class Menu extends JFrame {
         coloreRosso.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
               cartaScarto.setC(0);
+              Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
+              
             }
         });
         coloreGiallo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
               cartaScarto.setC(1);
+              Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
+              
             }
         });
         coloreVerde.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
               cartaScarto.setC(2);
+              Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
+              
             }
         });
         coloreBlu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
               cartaScarto.setC(3);
+              Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
+              
             }
         });
         for (JButton posto : posti) {

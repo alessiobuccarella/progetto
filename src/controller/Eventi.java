@@ -66,25 +66,25 @@ public class Eventi {
             if (Menu.cartaScarto.getV() == 12) {
                 Menu.firstTime = true;
                 if (Menu.turno %4== 1) {
-                   // for (int i = 0; i < 2; i++)
-                     //   manoOvest.mano.add(mazzo.pesca());
+                    for (int i = 0; i < 2; i++)
+                        manoOvest.mano.add(mazzo.pesca());
                     //postazioneOvest.removeAll();
                     //for (Carta y : manoOvest.mano) {
                      //   postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
                       //  postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));
                     }
-                    //postazioneOvest.invalidate();
-                    //postazioneOvest.validate();
+                    postazioneOvest.invalidate();
+                    postazioneOvest.validate();
                 } else {
-                    //for (int i = 0; i < 2; i++)
-                      //  manoEst.mano.add(mazzo.pesca());
+                    for (int i = 0; i < 2; i++)
+                        manoEst.mano.add(mazzo.pesca());
                    // postazioneEst.removeAll();
                   //  for (Carta y : manoEst.mano) {
                     //    postazioneEst.add(new JLabel(new ImageIcon("./src/immagini/dorso90s.png")));
                       //  postazioneEst.add(Box.createRigidArea(new Dimension(0, 5)));
                     }
-                    //postazioneEst.invalidate();
-                    //postazioneEst.validate();
+                    postazioneEst.invalidate();
+                    postazioneEst.validate();
               //  }
          //   }
             if (Menu.cartaScarto.getV() == 13) {
@@ -99,20 +99,20 @@ public class Eventi {
                 if (Menu.turno == 1) {
                     for (int i = 0; i < 4; i++)
                         manoOvest.mano.add(mazzo.pesca());
-                    postazioneOvest.removeAll();
-                    for (Carta y : manoOvest.mano) {
-                        postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
-                        postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));
-                    }
+                  //  postazioneOvest.removeAll();
+                   // for (Carta y : manoOvest.mano) {
+                    //    postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
+                     //   postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));
+                   // }
                     postazioneOvest.invalidate();
                     postazioneOvest.validate();
                 } else {
                     for (int i = 0; i < 4; i++) manoEst.mano.add(mazzo.pesca());
-                    postazioneEst.removeAll();
-                    for (Carta y : manoEst.mano) {
-                        postazioneEst.add(new JLabel(new ImageIcon("./src/immagini/dorso90s.png")));
-                        postazioneEst.add(Box.createRigidArea(new Dimension(0, 5)));
-                    }
+                   // postazioneEst.removeAll();
+                    //for (Carta y : manoEst.mano) {
+                     //   postazioneEst.add(new JLabel(new ImageIcon("./src/immagini/dorso90s.png")));
+                      //  postazioneEst.add(Box.createRigidArea(new Dimension(0, 5)));
+                    //}
                     postazioneEst.invalidate();
                     postazioneEst.validate();
                 }
