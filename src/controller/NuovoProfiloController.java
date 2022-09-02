@@ -29,6 +29,7 @@ public class NuovoProfiloController {
             if ( profilo != null ) {
             	profiloPanel.printProfilo(profilo);
             	cardLayout.show(parent, "nuovoProfilo");
+            	
             } else {
             	JOptionPane.showMessageDialog(null, "Errore nella creazione del profilo");
             }

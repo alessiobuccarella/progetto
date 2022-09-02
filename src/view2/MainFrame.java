@@ -65,7 +65,7 @@ public class MainFrame extends JFrame {
         });
         
         //menuPanel.nuovaPartita va sul pannello della partita
-        //menuPanel.opzioniProfilo  legge il profilo e 
+        menuPanel.opzioniProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "profilo"));
         
     }
 }
