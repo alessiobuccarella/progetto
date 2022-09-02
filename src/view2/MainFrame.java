@@ -33,7 +33,7 @@ public class MainFrame extends JFrame {
         ProfiloPanel profilo = new ProfiloPanel();
         MenuPanel inizio2 = new MenuPanel();
         ConfiguraPanel configuraPartita = new ConfiguraPanel();
-        
+        PartitaPanel partitaPanel = new PartitaPanel();
         // initialize user controller
         new CercaProfiloController(cercaProfilo, profilo, cardLayout, MainFrame.this.getContentPane());
         new NuovoProfiloController(nuovoProfilo, profilo, cardLayout, MainFrame.this.getContentPane());
@@ -46,6 +46,7 @@ public class MainFrame extends JFrame {
         add(profilo, "profilo");
         add(inizio2, "inizio2");
         add(configuraPartita, "configuraPartita");
+        add(partitaPanel, "partitaPanel");
 
         //azioni inzioPanel
         inzioPanel.caricaProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "cercaProfilo")); 
@@ -67,7 +68,7 @@ public class MainFrame extends JFrame {
         });
 
         configuraPartita.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio2"));
-        
+        configuraPartita.classica(e -> cardLayout.show(MainFrame.this.getContentPane(), "partitaPanel"));
     }
 }
 

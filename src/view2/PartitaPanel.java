@@ -1,6 +1,8 @@
 package view2;
 
 import controller.DisegnaCarta;
+import controller.Eventi;
+import model.Carta;
 import model.Mano;
 import model.Mazzo;
 import view.Campo;
@@ -8,9 +10,15 @@ import view.Piatto;
 import view.Postazione;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 
 public class PartitaPanel extends JPanel {
+	private boolean firstTime = true;
+	private int turno;
+	private Carta cartaScarto = new Carta(0, 0);
     public PartitaPanel(){
         JLabel redLabel = new JLabel(new ImageIcon("./src/immagini/0.png"));
         JLabel yellowLabel = new JLabel(new ImageIcon("./src/immagini/1.png"));
@@ -57,11 +65,7 @@ public class PartitaPanel extends JPanel {
             postazione.add(posti.get(i));
         Postazione postazioneOvest = new Postazione(0);
         Postazione postazioneEst = new Postazione(0);
-        //campo.add(postazioneOvest, BorderLayout.WEST);
-        for (int i = 0; i < 7; i++) {
-            // postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
-            // postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));
-        }
+    
         postazioneEst.setBackground(null);
         postazioneEst.setOpaque(false);
         postazioneOvest.setBackground(null);
@@ -163,5 +167,76 @@ public class PartitaPanel extends JPanel {
         gbc10.gridy=5;
         gbc10.weighty=2;
         tavolo.add(postazione,gbc10);
+        
+        
+        ActionListener avanti = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                repaint();
+                if (firstTime == false)
+                    Eventi.avanti(gbc10, turno, manoOvest, manoNord, manoEst, tavolo, postazioneOvest, postazioneNord, postazioneEst, mazzo, postazione, mano,postazionePiatto);
+                else {
+                    firstTime = false;
+                }
+            }
+        };
+        Timer t = new Timer(3000, avanti);
+        passo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println();
+            	
+                repaint();
+                t.start();
+                Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
+            }
+        });
+        coloreRosso.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+              cartaScarto.setC(0);
+              Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
+              
+            }
+        });
+        coloreGiallo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+              cartaScarto.setC(1);
+              Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
+              
+            }
+        });
+        coloreVerde.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+              cartaScarto.setC(2);
+              Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
+              
+            }
+        });
+        coloreBlu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+              cartaScarto.setC(3);
+              Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
+              
+            }
+        });
+        for (JButton posto : posti) {
+            posto.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    repaint();
+                    	t.start();
+                    	Eventi.cliccato(gbc10, mano, postazione.getComponentZOrder(posto), posto, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, posti, mazzo,postazionePiatto);
+                    	if (cartaScarto.getC()==4)
+                            t.stop();
+                    }
+            }); 
+            posto.addMouseListener(new MouseAdapter() {
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    posto.setLocation(posto.getX(), posto.getY()-5);
+                }
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    posto.setLocation(posto.getX(), posto.getY()+5);
+                }
+            });
+        }
+        
     }
+    
 }

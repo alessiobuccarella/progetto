@@ -45,4 +45,7 @@ public class ConfiguraPanel extends JPanel {
     public void paginaPrec(ActionListener actionListener) {
         indietroButton.addActionListener(actionListener);
     }
+    public void classica(ActionListener actionListener) {
+    	classica.addActionListener(actionListener);
+    }
 }

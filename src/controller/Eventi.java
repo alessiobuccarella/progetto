@@ -25,16 +25,13 @@ public class Eventi {
 	public static boolean contrattaccoAttivo;
 	private static boolean pescato=false;
     public static void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo, Postazione postazionePiatto) {
-    	//System.out.println("hai cliccato "+mano.mano.get(indiceCarta).getV()+" "+mano.mano.get(indiceCarta).getC()+" CONTRO "+Menu.cartaScarto.getV());
     	if (mano.mano.size()>1) Menu.deviGridareUno=false;
     	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false) {
     		System.out.println("Penalità: non hai gridato 1!");
     		mano.mano.add(mazzo.pesca());
-           // posti.set(mano.mano.size() - 1,new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-            posti.get(mano.mano.size() - 1).setBorder(null);
+             posti.get(mano.mano.size() - 1).setBorder(null);
             mano.mano.add(mazzo.pesca());
-           // posti.set(mano.mano.size() - 1,new JLabel(new ImageIcon(mano.mano.get(mano.mano.size() - 1).getPath())));
-            posti.get(mano.mano.size() - 1).setBorder(null);
+           posti.get(mano.mano.size() - 1).setBorder(null);
     	}
     	if ((mano.mano.get(indiceCarta).getC() == Menu.cartaScarto.getC() || mano.mano.get(indiceCarta).getV() == Menu.cartaScarto.getV() || mano.mano.get(indiceCarta).getC() == 4)&&(Menu.turno%4==0)) {
     		
@@ -71,25 +68,15 @@ public class Eventi {
                 if (Menu.turno %4== 1) {
                     for (int i = 0; i < 2; i++)
                         manoOvest.mano.add(mazzo.pesca());
-                    //postazioneOvest.removeAll();
-                    //for (Carta y : manoOvest.mano) {
-                     //   postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
-                      //  postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));
                     }
                     postazioneOvest.invalidate();
                     postazioneOvest.validate();
                 } else {
                     for (int i = 0; i < 2; i++)
                         manoEst.mano.add(mazzo.pesca());
-                   // postazioneEst.removeAll();
-                  //  for (Carta y : manoEst.mano) {
-                    //    postazioneEst.add(new JLabel(new ImageIcon("./src/immagini/dorso90s.png")));
-                      //  postazioneEst.add(Box.createRigidArea(new Dimension(0, 5)));
                     }
                     postazioneEst.invalidate();
                     postazioneEst.validate();
-              //  }
-         //   }
             if (Menu.cartaScarto.getV() == 13) {
                 Menu.firstTime = true;
                 Menu.rosso.setIcon(redLabel);Menu.giallo.setIcon(yellowLabel);Menu.verde.setIcon(greenLabel);Menu.blu.setIcon(blueLabel);
@@ -102,20 +89,12 @@ public class Eventi {
                 if (Menu.turno == 1) {
                     for (int i = 0; i < 4; i++)
                         manoOvest.mano.add(mazzo.pesca());
-                  //  postazioneOvest.removeAll();
-                   // for (Carta y : manoOvest.mano) {
-                    //    postazioneOvest.add(new JLabel(new ImageIcon("./src/immagini/dorso90.png")));
-                     //   postazioneOvest.add(Box.createRigidArea(new Dimension(0, 5)));
-                   // }
+                
                     postazioneOvest.invalidate();
                     postazioneOvest.validate();
                 } else {
                     for (int i = 0; i < 4; i++) manoEst.mano.add(mazzo.pesca());
-                   // postazioneEst.removeAll();
-                    //for (Carta y : manoEst.mano) {
-                     //   postazioneEst.add(new JLabel(new ImageIcon("./src/immagini/dorso90s.png")));
-                      //  postazioneEst.add(Box.createRigidArea(new Dimension(0, 5)));
-                    //}
+                  
                     postazioneEst.invalidate();
                     postazioneEst.validate();
                 }
