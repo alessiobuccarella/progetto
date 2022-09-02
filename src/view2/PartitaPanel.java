@@ -50,7 +50,7 @@ public class PartitaPanel extends JPanel {
         ImageIcon avatar2png = new ImageIcon("./src/immagini/avatar1.png");
         ImageIcon avatar3png = new ImageIcon("./src/immagini/avatar1.png");
         JButton scartoButton = new JButton();
-
+        
         for (int i=0;i<mano.mano.size();i++)
             posti.set(i, DisegnaCarta.disegnaCarta(mano.mano.get(i)));
         for (int i=0;i<mano.mano.size();i++)
