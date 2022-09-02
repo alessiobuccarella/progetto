@@ -107,6 +107,7 @@ public class PartitaPanel extends JPanel {
         JLabel foto = new JLabel(avatar1png);
         JLabel foto1 = new JLabel(avatar2png);
         JLabel foto2 = new JLabel(avatar3png);
+     
        
         GridBagConstraints gbc10= new GridBagConstraints();
         this.add(tavolo, BorderLayout.CENTER);
@@ -201,7 +202,7 @@ public class PartitaPanel extends JPanel {
         gbc10.gridx=4;
         gbc10.gridy=6;
         gbc10.weighty=2;
- ///////tavolo.add(new JLabel(ProfiloPanel.getAvatar(profilo)),gbc10);
+ ///////tavolo.add(xxxxxx,gbc10);
         
         
         ActionListener avanti = new ActionListener() {
