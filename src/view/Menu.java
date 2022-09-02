@@ -479,7 +479,7 @@ public class Menu extends JFrame {
         gbc10.gridx=9;
         gbc10.gridy=4;
         gbc10.weighty=1;
-        gbc10.weightx=0;
+        gbc10.weightx=1;
         gbc10.gridwidth=1;
         tavolo.add(foto2,gbc10);
         
@@ -487,7 +487,8 @@ public class Menu extends JFrame {
         gbc10.anchor=GridBagConstraints.PAGE_START;
         gbc10.gridx=5;
         gbc10.gridy=5;
-        gbc10.weighty=2;
+        gbc10.weightx=0;
+        gbc10.weighty=1;
         //gbc10.gridwidth=4;
        
         //for(JButton colore:colori)postazioneColori.add(colore);
