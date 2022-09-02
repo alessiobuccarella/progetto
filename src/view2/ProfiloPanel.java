@@ -77,13 +77,18 @@ public class ProfiloPanel extends JPanel {
         Image newimg4 = image4.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar4png = new ImageIcon(newimg4);
         this.myavatar.setIcon(avatar4png);
+      
         this.livello.setText("LIVELLO: " + profilo.getLivello());
         this.partiteGiocate.setText("PARTITE GIOCATE: " + profilo.getPartiteGiocate());
         this.partitePerse.setText("PARTITE PERSE: " + profilo.getPartitePerse());
         this.partiteVinte.setText("PARTITE VINTE: " + profilo.getPartiteVinte());
 	}
 	
+	
+	
     public void paginaPrec(ActionListener actionListener) {
     	indietroButton.addActionListener(actionListener);
     }
+
 }
+

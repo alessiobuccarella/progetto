@@ -114,14 +114,14 @@ public class PartitaPanel extends JPanel {
         JButton passo = new JButton("PASSO");
 
         gbc10.anchor=GridBagConstraints.PAGE_START;
-        gbc10.gridx=5;
+        gbc10.gridx=4;
         gbc10.gridy=0;
-        gbc10.weightx=0.0;
+        gbc10.weightx=0.7;
         gbc10.weighty=0;
         gbc10.gridwidth=3;
         tavolo.add(foto1,gbc10);
-        gbc10.gridx=5;
-        gbc10.gridy=2;
+        gbc10.gridx=4;
+        gbc10.gridy=1;
         gbc10.weightx=0.0;
         gbc10.weighty=0;
         gbc10.gridwidth=3;
@@ -197,6 +197,11 @@ public class PartitaPanel extends JPanel {
         gbc10.gridy=5;
         gbc10.weighty=2;
         tavolo.add(postazione,gbc10);
+        gbc10.anchor=GridBagConstraints.PAGE_START;
+        gbc10.gridx=4;
+        gbc10.gridy=6;
+        gbc10.weighty=2;
+ ///////tavolo.add(new JLabel(ProfiloPanel.getAvatar(profilo)),gbc10);
         
         
         ActionListener avanti = new ActionListener() {
