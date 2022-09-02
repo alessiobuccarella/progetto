@@ -469,14 +469,15 @@ public class Menu extends JFrame {
         tavolo.add(postazioneOvest,gbc10);
         postazioneOvest.add((new JLabel(new ImageIcon("./src/immagini/dorsosx7.png"))),gbc10);
         ///////////////////////////////////////////////////////destra
-        gbc10.gridx=6;
+        gbc10.gridx=7;
         gbc10.gridy=4;
         gbc10.weighty=1;
         gbc10.weightx=1;
         gbc10.gridwidth=3;
+        gbc10.anchor=GridBagConstraints.PAGE_END;
         tavolo.add(postazioneEst,gbc10);
         postazioneEst.add((new JLabel(new ImageIcon("./src/immagini/dorsodx7.png"))),gbc10);
-        gbc10.gridx=9;
+        gbc10.gridx=10;
         gbc10.gridy=4;
         gbc10.weighty=1;
         gbc10.weightx=1;
@@ -489,7 +490,7 @@ public class Menu extends JFrame {
         gbc10.gridy=5;
         gbc10.weightx=0;
         gbc10.weighty=1;
-        //gbc10.gridwidth=4;
+        gbc10.gridwidth=1;
        
         //for(JButton colore:colori)postazioneColori.add(colore);
         tavolo.add(postazione,gbc10);
