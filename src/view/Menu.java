@@ -1,6 +1,8 @@
 package view;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+
 import java.awt.*;
 import controller.DisegnaCarta;
 import controller.Eventi;
@@ -38,6 +40,10 @@ public class Menu extends JFrame {
     private JPanel account;
     public static JTextField textnickname, textnickname2;
     public static ImageIcon avatar1png, avatar2png, avatar3png, tastouno;
+    public static JLabel foto;
+    public static JLabel foto1;
+    public static JLabel foto2;
+    public static JLabel foto3;
 	JButton coloreVerde;
 	JButton coloreBlu;
 	JButton coloreGiallo;
@@ -383,10 +389,10 @@ public class Menu extends JFrame {
         tavolo = new Piatto();
         
         //piatto.setBackground(colore);
-        JLabel foto = new JLabel(avatar1png);
-        JLabel foto1 = new JLabel(avatar2png);
-        JLabel foto2 = new JLabel(avatar3png);
-        JLabel foto3 = new JLabel(fotoProfilo);
+        foto = new JLabel(avatar1png);
+        foto1 = new JLabel(avatar2png);
+        foto2 = new JLabel(avatar3png);
+        foto3 = new JLabel(fotoProfilo);
         GridBagConstraints gbc10= new GridBagConstraints();
         campo.add(tavolo, BorderLayout.CENTER);
         
@@ -655,10 +661,11 @@ public class Menu extends JFrame {
               
             }
         });
-        Timer t = new Timer(1000, avanti);
+        Timer t = new Timer(3000, avanti);
         passo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println();
+            	
                 repaint();
                 t.start();
                 Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
@@ -735,6 +742,7 @@ public class Menu extends JFrame {
               tavolo.invalidate();
               tavolo.validate();
     }
+   
     public void setNomeProfilo(String nomeProfilo) {
     	this.nomeProfilo=nomeProfilo;
     }

@@ -1,5 +1,6 @@
 package controller;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.util.ArrayList;
@@ -8,6 +9,8 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.border.LineBorder;
+
 import model.*;
 import view.Menu;
 import view.Piatto;
@@ -127,15 +130,20 @@ public class Eventi {
     public static void avanti(GridBagConstraints gbc10, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, Mazzo mazzo, Postazione postazione, Mano mano,Postazione postazionePiatto) {
         switch (turno%4) {
             case 1:
-                mossaOvest( gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
+            	Menu.foto.setBorder(new LineBorder(Color.BLUE, 12));Menu.foto1.setBorder(null);Menu.foto2.setBorder(null);Menu.foto3.setBorder(null);
+            	mossaOvest( gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);           
                 break;
             case 2:
+            	Menu.foto1.setBorder(new LineBorder(Color.BLUE, 12));Menu.foto.setBorder(null);Menu.foto2.setBorder(null);Menu.foto3.setBorder(null);
                 mossaNord(gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
                 break;
             case 3:
+            	Menu.foto2.setBorder(new LineBorder(Color.BLUE, 12));Menu.foto1.setBorder(null);Menu.foto.setBorder(null);Menu.foto3.setBorder(null);            	
                 mossaEst(gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
                 break;
             default:
+            	Menu.foto3.setBorder(new LineBorder(Color.BLUE, 12));Menu.foto1.setBorder(null);Menu.foto2.setBorder(null);Menu.foto.setBorder(null);
+            	
                 break;
         }
     }
@@ -183,7 +191,7 @@ public class Eventi {
         if (Menu.senso == Senso.ANTIORARIO&&Menu.cartaScarto.getV() != 10&&Menu.cartaScarto.getV() != 11)
             Menu.turno -= 1;
         Carta x=cartaUtile(mano);
-               
+        //if (Menu.turno%4==0) Menu.evidenzia(0);     
         if (Menu.turno%4==0&&x==null) {System.out.println("non hai la carta da giocare");Menu.pesca(mazzo, mano);}
     }
     //aggiorna le man dei giocatori in caso di una carta speciale
@@ -229,24 +237,10 @@ public class Eventi {
         
          }*/
     }
-    public static boolean contrattacco(Mano mano) 
-    {
-    	for(Carta z:mano.mano)if (z.getV()==12||z.getV()==14)return true;
-    	return false;
-    }
+    
     public static void aggiornaSpecialeUmano(Mano mano,Mazzo mazzo,Carta x,Postazione postazione)
     {
-    	if (x.getV()==12) {
-          if (contrattacco(mano)==false)
-          {
-            Menu.pesca(mazzo, mano);
-            Menu.pesca(mazzo, mano);
-          }
-          else 
-          {
-        	  contrattaccoAttivo=true;
-          }
-        }
+    	
     	if (x.getV()==13) {
             Menu.cartaScarto.setC((int)(Math.random()*4));
             System.out.println(Menu.cartaScarto.getC());
@@ -254,7 +248,7 @@ public class Eventi {
     	if (x.getV()==14) {
             Menu.cartaScarto.setC((int)(Math.random()*4));
             System.out.println(Menu.cartaScarto.getC());
-            System.out.print("considero che la tua mano è: "+mano.mano.toString());
+            System.out.print("la tua mano è: "+mano.mano.toString());
             Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);
             Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);
             System.out.println(" e dopo diventa: "+mano.mano.toString());
@@ -432,6 +426,7 @@ public class Eventi {
         if (manoEst.mano.size()==0) {
             Database db2 = Database.getInstance();
         }
+        
         System.out.println("turno: "+Menu.turno);
     }
     public static void passo(GridBagConstraints gbc10,Mano mano, int i, JButton posto0, Postazione postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, Mazzo mazzo, Postazione postazionePiatto) {
