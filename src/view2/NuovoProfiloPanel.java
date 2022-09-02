@@ -14,6 +14,9 @@ public class NuovoProfiloPanel extends JPanel {
     private JButton inviaButton;
     private JButton indietroButton;
     private BarraAudio audio;
+    private JToggleButton radio1;
+    private JToggleButton radio2;
+    private JToggleButton radio3;
 
     public NuovoProfiloPanel(){
         JPanel nickname = new JPanel();
@@ -36,19 +39,19 @@ public class NuovoProfiloPanel extends JPanel {
         Image image1 = avatar1png.getImage();
         Image newimg1 = image1.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar1png = new ImageIcon(newimg1);
-        JToggleButton radio1 = new JToggleButton(avatar1png);
+        radio1 = new JToggleButton(avatar1png);
         radio1.setName("Avatar1");
         ImageIcon avatar2png = new ImageIcon("./src/immagini/avatar2.png");
         Image image2 = avatar2png.getImage();
         Image newimg2 = image2.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar2png = new ImageIcon(newimg2);
-        JToggleButton radio2 = new JToggleButton(avatar2png);
+        radio2 = new JToggleButton(avatar2png);
         radio2.setName("Avatar2");
         ImageIcon avatar3png = new ImageIcon("./src/immagini/avatar3.png");
         Image image3 = avatar3png.getImage();
         Image newimg3 = image3.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar3png = new ImageIcon(newimg3);
-        JToggleButton radio3 = new JToggleButton(avatar3png);
+        radio3 = new JToggleButton(avatar3png);
         radio2.setName("Avatar3");
         avatari.add(radio1);
         avatari.add(radio2);
@@ -81,9 +84,18 @@ public class NuovoProfiloPanel extends JPanel {
         return this.textnickname.getText();
     }
     
-    public String getVatarImg() {
-    	//FIXME: prendere l'immagine scelta
-    	return "./src/immagini/avatar1.png";
+    public String getAvatar() {
+    	String img = null;
+        if(radio1.isSelected()){
+            img = "./src/immagini/avatar1.png";
+        }
+        if (radio2.isSelected()){
+            img = "./src/immagini/avatar2.png";
+        }
+        if (radio3.isSelected()){
+            img = "./src/immagini/avatar3.png";
+        }
+        return img;
     }
 
     public void creaProfilo(ActionListener actionListener) {

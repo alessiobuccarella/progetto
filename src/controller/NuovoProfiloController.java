@@ -18,7 +18,7 @@ public class NuovoProfiloController {
                 JOptionPane.showMessageDialog(null, "Nickname Obbligatorio");
                 return;
             }
-            String avatarImg = nuovoProfiloPanel.getVatarImg();
+            String avatarImg = nuovoProfiloPanel.getAvatar();
             if (avatarImg.equals("") || avatarImg.equals(null)) {
                 JOptionPane.showMessageDialog(null, "Avatar Obbligatorio");
                 return;
