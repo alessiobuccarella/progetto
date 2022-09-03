@@ -207,12 +207,13 @@ public class PartitaPanel extends JPanel {
         
         ActionListener avanti = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	
                 repaint();
-                if (firstTime == false)
+                //if (firstTime == false)
                     Eventi.avanti(gbc10, turno, manoOvest, manoNord, manoEst, tavolo, postazioneOvest, postazioneNord, postazioneEst, mazzo, postazione, mano,postazionePiatto);
-                else {
-                    firstTime = false;
-                }
+               // else {
+                //    firstTime = false;
+                //}
             }
         };
         Timer t = new Timer(3000, avanti);
@@ -284,7 +285,7 @@ public class PartitaPanel extends JPanel {
            posti.get(mano.mano.size() - 1).setBorder(null);
     	}
     	if ((mano.mano.get(indiceCarta).getC() == cartaScarto.getC() || mano.mano.get(indiceCarta).getV() == cartaScarto.getV() || mano.mano.get(indiceCarta).getC() == 4)&&(Menu.turno%4==0)) {
-    		
+    		System.out.println("ok");
     		cartaScarto=mano.mano.get(indiceCarta);postazionePiatto.remove(scartoButton);scartoButton=DisegnaCarta.disegnaCarta(cartaScarto);
     	    gbc10.anchor=GridBagConstraints.LINE_END;
             gbc10.weightx=0;
