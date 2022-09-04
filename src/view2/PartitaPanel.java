@@ -8,6 +8,8 @@ import model.Mano;
 import model.Mazzo;
 import model.Senso;
 import view.Menu;
+import view.Piatto;
+import view.Postazione;
 
 import javax.swing.*;
 
