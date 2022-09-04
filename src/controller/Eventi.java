@@ -384,6 +384,6 @@ public class Eventi {
             Menu.turno = 3;
         if (Menu.senso == Senso.ORARIO)
             Menu.turno = 1;
-        avanti(gbc10, turno, manoOvest, manoNord, manoEst, piatto, postazioneOvest, postazioneNord, postazioneEst, mazzo, postazioneNord, manoEst,postazionePiatto);
+       // avanti(gbc10, turno, manoOvest, manoNord, manoEst, piatto, postazioneOvest, postazioneNord, postazioneEst, mazzo, postazioneNord, manoEst,postazionePiatto);
     }
 }

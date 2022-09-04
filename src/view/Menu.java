@@ -478,7 +478,7 @@ public class Menu extends JFrame {
         gbc10.weighty=1;
         gbc10.weightx=1;
         gbc10.gridwidth=3;
-        gbc10.anchor=GridBagConstraints.PAGE_END;
+        gbc10.anchor=GridBagConstraints.LAST_LINE_END;
         tavolo.add(postazioneEst,gbc10);
         postazioneEst.add((new JLabel(new ImageIcon("./src/immagini/dorsodx7.png"))),gbc10);
         gbc10.gridx=10;
@@ -512,11 +512,13 @@ public class Menu extends JFrame {
         ActionListener avanti = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 repaint();
+                /**
                 if (firstTime == false)
                     Eventi.avanti(gbc10, turno, manoOvest, manoNord, manoEst, tavolo, postazioneOvest, postazioneNord, postazioneEst, mazzo, postazione, mano,postazionePiatto);
                 else {
                     firstTime = false;
                 }
+                */
             }
         };
         this.nuovoProfilo.addActionListener(new ActionListener() {
