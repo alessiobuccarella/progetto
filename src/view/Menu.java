@@ -1,7 +1,6 @@
 package view;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 
 import java.awt.*;
 import controller.DisegnaCarta;
@@ -11,6 +10,11 @@ import model.Database;
 import model.Mano;
 import model.Mazzo;
 import model.Senso;
+import view2.BarraAudio;
+import view2.Campo;
+import view2.Piatto;
+import view2.Postazione;
+
 import java.awt.event.*;
 import java.util.ArrayList;
 import static model.Database.*;
@@ -29,7 +33,7 @@ public class Menu extends JFrame {
     private Postazione postazioneNord;
     private static Postazione postazioneOvest;
     private Postazione postazioneEst;
-    private static  Piatto tavolo;
+    private static Piatto tavolo;
     public static Senso senso = Senso.ORARIO;
     private Color colore = new Color(255, 0, 0);
     public static JButton uno;

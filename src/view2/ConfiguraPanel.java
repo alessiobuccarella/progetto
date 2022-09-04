@@ -1,7 +1,5 @@
 package view2;
 
-import view.BarraAudio;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;

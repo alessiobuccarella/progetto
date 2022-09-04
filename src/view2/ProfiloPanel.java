@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import model.Database;
 import model.Profilo;
-import view.BarraAudio;
 
 public class ProfiloPanel extends JPanel {
 

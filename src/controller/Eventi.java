@@ -1,20 +1,15 @@
 package controller;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.util.ArrayList;
-import javax.swing.Box;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.border.LineBorder;
-
 import model.*;
 import view.Menu;
-import view.Piatto;
-import view.Postazione;
+import view2.Piatto;
+import view2.Postazione;
 import static view.Menu.nomeutente;
 
 public class Eventi {

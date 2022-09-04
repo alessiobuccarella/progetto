@@ -3,7 +3,6 @@ package view2;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionListener;
-import view.BarraAudio;
 
 public class CercaProfiloPanel extends JPanel {
 	

@@ -3,7 +3,6 @@ package view2;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import view.BarraAudio;
 
 public class InizioPanel extends JPanel {
 

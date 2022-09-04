@@ -11,8 +11,6 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import view.BarraAudio;
-
 public class MenuPanel extends JPanel {
 	
 	private static final long serialVersionUID = -6284533655497930757L;
