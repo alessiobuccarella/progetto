@@ -107,26 +107,7 @@ public class Eventi {
             }
     }
 
-    public static void avanti(GridBagConstraints gbc10, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, Mazzo mazzo, Postazione postazione, Mano mano,Postazione postazionePiatto) {
-        switch (turno%4) {
-            case 1:
-            	//Menu.foto.setBorder(new LineBorder(Color.RED, 5));Menu.foto1.setBorder(null);Menu.foto2.setBorder(null);Menu.foto3.setBorder(null);
-            	mossaOvest( gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);           
-                break;
-            case 2:
-            	//Menu.foto1.setBorder(new LineBorder(Color.RED, 5));Menu.foto.setBorder(null);Menu.foto2.setBorder(null);Menu.foto3.setBorder(null);
-                mossaNord(gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
-                break;
-            case 3:
-            	//Menu.foto2.setBorder(new LineBorder(Color.RED, 5));Menu.foto1.setBorder(null);Menu.foto.setBorder(null);Menu.foto3.setBorder(null);            	
-                mossaEst(gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
-                break;
-            default:
-            	//Menu.foto3.setBorder(new LineBorder(Color.RED, 5));Menu.foto1.setBorder(null);Menu.foto2.setBorder(null);Menu.foto.setBorder(null);
-            	
-                break;
-        }
-    }
+
     //cambia il senso del giro di mano
     public static void cambiaSenso() {
         if (Menu.senso == Senso.ANTIORARIO) Menu.senso = Senso.ORARIO;
@@ -287,7 +268,7 @@ public class Eventi {
         }
         System.out.println("turno: "+Menu.turno);
     }
-    private static void mossaNord(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst,Postazione postazionePiatto)
+    public static void mossaNord(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst,Postazione postazionePiatto)
     {	
         System.out.println("NORD: " + manoNord.mano.toString());
         Carta x=cartaUtile(manoNord);
