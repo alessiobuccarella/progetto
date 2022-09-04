@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class PartitaPanel extends JPanel {
 	Mazzo mazzo = new Mazzo();
 	private boolean firstTime = true;
-	private int turno;
+	private static int turno;
 	private static Carta cartaScarto = new Carta(0, 0);
 	static Icon redLabel = new ImageIcon("./src/immagini/0.png");
 	static Icon yellowLabel = new ImageIcon("./src/immagini/1.png");
@@ -210,6 +210,7 @@ public class PartitaPanel extends JPanel {
             	
                 repaint();
                 //if (firstTime == false)
+                System.out.println("turno: "+turno);
                     Eventi.avanti(gbc10, turno, manoOvest, manoNord, manoEst, tavolo, postazioneOvest, postazioneNord, postazioneEst, mazzo, postazione, mano,postazionePiatto);
                // else {
                 //    firstTime = false;
@@ -223,6 +224,7 @@ public class PartitaPanel extends JPanel {
             	
                 repaint();
                 t.start();
+                
                 Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
             }
         });
@@ -259,7 +261,7 @@ public class PartitaPanel extends JPanel {
                 public void actionPerformed(ActionEvent e) {
                     repaint();
                     	t.start();
-                    	cliccato(gbc10, mano, postazione.getComponentZOrder(posto), posto, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, posti, mazzo,postazionePiatto);
+                    	cliccato(gbc10, mano, postazione.getComponentZOrder(posto), posto, postazione, tavolo,  manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, posti, mazzo,postazionePiatto);
                     	if (cartaScarto.getC()==4)
                             t.stop();
                     }
@@ -275,7 +277,7 @@ public class PartitaPanel extends JPanel {
         }
         
     }
-    public static void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo, Postazione postazionePiatto) {
+    public static void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto,  Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo, Postazione postazionePiatto) {
     	if (mano.mano.size()>1) Menu.deviGridareUno=false;
     	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false) {
     		System.out.println("Penalità: non hai gridato 1!");
@@ -305,18 +307,18 @@ public class PartitaPanel extends JPanel {
     		}
             postazione.invalidate();
             postazione.validate();
-            if (Menu.cartaScarto.getV() == 11)
+            if (cartaScarto.getV() == 11)
                 Eventi.cambiaSenso();
             if (Menu.senso == Senso.ORARIO)
-                Menu.turno = 1;
+                turno = 1;
             if (Menu.senso == Senso.ANTIORARIO)
-                Menu.turno = 3;
-            if (Menu.cartaScarto.getV() == 10)
-                Menu.turno = 2;
+                turno = 3;
+            if (cartaScarto.getV() == 10)
+                turno = 2;
         }
             if (Menu.cartaScarto.getV() == 12) {
                 Menu.firstTime = true;
-                if (Menu.turno %4== 1) {
+                if (turno %4== 1) {
                     for (int i = 0; i < 2; i++)
                         manoOvest.mano.add(mazzo.pesca());
                     }
@@ -337,7 +339,7 @@ public class PartitaPanel extends JPanel {
             }
             if (Menu.cartaScarto.getV() == 14) {
                 Menu.firstTime = true;
-                if (Menu.turno == 1) {
+                if (turno == 1) {
                     for (int i = 0; i < 4; i++)
                         manoOvest.mano.add(mazzo.pesca());
                 
