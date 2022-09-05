@@ -14,7 +14,7 @@ public class Database {
             Database.singleton = this;
         }
         catch (SQLException e) {
-        	e.printStackTrace();
+            e.printStackTrace();
         }
     }
     public static Database getInstance(){
@@ -32,12 +32,12 @@ public class Database {
         } else {
             try {
                 Statement statement = connection.createStatement();
-                    String query1 = "INSERT INTO jUno.Profilo"
-                            + " (`nickname`, `avatar`)"
-                            + " VALUES ('" + nick + "','" + img + "')";
-                    statement.executeUpdate(query1);
-                    valido = true;
-                    valido2 = true;
+                String query1 = "INSERT INTO jUno.Profilo"
+                        + " (`nickname`, `avatar`)"
+                        + " VALUES ('" + nick + "','" + img + "')";
+                statement.executeUpdate(query1);
+                valido = true;
+                valido2 = true;
             } catch (SQLException e2) {
                 switch (e2.getSQLState()) {
                     case "22001":
@@ -61,7 +61,7 @@ public class Database {
             try {
                 try {
                     String query2 = "SELECT * FROM jUno.Profilo"
-                                  + " WHERE nickname = '" + nick + "'";
+                            + " WHERE nickname = '" + nick + "'";
                     Statement statement = connection.prepareStatement(query2);
                     ResultSet rs = statement.executeQuery(query2);
                     if (rs.next()) {
@@ -80,7 +80,7 @@ public class Database {
         try {
             try {
                 String query4 = "SELECT * FROM jUno.Profilo"
-                              + " WHERE nickname = '" + nickname + "'";
+                        + " WHERE nickname = '" + nickname + "'";
                 Statement statement = connection.prepareStatement(query4);
                 ResultSet rs = statement.executeQuery(query4);
                 if (rs.next()) {
@@ -105,8 +105,8 @@ public class Database {
                 Statement statement = connection.createStatement();
                 try {
                     String query3 = "UPDATE jUno.Profilo"
-                                  + " SET partite_giocate = partite_giocate + 1, partite_vinte = partite_vinte + 1"
-                                  + " WHERE nickname = '" + nickname + "'";
+                            + " SET partite_giocate = partite_giocate + 1, partite_vinte = partite_vinte + 1"
+                            + " WHERE nickname = '" + nickname + "'";
                     statement.executeUpdate(query3);
                 } catch (Exception e1) {
                     JOptionPane.showMessageDialog(null, "" + e1);
@@ -119,8 +119,8 @@ public class Database {
                 Statement statement = connection.createStatement();
                 try {
                     String query4 = "UPDATE jUno.Profilo"
-                                  + " SET partite_giocate = partite_giocate + 1, partite_perse = partite_perse + 1"
-                                  + " WHERE nickname = '" + nickname + "'";
+                            + " SET partite_giocate = partite_giocate + 1, partite_perse = partite_perse + 1"
+                            + " WHERE nickname = '" + nickname + "'";
                     statement.executeUpdate(query4);
                 } catch (Exception e1) {
                     JOptionPane.showMessageDialog(null, "" + e1);
@@ -135,30 +135,30 @@ public class Database {
         try {
             String query = "SELECT * FROM jUno.Profilo WHERE nickname = '" + nick + "'";
             Statement statement = connection.prepareStatement(query);
-	        ResultSet rs = statement.executeQuery(query);
-	        if (rs.next()) {
-	        	Profilo profilo = new Profilo();
-	        	profilo.setNickname(rs.getString(2));
-	        	profilo.setAvatarImg(rs.getString(3));
-	        	profilo.setLivello(rs.getInt(4));
-	        	profilo.setPartiteGiocate(rs.getInt(5));
-	        	profilo.setPartiteVinte(rs.getInt(6));
-	        	profilo.setPartitePerse(rs.getInt(7));
-	        	return profilo;
-	        }
+            ResultSet rs = statement.executeQuery(query);
+            if (rs.next()) {
+                Profilo profilo = new Profilo();
+                profilo.setNickname(rs.getString(2));
+                profilo.setAvatarImg(rs.getString(3));
+                profilo.setLivello(rs.getInt(4));
+                profilo.setPartiteGiocate(rs.getInt(5));
+                profilo.setPartiteVinte(rs.getInt(6));
+                profilo.setPartitePerse(rs.getInt(7));
+                return profilo;
+            }
         } catch (Exception e1) {
-			e1.printStackTrace();
-		}
-		return null;
+            e1.printStackTrace();
+        }
+        return null;
     }
-    
+
     public Profilo creaProfilo(String nick, String img) {
         try {
             Statement statement = connection.createStatement();
-                String query1 = "INSERT INTO jUno.Profilo"
-                        + " (`nickname`, `avatar`)"
-                        + " VALUES ('" + nick + "','" + img + "')";
-                statement.executeUpdate(query1);
+            String query1 = "INSERT INTO jUno.Profilo"
+                    + " (`nickname`, `avatar`)"
+                    + " VALUES ('" + nick + "','" + img + "')";
+            statement.executeUpdate(query1);
 
             Profilo profilo = new Profilo();
             profilo.setNickname(nick);
@@ -185,13 +185,13 @@ public class Database {
     }
 
     public void close() {
-    	if ( this.connection != null  ) {
-    		try {
-				this.connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    	}
+        if ( this.connection != null  ) {
+            try {
+                this.connection.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
     }
 }
