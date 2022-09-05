@@ -50,7 +50,7 @@ public class MainFrame extends JFrame {
         add(partitaPanel, "partitaPanel");
 
         AudioManager musicObject = new AudioManager();
-        musicObject.playMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/background_menu_audio.wav");
+
 
         inzioPanel.caricaProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "cercaProfilo")); 
         inzioPanel.nuovoProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "nuovoProfilo"));
@@ -74,7 +74,6 @@ public class MainFrame extends JFrame {
         configuraPartita.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio2"));
         AudioManager musicObject2 = new AudioManager();
         configuraPartita.classica(e -> {
-            musicObject.playMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/background_menu_audio.wav");
             musicObject2.playMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/background_game_audio.wav");
         });
         configuraPartita.classica(e -> cardLayout.show(MainFrame.this.getContentPane(), "partitaPanel"));

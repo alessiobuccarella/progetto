@@ -15,9 +15,6 @@ public class AudioManager {
                 Clip clip = AudioSystem.getClip();
                 clip.open(AudioSystem.getAudioInputStream(musicPath));
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
-                if(){
-                    clip.stop();
-                }
             } else {
                 System.out.println("Non trovo il file audio");
             }
