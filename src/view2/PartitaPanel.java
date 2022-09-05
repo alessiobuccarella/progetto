@@ -250,28 +250,7 @@ public class PartitaPanel extends JPanel {
    */
         
         
-       
-        coloreGiallo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-              cartaScarto.setC(1);
-              Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
-              
-            }
-        });
-        coloreVerde.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-              cartaScarto.setC(2);
-              Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
-              
-            }
-        });
-        coloreBlu.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-              cartaScarto.setC(3);
-              Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
-              
-            }
-        });
+
 
         for (JButton posto : posti) {
             posto.addActionListener(new ActionListener() {
@@ -715,8 +694,7 @@ public class PartitaPanel extends JPanel {
       	  postazione.add(posti.get(mano.mano.size()-1));
       	  postazione.invalidate();
             postazione.validate();
-            tavolo.invalidate();
-            tavolo.validate();
+      
   }
     
 }
