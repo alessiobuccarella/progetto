@@ -22,13 +22,16 @@ import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 
 public class PartitaPanel extends JPanel {
+
+	
 	Mazzo mazzo = new Mazzo();
+	private JButton passo;
 	public static ArrayList<JButton> posti = new ArrayList<>();
 	private static Piatto tavolo;
 	private static Postazione postazione;
 	private static boolean pescato=false;
 	private boolean firstTime = true;
-	private static int turno;
+	public static int turno;
 	public static Senso senso = Senso.ORARIO;
 	private static Carta cartaScarto = new Carta(0, 0);
 	static Icon redLabel = new ImageIcon("./src/immagini/0.png");
@@ -47,6 +50,7 @@ public class PartitaPanel extends JPanel {
         JLabel deckLabel = new JLabel(new ImageIcon("./src/immagini/mazzo.png"));
         JButton coloreRosso = new JButton();
         
+        passo= new JButton("PASSO");
         postazione = new Postazione(1);
         Mano mano = new Mano(mazzo);
         Mano manoOvest = new Mano(mazzo);
@@ -125,7 +129,7 @@ public class PartitaPanel extends JPanel {
         GridBagConstraints gbc10= new GridBagConstraints();
         this.add(tavolo, BorderLayout.CENTER);
         JButton uno= new JButton("UNO!");
-        JButton passo = new JButton("PASSO");
+        
 
         gbc10.anchor=GridBagConstraints.PAGE_START;
         gbc10.gridx=4;
@@ -222,19 +226,19 @@ public class PartitaPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
             	
                 repaint();
-                //if (firstTime == false)
                 System.out.println("turno: "+turno);
-             
                     avanti(gbc10, turno, manoOvest, manoNord, manoEst, tavolo, postazioneOvest, postazioneNord, postazioneEst, mazzo, postazione, mano,postazionePiatto);
-               // else {
-                //    firstTime = false;
-                //}
+     
             }
         };
         Timer t = new Timer(3000, avanti);
+        t.start();
+        
+     
+        /**
         passo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println();
+                
             	
                 repaint();
                 t.start();
@@ -242,6 +246,9 @@ public class PartitaPanel extends JPanel {
                 Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
             }
         });
+   */
+        
+        
         coloreRosso.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
               cartaScarto.setC(0);
@@ -270,6 +277,7 @@ public class PartitaPanel extends JPanel {
               
             }
         });
+       
         for (JButton posto : posti) {
             posto.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -280,6 +288,9 @@ public class PartitaPanel extends JPanel {
                             t.stop();
                     }
             }); 
+            
+            
+            
             posto.addMouseListener(new MouseAdapter() {
                 public void mouseEntered(java.awt.event.MouseEvent evt) {
                     posto.setLocation(posto.getX(), posto.getY()-5);
@@ -291,6 +302,15 @@ public class PartitaPanel extends JPanel {
         }
         
     }
+	   public void funzionePasso(ActionListener actionListener) {
+		   
+	       	passo.addActionListener(actionListener);
+	
+	       }
+       public void cartaCliccata(ActionListener actionListener) {
+    	   for (JButton posto:posti) posto.addActionListener(actionListener);
+       	   }
+       
     public static void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto,  Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo, Postazione postazionePiatto) {
     	if (mano.mano.size()>1) Menu.deviGridareUno=false;
     	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false) {
@@ -373,7 +393,8 @@ public class PartitaPanel extends JPanel {
             }
     }
     public static void avanti(GridBagConstraints gbc10, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, Mazzo mazzo, Postazione postazione, Mano mano,Postazione postazionePiatto) {
-        switch (turno%4) {
+        System.out.println("funzione avanti");
+    	switch (turno%4) {
             case 1:
             	//foto.setBorder(new LineBorder(Color.RED, 5));foto1.setBorder(null);foto2.setBorder(null);foto3.setBorder(null);
             	mossaOvest( gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);           
@@ -456,7 +477,7 @@ public class PartitaPanel extends JPanel {
         Carta x=cartaUtile(manoNord);
         if (x!=null)                								        // se il giocatore ha una carta utile
         {
-            lanciaCarta(gbc10,piatto,manoNord,postazioneNord,x,"./src/immagini/dorso.png",postazionePiatto);                // lancia la carta
+           // lanciaCarta(gbc10,piatto,manoNord,postazioneNord,x,"./src/immagini/dorso.png",postazionePiatto);                // lancia la carta
             System.out.println("Nord ha tirato " + x.toString());
             postazioneNord.removeAll();
             switch(manoNord.mano.size()) {

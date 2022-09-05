@@ -49,6 +49,6 @@ public class InizioPanel extends JPanel {
     }
 
     public void riproduciAudio(ActionListener actionListener) {
-        audioButton.addActionListener(actionListener); 
+        //audioButton.addActionListener(actionListener); 
     }
 }

@@ -5,6 +5,7 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import controller.CercaProfiloController;
 import controller.NuovoProfiloController;
+import controller.PartitaController;
 import model.AudioManager;
 import model.Database;
 
@@ -27,7 +28,7 @@ public class MainFrame extends JFrame {
         //Panel
         InizioPanel inzioPanel = new InizioPanel();
         CercaProfiloPanel cercaProfilo = new CercaProfiloPanel();
-        NuovoProfiloPanel nuovoProfilo = new NuovoProfiloPanel();
+        NuovoProfiloPanel nuovoProfilo = new NuovoProfiloPanel();   
         ProfiloPanel profilo = new ProfiloPanel();
         MenuPanel inizio2 = new MenuPanel();
         ConfiguraPanel configuraPartita = new ConfiguraPanel();
@@ -37,6 +38,7 @@ public class MainFrame extends JFrame {
         // initialize user controller
         new CercaProfiloController(cercaProfilo, profilo, cardLayout, MainFrame.this.getContentPane());
         new NuovoProfiloController(nuovoProfilo, profilo, cardLayout, MainFrame.this.getContentPane());
+        new PartitaController(partitaPanel);
         
         // aggiunge i panel al layout
         setLayout(cardLayout);
