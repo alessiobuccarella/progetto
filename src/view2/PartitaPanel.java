@@ -1,6 +1,6 @@
 package view2;
 
-import controller.DisegnaCarta;
+
 import controller.Eventi;
 import model.Carta;
 import model.Database;
@@ -8,6 +8,8 @@ import model.Mano;
 import model.Mazzo;
 import model.Senso;
 import view.Menu;
+import view2.Piatto;
+import view2.Postazione;
 
 import javax.swing.*;
 
