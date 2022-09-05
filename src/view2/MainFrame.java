@@ -51,7 +51,6 @@ public class MainFrame extends JFrame {
 
         AudioManager musicObject = new AudioManager();
 
-
         inzioPanel.caricaProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "cercaProfilo")); 
         inzioPanel.nuovoProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "nuovoProfilo"));
         inzioPanel.esci(e -> {

@@ -5,9 +5,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 
-
 public class AudioManager {
-
     public void playMusic(String musicLocation) {
         File musicPath = new File(musicLocation);
         try {
@@ -18,10 +16,9 @@ public class AudioManager {
             } else {
                 System.out.println("Non trovo il file audio");
             }
-        } catch (Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "" + ex);
         }
-
     }
 }
 
