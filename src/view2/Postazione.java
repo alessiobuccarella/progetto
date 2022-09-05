@@ -11,5 +11,3 @@ public class Postazione extends JPanel {
         else setLayout(new FlowLayout());
     }
 }
-
-

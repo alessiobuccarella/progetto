@@ -1,4 +1,5 @@
 import javax.swing.*;
+
 import view2.MainFrame;
 
 public class App {

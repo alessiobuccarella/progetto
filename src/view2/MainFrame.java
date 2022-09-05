@@ -2,12 +2,10 @@ package view2;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
-
 import controller.CercaProfiloController;
 import controller.NuovoProfiloController;
+import model.AudioManager;
 import model.Database;
 
 public class MainFrame extends JFrame {
@@ -25,7 +23,7 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
         cardLayout = new CardLayout();
-        
+
         //Panel
         InizioPanel inzioPanel = new InizioPanel();
         CercaProfiloPanel cercaProfilo = new CercaProfiloPanel();
@@ -34,6 +32,8 @@ public class MainFrame extends JFrame {
         MenuPanel inizio2 = new MenuPanel();
         ConfiguraPanel configuraPartita = new ConfiguraPanel();
         PartitaPanel partitaPanel = new PartitaPanel();
+        BarraAudio barraAudio = new BarraAudio();
+
         // initialize user controller
         new CercaProfiloController(cercaProfilo, profilo, cardLayout, MainFrame.this.getContentPane());
         new NuovoProfiloController(nuovoProfilo, profilo, cardLayout, MainFrame.this.getContentPane());
@@ -47,15 +47,20 @@ public class MainFrame extends JFrame {
         add(inizio2, "inizio2");
         add(configuraPartita, "configuraPartita");
         add(partitaPanel, "partitaPanel");
-
-        //azioni inzioPanel
+        add(barraAudio, "barraAudio");
         inzioPanel.caricaProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "cercaProfilo")); 
         inzioPanel.nuovoProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "nuovoProfilo"));
         inzioPanel.esci(e -> {
         	Database.getInstance().close();
         	System.exit(0);
         });
-        
+
+        inzioPanel.riproduciAudio((e -> {
+            System.out.println("Audio");
+            AudioManager musicObject = new AudioManager();
+            musicObject.playMusic("audio/background_audio.wav");
+        }));
+
         cercaProfilo.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio"));
         nuovoProfilo.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio"));
         profilo.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio2"));
@@ -69,6 +74,7 @@ public class MainFrame extends JFrame {
 
         configuraPartita.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio2"));
         configuraPartita.classica(e -> cardLayout.show(MainFrame.this.getContentPane(), "partitaPanel"));
+
     }
 }
 

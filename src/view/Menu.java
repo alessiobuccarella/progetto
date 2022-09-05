@@ -5,11 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import controller.DisegnaCarta;
 import controller.Eventi;
-import model.Carta;
-import model.Database;
-import model.Mano;
-import model.Mazzo;
-import model.Senso;
+import model.*;
 import view2.BarraAudio;
 import view2.Campo;
 import view2.Piatto;
@@ -112,11 +108,6 @@ public class Menu extends JFrame {
         CardLayout cl = new CardLayout();
         menu.setLayout(cl);
         BarraAudio audio = new BarraAudio();
-        BarraAudio audio2 = new BarraAudio();
-        BarraAudio audio3 = new BarraAudio();
-        BarraAudio audio4 = new BarraAudio();
-        BarraAudio audio5 = new BarraAudio();
-        BarraAudio audio6 = new BarraAudio();
 
         //PAGE INIZIALE
         JPanel inizio = new JPanel();
@@ -166,7 +157,7 @@ public class Menu extends JFrame {
         nickname.add(inviaButton, gbc2);
         indietro.add(indietroButton);
         caricaProfilo.add(nickname, BorderLayout.CENTER);
-        caricaProfilo.add(audio2, BorderLayout.PAGE_START);
+        caricaProfilo.add(audio, BorderLayout.PAGE_START);
         caricaProfilo.add(indietro, BorderLayout.PAGE_END);
         menu.add(caricaProfilo, "2");
 
@@ -229,7 +220,7 @@ public class Menu extends JFrame {
         nickname2.add(inviaButton2, gbc3);
         indietro2.add(indietroButton2);
         nuovoProfilo.add(nickname2, BorderLayout.CENTER);
-        nuovoProfilo.add(audio3, BorderLayout.PAGE_START);
+        nuovoProfilo.add(audio, BorderLayout.PAGE_START);
         nuovoProfilo.add(indietro2, BorderLayout.PAGE_END);
         menu.add(nuovoProfilo, "3");
 
@@ -254,7 +245,7 @@ public class Menu extends JFrame {
         noe.add(Box.createRigidArea(new Dimension(0, 40)));
         noe.add(esci2, gbc5);
         inizio2.add(noe, BorderLayout.CENTER);
-        inizio2.add(audio4, BorderLayout.PAGE_START);
+        inizio2.add(audio, BorderLayout.PAGE_START);
         menu.add(inizio2, "4");
 
         //PAGE MODALITA'
@@ -287,7 +278,7 @@ public class Menu extends JFrame {
         cmm.add(esci3, gbc6);
         indietro3.add(indietroButton3);
         modalita.add(cmm, BorderLayout.CENTER);
-        modalita.add(audio5, BorderLayout.PAGE_START);
+        modalita.add(audio, BorderLayout.PAGE_START);
         modalita.add(indietro3, BorderLayout.PAGE_END);
         menu.add(modalita, "5");
 
@@ -340,7 +331,7 @@ public class Menu extends JFrame {
         oa.add(partitePerse, gbc7);
         indietro4.add(indietroButton4);
         account.add(oa, BorderLayout.CENTER);
-        account.add(audio6, BorderLayout.PAGE_START);
+        account.add(audio, BorderLayout.PAGE_START);
         account.add(indietro4, BorderLayout.PAGE_END);
         menu.add(account, "6");
 
