@@ -176,6 +176,12 @@ public class PartitaPanel extends JPanel {
         postazionePiatto.setOpaque(false);
         deckButton.setBorder(null);
         
+        gbc10.anchor=GridBagConstraints.CENTER;
+        gbc10.gridx=4;
+        gbc10.gridy=5;
+        gbc10.weighty=2;
+        tavolo.add(postazione,gbc10);
+        
         gbc10.gridx=5;
         gbc10.gridy=4;
         gbc10.weighty=1;
@@ -209,11 +215,7 @@ public class PartitaPanel extends JPanel {
         gbc10.weightx=0;
         gbc10.gridwidth=1;
         tavolo.add(foto2,gbc10);
-        gbc10.anchor=GridBagConstraints.PAGE_START;
-        gbc10.gridx=5;
-        gbc10.gridy=5;
-        gbc10.weighty=2;
-        tavolo.add(postazione,gbc10);
+  
         gbc10.anchor=GridBagConstraints.PAGE_START;
         gbc10.gridx=4;
         gbc10.gridy=6;
@@ -674,6 +676,10 @@ public class PartitaPanel extends JPanel {
     	}
     	if (x.getV()==13) {
             cartaScarto.setC((int)(Math.random()*4));
+            String filename = "./src/immagini/"+cartaScarto.getC() + ".png";
+            ImageIcon img = new ImageIcon(filename);
+            JButton colore = new JButton(img);
+            postazione.add(colore);
             System.out.println("colore: "+cartaScarto.getC());
         }
     	if (x.getV()==14) {

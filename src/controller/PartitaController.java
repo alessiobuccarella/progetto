@@ -34,10 +34,10 @@ public class PartitaController {
 		 PartitaPanel.cartaScarto.setC(1);	
 	       	 });
 	 partitaPanel.funzioneVerde(e ->{
-		 PartitaPanel.cartaScarto.setC(2);	
+		 PartitaPanel.cartaScarto.setC(3);	
 	       	 });
 	 partitaPanel.funzioneBlu(e ->{
-		 PartitaPanel.cartaScarto.setC(3);	
+		 PartitaPanel.cartaScarto.setC(2);	
 	       	 });
 	 
 	 
