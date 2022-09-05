@@ -23,6 +23,9 @@ import java.util.ArrayList;
 
 public class PartitaPanel extends JPanel {
 	Mazzo mazzo = new Mazzo();
+	public static ArrayList<JButton> posti = new ArrayList<>();
+	private static Piatto tavolo;
+	private static Postazione postazione;
 	private static boolean pescato=false;
 	private boolean firstTime = true;
 	private static int turno;
@@ -44,7 +47,16 @@ public class PartitaPanel extends JPanel {
         JLabel deckLabel = new JLabel(new ImageIcon("./src/immagini/mazzo.png"));
         JButton coloreRosso = new JButton();
         
-        
+        postazione = new Postazione(1);
+        Mano mano = new Mano(mazzo);
+        Mano manoOvest = new Mano(mazzo);
+        Mano manoNord = new Mano(mazzo);
+        Mano manoEst = new Mano(mazzo);
+        for (int i=0;i<30;i++)posti.add(new JButton());
+        for (int i=0;i<mano.mano.size();i++)
+            posti.set(i,DisegnaCarta.disegnaCarta(mano.mano.get(i)));
+        for (int i=0;i<mano.mano.size();i++)
+            postazione.add(posti.get(i));
         coloreRosso.add(redLabel);
         coloreRosso.setBorder(null);
         JButton coloreGiallo = new JButton();
@@ -66,10 +78,7 @@ public class PartitaPanel extends JPanel {
         postazione.setBackground(null);
         postazione.setOpaque(false);
         
-        Mano mano = new Mano(mazzo);
-        Mano manoOvest = new Mano(mazzo);
-        Mano manoNord = new Mano(mazzo);
-        Mano manoEst = new Mano(mazzo);
+    
         ArrayList<JButton> posti = new ArrayList<>();
         for (int i=0;i<30;i++)posti.add(new JButton());
         ImageIcon avatar1png = new ImageIcon("./src/immagini/avatar1.png");
@@ -291,7 +300,7 @@ public class PartitaPanel extends JPanel {
             mano.mano.add(mazzo.pesca());
            posti.get(mano.mano.size() - 1).setBorder(null);
     	}
-    	if ((mano.mano.get(indiceCarta).getC() == cartaScarto.getC() || mano.mano.get(indiceCarta).getV() == cartaScarto.getV() || mano.mano.get(indiceCarta).getC() == 4)&&(Menu.turno%4==0)) {
+    	if ((mano.mano.get(indiceCarta).getC() == cartaScarto.getC() || mano.mano.get(indiceCarta).getV() == cartaScarto.getV() || mano.mano.get(indiceCarta).getC() == 4)&&(turno%4==0)) {
     		System.out.println("ok");
     		cartaScarto=mano.mano.get(indiceCarta);postazionePiatto.remove(scartoButton);scartoButton=DisegnaCarta.disegnaCarta(cartaScarto);
     	    gbc10.anchor=GridBagConstraints.LINE_END;
@@ -314,14 +323,14 @@ public class PartitaPanel extends JPanel {
             postazione.validate();
             if (cartaScarto.getV() == 11)
                 Eventi.cambiaSenso();
-            if (Menu.senso == Senso.ORARIO)
+            if (senso == Senso.ORARIO)
                 turno = 1;
-            if (Menu.senso == Senso.ANTIORARIO)
+            if (senso == Senso.ANTIORARIO)
                 turno = 3;
             if (cartaScarto.getV() == 10)
                 turno = 2;
         }
-            if (Menu.cartaScarto.getV() == 12) {
+            if (cartaScarto.getV() == 12) {
                 Menu.firstTime = true;
                 if (turno %4== 1) {
                     for (int i = 0; i < 2; i++)
@@ -335,14 +344,14 @@ public class PartitaPanel extends JPanel {
                     }
                     postazioneEst.invalidate();
                     postazioneEst.validate();
-            if (Menu.cartaScarto.getV() == 13) {
+            if (cartaScarto.getV() == 13) {
                 Menu.firstTime = true;
                 Menu.rosso.setIcon(redLabel);Menu.giallo.setIcon(yellowLabel);Menu.verde.setIcon(greenLabel);Menu.blu.setIcon(blueLabel);
                 Menu.rosso.setEnabled(true);Menu.giallo.setEnabled(true);Menu.verde.setEnabled(true);Menu.blu.setEnabled(true);
                 Menu.postazioneColori.invalidate();
                 Menu.postazioneColori.validate();
             }
-            if (Menu.cartaScarto.getV() == 14) {
+            if (cartaScarto.getV() == 14) {
                 Menu.firstTime = true;
                 if (turno == 1) {
                     for (int i = 0; i < 4; i++)
@@ -419,8 +428,8 @@ public class PartitaPanel extends JPanel {
            default:
         	   postazioneOvest.add((new JLabel(new ImageIcon("./src/immagini/dorsosx7+.png"))),gbc10);
          }
-            if(x.getV()>=12&&Menu.senso==Senso.ORARIO) aggiornaSpeciale(manoNord,postazioneNord,piatto, x,mazzo,"./src/immagini/dorso.png");
-            if(x.getV()>=12&&Menu.senso==Senso.ANTIORARIO) aggiornaSpecialeUmano(mano,mazzo,x,postazione);
+            if(x.getV()>=12&&senso==Senso.ORARIO) aggiornaSpeciale(manoNord,postazioneNord,piatto, x,mazzo,"./src/immagini/dorso.png");
+            if(x.getV()>=12&&senso==Senso.ANTIORARIO) aggiornaSpecialeUmano(mano,mazzo,x,postazione);
             aggiornaVista(piatto, postazioneOvest);
             aggiornaTurno(mano,mazzo); 
         }
@@ -439,21 +448,78 @@ public class PartitaPanel extends JPanel {
         if (manoOvest.mano.size()==0) {
             Database db2 = Database.getInstance();
         }
-        System.out.println("turno: "+Menu.turno);
+        System.out.println("turno: "+turno);
+    }
+    public static void mossaNord(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst,Postazione postazionePiatto)
+    {	
+        System.out.println("NORD: " + manoNord.mano.toString());
+        Carta x=cartaUtile(manoNord);
+        if (x!=null)                								        // se il giocatore ha una carta utile
+        {
+            lanciaCarta(gbc10,piatto,manoNord,postazioneNord,x,"./src/immagini/dorso.png",postazionePiatto);                // lancia la carta
+            System.out.println("Nord ha tirato " + x.toString());
+            postazioneNord.removeAll();
+            switch(manoNord.mano.size()) {
+            case 0: break;
+            case 1:
+              postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord1.png"))),gbc10);
+              break;
+            case 2:
+         	 postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord2.png"))),gbc10);
+              break;
+            case 3:
+           	 postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord3.png"))),gbc10);
+                break;
+            case 4:
+           	 postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord4.png"))),gbc10);
+                break;
+            case 5:
+           	 postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord5.png"))),gbc10);
+                break;
+            case 6:
+           	 postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord6.png"))),gbc10);
+                break;
+            case 7:
+           	 postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord7.png"))),gbc10);
+                break;
+            default:
+         	   postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord7+.png"))),gbc10);
+          }
+            aggiornaTurno(mano,mazzo);
+            if(x.getV()>=12&&senso==Senso.ORARIO) aggiornaSpeciale(manoEst,postazioneEst,piatto, x,mazzo,"./src/immagini/dorso90s.png");
+            if(x.getV()>=12&&senso==Senso.ANTIORARIO) aggiornaSpeciale(manoOvest,postazioneOvest,piatto, x,mazzo,"./src/immagini/dorso90.png");
+            aggiornaVista(piatto, postazioneNord);
+        }
+        else if (pescato == false)                                   //se il giocatore non ha una carta utile e non ha ancora pescato
+        {
+            manoNord.mano.add(mazzo.pesca());                       //pesca
+            //aggiornaPostazione(postazioneNord, manoNord,"./src/immagini/dorso.png" );
+            pescato = true;
+            mossaNord(gbc10, mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
+        }
+        else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha gi� pescato
+           pescato = false;
+           aggiornaTurno(mano,mazzo); 
+           System.out.println("NORD: " + manoNord.mano.toString());
+        }
+        if (manoNord.mano.size()==0) {
+            Database db2 = Database.getInstance();
+        }
+        System.out.println("turno: "+turno);
     }
     public static Carta cartaUtile(Mano manoGiocatore)
     {
     	for (Carta x : manoGiocatore.mano) 
-    		if (x.getV() == Menu.cartaScarto.getV() || x.getC() == Menu.cartaScarto.getC()||x.getC() ==4)
+    		if (x.getV() == cartaScarto.getV() || x.getC() == cartaScarto.getC()||x.getC() ==4)
                 return x;
     	return null;
     }
     public static void lanciaCarta(GridBagConstraints gbc10, Piatto piatto, Mano mano, Postazione postazione, Carta carta,String pathDorso,Postazione postazionePiatto) 
     {
     	postazionePiatto.remove(scartoButton);
-        Menu.scartoButton = DisegnaCarta.disegnaCarta(carta);
-        Menu.cartaScarto = carta;
-        postazionePiatto.add(Menu.scartoButton);
+        scartoButton = DisegnaCarta.disegnaCarta(carta);
+        cartaScarto = carta;
+        postazionePiatto.add(scartoButton);
         mano.mano.remove(carta);
 
         }
@@ -472,7 +538,7 @@ public class PartitaPanel extends JPanel {
             turno -= 1;
         Carta x=cartaUtile(mano);
         //if (Menu.turno%4==0) Menu.evidenzia(0);     
-        if (turno%4==0&&x==null) {System.out.println("non hai la carta da giocare");Menu.pesca(mazzo, mano);}
+        if (turno%4==0&&x==null) {System.out.println("non hai la carta da giocare");pesca(mazzo, mano);}
     }
     public static void aggiornaVista(Piatto piatto, Postazione postazione)
     {
@@ -482,8 +548,8 @@ public class PartitaPanel extends JPanel {
         postazione.validate();
     } 
     public static void cambiaSenso() {
-        if (Menu.senso == Senso.ANTIORARIO) Menu.senso = Senso.ORARIO;
-        else Menu.senso = Senso.ANTIORARIO;
+        if (senso == Senso.ANTIORARIO) senso = Senso.ORARIO;
+        else senso = Senso.ANTIORARIO;
     }
     public static void aggiornaSpeciale(Mano manoVittima, Postazione postazioneVittima, Piatto piatto, Carta x, Mazzo mazzo, String path) 
     {
@@ -493,33 +559,44 @@ public class PartitaPanel extends JPanel {
     		//aggiornaPostazione(postazioneVittima, manoVittima,path );
     	}
     	if (x.getV()==13) {
-            Menu.cartaScarto.setC((int)(Math.random()*4));
-            System.out.println("colore: "+Menu.cartaScarto.getC());
+            cartaScarto.setC((int)(Math.random()*4));
+            System.out.println("colore: "+cartaScarto.getC());
         }
     	if (x.getV()==14) {
     		manoVittima.mano.add(mazzo.pesca());
             manoVittima.mano.add(mazzo.pesca());
             manoVittima.mano.add(mazzo.pesca());
             manoVittima.mano.add(mazzo.pesca());
-    		Menu.cartaScarto.setC((int)(Math.random()*4));
-    	    System.out.println("colore: "+Menu.cartaScarto.getC());
+    		cartaScarto.setC((int)(Math.random()*4));
+    	    System.out.println("colore: "+cartaScarto.getC());
     	}
     }
     public static void aggiornaSpecialeUmano(Mano mano,Mazzo mazzo,Carta x,Postazione postazione)
     {
     	
     	if (x.getV()==13) {
-            Menu.cartaScarto.setC((int)(Math.random()*4));
-            System.out.println(Menu.cartaScarto.getC());
+            cartaScarto.setC((int)(Math.random()*4));
+            System.out.println(cartaScarto.getC());
         }
     	if (x.getV()==14) {
-            Menu.cartaScarto.setC((int)(Math.random()*4));
-            System.out.println(Menu.cartaScarto.getC());
+            cartaScarto.setC((int)(Math.random()*4));
+            System.out.println(cartaScarto.getC());
             System.out.print("la tua mano è: "+mano.mano.toString());
-            Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);
-            Menu.pesca(mazzo,mano);Menu.pesca(mazzo,mano);
+            pesca(mazzo,mano);pesca(mazzo,mano);
+            pesca(mazzo,mano);pesca(mazzo,mano);
             System.out.println(" e dopo diventa: "+mano.mano.toString());
         }
     }
+    public static void pesca(Mazzo mazzo, Mano mano) {
+  	  Carta carta=mazzo.pesca();
+  	  mano.mano.add(carta);
+  	  Icon immagine= new ImageIcon("./src/immagini/" + carta.getV() + carta.getC() + ".png");
+        posti.get(mano.mano.size()-1).setIcon(immagine);posti.get(mano.mano.size()-1).setBorder(null);
+      	  postazione.add(posti.get(mano.mano.size()-1));
+      	  postazione.invalidate();
+            postazione.validate();
+            tavolo.invalidate();
+            tavolo.validate();
+  }
     
 }
