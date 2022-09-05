@@ -10,7 +10,6 @@ public class InizioPanel extends JPanel {
 	private JButton nuovoProfilo;
 	private JButton caricaProfiloBtn;
 	private JButton esci;
-	private BarraAudio audio;
 
 	public InizioPanel() {
         GridBagConstraints gbc = new GridBagConstraints();
@@ -32,8 +31,6 @@ public class InizioPanel extends JPanel {
         nce.add(Box.createRigidArea(new Dimension(0, 40)));
         nce.add(esci, gbc);
         this.add(nce, BorderLayout.CENTER);
-        this.audio = new BarraAudio();
-        this.add(audio, BorderLayout.PAGE_START);
 	}
 	
     public void nuovoProfilo(ActionListener actionListener) {
@@ -49,6 +46,6 @@ public class InizioPanel extends JPanel {
     }
 
     public void riproduciAudio(ActionListener actionListener) {
-        audioButton.addActionListener(actionListener); 
+        //audioButton.addActionListener(actionListener);
     }
 }

@@ -19,7 +19,6 @@ public class ProfiloPanel extends JPanel {
 	private JLabel partiteGiocate;
 	private JLabel partiteVinte;
 	private JLabel partitePerse;
-	private BarraAudio audio;
 	private JButton indietroButton;
 
 	public ProfiloPanel() {
@@ -66,8 +65,6 @@ public class ProfiloPanel extends JPanel {
         oa.add(partitePerse, gbc7);
         indietro.add(indietroButton);
         this.add(oa, BorderLayout.CENTER);
-        audio = new BarraAudio();
-        this.add(audio, BorderLayout.PAGE_START);
         this.add(indietro, BorderLayout.PAGE_END);
 	}
 	

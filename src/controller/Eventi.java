@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import model.*;
 import view.Menu;
+import view2.DisegnaCarta;
 import view2.Piatto;
 import view2.Postazione;
 
@@ -32,7 +33,7 @@ public class Eventi {
     	}
     	if ((mano.mano.get(indiceCarta).getC() == Menu.cartaScarto.getC() || mano.mano.get(indiceCarta).getV() == Menu.cartaScarto.getV() || mano.mano.get(indiceCarta).getC() == 4)&&(Menu.turno%4==0)) {
     		
-    		Menu.cartaScarto=mano.mano.get(indiceCarta);postazionePiatto.remove(Menu.scartoButton);Menu.scartoButton=DisegnaCarta.disegnaCarta(Menu.cartaScarto);
+    		Menu.cartaScarto=mano.mano.get(indiceCarta);postazionePiatto.remove(Menu.scartoButton);Menu.scartoButton= DisegnaCarta.disegnaCarta(Menu.cartaScarto);
     	    gbc10.anchor=GridBagConstraints.LINE_END;
             gbc10.weightx=0;
             gbc10.weighty=0;

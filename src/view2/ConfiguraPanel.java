@@ -8,7 +8,6 @@ public class ConfiguraPanel extends JPanel {
 
     private JButton classica, mod2, mod3;
     private JButton indietroButton;
-    private BarraAudio audio;
 
      public ConfiguraPanel() {
          JPanel cmm = new JPanel();
@@ -35,10 +34,7 @@ public class ConfiguraPanel extends JPanel {
          cmm.add(mod3, gbc6);
          indietro3.add(indietroButton);
          this.add(cmm, BorderLayout.CENTER);
-         this.audio = new BarraAudio();
-         this.add(audio, BorderLayout.PAGE_START);
          this.add(indietro3, BorderLayout.PAGE_END);
-        
      }
 
     public void paginaPrec(ActionListener actionListener) {

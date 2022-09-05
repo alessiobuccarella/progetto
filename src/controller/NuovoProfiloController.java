@@ -3,7 +3,6 @@ package controller;
 import java.awt.CardLayout;
 import java.awt.Container;
 import javax.swing.JOptionPane;
-
 import model.Database;
 import model.Profilo;
 import view2.NuovoProfiloPanel;

@@ -3,10 +3,9 @@ package view;
 import javax.swing.*;
 
 import java.awt.*;
-import controller.DisegnaCarta;
+import view2.DisegnaCarta;
 import controller.Eventi;
 import model.*;
-import view2.BarraAudio;
 import view2.Campo;
 import view2.Piatto;
 import view2.Postazione;
@@ -107,7 +106,6 @@ public class Menu extends JFrame {
         menu = new JPanel();
         CardLayout cl = new CardLayout();
         menu.setLayout(cl);
-        BarraAudio audio = new BarraAudio();
 
         //PAGE INIZIALE
         JPanel inizio = new JPanel();
@@ -130,7 +128,6 @@ public class Menu extends JFrame {
         nce.add(Box.createRigidArea(new Dimension(0, 40)));
         nce.add(esci, gbc);
         inizio.add(nce, BorderLayout.CENTER);
-        inizio.add(audio, BorderLayout.PAGE_START);
         add(menu);
         menu.add(inizio, "1");
 
@@ -157,7 +154,6 @@ public class Menu extends JFrame {
         nickname.add(inviaButton, gbc2);
         indietro.add(indietroButton);
         caricaProfilo.add(nickname, BorderLayout.CENTER);
-        caricaProfilo.add(audio, BorderLayout.PAGE_START);
         caricaProfilo.add(indietro, BorderLayout.PAGE_END);
         menu.add(caricaProfilo, "2");
 
@@ -220,7 +216,6 @@ public class Menu extends JFrame {
         nickname2.add(inviaButton2, gbc3);
         indietro2.add(indietroButton2);
         nuovoProfilo.add(nickname2, BorderLayout.CENTER);
-        nuovoProfilo.add(audio, BorderLayout.PAGE_START);
         nuovoProfilo.add(indietro2, BorderLayout.PAGE_END);
         menu.add(nuovoProfilo, "3");
 
@@ -245,7 +240,6 @@ public class Menu extends JFrame {
         noe.add(Box.createRigidArea(new Dimension(0, 40)));
         noe.add(esci2, gbc5);
         inizio2.add(noe, BorderLayout.CENTER);
-        inizio2.add(audio, BorderLayout.PAGE_START);
         menu.add(inizio2, "4");
 
         //PAGE MODALITA'
@@ -278,7 +272,6 @@ public class Menu extends JFrame {
         cmm.add(esci3, gbc6);
         indietro3.add(indietroButton3);
         modalita.add(cmm, BorderLayout.CENTER);
-        modalita.add(audio, BorderLayout.PAGE_START);
         modalita.add(indietro3, BorderLayout.PAGE_END);
         menu.add(modalita, "5");
 
@@ -331,7 +324,6 @@ public class Menu extends JFrame {
         oa.add(partitePerse, gbc7);
         indietro4.add(indietroButton4);
         account.add(oa, BorderLayout.CENTER);
-        account.add(audio, BorderLayout.PAGE_START);
         account.add(indietro4, BorderLayout.PAGE_END);
         menu.add(account, "6");
 
@@ -574,8 +566,6 @@ public class Menu extends JFrame {
                      JLabel nick=new JLabel(getNomeProfilo().toUpperCase());
                      nick.setForeground(Color.white);
                     tavolo.add(nick, gbc10);
-                     
-                     
                     // piatto.add(foto3,gbc10);
                      //db.exportDB(nickname);
                     cl.show(menu, "4");

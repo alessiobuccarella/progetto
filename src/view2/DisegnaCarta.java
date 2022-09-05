@@ -1,4 +1,4 @@
-package controller;
+package view2;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
