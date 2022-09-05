@@ -55,11 +55,9 @@ public class MainFrame extends JFrame {
         	System.exit(0);
         });
 
-        inzioPanel.riproduciAudio((e -> {
-            System.out.println("Audio");
-            AudioManager musicObject = new AudioManager();
-            musicObject.playMusic("audio/background_audio.wav"); 
-        }));
+        AudioManager musicObject = new AudioManager();
+        musicObject.playMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/background_audio.wav");
+
 
         cercaProfilo.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio"));
         nuovoProfilo.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio"));

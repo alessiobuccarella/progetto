@@ -1,6 +1,5 @@
 package view2;
 
-import controller.DisegnaCarta;
 import controller.Eventi;
 import model.Carta;
 import model.Database;
@@ -20,8 +19,6 @@ import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 
 public class PartitaPanel extends JPanel {
-
-	
 	Mazzo mazzo = new Mazzo();
 	private JButton passo;
 	public static ArrayList<JButton> posti = new ArrayList<>();
