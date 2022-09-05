@@ -48,17 +48,17 @@ public class MainFrame extends JFrame {
         add(inizio2, "inizio2");
         add(configuraPartita, "configuraPartita");
         add(partitaPanel, "partitaPanel");
+
+        AudioManager musicObject = new AudioManager();
+        musicObject.playMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/background_menu_audio.wav");
+
         inzioPanel.caricaProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "cercaProfilo")); 
         inzioPanel.nuovoProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "nuovoProfilo"));
         inzioPanel.esci(e -> {
         	Database.getInstance().close();
         	System.exit(0);
-            
+
         });
-
-        AudioManager musicObject = new AudioManager();
-        musicObject.playMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/background_audio.wav");
-
 
         cercaProfilo.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio"));
         nuovoProfilo.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio"));
@@ -72,8 +72,12 @@ public class MainFrame extends JFrame {
         });
 
         configuraPartita.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio2"));
+        AudioManager musicObject2 = new AudioManager();
+        configuraPartita.classica(e -> {
+            musicObject.playMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/background_menu_audio.wav");
+            musicObject2.playMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/background_game_audio.wav");
+        });
         configuraPartita.classica(e -> cardLayout.show(MainFrame.this.getContentPane(), "partitaPanel"));
-
     }
 }
 

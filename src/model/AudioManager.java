@@ -1,27 +1,30 @@
 package model;
 
 import java.io.File;
-import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 
+
 public class AudioManager {
+
     public void playMusic(String musicLocation) {
+        File musicPath = new File(musicLocation);
         try {
-            File musicPath = new File(musicLocation);
             if(musicPath.exists()) {
-                AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
                 Clip clip = AudioSystem.getClip();
-                clip.open(audioInput);
-                clip.start();
+                clip.open(AudioSystem.getAudioInputStream(musicPath));
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
+                if(){
+                    clip.stop();
+                }
             } else {
                 System.out.println("Non trovo il file audio");
             }
         } catch (Exception ex){
             JOptionPane.showMessageDialog(null, "" + ex);
         }
+
     }
 }
 
