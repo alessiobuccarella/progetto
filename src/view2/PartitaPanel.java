@@ -1,5 +1,6 @@
 package view2;
 
+import controller.DisegnaCarta;
 import controller.Eventi;
 import model.Carta;
 import model.Database;
