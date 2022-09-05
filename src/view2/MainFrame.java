@@ -53,6 +53,7 @@ public class MainFrame extends JFrame {
         inzioPanel.esci(e -> {
         	Database.getInstance().close();
         	System.exit(0);
+            
         });
 
         AudioManager musicObject = new AudioManager();
