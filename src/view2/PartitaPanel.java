@@ -33,13 +33,16 @@ public class PartitaPanel extends JPanel {
 	private boolean firstTime = true;
 	public static int turno;
 	public static Senso senso = Senso.ORARIO;
-	private static Carta cartaScarto = new Carta(0, 0);
+	public static Carta cartaScarto = new Carta(0, 0);
 	static Icon redLabel = new ImageIcon("./src/immagini/0.png");
 	static Icon yellowLabel = new ImageIcon("./src/immagini/1.png");
 	static Icon blueLabel = new ImageIcon("./src/immagini/2.png");
 	static Icon greenLabel = new ImageIcon("./src/immagini/3.png");
 	public static  JButton scartoButton ;
-   
+	public JButton coloreRosso = new JButton();
+	public JButton coloreGiallo = new JButton();
+	public JButton coloreVerde = new JButton();
+	public JButton coloreBlu = new JButton();
 	public PartitaPanel(){
     	setLayout(new BorderLayout());
     	do cartaScarto=mazzo.next(); while(cartaScarto.getV()>12);
@@ -48,7 +51,7 @@ public class PartitaPanel extends JPanel {
         JLabel blueLabel = new JLabel(new ImageIcon("./src/immagini/2.png"));
         JLabel greenLabel = new JLabel(new ImageIcon("./src/immagini/3.png"));
         JLabel deckLabel = new JLabel(new ImageIcon("./src/immagini/mazzo.png"));
-        JButton coloreRosso = new JButton();
+        
         
         scartoButton = new JButton();
         passo= new JButton("PASSO");
@@ -64,13 +67,13 @@ public class PartitaPanel extends JPanel {
             postazione.add(posti.get(i));
         coloreRosso.add(redLabel);
         coloreRosso.setBorder(null);
-        JButton coloreGiallo = new JButton();
+        
         coloreGiallo.add(yellowLabel);
         coloreGiallo.setBorder(null);
-        JButton coloreBlu = new JButton();
+       
         coloreBlu.add(blueLabel);
         coloreBlu.setBorder(null);
-        JButton coloreVerde = new JButton();
+       
         coloreVerde.add(greenLabel);
         coloreVerde.setBorder(null);
         JButton deckButton = new JButton();
@@ -250,13 +253,7 @@ public class PartitaPanel extends JPanel {
    */
         
         
-        coloreRosso.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-              cartaScarto.setC(0);
-              Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
-              
-            }
-        });
+       
         coloreGiallo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
               cartaScarto.setC(1);
@@ -278,7 +275,7 @@ public class PartitaPanel extends JPanel {
               
             }
         });
-       
+
         for (JButton posto : posti) {
             posto.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -308,9 +305,40 @@ public class PartitaPanel extends JPanel {
 	       	passo.addActionListener(actionListener);
 	
 	       }
-       public void cartaCliccata(ActionListener actionListener) {
-    	   for (JButton posto:posti) posto.addActionListener(actionListener);
-       	   }
+	   public void funzioneRosso(ActionListener actionListener) {
+		   
+		   coloreRosso.addActionListener(actionListener);
+	   }
+	   public void funzioneGiallo(ActionListener actionListener) {
+		   
+		   coloreGiallo.addActionListener(actionListener);
+	   }
+
+	   public void funzioneVerde(ActionListener actionListener) {
+	   
+		   coloreVerde.addActionListener(actionListener);
+	   }
+
+	   public void funzioneBlu(ActionListener actionListener) {
+	   
+		   coloreBlu.addActionListener(actionListener);
+	   }
+
+
+	   /**
+	   coloreRosso.addActionListener(new ActionListener() {
+           public void actionPerformed(ActionEvent e) {
+             cartaScarto.setC(0);
+             Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
+             
+           }
+       });
+	   */
+	   
+	   
+	   
+	   
+      
        
     public static void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto,  Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo, Postazione postazionePiatto) {
     	if (mano.mano.size()>1) Menu.deviGridareUno=false;
