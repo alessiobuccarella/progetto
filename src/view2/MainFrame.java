@@ -58,7 +58,7 @@ public class MainFrame extends JFrame {
         inzioPanel.riproduciAudio((e -> {
             System.out.println("Audio");
             AudioManager musicObject = new AudioManager();
-            musicObject.playMusic("audio/background_audio.wav");
+            musicObject.playMusic("audio/background_audio.wav"); 
         }));
 
         cercaProfilo.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio"));
