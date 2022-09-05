@@ -33,7 +33,6 @@ public class MainFrame extends JFrame {
         MenuPanel inizio2 = new MenuPanel();
         ConfiguraPanel configuraPartita = new ConfiguraPanel();
         PartitaPanel partitaPanel = new PartitaPanel();
-        BarraAudio barraAudio = new BarraAudio();
 
         // initialize user controller
         new CercaProfiloController(cercaProfilo, profilo, cardLayout, MainFrame.this.getContentPane());
@@ -49,7 +48,6 @@ public class MainFrame extends JFrame {
         add(inizio2, "inizio2");
         add(configuraPartita, "configuraPartita");
         add(partitaPanel, "partitaPanel");
-        add(barraAudio, "barraAudio");
         inzioPanel.caricaProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "cercaProfilo")); 
         inzioPanel.nuovoProfilo(e -> cardLayout.show(MainFrame.this.getContentPane(), "nuovoProfilo"));
         inzioPanel.esci(e -> {
@@ -60,7 +58,7 @@ public class MainFrame extends JFrame {
         inzioPanel.riproduciAudio((e -> {
             System.out.println("Audio");
             AudioManager musicObject = new AudioManager();
-            musicObject.playMusic("audio/background_audio.wav");
+            musicObject.playMusic("audio/background_audio.wav"); 
         }));
 
         cercaProfilo.paginaPrec(e -> cardLayout.show(MainFrame.this.getContentPane(), "inizio"));

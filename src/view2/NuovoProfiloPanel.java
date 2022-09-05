@@ -12,7 +12,6 @@ public class NuovoProfiloPanel extends JPanel {
 	//FIXME: serve anche l'immagine dell'avatar
     private JButton inviaButton;
     private JButton indietroButton;
-    private BarraAudio audio;
     private JToggleButton radio1;
     private JToggleButton radio2;
     private JToggleButton radio3;
@@ -74,8 +73,6 @@ public class NuovoProfiloPanel extends JPanel {
         nickname.add(inviaButton, gbc3);
         indietro.add(indietroButton);
         this.add(nickname, BorderLayout.CENTER);
-        this.audio = new BarraAudio();
-        this.add(audio, BorderLayout.PAGE_START);
         this.add(indietro, BorderLayout.PAGE_END);
     }
 

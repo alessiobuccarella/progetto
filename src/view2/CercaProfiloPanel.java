@@ -10,7 +10,6 @@ public class CercaProfiloPanel extends JPanel {
 	private JTextField textnickname;
 	private JButton inviaButton;
 	private JButton indietroButton;
-	private BarraAudio audio;
 	
 	public CercaProfiloPanel() {
         JPanel nickname = new JPanel();
@@ -34,8 +33,6 @@ public class CercaProfiloPanel extends JPanel {
         nickname.add(inviaButton, gbc2);
         indietro.add(indietroButton);
         this.add(nickname, BorderLayout.CENTER);
-        this.audio = new BarraAudio();
-        this.add(audio, BorderLayout.PAGE_START);
         this.add(indietro, BorderLayout.PAGE_END);
 	}
 	

@@ -18,7 +18,6 @@ public class MenuPanel extends JPanel {
 	private JButton nuovaPartita;
 	private JButton opzioniProfilo;
 	private JButton esci;
-	private BarraAudio audio;
 
 	public MenuPanel() {
         JPanel noe = new JPanel();
@@ -40,9 +39,6 @@ public class MenuPanel extends JPanel {
         noe.add(Box.createRigidArea(new Dimension(0, 40)));
         noe.add(esci, gbc5);
         this.add(noe, BorderLayout.CENTER);
-        audio = new BarraAudio();
-        this.add(audio, BorderLayout.PAGE_START);
-
 	}
 	
     public void nuovaPartita(ActionListener actionListener) {
