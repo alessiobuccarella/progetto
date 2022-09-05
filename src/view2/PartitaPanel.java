@@ -38,7 +38,7 @@ public class PartitaPanel extends JPanel {
 	static Icon yellowLabel = new ImageIcon("./src/immagini/1.png");
 	static Icon blueLabel = new ImageIcon("./src/immagini/2.png");
 	static Icon greenLabel = new ImageIcon("./src/immagini/3.png");
-	static JButton scartoButton = new JButton();
+	public static  JButton scartoButton ;
    
 	public PartitaPanel(){
     	setLayout(new BorderLayout());
@@ -50,6 +50,7 @@ public class PartitaPanel extends JPanel {
         JLabel deckLabel = new JLabel(new ImageIcon("./src/immagini/mazzo.png"));
         JButton coloreRosso = new JButton();
         
+        scartoButton = new JButton();
         passo= new JButton("PASSO");
         postazione = new Postazione(1);
         Mano mano = new Mano(mazzo);
@@ -420,6 +421,7 @@ public class PartitaPanel extends JPanel {
         if (x!=null)                								        // se il giocatore ha una carta utile
         {
         	
+
             lanciaCarta(gbc10,piatto,manoOvest,postazioneOvest,x,"./src/immagini/dorso90.png",postazionePiatto);                // lancia la carta
             System.out.println("Ovest ha tirato " + x.toString());
            postazioneOvest.removeAll();
@@ -451,6 +453,7 @@ public class PartitaPanel extends JPanel {
          }
             if(x.getV()>=12&&senso==Senso.ORARIO) aggiornaSpeciale(manoNord,postazioneNord,piatto, x,mazzo,"./src/immagini/dorso.png");
             if(x.getV()>=12&&senso==Senso.ANTIORARIO) aggiornaSpecialeUmano(mano,mazzo,x,postazione);
+            
             aggiornaVista(piatto, postazioneOvest);
             aggiornaTurno(mano,mazzo); 
         }
@@ -473,11 +476,14 @@ public class PartitaPanel extends JPanel {
     }
     public static void mossaNord(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst,Postazione postazionePiatto)
     {	
+    	
         System.out.println("NORD: " + manoNord.mano.toString());
         Carta x=cartaUtile(manoNord);
         if (x!=null)                								        // se il giocatore ha una carta utile
-        {
-           // lanciaCarta(gbc10,piatto,manoNord,postazioneNord,x,"./src/immagini/dorso.png",postazionePiatto);                // lancia la carta
+        {	
+      
+       
+           lanciaCarta(gbc10,piatto,manoNord,postazioneNord,x,"./src/immagini/dorso.png",postazionePiatto);                // lancia la carta
             System.out.println("Nord ha tirato " + x.toString());
             postazioneNord.removeAll();
             switch(manoNord.mano.size()) {
@@ -506,10 +512,11 @@ public class PartitaPanel extends JPanel {
             default:
          	   postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord7+.png"))),gbc10);
           }
-            aggiornaTurno(mano,mazzo);
+           
             if(x.getV()>=12&&senso==Senso.ORARIO) aggiornaSpeciale(manoEst,postazioneEst,piatto, x,mazzo,"./src/immagini/dorso90s.png");
             if(x.getV()>=12&&senso==Senso.ANTIORARIO) aggiornaSpeciale(manoOvest,postazioneOvest,piatto, x,mazzo,"./src/immagini/dorso90.png");
             aggiornaVista(piatto, postazioneNord);
+            aggiornaTurno(mano,mazzo); 
         }
         else if (pescato == false)                                   //se il giocatore non ha una carta utile e non ha ancora pescato
         {
@@ -536,8 +543,10 @@ public class PartitaPanel extends JPanel {
     	return null;
     }
     public static void lanciaCarta(GridBagConstraints gbc10, Piatto piatto, Mano mano, Postazione postazione, Carta carta,String pathDorso,Postazione postazionePiatto) 
-    {
+    {	
     	postazionePiatto.remove(scartoButton);
+    	
+    	
         scartoButton = DisegnaCarta.disegnaCarta(carta);
         cartaScarto = carta;
         postazionePiatto.add(scartoButton);
