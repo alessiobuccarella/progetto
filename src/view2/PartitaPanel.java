@@ -79,7 +79,7 @@ public class PartitaPanel extends JPanel {
         postazione.setOpaque(false);
         
     
-        ArrayList<JButton> posti = new ArrayList<>();
+       
         for (int i=0;i<30;i++)posti.add(new JButton());
         ImageIcon avatar1png = new ImageIcon("./src/immagini/avatar1.png");
         avatar1png = new ImageIcon("./src/immagini/avatar1.png");
@@ -705,12 +705,15 @@ public class PartitaPanel extends JPanel {
     }
     public static void pesca(Mazzo mazzo, Mano mano) {
 
-    
-  	  Carta carta=mazzo.pesca();
-  	  mano.mano.add(carta);
-  	  aggiornaPostazione(mano);
-           
-  
+    	  Carta carta=mazzo.pesca();
+    	  mano.mano.add(carta);
+    	  Icon immagine= new ImageIcon("./src/immagini/" + carta.getV() + carta.getC() + ".png");
+          posti.get(mano.mano.size()-1).setIcon(immagine);posti.get(mano.mano.size()-1).setBorder(null);
+        	  postazione.add(posti.get(mano.mano.size()-1));
+        	  postazione.invalidate();
+              postazione.validate();
+              tavolo.invalidate();
+              tavolo.validate();
   }
     public static void aggiornaPostazione(Mano mano)
     {	postazione.removeAll();
@@ -723,7 +726,7 @@ public class PartitaPanel extends JPanel {
     postazione.invalidate();
     postazione.validate();
     postazione.repaint();
-        
+       
     }
     
 }
