@@ -273,7 +273,11 @@ public class PartitaPanel extends JPanel {
                     posto.setLocation(posto.getX(), posto.getY()+5);
                 }
             });
+            
+   
+            
         }
+        
         
     }
 	   public void funzionePasso(ActionListener actionListener) {
