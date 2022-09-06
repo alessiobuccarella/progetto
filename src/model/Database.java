@@ -137,13 +137,13 @@ public class Database {
             Statement statement = connection.prepareStatement(query);
             ResultSet rs = statement.executeQuery(query);
             if (rs.next()) {
-                Profilo profilo = new Profilo();
-                profilo.setNickname(rs.getString(2));
-                profilo.setAvatarImg(rs.getString(3));
-                profilo.setLivello(rs.getInt(4));
-                profilo.setPartiteGiocate(rs.getInt(5));
-                profilo.setPartiteVinte(rs.getInt(6));
-                profilo.setPartitePerse(rs.getInt(7));
+                Profilo profilo = new Profilo.ProfiloBuilder()
+                    .setNickname(rs.getString(2))
+                    .setAvatarImg(rs.getString(3))
+                    .setLivello(rs.getInt(4))
+                    .setPartiteGiocate(rs.getInt(5))
+                    .setPartiteVinte(rs.getInt(6))
+                    .setPartitePerse(rs.getInt(7)).build();
                 return profilo;
             }
         } catch (Exception e1) {
@@ -160,13 +160,13 @@ public class Database {
                     + " VALUES ('" + nick + "','" + img + "')";
             statement.executeUpdate(query1);
 
-            Profilo profilo = new Profilo();
-            profilo.setNickname(nick);
-            profilo.setAvatarImg(img);
-            profilo.setLivello(0);
-            profilo.setPartiteGiocate(0);
-            profilo.setPartitePerse(0);
-            profilo.setPartiteVinte(0);
+            Profilo profilo = new Profilo.ProfiloBuilder()
+                .setNickname(nick)
+                .setAvatarImg(img)
+                .setLivello(0)
+                .setPartiteGiocate(0)
+                .setPartitePerse(0)
+                .setPartiteVinte(0).build();
 
             return profilo;
         } catch (SQLException e2) {
