@@ -9,6 +9,7 @@ import model.Senso;
 import view.Menu;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 import static view.Menu.nomeutente;
 
@@ -22,6 +23,9 @@ public class PartitaPanel extends JPanel {
 	Mazzo mazzo = new Mazzo();
 	private JButton passo;
 	public Timer t;
+	static JLabel foto;
+	static JLabel foto1;
+	static JLabel foto2;
 	public static ArrayList<JButton> posti = new ArrayList<>();
 	private static Piatto tavolo;
 	private static Postazione postazione;
@@ -118,9 +122,9 @@ public class PartitaPanel extends JPanel {
         postazioneNord.setOpaque(false);
         tavolo = new Piatto();
 
-        JLabel foto = new JLabel(avatar1png);
-        JLabel foto1 = new JLabel(avatar2png);
-        JLabel foto2 = new JLabel(avatar3png);
+        foto = new JLabel(avatar1png);
+        foto1 = new JLabel(avatar2png);
+        foto2 = new JLabel(avatar3png);
      
        
         GridBagConstraints gbc10= new GridBagConstraints();
@@ -331,7 +335,11 @@ public class PartitaPanel extends JPanel {
       
        
     public static void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto,  Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo, Postazione postazionePiatto) {
-    	
+    	if(senso==Senso.ORARIO)
+			{foto.setBorder(new LineBorder(Color.RED, 5));foto1.setBorder(null);foto2.setBorder(null);}
+    	else
+			{foto.setBorder(null);foto1.setBorder(null);foto2.setBorder(new LineBorder(Color.RED, 5));}
+	
     	if (mano.mano.size()>1) Menu.deviGridareUno=false;
     	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false) {
     		System.out.println("Penalità: non hai gridato 1!");
@@ -414,20 +422,24 @@ public class PartitaPanel extends JPanel {
     public static void avanti(GridBagConstraints gbc10, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, Mazzo mazzo, Postazione postazione, Mano mano,Postazione postazionePiatto) {
         
     	switch (turno%4) {
-            case 1:
-            	//foto.setBorder(new LineBorder(Color.RED, 5));foto1.setBorder(null);foto2.setBorder(null);foto3.setBorder(null);
+            case 1: if(senso==Senso.ORARIO)
+            			{foto.setBorder(null);foto1.setBorder(new LineBorder(Color.RED, 5));foto2.setBorder(null);}
+            		else
+            			{foto.setBorder(null);foto1.setBorder(null);foto2.setBorder(null);}
             	mossaOvest( gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);           
                 break;
-            case 2:
-            	//Menu.foto1.setBorder(new LineBorder(Color.RED, 5));Menu.foto.setBorder(null);Menu.foto2.setBorder(null);Menu.foto3.setBorder(null);
+            case 2:  if(senso==Senso.ORARIO)
+            			{foto2.setBorder(new LineBorder(Color.RED, 5));foto1.setBorder(null);foto.setBorder(null);}
+            		 else
+            	        {foto1.setBorder(null);foto.setBorder(new LineBorder(Color.RED, 5));foto2.setBorder(null);}
                 mossaNord(gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
                 break;
-            case 3:
-            	//Menu.foto2.setBorder(new LineBorder(Color.RED, 5));Menu.foto1.setBorder(null);Menu.foto.setBorder(null);Menu.foto3.setBorder(null);            	
+            case 3: if(senso==Senso.ORARIO)
+            			{foto2.setBorder(null);foto1.setBorder(null);foto.setBorder(null);} 
+            		else {foto2.setBorder(null);foto1.setBorder(new LineBorder(Color.RED, 5));foto.setBorder(null);}
                 mossaEst(gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
                 break;
             default:
-            	//Menu.foto3.setBorder(new LineBorder(Color.RED, 5));Menu.foto1.setBorder(null);Menu.foto2.setBorder(null);Menu.foto.setBorder(null);
             	
                 break;
         }
@@ -688,7 +700,7 @@ public class PartitaPanel extends JPanel {
             manoVittima.mano.add(mazzo.pesca());
             manoVittima.mano.add(mazzo.pesca());
     		cartaScarto.setC((int)(Math.random()*4));
-    		 String filename = "./src/immagini/"+cartaScarto.getC() + ".png";
+    		 String filename = "./src/immagini/"+cartaScarto.getC() + "+4.png";
              ImageIcon img = new ImageIcon(filename);
              JButton colore = new JButton(img);
              colore.setBorder(null);
@@ -699,13 +711,26 @@ public class PartitaPanel extends JPanel {
     }
     public static void aggiornaSpecialeUmano(Mano mano,Mazzo mazzo,Carta x,Postazione postazione)
     {
+    	if (x.getV()==12) {pesca(mazzo,mano);pesca(mazzo,mano);}
     	
     	if (x.getV()==13) {
             cartaScarto.setC((int)(Math.random()*4));
+            cartaScarto.setC((int)(Math.random()*4));
+   		 String filename = "./src/immagini/"+cartaScarto.getC() + ".png";
+            ImageIcon img = new ImageIcon(filename);
+            JButton colore = new JButton(img);
+            colore.setBorder(null);
+            scartoButton.add(colore);
             System.out.println(cartaScarto.getC());
         }
     	if (x.getV()==14) {
             cartaScarto.setC((int)(Math.random()*4));
+            cartaScarto.setC((int)(Math.random()*4));
+   		 String filename = "./src/immagini/"+cartaScarto.getC() + "+4.png";
+            ImageIcon img = new ImageIcon(filename);
+            JButton colore = new JButton(img);
+            colore.setBorder(null);
+            scartoButton.add(colore);
             System.out.println(cartaScarto.getC());
             System.out.print("la tua mano è: "+mano.mano.toString());
             pesca(mazzo,mano);pesca(mazzo,mano);
