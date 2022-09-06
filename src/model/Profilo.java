@@ -21,6 +21,7 @@ public class Profilo {
 		public Profilo build() {
 			Profilo profilo = new Profilo();
 			profilo.nickname = this.nickname;
+			profilo.avatarImg = this.avatarImg;
 			return profilo;
 		}
 
