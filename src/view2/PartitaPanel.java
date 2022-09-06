@@ -443,21 +443,13 @@ public class PartitaPanel extends JPanel {
     public static void avanti(GridBagConstraints gbc10, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, Mazzo mazzo, Postazione postazione, Mano mano,Postazione postazionePiatto) {
         
     	switch (turno%4) {
-            case 1: if(senso==Senso.ORARIO)
-            			{foto.setBorder(null);foto1.setBorder(new LineBorder(Color.RED, 5));foto2.setBorder(null);}
-            		else
-            			{foto.setBorder(null);foto1.setBorder(null);foto2.setBorder(null);}
+            case 1:
             	mossaOvest( gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);           
                 break;
-            case 2:  if(senso==Senso.ORARIO)
-            			{foto2.setBorder(new LineBorder(Color.RED, 5));foto1.setBorder(null);foto.setBorder(null);}
-            		 else
-            	        {foto1.setBorder(null);foto.setBorder(new LineBorder(Color.RED, 5));foto2.setBorder(null);}
+            case 2:  
                 mossaNord(gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
                 break;
-            case 3: if(senso==Senso.ORARIO)
-            			{foto2.setBorder(null);foto1.setBorder(null);foto.setBorder(null);} 
-            		else {foto2.setBorder(null);foto1.setBorder(new LineBorder(Color.RED, 5));foto.setBorder(null);}
+            case 3: 
                 mossaEst(gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
                 break;
             default:
@@ -523,6 +515,10 @@ public class PartitaPanel extends JPanel {
         if (manoOvest.mano.size()==0) {
             Database db2 = Database.getInstance();
         }
+        if(senso==Senso.ORARIO&&cartaScarto.getV()!=11)
+		{foto.setBorder(null);foto1.setBorder(new LineBorder(Color.RED, 5));foto2.setBorder(null);}
+	else 
+		{foto.setBorder(null);foto1.setBorder(null);foto2.setBorder(null);}
         System.out.println("turno: "+turno);
     }
     public static void mossaNord(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst,Postazione postazionePiatto)
@@ -585,6 +581,10 @@ public class PartitaPanel extends JPanel {
             Database db2 = Database.getInstance();
         }
         System.out.println("turno: "+turno);
+        if(senso==Senso.ORARIO&&cartaScarto.getV()!=11)
+			{foto2.setBorder(new LineBorder(Color.RED, 5));foto1.setBorder(null);foto.setBorder(null);}
+        else 
+        	{foto1.setBorder(null);foto.setBorder(new LineBorder(Color.RED, 5));foto2.setBorder(null);}
     }
     public static void mossaEst(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst,Postazione postazionePiatto)
     {	
@@ -645,6 +645,10 @@ public class PartitaPanel extends JPanel {
         }
         
         System.out.println("turno: "+turno);
+        if(senso==Senso.ORARIO&&cartaScarto.getV()!=11)
+			{foto2.setBorder(null);foto1.setBorder(null);foto.setBorder(null);} 
+        else 
+        	{foto2.setBorder(null);foto1.setBorder(new LineBorder(Color.RED, 5));foto.setBorder(null);}
     }
     public static Carta cartaUtile(Mano manoGiocatore)
     {
