@@ -39,7 +39,12 @@ public class PartitaController {
 		
 		        
 		 });
-	 
+		 partitaPanel.funzioneUno(e ->{
+			if (PartitaPanel.getDeviGridareUno()==true) PartitaPanel.setGridatoUno();
+		
+		        
+		 });
+		 
 	 
 	 
 	 
