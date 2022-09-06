@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class PartitaPanel extends JPanel {
 	Mazzo mazzo = new Mazzo();
 	private JButton passo;
+	public Timer t;
 	public static ArrayList<JButton> posti = new ArrayList<>();
 	private static Piatto tavolo;
 	private static Postazione postazione;
@@ -229,7 +230,7 @@ public class PartitaPanel extends JPanel {
      
             }
         };
-        Timer t = new Timer(3000, avanti);
+        t = new Timer(3000, avanti);
         t.start();
         
      
@@ -261,8 +262,8 @@ public class PartitaPanel extends JPanel {
                     repaint();
                     	t.start();
                     	cliccato(gbc10, mano, postazione.getComponentZOrder(posto), posto, postazione, tavolo,  manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, posti, mazzo,postazionePiatto);
-                    	if (cartaScarto.getC()==4)
-                            t.stop();
+                    	//if (cartaScarto.getC()==4)
+                            
                     }
             }); 
             
@@ -292,20 +293,25 @@ public class PartitaPanel extends JPanel {
 	   public void funzioneRosso(ActionListener actionListener) {
 		   
 		   coloreRosso.addActionListener(actionListener);
+		   
+		  
 	   }
 	   public void funzioneGiallo(ActionListener actionListener) {
 		   
 		   coloreGiallo.addActionListener(actionListener);
+		   
 	   }
 
 	   public void funzioneVerde(ActionListener actionListener) {
 	   
 		   coloreVerde.addActionListener(actionListener);
+		   
 	   }
 
 	   public void funzioneBlu(ActionListener actionListener) {
 	   
 		   coloreBlu.addActionListener(actionListener);
+		   
 	   }
 
 
@@ -672,7 +678,8 @@ public class PartitaPanel extends JPanel {
             ImageIcon img = new ImageIcon(filename);
             JButton colore = new JButton(img);
             colore.setBorder(null);
-            piatto.add(colore);
+            scartoButton.add(colore);
+            
             System.out.println("colore: "+cartaScarto.getC());
         }
     	if (x.getV()==14) {
@@ -681,6 +688,12 @@ public class PartitaPanel extends JPanel {
             manoVittima.mano.add(mazzo.pesca());
             manoVittima.mano.add(mazzo.pesca());
     		cartaScarto.setC((int)(Math.random()*4));
+    		 String filename = "./src/immagini/"+cartaScarto.getC() + ".png";
+             ImageIcon img = new ImageIcon(filename);
+             JButton colore = new JButton(img);
+             colore.setBorder(null);
+             scartoButton.add(colore);
+             
     	    System.out.println("colore: "+cartaScarto.getC());
     	}
     }

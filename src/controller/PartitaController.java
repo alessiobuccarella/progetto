@@ -17,6 +17,7 @@ public class PartitaController {
 		 partitaPanel.funzioneRosso(e ->{
 			 PartitaPanel.passo();
 			 PartitaPanel.cartaScarto.setC(0);
+			 
 			
 		        
 		 });
