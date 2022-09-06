@@ -317,6 +317,7 @@ public class PartitaPanel extends JPanel {
       
        
     public static void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto,  Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo, Postazione postazionePiatto) {
+    	
     	if (mano.mano.size()>1) Menu.deviGridareUno=false;
     	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false) {
     		System.out.println("Penalità: non hai gridato 1!");
@@ -620,6 +621,8 @@ public class PartitaPanel extends JPanel {
         }
     public static void aggiornaTurno(Mano mano,Mazzo mazzo) 
     {
+    	postazione.removeAll();
+    
         if (cartaScarto.getV() == 11) {
             cambiaSenso();
             if (senso == Senso.ORARIO) turno += 1;
@@ -633,8 +636,10 @@ public class PartitaPanel extends JPanel {
             turno -= 1;
         Carta x=cartaUtile(mano);
         //if (Menu.turno%4==0) Menu.evidenzia(0);     
-        if (turno%4==0&&x==null) {System.out.println("non hai la carta da giocare");pesca(mazzo, mano);aggiornaPostazione(postazione, mano);}
-    }
+        if (turno%4==0&&x==null) {//System.out.println("non hai la carta da giocare");pesca(mazzo, mano);
+        	postazione.removeAll();}
+        }
+    
     public static void aggiornaVista(Piatto piatto, Postazione postazione)
     {
     	piatto.invalidate();
@@ -684,6 +689,7 @@ public class PartitaPanel extends JPanel {
             pesca(mazzo,mano);pesca(mazzo,mano);
             pesca(mazzo,mano);pesca(mazzo,mano);
             System.out.println(" e dopo diventa: "+mano.mano.toString());
+            postazione.repaint();
         }
     }
     public static void pesca(Mazzo mazzo, Mano mano) {
@@ -699,18 +705,16 @@ public class PartitaPanel extends JPanel {
       
   }
     public static void aggiornaPostazione(Postazione postazione, Mano mano)
-    {	 int i =0;
-    	 postazione.removeAll();
-         for (Carta y : mano.mano) {
-             postazione.add(DisegnaCarta.disegnaCarta(mano.mano.get(i)));
-             postazione.add(Box.createRigidArea(new Dimension(0, 5)));
-            
-             i++;
-             postazione.invalidate();
-             postazione.validate();
-             postazione.repaint();
-         
-         }
+    {	int count =0;
+    	for (Carta x:mano.mano)
+	{
+		Icon immagine= new ImageIcon("./src/immagini/" + x.getV() + x.getC() + ".png");
+		posti.get(count).setIcon(immagine);posti.get(count).setBorder(null);
+		postazione.add(posti.get(count));
+		count++;
+	}
+    postazione.invalidate();
+    postazione.validate();
         
     }
     
