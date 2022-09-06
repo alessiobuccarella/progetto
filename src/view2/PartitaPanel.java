@@ -371,7 +371,7 @@ public class PartitaPanel extends JPanel {
                     postazioneEst.validate();
             if (cartaScarto.getV() == 13) {
                 Menu.firstTime = true;
-                Menu.rosso.setIcon(redLabel);Menu.giallo.setIcon(yellowLabel);Menu.verde.setIcon(greenLabel);Menu.blu.setIcon(blueLabel);
+              //  Menu.rosso.setIcon(redLabel);Menu.giallo.setIcon(yellowLabel);Menu.verde.setIcon(greenLabel);Menu.blu.setIcon(blueLabel);
                 Menu.rosso.setEnabled(true);Menu.giallo.setEnabled(true);Menu.verde.setEnabled(true);Menu.blu.setEnabled(true);
                 Menu.postazioneColori.invalidate();
                 Menu.postazioneColori.validate();
@@ -633,7 +633,7 @@ public class PartitaPanel extends JPanel {
             turno -= 1;
         Carta x=cartaUtile(mano);
         //if (Menu.turno%4==0) Menu.evidenzia(0);     
-        if (turno%4==0&&x==null) {System.out.println("non hai la carta da giocare");pesca(mazzo, mano);}
+        if (turno%4==0&&x==null) {System.out.println("non hai la carta da giocare");pesca(mazzo, mano);aggiornaPostazione(postazione, mano);}
     }
     public static void aggiornaVista(Piatto piatto, Postazione postazione)
     {
@@ -692,9 +692,24 @@ public class PartitaPanel extends JPanel {
   	  Icon immagine= new ImageIcon("./src/immagini/" + carta.getV() + carta.getC() + ".png");
         posti.get(mano.mano.size()-1).setIcon(immagine);posti.get(mano.mano.size()-1).setBorder(null);
       	  postazione.add(posti.get(mano.mano.size()-1));
+      	  postazione.repaint();
       	  postazione.invalidate();
             postazione.validate();
       
   }
+    public static void aggiornaPostazione(Postazione postazione, Mano mano)
+    {	 int i =0;
+    	 postazione.removeAll();
+         for (Carta y : mano.mano) {
+             postazione.add(DisegnaCarta.disegnaCarta(mano.mano.get(i)));
+             postazione.add(Box.createRigidArea(new Dimension(0, 5)));
+            
+             i++;
+         
+         }
+         postazione.invalidate();
+         postazione.validate();
+         postazione.repaint();
+    }
     
 }
