@@ -21,11 +21,14 @@ import java.util.ArrayList;
 
 public class PartitaPanel extends JPanel {
 	Mazzo mazzo = new Mazzo();
+	public static boolean deviGridareUno=false;
+	public static boolean gridatoUno=false;
 	private JButton passo;
 	public Timer t;
 	static JLabel foto;
 	static JLabel foto1;
 	static JLabel foto2;
+	static JLabel foto3;
 	public static ArrayList<JButton> posti = new ArrayList<>();
 	private static Piatto tavolo;
 	private static Postazione postazione;
@@ -38,6 +41,7 @@ public class PartitaPanel extends JPanel {
 	static Icon yellowLabel = new ImageIcon("./src/immagini/1.png");
 	static Icon blueLabel = new ImageIcon("./src/immagini/2.png");
 	static Icon greenLabel = new ImageIcon("./src/immagini/3.png");
+	public static JButton uno;
 	public static  JButton scartoButton ;
 	public static JButton coloreRosso = new JButton();
 	public static JButton coloreGiallo = new JButton();
@@ -92,13 +96,13 @@ public class PartitaPanel extends JPanel {
         Image newimg1 = image1.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar1png = new ImageIcon(newimg1);
        
-        ImageIcon avatar2png = new ImageIcon("./src/immagini/avatar1.png");
+        ImageIcon avatar2png = new ImageIcon("./src/immagini/avatar2.png");
         avatar2png = new ImageIcon("./src/immagini/avatar2.png");
         Image image2 = avatar2png.getImage();
         Image newimg2 = image2.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar2png = new ImageIcon(newimg2);
         
-        ImageIcon avatar3png = new ImageIcon("./src/immagini/avatar1.png");
+        ImageIcon avatar3png = new ImageIcon("./src/immagini/avatar2.png");
         avatar3png = new ImageIcon("./src/immagini/avatar3.png");
         Image image3 = avatar3png.getImage();
         Image newimg3 = image3.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
@@ -129,24 +133,24 @@ public class PartitaPanel extends JPanel {
        
         GridBagConstraints gbc10= new GridBagConstraints();
         this.add(tavolo, BorderLayout.CENTER);
-        JButton uno= new JButton("UNO!");
+        uno= new JButton("UNO!");
         
 
         gbc10.anchor=GridBagConstraints.PAGE_START;
-        gbc10.gridx=4;
+        gbc10.gridx=5;
         gbc10.gridy=0;
-        gbc10.weightx=0.7;
+        gbc10.weightx=0;
         gbc10.weighty=0;
         gbc10.gridwidth=3;
         tavolo.add(foto1,gbc10);
         gbc10.gridx=4;
-        gbc10.gridy=1;
-        gbc10.weightx=0.0;
+        gbc10.gridy=0;
+        gbc10.weightx=0;
         gbc10.weighty=0;
         gbc10.gridwidth=3;
         tavolo.add(postazioneNord,gbc10);
         gbc10.anchor=GridBagConstraints.LINE_END;
-        gbc10.gridx=2;
+        gbc10.gridx=3;
         gbc10.gridy=7;
         gbc10.weightx=0.0;
         gbc10.weighty=1;
@@ -159,6 +163,13 @@ public class PartitaPanel extends JPanel {
         gbc10.weighty=0;
         gbc10.gridwidth=1;
         tavolo.add(passo,gbc10);
+        gbc10.anchor=GridBagConstraints.LINE_START;
+        gbc10.gridx=4;
+        gbc10.gridy=7;
+        gbc10.weightx=0;
+        gbc10.weighty=0;
+        gbc10.gridwidth=1;
+        //tavolo.add(foto3,gbc10);
         gbc10.anchor=GridBagConstraints.CENTER;
         gbc10.gridx=0;
         gbc10.gridy=0;
@@ -172,7 +183,8 @@ public class PartitaPanel extends JPanel {
         postazioneColori.add((coloreGiallo));
         postazioneColori.add((coloreVerde));
         postazioneColori.add((coloreBlu));
-        gbc10.anchor=GridBagConstraints.LINE_START;tavolo.add(postazioneColori,gbc10);
+        gbc10.anchor=GridBagConstraints.LINE_START;
+        tavolo.add(postazioneColori,gbc10);
         postazionePiatto.add(deckLabel);
         postazionePiatto.add(scartoButton);
         postazionePiatto.setOpaque(false);
@@ -181,10 +193,10 @@ public class PartitaPanel extends JPanel {
         gbc10.anchor=GridBagConstraints.CENTER;
         gbc10.gridx=4;
         gbc10.gridy=5;
-        gbc10.weighty=2;
+        gbc10.weighty=4;
         tavolo.add(postazione,gbc10);
         
-        gbc10.gridx=5;
+        gbc10.gridx=4;
         gbc10.gridy=4;
         gbc10.weighty=1;
         gbc10.weightx=0;
@@ -196,7 +208,7 @@ public class PartitaPanel extends JPanel {
         gbc10.weighty=0;
         gbc10.weightx=0;
         tavolo.add(foto,gbc10);
-        gbc10.gridx=2;
+        gbc10.gridx=1;
         gbc10.gridy=4;
         gbc10.weighty=1;
         gbc10.weightx=1;
@@ -204,14 +216,14 @@ public class PartitaPanel extends JPanel {
         tavolo.add(postazioneOvest,gbc10);
         postazioneOvest.add((new JLabel(new ImageIcon("./src/immagini/dorsosx7.png"))),gbc10);
         ///////////////////////////////////////////////////////destra
-        gbc10.gridx=6;
+        gbc10.gridx=7;
         gbc10.gridy=4;
         gbc10.weighty=1;
         gbc10.weightx=1;
         gbc10.gridwidth=3;
         tavolo.add(postazioneEst,gbc10);
         postazioneEst.add((new JLabel(new ImageIcon("./src/immagini/dorsodx7.png"))),gbc10);
-        gbc10.gridx=9;
+        gbc10.gridx=10;
         gbc10.gridy=4;
         gbc10.weighty=1;
         gbc10.weightx=0;
@@ -251,13 +263,7 @@ public class PartitaPanel extends JPanel {
         });
    */
         
-        uno.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("hai cliccato uno");
-                pesca(mazzo,mano);
-            }
-        });
+       
 
 
         for (JButton posto : posti) {
@@ -289,6 +295,11 @@ public class PartitaPanel extends JPanel {
         
         
     }
+	   public void funzioneUno(ActionListener actionListener) {
+		
+		    uno.addActionListener(actionListener);
+	   	}
+	
 	   public void funzionePasso(ActionListener actionListener) {
 		   
 	       	passo.addActionListener(actionListener);
@@ -331,7 +342,15 @@ public class PartitaPanel extends JPanel {
 	   
 	   
 	   
+   public static boolean getDeviGridareUno() 
+   	{
+	   return deviGridareUno;
+   	}
+   public static void setGridatoUno() 
+  	{
+	   gridatoUno=true;
 	   
+  	}
       
        
     public static void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto,  Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo, Postazione postazionePiatto) {
@@ -340,8 +359,10 @@ public class PartitaPanel extends JPanel {
     	else
 			{foto.setBorder(null);foto1.setBorder(null);foto2.setBorder(new LineBorder(Color.RED, 5));}
 	
-    	if (mano.mano.size()>1) Menu.deviGridareUno=false;
-    	if (Menu.deviGridareUno==true&&Menu.gridatoUno==false) {
+    	
+		if (mano.mano.size()>1) deviGridareUno=false;
+		else deviGridareUno=true;
+    	if (deviGridareUno==true&&gridatoUno==false) {
     		System.out.println("Penalità: non hai gridato 1!");
     		mano.mano.add(mazzo.pesca());
              posti.get(mano.mano.size() - 1).setBorder(null);
