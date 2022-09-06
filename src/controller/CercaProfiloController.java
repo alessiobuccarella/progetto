@@ -14,9 +14,9 @@ public class CercaProfiloController {
 
 	public CercaProfiloController(CercaProfiloPanel cercaProfiloPanel, ProfiloPanel profiloPanel, CardLayout cardLayout, Container parent) {
 		cercaProfiloPanel.cercaProfilo(e -> {
-			musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/button-30.wav");
 			String nickname = cercaProfiloPanel.getNickname();
 			if (nickname.equals("") || nickname.equals(null)) {
+				musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button.wav");
 	            JOptionPane.showMessageDialog(null, "Nickname Obbligatorio");
 	        } else {
 				//funzione di ricerca
@@ -24,10 +24,12 @@ public class CercaProfiloController {
 				Database db = Database.getInstance();
 				Profilo profilo = db.cercaProfilo(nickname);
 				if ( profilo != null ) {
+					musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/success_button.wav");
 					profiloPanel.printProfilo(profilo);
 					JOptionPane.showMessageDialog(null, "Benvenuto " + nickname);
 					cardLayout.show(parent, "inizio2");
 				} else {
+					musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button.wav");
 					JOptionPane.showMessageDialog(null, "Nessun profilo trovato per con il nickaname " + nickname);
 				}
 	        }

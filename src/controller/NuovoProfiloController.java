@@ -13,24 +13,27 @@ public class NuovoProfiloController {
 
     public NuovoProfiloController(NuovoProfiloPanel nuovoProfiloPanel, ProfiloPanel profiloPanel, CardLayout cardLayout, Container parent) {
         nuovoProfiloPanel.creaProfilo(e -> {
-            musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/button-30.wav");
             String nickname = nuovoProfiloPanel.getNickname();
             if (nickname == null || nickname.isEmpty()) {
+                musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button.wav");
                 JOptionPane.showMessageDialog(null, "Nickname Obbligatorio");
                 return;
             }
             String avatarImg = nuovoProfiloPanel.getAvatar();
             if (avatarImg == null || avatarImg.isEmpty()) {
+                musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button.wav");
                 JOptionPane.showMessageDialog(null, "Avatar Obbligatorio");
                 return;
             }
             Database db = Database.getInstance();
             Profilo profilo = db.creaProfilo(nickname, avatarImg);
             if ( profilo != null ) {
+                musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/success_button.wav");
             	profiloPanel.printProfilo(profilo);
                 JOptionPane.showMessageDialog(null, "Benvenuto " + nickname);
             	cardLayout.show(parent, "inizio2");
             } else {
+                musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button.wav");
             	JOptionPane.showMessageDialog(null, "Errore nella creazione del profilo");
             }
         });
