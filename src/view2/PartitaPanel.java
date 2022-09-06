@@ -118,7 +118,7 @@ public class PartitaPanel extends JPanel {
         Postazione postazioneNord = new Postazione(1);
         postazioneNord.add(new JLabel(new ImageIcon("./src/immagini/dorsonord7.png")));
         postazioneNord.setOpaque(false);
-        Piatto tavolo = new Piatto();
+        tavolo = new Piatto();
 
         JLabel foto = new JLabel(avatar1png);
         JLabel foto1 = new JLabel(avatar2png);
@@ -636,8 +636,7 @@ public class PartitaPanel extends JPanel {
             turno -= 1;
         Carta x=cartaUtile(mano);
         //if (Menu.turno%4==0) Menu.evidenzia(0);     
-        if (turno%4==0&&x==null) {//System.out.println("non hai la carta da giocare");pesca(mazzo, mano);
-        	postazione.removeAll();}
+        if (turno%4==0&&x==null) {System.out.println("non hai la carta da giocare");pesca(mazzo, mano);}
         }
     
     public static void aggiornaVista(Piatto piatto, Postazione postazione)
@@ -689,6 +688,8 @@ public class PartitaPanel extends JPanel {
             pesca(mazzo,mano);pesca(mazzo,mano);
             pesca(mazzo,mano);pesca(mazzo,mano);
             System.out.println(" e dopo diventa: "+mano.mano.toString());
+     
+         
             postazione.repaint();
         }
     }
@@ -699,13 +700,16 @@ public class PartitaPanel extends JPanel {
   	  Icon immagine= new ImageIcon("./src/immagini/" + carta.getV() + carta.getC() + ".png");
         posti.get(mano.mano.size()-1).setIcon(immagine);posti.get(mano.mano.size()-1).setBorder(null);
       	  postazione.add(posti.get(mano.mano.size()-1));
-      	  postazione.repaint();
       	  postazione.invalidate();
             postazione.validate();
-      
+            tavolo.invalidate();
+            tavolo.validate();
+           
+  
   }
     public static void aggiornaPostazione(Postazione postazione, Mano mano)
-    {	int count =0;
+    {	postazione.removeAll();
+    	int count =0;
     	for (Carta x:mano.mano)
 	{
 		Icon immagine= new ImageIcon("./src/immagini/" + x.getV() + x.getC() + ".png");
