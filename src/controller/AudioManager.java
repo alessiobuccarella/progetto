@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 
 public class AudioManager {
     private static AudioManager istanza;
+    private Clip clip;
+
     private AudioManager() {
         AudioManager.istanza = this;
     }
@@ -22,10 +24,15 @@ public class AudioManager {
         File musicPath = new File(musicLocation);
         try {
             if(musicPath.exists()) {
-                Clip clip = AudioSystem.getClip();
-                clip.open(AudioSystem.getAudioInputStream(musicPath));
-                clip.start();
-                clip.loop(Clip.LOOP_CONTINUOUSLY);
+                if(clip == null) {
+                    clip = AudioSystem.getClip();
+                    clip.open(AudioSystem.getAudioInputStream(musicPath));
+                    clip.start();
+                    clip.loop(Clip.LOOP_CONTINUOUSLY);
+                } else {
+                    clip.stop();
+                    clip = null;
+                }
             } else {
                 System.out.println("Non trovo il file audio");
             }
