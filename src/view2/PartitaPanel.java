@@ -246,7 +246,7 @@ public class PartitaPanel extends JPanel {
      
             }
         };
-        t = new Timer(3000, avanti);
+        t = new Timer(7000, avanti);
         t.start();
         
      
@@ -368,6 +368,7 @@ public class PartitaPanel extends JPanel {
              posti.get(mano.mano.size() - 1).setBorder(null);
             mano.mano.add(mazzo.pesca());
            posti.get(mano.mano.size() - 1).setBorder(null);
+        
     	}
     	if ((mano.mano.get(indiceCarta).getC() == cartaScarto.getC() || mano.mano.get(indiceCarta).getV() == cartaScarto.getV() || mano.mano.get(indiceCarta).getC() == 4)&&(turno%4==0)) {
     		System.out.println("ok");
