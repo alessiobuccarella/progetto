@@ -1,5 +1,7 @@
 package model;
 
+import controller.AudioButtonManager;
+
 import javax.swing.*;
 import java.sql.*;
 
@@ -8,6 +10,7 @@ public class Database {
     public static String nomeProfilo, fotoProfilo, livello, partiteGiocate, partiteVinte, partitePerse;
     private Connection connection;
     private static Database singleton;
+    AudioButtonManager musicObjectButton = new AudioButtonManager();
     private Database() {
         try {
             this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jUno", "app-user", "password");
@@ -172,10 +175,12 @@ public class Database {
         } catch (SQLException e2) {
             switch (e2.getSQLState()) {
                 case "22001":
+                    musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button.wav");
                     JOptionPane.showMessageDialog(null, "Nickname deve essere lungo massimo 45 caratteri");
                     break;
                 case "23000":
-                    JOptionPane.showMessageDialog(null, "Nickname gi� in uso");
+                    musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button.wav");
+                    JOptionPane.showMessageDialog(null, "Nickname già in uso");
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "" + e2);
@@ -189,7 +194,6 @@ public class Database {
             try {
                 this.connection.close();
             } catch (SQLException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }

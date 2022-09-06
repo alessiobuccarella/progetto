@@ -32,9 +32,6 @@ public class NuovoProfiloController {
             	profiloPanel.printProfilo(profilo);
                 JOptionPane.showMessageDialog(null, "Benvenuto " + nickname);
             	cardLayout.show(parent, "inizio2");
-            } else {
-                musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button.wav");
-            	JOptionPane.showMessageDialog(null, "Errore nella creazione del profilo");
             }
         });
     }

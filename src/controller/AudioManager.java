@@ -6,6 +6,7 @@ import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 
 public class AudioManager {
+
     private static AudioManager istanza;
     private Clip clip;
 
