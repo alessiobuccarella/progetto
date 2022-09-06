@@ -56,10 +56,7 @@ public class PartitaPanel extends JPanel {
         Mano manoNord = new Mano(mazzo);
         Mano manoEst = new Mano(mazzo);
         for (int i=0;i<30;i++)posti.add(new JButton());
-        for (int i=0;i<mano.mano.size();i++)
-            posti.set(i,DisegnaCarta.disegnaCarta(mano.mano.get(i)));
-        for (int i=0;i<mano.mano.size();i++)
-            postazione.add(posti.get(i));
+        
         coloreRosso.add(redLabel);
         coloreRosso.setBorder(null);
         
@@ -75,7 +72,7 @@ public class PartitaPanel extends JPanel {
         deckButton.setBorder(null);
         deckButton.setHorizontalTextPosition(SwingConstants.CENTER);
         deckButton.add(deckLabel); 
-        Postazione postazione = new Postazione(1);
+       
         Postazione postazionePiatto = new Postazione(1);
         Postazione postazioneColori = new Postazione(1);
         postazione.setBackground(null);
@@ -249,7 +246,13 @@ public class PartitaPanel extends JPanel {
         });
    */
         
-        
+        uno.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("hai cliccato uno");
+                pesca(mazzo,mano);
+            }
+        });
 
 
         for (JButton posto : posti) {
@@ -273,6 +276,7 @@ public class PartitaPanel extends JPanel {
                     posto.setLocation(posto.getX(), posto.getY()+5);
                 }
             });
+    
             
    
             
@@ -340,7 +344,7 @@ public class PartitaPanel extends JPanel {
             gbc10.gridy=1;
             postazionePiatto.add(scartoButton);
     		piatto.invalidate();piatto.validate();piatto.repaint();
-    		mano.mano.remove(indiceCarta);postazione.removeAll();/*Menu.posti.clear();*/postazione.invalidate();postazione.validate();
+    		mano.mano.remove(indiceCarta);postazione.removeAll();
     		int count=0;
     		for (Carta x:mano.mano)
     		{
@@ -377,7 +381,7 @@ public class PartitaPanel extends JPanel {
             if (cartaScarto.getV() == 13) {
                 Menu.firstTime = true;
               //  Menu.rosso.setIcon(redLabel);Menu.giallo.setIcon(yellowLabel);Menu.verde.setIcon(greenLabel);Menu.blu.setIcon(blueLabel);
-                Menu.rosso.setEnabled(true);Menu.giallo.setEnabled(true);Menu.verde.setEnabled(true);Menu.blu.setEnabled(true);
+         //       Menu.rosso.setEnabled(true);Menu.giallo.setEnabled(true);Menu.verde.setEnabled(true);Menu.blu.setEnabled(true);
                 Menu.postazioneColori.invalidate();
                 Menu.postazioneColori.validate();
             }
@@ -590,7 +594,7 @@ public class PartitaPanel extends JPanel {
             manoEst.mano.add(mazzo.pesca());                       //pesca
             //aggiornaPostazione(postazioneEst, manoEst,"./src/immagini/dorso90s.png" );
             pescato = true;
-            mossaEst(gbc10, mano, manoOvest, manoNord, manoEst, piatto, postazioneEst, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
+            mossaEst(gbc10, mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
         }
         else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha gi� pescato
            pescato = false;
@@ -625,7 +629,7 @@ public class PartitaPanel extends JPanel {
         }
     public static void aggiornaTurno(Mano mano,Mazzo mazzo) 
     {
-    	postazione.removeAll();
+    	
     
         if (cartaScarto.getV() == 11) {
             cambiaSenso();
@@ -640,7 +644,9 @@ public class PartitaPanel extends JPanel {
             turno -= 1;
         Carta x=cartaUtile(mano);
         //if (Menu.turno%4==0) Menu.evidenzia(0);     
-        if (turno%4==0&&x==null) {System.out.println("non hai la carta da giocare");pesca(mazzo, mano);}
+        if (turno%4==0&&x==null) { System.out.println("non hai la carta da giocare");pesca(mazzo, mano);}    
+        						
+        
         }
     
     public static void aggiornaVista(Piatto piatto, Postazione postazione)
@@ -698,31 +704,25 @@ public class PartitaPanel extends JPanel {
         }
     }
     public static void pesca(Mazzo mazzo, Mano mano) {
-    	
+
+    
   	  Carta carta=mazzo.pesca();
   	  mano.mano.add(carta);
-  	  Icon immagine= new ImageIcon("./src/immagini/" + carta.getV() + carta.getC() + ".png");
-        posti.get(mano.mano.size()-1).setIcon(immagine);posti.get(mano.mano.size()-1).setBorder(null);
-      	  postazione.add(posti.get(mano.mano.size()-1));
-      	  postazione.invalidate();
-            postazione.validate();
-            tavolo.invalidate();
-            tavolo.validate();
+  	  aggiornaPostazione(mano);
            
   
   }
-    public static void aggiornaPostazione(Postazione postazione, Mano mano)
+    public static void aggiornaPostazione(Mano mano)
     {	postazione.removeAll();
-    	int count =0;
-    	for (Carta x:mano.mano)
-	{
-		Icon immagine= new ImageIcon("./src/immagini/" + x.getV() + x.getC() + ".png");
-		posti.get(count).setIcon(immagine);posti.get(count).setBorder(null);
-		postazione.add(posti.get(count));
-		count++;
-	}
+
+    		for (int i=0;i<mano.mano.size();i++)
+                posti.set(i, DisegnaCarta.disegnaCarta(mano.mano.get(i)));
+            for (int i=0;i<mano.mano.size();i++)
+                postazione.add(posti.get(i));
+
     postazione.invalidate();
     postazione.validate();
+    postazione.repaint();
         
     }
     
