@@ -395,7 +395,7 @@ public class PartitaPanel extends JPanel {
                     postazioneEst.invalidate();
                     postazioneEst.validate();
                 }
-                Menu.rosso.setEnabled(true);Menu.giallo.setEnabled(true);Menu.verde.setEnabled(true);Menu.blu.setEnabled(true);
+               // Menu.rosso.setEnabled(true);Menu.giallo.setEnabled(true);Menu.verde.setEnabled(true);Menu.blu.setEnabled(true);
             }            
             if (mano.mano.size()==0) {
                 Database db2 = Database.getInstance();
@@ -403,7 +403,7 @@ public class PartitaPanel extends JPanel {
             }
     }
     public static void avanti(GridBagConstraints gbc10, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, Mazzo mazzo, Postazione postazione, Mano mano,Postazione postazionePiatto) {
-        System.out.println("funzione avanti");
+        
     	switch (turno%4) {
             case 1:
             	//foto.setBorder(new LineBorder(Color.RED, 5));foto1.setBorder(null);foto2.setBorder(null);foto3.setBorder(null);
@@ -594,15 +594,15 @@ public class PartitaPanel extends JPanel {
         }
         else if (x == null && pescato == true) {                       //se il giocatore non ha una carta utile e ma ha gi� pescato
            pescato = false;
-           if (Menu.senso == Senso.ORARIO) Menu.turno += 1;
-           else Menu.turno-=1;
+           if (Menu.senso == Senso.ORARIO) turno += 1;
+           else turno-=1;
            System.out.println("EST: " + manoEst.mano.toString());
         }
         if (manoEst.mano.size()==0) {
             Database db2 = Database.getInstance();
         }
         
-        System.out.println("turno: "+Menu.turno);
+        System.out.println("turno: "+turno);
     }
     public static Carta cartaUtile(Mano manoGiocatore)
     {
