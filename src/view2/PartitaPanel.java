@@ -34,10 +34,10 @@ public class PartitaPanel extends JPanel {
 	static Icon blueLabel = new ImageIcon("./src/immagini/2.png");
 	static Icon greenLabel = new ImageIcon("./src/immagini/3.png");
 	public static  JButton scartoButton ;
-	public JButton coloreRosso = new JButton();
-	public JButton coloreGiallo = new JButton();
-	public JButton coloreVerde = new JButton();
-	public JButton coloreBlu = new JButton();
+	public static JButton coloreRosso = new JButton();
+	public static JButton coloreGiallo = new JButton();
+	public static JButton coloreVerde = new JButton();
+	public static JButton coloreBlu = new JButton();
 	public PartitaPanel(){
     	setLayout(new BorderLayout());
     	do cartaScarto=mazzo.next(); while(cartaScarto.getV()>12);
@@ -379,14 +379,13 @@ public class PartitaPanel extends JPanel {
                     postazioneEst.invalidate();
                     postazioneEst.validate();
             if (cartaScarto.getV() == 13) {
-                Menu.firstTime = true;
-              //  Menu.rosso.setIcon(redLabel);Menu.giallo.setIcon(yellowLabel);Menu.verde.setIcon(greenLabel);Menu.blu.setIcon(blueLabel);
-         //       Menu.rosso.setEnabled(true);Menu.giallo.setEnabled(true);Menu.verde.setEnabled(true);Menu.blu.setEnabled(true);
-                Menu.postazioneColori.invalidate();
-                Menu.postazioneColori.validate();
+               // Menu.firstTime = true;
+                coloreRosso.setIcon(redLabel);coloreGiallo.setIcon(yellowLabel);coloreVerde.setIcon(greenLabel);coloreBlu.setIcon(blueLabel);
+                coloreRosso.setEnabled(true);coloreGiallo.setEnabled(true);coloreVerde.setEnabled(true);coloreBlu.setEnabled(true);
+            
             }
             if (cartaScarto.getV() == 14) {
-                Menu.firstTime = true;
+                //Menu.firstTime = true;
                 if (turno == 1) {
                     for (int i = 0; i < 4; i++)
                         manoOvest.mano.add(mazzo.pesca());
@@ -672,7 +671,8 @@ public class PartitaPanel extends JPanel {
             String filename = "./src/immagini/"+cartaScarto.getC() + ".png";
             ImageIcon img = new ImageIcon(filename);
             JButton colore = new JButton(img);
-            postazione.add(colore);
+            colore.setBorder(null);
+            piatto.add(colore);
             System.out.println("colore: "+cartaScarto.getC());
         }
     	if (x.getV()==14) {
@@ -727,6 +727,13 @@ public class PartitaPanel extends JPanel {
     postazione.validate();
     postazione.repaint();
        
+    }
+    public static void passo()
+    {
+    	if (senso == Senso.ANTIORARIO)
+            turno = 3;
+        if (senso == Senso.ORARIO)
+            turno = 1;
     }
     
 }
