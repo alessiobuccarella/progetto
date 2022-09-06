@@ -10,8 +10,11 @@ import view2.CercaProfiloPanel;
 import view2.ProfiloPanel;
 
 public class CercaProfiloController {
+	AudioButtonManager musicObjectButton = new AudioButtonManager();
+
 	public CercaProfiloController(CercaProfiloPanel cercaProfiloPanel, ProfiloPanel profiloPanel, CardLayout cardLayout, Container parent) {
 		cercaProfiloPanel.cercaProfilo(e -> {
+			musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/button-30.wav");
 			String nickname = cercaProfiloPanel.getNickname();
 			if (nickname.equals("") || nickname.equals(null)) {
 	            JOptionPane.showMessageDialog(null, "Nickname Obbligatorio");

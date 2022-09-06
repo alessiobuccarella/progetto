@@ -9,8 +9,11 @@ import view2.NuovoProfiloPanel;
 import view2.ProfiloPanel;
 
 public class NuovoProfiloController {
+    AudioButtonManager musicObjectButton = new AudioButtonManager();
+
     public NuovoProfiloController(NuovoProfiloPanel nuovoProfiloPanel, ProfiloPanel profiloPanel, CardLayout cardLayout, Container parent) {
         nuovoProfiloPanel.creaProfilo(e -> {
+            musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/button-30.wav");
             String nickname = nuovoProfiloPanel.getNickname();
             if (nickname == null || nickname.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Nickname Obbligatorio");
