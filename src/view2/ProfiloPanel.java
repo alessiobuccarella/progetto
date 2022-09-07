@@ -8,6 +8,7 @@ import model.Profilo;
 public class ProfiloPanel extends JPanel {
 
 	private static final long serialVersionUID = 3960043400919881397L;
+
 	private JLabel nickname;
 	private JLabel myavatar;
 	private JLabel livello;
@@ -32,6 +33,17 @@ public class ProfiloPanel extends JPanel {
         GridBagConstraints gbc9 = new GridBagConstraints();
         gbc9.gridwidth = GridBagConstraints.REMAINDER;
         gbc9.fill = GridBagConstraints.HORIZONTAL;
+        myavatar = new JLabel();
+        nickname = new JLabel();
+        nickname.setFont(new Font("Dialog", Font.PLAIN, 20));
+        livello = new JLabel();
+        livello.setFont(new Font("Dialog", Font.PLAIN, 20));
+        partiteGiocate = new JLabel();
+        partiteGiocate.setFont(new Font("Dialog", Font.PLAIN, 15));
+        partiteVinte = new JLabel();
+        partiteVinte.setFont(new Font("Dialog", Font.PLAIN, 15));
+        partitePerse = new JLabel();
+        partitePerse.setFont(new Font("Dialog", Font.PLAIN, 15));
         indietroButton = new JButton("<");
         setLayout(new BorderLayout());
         oa.setLayout(new GridBagLayout());

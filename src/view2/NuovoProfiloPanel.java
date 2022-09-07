@@ -1,5 +1,7 @@
 package view2;
 
+import controller.AudioButtonManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;

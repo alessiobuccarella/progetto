@@ -27,7 +27,62 @@ public class Database {
         return singleton;
     }
 
-    /*
+    public Profilo cercaProfilo(String nick) {
+        try {
+            String query = "SELECT * FROM jUno.Profilo WHERE nickname = '" + nick + "'";
+            Statement statement = connection.prepareStatement(query);
+            ResultSet rs = statement.executeQuery(query);
+            if (rs.next()) {
+                Profilo profilo = new Profilo.ProfiloBuilder()
+                        .setNickname(rs.getString(2))
+                        .setAvatarImg(rs.getString(3))
+                        .setLivello(rs.getInt(4))
+                        .setPartiteGiocate(rs.getInt(5))
+                        .setPartiteVinte(rs.getInt(6))
+                        .setPartitePerse(rs.getInt(7)).build();
+                return profilo;
+            }
+        } catch (Exception e1) {
+            musicObjectButton.playButtonMusic("./src/audio/error_button_audio.wav");
+            JOptionPane.showMessageDialog(null, "" + e1);
+        }
+        return null;
+    }
+
+    public Profilo creaProfilo(String nick, String img) {
+        try {
+            Statement statement = connection.createStatement();
+            String query1 = "INSERT INTO jUno.Profilo"
+                    + " (`nickname`, `avatar`)"
+                    + " VALUES ('" + nick + "','" + img + "')";
+            statement.executeUpdate(query1);
+
+            Profilo profilo = new Profilo.ProfiloBuilder()
+                    .setNickname(nick)
+                    .setAvatarImg(img)
+                    .setLivello(0)
+                    .setPartiteGiocate(0)
+                    .setPartitePerse(0)
+                    .setPartiteVinte(0).build();
+
+            return profilo;
+        } catch (SQLException e2) {
+            switch (e2.getSQLState()) {
+                case "22001":
+                    musicObjectButton.playButtonMusic("./src/audio/error_button_audio.wav");
+                    JOptionPane.showMessageDialog(null, "Nickname deve essere lungo massimo 45 caratteri");
+                    break;
+                case "23000":
+                    musicObjectButton.playButtonMusic("./src/audio/error_button_audio.wav");
+                    JOptionPane.showMessageDialog(null, "Nickname già in uso");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "" + e2);
+            }
+        }
+        return null;
+    }
+
     public void updateBD2(String nickname, boolean risultato) {
         if (risultato == true) {
             try {
@@ -58,61 +113,6 @@ public class Database {
                 JOptionPane.showMessageDialog(null, "" + e2);
             }
         }
-    }
-    */
-
-    public Profilo cercaProfilo(String nick) {
-        try {
-            String query = "SELECT * FROM jUno.Profilo WHERE nickname = '" + nick + "'";
-            Statement statement = connection.prepareStatement(query);
-            ResultSet rs = statement.executeQuery(query);
-            if (rs.next()) {
-                Profilo profilo = new Profilo.ProfiloBuilder()
-                    .setNickname(rs.getString(2))
-                    .setAvatarImg(rs.getString(3))
-                    .setLivello(rs.getInt(4))
-                    .setPartiteGiocate(rs.getInt(5))
-                    .setPartiteVinte(rs.getInt(6))
-                    .setPartitePerse(rs.getInt(7)).build();
-                return profilo;
-            }
-        } catch (Exception e1) {
-            musicObjectButton.playButtonMusic("./src/audio/error_button_audio.wav");
-            JOptionPane.showMessageDialog(null, "" + e1);
-        }
-        return null;
-    }
-
-    public Profilo creaProfilo(String nick, String img) {
-        try {
-            Statement statement = connection.createStatement();
-            String query1 = "INSERT INTO jUno.Profilo"
-                    + " (`nickname`, `avatar`)"
-                    + " VALUES ('" + nick + "','" + img + "')";
-            statement.executeUpdate(query1);
-            Profilo profilo = new Profilo.ProfiloBuilder()
-                .setNickname(nick)
-                .setAvatarImg(img)
-                .setLivello(0)
-                .setPartiteGiocate(0)
-                .setPartitePerse(0)
-                .setPartiteVinte(0).build();
-            return profilo;
-        } catch (SQLException e2) {
-            switch (e2.getSQLState()) {
-                case "22001":
-                    musicObjectButton.playButtonMusic("./src/audio/error_button_audio.wav");
-                    JOptionPane.showMessageDialog(null, "Nickname deve essere lungo massimo 45 caratteri");
-                    break;
-                case "23000":
-                    musicObjectButton.playButtonMusic("./src/audio/error_button_audio.wav");
-                    JOptionPane.showMessageDialog(null, "Nickname già in uso");
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "" + e2);
-            }
-        }
-        return null;
     }
 
     public void close() {
