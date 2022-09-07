@@ -150,7 +150,7 @@ public class Database {
                 return profilo;
             }
         } catch (Exception e1) {
-            musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button.wav");
+            musicObjectButton.playButtonMusic("./src/audio/error_button.wav");
             JOptionPane.showMessageDialog(null, "" + e1);
         }
         return null;
@@ -176,11 +176,11 @@ public class Database {
         } catch (SQLException e2) {
             switch (e2.getSQLState()) {
                 case "22001":
-                    musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button.wav");
+                    musicObjectButton.playButtonMusic("./src/audio/error_button.wav");
                     JOptionPane.showMessageDialog(null, "Nickname deve essere lungo massimo 45 caratteri");
                     break;
                 case "23000":
-                    musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button.wav");
+                    musicObjectButton.playButtonMusic("./src/audio/error_button.wav");
                     JOptionPane.showMessageDialog(null, "Nickname già in uso");
                     break;
                 default:

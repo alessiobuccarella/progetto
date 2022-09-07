@@ -48,60 +48,60 @@ public class MainFrame extends JFrame {
 
         AudioManager musicObject = AudioManager.getInstance();
         AudioButtonManager musicObjectButton = new AudioButtonManager();
-        musicObject.playMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/background_menu_audio.wav");
+        musicObject.playMusic("./src/audio/background_menu_audio.wav");
 
         inzioPanel.caricaProfilo(e -> {
-            musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/general_menu_button.wav");
+            musicObjectButton.playButtonMusic("./src/audio/general_menu_button.wav");
             cardLayout.show(MainFrame.this.getContentPane(), "cercaProfilo");
         });
         inzioPanel.nuovoProfilo(e -> {
-            musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/general_menu_button.wav");
+            musicObjectButton.playButtonMusic("./src/audio/general_menu_button.wav");
             cardLayout.show(MainFrame.this.getContentPane(), "nuovoProfilo");
         });
         inzioPanel.esci(e -> {
-            musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/general_menu_button.wav");
+            musicObjectButton.playButtonMusic("./src/audio/general_menu_button.wav");
             Database.getInstance().close();
         	System.exit(0);
         });
 
         cercaProfilo.paginaPrec(e -> {
-            musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/general_menu_button.wav");
+            musicObjectButton.playButtonMusic("./src/audio/general_menu_button.wav");
             cardLayout.show(MainFrame.this.getContentPane(), "inizio");
         });
         nuovoProfilo.paginaPrec(e -> {
-            musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/general_menu_button.wav");
+            musicObjectButton.playButtonMusic("./src/audio/general_menu_button.wav");
             cardLayout.show(MainFrame.this.getContentPane(), "inizio");
         });
         profilo.paginaPrec(e -> {
-            musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/general_menu_button.wav");
+            musicObjectButton.playButtonMusic("./src/audio/general_menu_button.wav");
             cardLayout.show(MainFrame.this.getContentPane(), "inizio2");
         });
 
         inizio2.opzioniProfilo(e -> {
-            musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/general_menu_button.wav");
+            musicObjectButton.playButtonMusic("./src/audio/general_menu_button.wav");
             cardLayout.show(MainFrame.this.getContentPane(), "profilo");
         });
         inizio2.nuovaPartita(e -> {
-            musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/general_menu_button.wav");
+            musicObjectButton.playButtonMusic("./src/audio/general_menu_button.wav");
             cardLayout.show(MainFrame.this.getContentPane(), "configuraPartita");
         });
         inizio2.esci(e -> {
-            musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/general_menu_button.wav");
+            musicObjectButton.playButtonMusic("./src/audio/general_menu_button.wav");
             Database.getInstance().close();
             System.exit(0);
         });
 
         configuraPartita.paginaPrec(e -> {
-            musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/general_menu_button.wav");
+            musicObjectButton.playButtonMusic("./src/audio/general_menu_button.wav");
             cardLayout.show(MainFrame.this.getContentPane(), "inizio2");
         });
         configuraPartita.classica(e -> {
-            musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/general_menu_button.wav");
-            musicObject.playMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/background_menu_audio.wav");
-            musicObject.playMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/background_game_audio.wav");
+            musicObjectButton.playButtonMusic("./src/audio/general_menu_button.wav");
+            musicObject.playMusic("./src/audio/background_menu_audio.wav");
+            musicObject.playMusic("./src/audio/background_game_audio.wav");
         });
         configuraPartita.classica(e -> {
-            musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/general_menu_button.wav");
+            musicObjectButton.playButtonMusic("./src/audio/general_menu_button.wav");
             cardLayout.show(MainFrame.this.getContentPane(), "partitaPanel");
         });
     }
