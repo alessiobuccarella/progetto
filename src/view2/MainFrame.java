@@ -2,9 +2,14 @@ package view2;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.GridBagConstraints;
+
 import javax.swing.JFrame;
 import controller.*;
 import model.Database;
+import model.Mano;
+import model.Mazzo;
+import view2.*;
 
 public class MainFrame extends JFrame {
 
@@ -30,11 +35,12 @@ public class MainFrame extends JFrame {
         MenuPanel inizio2 = new MenuPanel();
         ConfiguraPanel configuraPartita = new ConfiguraPanel();
         PartitaPanel partitaPanel = new PartitaPanel();
-
+        Eventi eventi = new Eventi();
+        
         // initialize user controller
         new CercaProfiloController(cercaProfilo, profilo, cardLayout, MainFrame.this.getContentPane());
         new NuovoProfiloController(nuovoProfilo, profilo, cardLayout, MainFrame.this.getContentPane());
-        new PartitaController(partitaPanel);
+        new PartitaController(partitaPanel,eventi);
         
         // aggiunge i panel al layout
         setLayout(cardLayout);
