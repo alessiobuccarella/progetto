@@ -241,8 +241,7 @@ public class PartitaPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
             	
                 repaint();
-                System.out.println("turno: "+turno);
-                    avanti(gbc10, turno, manoOvest, manoNord, manoEst, tavolo, postazioneOvest, postazioneNord, postazioneEst, mazzo, postazione, mano,postazionePiatto);
+                avanti(gbc10, turno, manoOvest, manoNord, manoEst, tavolo, postazioneOvest, postazioneNord, postazioneEst, mazzo, postazione, mano,postazionePiatto);
      
             }
         };
@@ -445,13 +444,26 @@ public class PartitaPanel extends JPanel {
         
     	switch (turno%4) {
             case 1:
-            	mossaOvest( gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);           
+                
+                
+            	mossaOvest( gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);  
+            	if (senso==Senso.ORARIO&&cartaScarto.getV()!=10&&cartaScarto.getV()!=11){foto2.setBorder(null);foto1.setBorder(new LineBorder(Color.RED, 5));foto.setBorder(null);}	
+            	else if (senso==Senso.ANTIORARIO&&cartaScarto.getV()!=10&&cartaScarto.getV()!=11){foto2.setBorder(null);foto1.setBorder(null);foto.setBorder(null);}	
+            	else {foto2.setBorder(null);foto1.setBorder(null);foto.setBorder(null);};
                 break;
             case 2:  
-                mossaNord(gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
+            	
+            	mossaNord(gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
+            	if (senso==Senso.ORARIO&&cartaScarto.getV()!=10&&cartaScarto.getV()!=11){foto2.setBorder(new LineBorder(Color.RED, 5));foto1.setBorder(null);foto.setBorder(null);}	
+            	else if (senso==Senso.ANTIORARIO&&cartaScarto.getV()!=10&&cartaScarto.getV()!=11){foto2.setBorder(null);foto1.setBorder(null);foto.setBorder(new LineBorder(Color.RED, 5));}	
+            	else {foto2.setBorder(null);foto1.setBorder(null);foto.setBorder(null);};
                 break;
             case 3: 
+            	
                 mossaEst(gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
+             	if (senso==Senso.ORARIO&&cartaScarto.getV()!=10&&cartaScarto.getV()!=11){foto2.setBorder(null);foto1.setBorder(null);foto.setBorder(null);}	
+             	else if (senso==Senso.ANTIORARIO&&cartaScarto.getV()!=10&&cartaScarto.getV()!=11){foto2.setBorder(null);foto1.setBorder(new LineBorder(Color.RED, 5));foto.setBorder(null);}	
+             	else {foto2.setBorder(null);foto1.setBorder(null);foto.setBorder(null);};
                 break;
             default:
             	
@@ -466,7 +478,12 @@ public class PartitaPanel extends JPanel {
         {
         	
 
-            lanciaCarta(gbc10,piatto,manoOvest,postazioneOvest,x,"./src/immagini/dorso90.png",postazionePiatto);                // lancia la carta
+            lanciaCarta(gbc10,piatto,manoOvest,postazioneOvest,x,"./src/immagini/dorso90.png",postazionePiatto);       
+            if(senso==Senso.ORARIO)
+    			{foto.setBorder(null);foto1.setBorder(new LineBorder(Color.RED, 5));foto2.setBorder(null);}
+            else 
+    			{foto.setBorder(null);foto1.setBorder(null);foto2.setBorder(null);}
+            System.out.println("turno: "+turno);// lancia la carta
             System.out.println("Ovest ha tirato " + x.toString());
            postazioneOvest.removeAll();
            switch(manoOvest.mano.size()) {
@@ -516,11 +533,7 @@ public class PartitaPanel extends JPanel {
         if (manoOvest.mano.size()==0) {
             Database db2 = Database.getInstance();
         }
-        if(senso==Senso.ORARIO&&cartaScarto.getV()!=11)
-		{foto.setBorder(null);foto1.setBorder(new LineBorder(Color.RED, 5));foto2.setBorder(null);}
-	else 
-		{foto.setBorder(null);foto1.setBorder(null);foto2.setBorder(null);}
-        System.out.println("turno: "+turno);
+        
     }
     public static void mossaNord(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst,Postazione postazionePiatto)
     {	
@@ -531,7 +544,10 @@ public class PartitaPanel extends JPanel {
         {	
       
        
-           lanciaCarta(gbc10,piatto,manoNord,postazioneNord,x,"./src/immagini/dorso.png",postazionePiatto);                // lancia la carta
+           lanciaCarta(gbc10,piatto,manoNord,postazioneNord,x,"./src/immagini/dorso.png",postazionePiatto);   
+           
+				
+ 
             System.out.println("Nord ha tirato " + x.toString());
             postazioneNord.removeAll();
             switch(manoNord.mano.size()) {
@@ -582,10 +598,7 @@ public class PartitaPanel extends JPanel {
             Database db2 = Database.getInstance();
         }
         System.out.println("turno: "+turno);
-        if(senso==Senso.ORARIO&&cartaScarto.getV()!=11)
-			{foto2.setBorder(new LineBorder(Color.RED, 5));foto1.setBorder(null);foto.setBorder(null);}
-        else 
-        	{foto1.setBorder(null);foto.setBorder(new LineBorder(Color.RED, 5));foto2.setBorder(null);}
+        
     }
     public static void mossaEst(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst,Postazione postazionePiatto)
     {	
@@ -593,7 +606,12 @@ public class PartitaPanel extends JPanel {
         Carta x=cartaUtile(manoEst);
         if (x!=null)                								        // se il giocatore ha una carta utile
         {
-            lanciaCarta(gbc10,piatto,manoEst,postazioneEst,x,"./src/immagini/dorso90s.png",postazionePiatto);                // lancia la carta
+            lanciaCarta(gbc10,piatto,manoEst,postazioneEst,x,"./src/immagini/dorso90s.png",postazionePiatto);    
+            System.out.println("turno: "+turno);
+            if(senso==Senso.ORARIO)
+			{foto2.setBorder(null);foto1.setBorder(null);foto.setBorder(null);} 
+            	else 
+        	{foto2.setBorder(null);foto1.setBorder(new LineBorder(Color.RED, 5));foto.setBorder(null);}// lancia la carta
             System.out.println("Est ha tirato " + x.toString());
             postazioneEst.removeAll();
             switch(manoEst.mano.size()) {
@@ -645,11 +663,7 @@ public class PartitaPanel extends JPanel {
             Database db2 = Database.getInstance();
         }
         
-        System.out.println("turno: "+turno);
-        if(senso==Senso.ORARIO&&cartaScarto.getV()!=11)
-			{foto2.setBorder(null);foto1.setBorder(null);foto.setBorder(null);} 
-        else 
-        	{foto2.setBorder(null);foto1.setBorder(new LineBorder(Color.RED, 5));foto.setBorder(null);}
+
     }
     public static Carta cartaUtile(Mano manoGiocatore)
     {
