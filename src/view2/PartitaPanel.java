@@ -90,20 +90,17 @@ public class PartitaPanel extends JPanel {
     
        
         for (int i=0;i<30;i++)posti.add(new JButton());
-        ImageIcon avatar1png = new ImageIcon("./src/immagini/avatar1.png");
-        avatar1png = new ImageIcon("./src/immagini/avatar1.png");
+        ImageIcon avatar1png = new ImageIcon("./src/immagini/Bulbasaur.png");
         Image image1 = avatar1png.getImage();
         Image newimg1 = image1.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar1png = new ImageIcon(newimg1);
        
-        ImageIcon avatar2png = new ImageIcon("./src/immagini/avatar2.png");
-        avatar2png = new ImageIcon("./src/immagini/avatar2.png");
+        ImageIcon avatar2png = new ImageIcon("./src/immagini/Charmander.png");
         Image image2 = avatar2png.getImage();
         Image newimg2 = image2.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar2png = new ImageIcon(newimg2);
         
-        ImageIcon avatar3png = new ImageIcon("./src/immagini/avatar2.png");
-        avatar3png = new ImageIcon("./src/immagini/avatar3.png");
+        ImageIcon avatar3png = new ImageIcon("./src/immagini/Squirtle.png");
         Image image3 = avatar3png.getImage();
         Image newimg3 = image3.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar3png = new ImageIcon(newimg3);
