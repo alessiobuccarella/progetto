@@ -16,7 +16,7 @@ public class CercaProfiloController {
 		cercaProfiloPanel.cercaProfilo(e -> {
 			String nickname = cercaProfiloPanel.getNickname();
 			if (nickname.equals("") || nickname.equals(null)) {
-				musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button.wav");
+				musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button_audio.wav");
 	            JOptionPane.showMessageDialog(null, "Nickname Obbligatorio");
 	        } else {
 				//funzione di ricerca
@@ -24,12 +24,12 @@ public class CercaProfiloController {
 				Database db = Database.getInstance();
 				Profilo profilo = db.cercaProfilo(nickname);
 				if ( profilo != null ) {
-					musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/success_button.wav");
+					musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/success_button_audio.wav");
 					profiloPanel.printProfilo(profilo);
 					JOptionPane.showMessageDialog(null, "Benvenuto " + nickname);
 					cardLayout.show(parent, "inizio2");
 				} else {
-					musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button.wav");
+					musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button_audio.wav");
 					JOptionPane.showMessageDialog(null, "Nessun profilo trovato per con il nickaname " + nickname);
 				}
 	        }
