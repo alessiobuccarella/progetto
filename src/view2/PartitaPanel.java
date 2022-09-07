@@ -258,7 +258,7 @@ public class PartitaPanel extends JPanel {
                 public void actionPerformed(ActionEvent e) {
                     repaint();
                     	t.start();
-                    	Eventi.cliccato(gbc10, mano, postazione.getComponentZOrder(posto), posto, postazione, tavolo,  manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, posti, mazzo,postazionePiatto);
+                    	//Eventi.cliccato(gbc10, mano, postazione.getComponentZOrder(posto), posto, postazione, tavolo,  manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, posti, mazzo,postazionePiatto);
                     	//if (cartaScarto.getC()==4)
                             
                     }
@@ -279,7 +279,7 @@ public class PartitaPanel extends JPanel {
                 public void actionPerformed(ActionEvent e) {
                 	
                     repaint();
-                    Eventi.avanti(gbc10, turno, manoOvest, manoNord, manoEst, tavolo, postazioneOvest, postazioneNord, postazioneEst, mazzo, postazione, mano,postazionePiatto);
+                    //Eventi.avanti(gbc10, turno, manoOvest, manoNord, manoEst, tavolo, postazioneOvest, postazioneNord, postazioneEst, mazzo, postazione, mano,postazionePiatto);
          
                 }
             };
