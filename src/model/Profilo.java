@@ -1,6 +1,7 @@
 package model;
 
 public class Profilo {
+
 	private String nickname;
 	private String avatarImg;
 	private int livello;
@@ -11,6 +12,7 @@ public class Profilo {
 	private Profilo() {}
 
 	public static class ProfiloBuilder {
+
 		private String nickname;
 		private String avatarImg;
 		private int livello;
@@ -55,21 +57,27 @@ public class Profilo {
 			return this;
 		}
 	}
+
 	public String getNickname() {
 		return nickname;
 	}
+
 	public String getAvatarImg() {
 		return avatarImg;
 	}
+
 	public int getLivello() {
 		return livello;
 	}
+
 	public int getPartiteGiocate() {
 		return partiteGiocate;
 	}
+
 	public int getPartiteVinte() {
 		return partiteVinte;
 	}
+
 	public int getPartitePerse() {
 		return partitePerse;
 	}

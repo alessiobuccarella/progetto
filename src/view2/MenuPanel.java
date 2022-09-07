@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
-
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -14,7 +13,6 @@ import javax.swing.JPanel;
 public class MenuPanel extends JPanel {
 	
 	private static final long serialVersionUID = -6284533655497930757L;
-	
 	private JButton nuovaPartita;
 	private JButton opzioniProfilo;
 	private JButton esci;

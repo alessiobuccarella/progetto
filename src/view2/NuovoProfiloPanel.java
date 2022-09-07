@@ -7,9 +7,7 @@ import java.awt.event.ActionListener;
 public class NuovoProfiloPanel extends JPanel {
 
 	private static final long serialVersionUID = -4924450993476714670L;
-
 	private JTextField textnickname;
-	//FIXME: serve anche l'immagine dell'avatar
     private JButton inviaButton;
     private JButton indietroButton;
     private JToggleButton radio1;

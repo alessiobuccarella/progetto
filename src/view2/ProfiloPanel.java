@@ -3,13 +3,11 @@ package view2;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import model.Database;
 import model.Profilo;
 
 public class ProfiloPanel extends JPanel {
 
 	private static final long serialVersionUID = 3960043400919881397L;
-	
 	private JLabel nickname;
 	private JLabel myavatar;
 	private JLabel livello;
@@ -34,17 +32,6 @@ public class ProfiloPanel extends JPanel {
         GridBagConstraints gbc9 = new GridBagConstraints();
         gbc9.gridwidth = GridBagConstraints.REMAINDER;
         gbc9.fill = GridBagConstraints.HORIZONTAL;
-        nickname = new JLabel("NICKNAME: ");
-        nickname.setFont(new Font("Dialog", Font.PLAIN, 20));
-        myavatar = new JLabel();
-        livello = new JLabel("LIVELLO: " + Database.livello);
-        livello.setFont(new Font("Dialog", Font.PLAIN, 20));
-        partiteGiocate = new JLabel("PARTITE GIOCATE: " + Database.partiteGiocate);
-        partiteGiocate.setFont(new Font("Dialog", Font.PLAIN, 15));
-        partiteVinte = new JLabel("PARTITE VINTE: " + Database.partiteVinte);
-        partiteVinte.setFont(new Font("Dialog", Font.PLAIN, 15));
-        partitePerse = new JLabel("PARTITE PERSE: " + Database.partitePerse);
-        partitePerse.setFont(new Font("Dialog", Font.PLAIN, 15));
         indietroButton = new JButton("<");
         setLayout(new BorderLayout());
         oa.setLayout(new GridBagLayout());
@@ -81,6 +68,5 @@ public class ProfiloPanel extends JPanel {
     public void paginaPrec(ActionListener actionListener) {
     	indietroButton.addActionListener(actionListener);
     }
-
 }
 

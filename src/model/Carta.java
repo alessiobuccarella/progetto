@@ -4,13 +4,14 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 public class Carta extends Thread {
+
     private int valore;
     private int colore;
     private int speciale;
     private boolean isSpecial;
-    public static final String[] V = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "salta", "cambioGiro", "+2", "cambioColore","+4"};
-    public static final String[] C = {"rosso", "giallo", "blu", "verde", "speciale"};
-    public static final String[] S = {"cambioColore","+4"};
+    public final String[] V = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "salta", "cambioGiro", "+2", "cambioColore", "+4"};
+    public final String[] C = {"rosso", "giallo", "blu", "verde", "speciale"};
+    public final String[] S = {"cambioColore", "+4"};
     private int x;
     private int y;
     private int altezza;

@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Mazzo implements Iterator<Carta> {
+
     private int cont = 0;
     public static ArrayList<Carta> mazzo = new ArrayList<Carta>();
+
     public Mazzo() {
         int c = 0;
         int v = 0;
@@ -29,34 +31,40 @@ public class Mazzo implements Iterator<Carta> {
         }
        	mescola();
     }
+
     public void scambia(int i, int j) {
         Carta x;
         x = mazzo.get(i);
         mazzo.set(i, mazzo.get(j));
         mazzo.set(j, x);
     }
+
     public void mescola() {
         for (int i = mazzo.size() - 1; i > 0; i--) {
             int j = (int) (Math.random() * (i));
             this.scambia(i, j);
         }
     }
+
     public String toString() {
         String st = "";
         for (int i = 0; i < mazzo.size(); i++)
             st += this.mazzo.get(i) + "\n";
         return st;
     }
+
     @Override
     public boolean hasNext() {
         if (cont < mazzo.size())
             return true;
         return false;
     }
+
     @Override
     public Carta next() {
         return mazzo.get(cont++);
     }
+
     public Carta pesca() {
         Carta cartaPescata = mazzo.get(mazzo.size() - 1);
         mazzo.remove(mazzo.size() - 1);
