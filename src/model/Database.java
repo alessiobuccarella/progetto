@@ -150,7 +150,8 @@ public class Database {
                 return profilo;
             }
         } catch (Exception e1) {
-            e1.printStackTrace();
+            musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button.wav");
+            JOptionPane.showMessageDialog(null, "" + e1);
         }
         return null;
     }
