@@ -15,20 +15,20 @@ public class NuovoProfiloController {
         nuovoProfiloPanel.creaProfilo(e -> {
             String nickname = nuovoProfiloPanel.getNickname();
             if (nickname == null || nickname.isEmpty()) {
-                musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button.wav");
+                musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button_audio.wav");
                 JOptionPane.showMessageDialog(null, "Nickname Obbligatorio");
                 return;
             }
             String avatarImg = nuovoProfiloPanel.getAvatar();
             if (avatarImg == null || avatarImg.isEmpty()) {
-                musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button.wav");
+                musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button_audio.wav");
                 JOptionPane.showMessageDialog(null, "Avatar Obbligatorio");
                 return;
             }
             Database db = Database.getInstance();
             Profilo profilo = db.creaProfilo(nickname, avatarImg);
             if ( profilo != null ) {
-                musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/success_button.wav");
+                musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/success_button_audio.wav");
             	profiloPanel.printProfilo(profilo);
                 JOptionPane.showMessageDialog(null, "Benvenuto " + nickname);
             	cardLayout.show(parent, "inizio2");
