@@ -237,7 +237,7 @@ public class PartitaPanel extends JPanel {
                 }
             };
             t = new Timer(3000, avanti);
-            t.start();
+            t.start(); 
         }
     }
 
