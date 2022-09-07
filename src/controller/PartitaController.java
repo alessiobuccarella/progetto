@@ -1,5 +1,8 @@
 package controller;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
 import view2.PartitaPanel;
 
 public class PartitaController {
@@ -13,26 +16,31 @@ public class PartitaController {
 		 partitaPanel.funzioneRosso(e ->{
 			 PartitaPanel.passo();
 			 PartitaPanel.cartaScarto.setC(0);
+			 
 		 });
 
 		 partitaPanel.funzioneGiallo(e ->{
 			 PartitaPanel.passo();
 			 PartitaPanel.cartaScarto.setC(1);
+			
 		 });
 
 		 partitaPanel.funzioneVerde(e ->{
 			 PartitaPanel.passo();
 			 PartitaPanel.cartaScarto.setC(3);
+		
 		 });
 
 		 partitaPanel.funzioneBlu(e ->{
 			 PartitaPanel.passo();
 			 PartitaPanel.cartaScarto.setC(2);
+			 
 		 });
 
 		 partitaPanel.funzioneUno(e ->{
 			if (PartitaPanel.getDeviGridareUno()==true)
 				PartitaPanel.setGridatoUno();
+			
 		 });
 	 }
 }
