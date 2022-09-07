@@ -2,14 +2,9 @@ package view2;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.GridBagConstraints;
-
 import javax.swing.JFrame;
 import controller.*;
 import model.Database;
-import model.Mano;
-import model.Mazzo;
-import view2.*;
 
 public class MainFrame extends JFrame {
 
