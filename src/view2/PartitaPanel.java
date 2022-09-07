@@ -137,7 +137,7 @@ public class PartitaPanel extends JPanel {
         
 
         gbc10.anchor=GridBagConstraints.PAGE_START;
-        gbc10.gridx=5;
+        gbc10.gridx=6;
         gbc10.gridy=0;
         gbc10.weightx=0;
         gbc10.weighty=0;
@@ -196,7 +196,7 @@ public class PartitaPanel extends JPanel {
         gbc10.weighty=4;
         tavolo.add(postazione,gbc10);
         
-        gbc10.gridx=4;
+        gbc10.gridx=5;
         gbc10.gridy=4;
         gbc10.weighty=1;
         gbc10.weightx=0;
