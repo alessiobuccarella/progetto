@@ -726,7 +726,7 @@ public class PartitaPanel extends JPanel {
     	}
     	if (x.getV()==13) {
             cartaScarto.setC((int)(Math.random()*4));
-            String filename = "./src/immagini/"+cartaScarto.getC() + ".png";
+            String filename = "./src/immagini/"+cartaScarto.getC() + "+0.png";
             ImageIcon img = new ImageIcon(filename);
             JButton colore = new JButton(img);
             colore.setBorder(null);
