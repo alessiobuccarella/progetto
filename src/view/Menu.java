@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import static model.Database.*;
 
 public class Menu extends JFrame {
-	
+	Eventi eventi= new Eventi();
 	public static boolean gridatoUno = false;
 	public static boolean deviGridareUno = false;
     public static int coloreSpeciale = 4;
@@ -649,7 +649,7 @@ public class Menu extends JFrame {
               pesca(mazzo,mano);
               
             }
-        });
+        });}/**
         Timer t = new Timer(3000, avanti);
         passo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -657,34 +657,34 @@ public class Menu extends JFrame {
             	
                 repaint();
                 t.start();
-                Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
+                eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
             }
         });
         coloreRosso.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
               cartaScarto.setC(0);
-              Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
+              eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
               
             }
         });
         coloreGiallo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
               cartaScarto.setC(1);
-              Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
+              eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
               
             }
         });
         coloreVerde.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
               cartaScarto.setC(2);
-              Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
+              eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
               
             }
         });
         coloreBlu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
               cartaScarto.setC(3);
-              Eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
+              eventi.passo(gbc10, mano, 0, null, postazione, tavolo, turno, manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, mazzo,postazionePiatto);
               
             }
         });
@@ -720,6 +720,7 @@ public class Menu extends JFrame {
             });
         }
     }
+    */
     public static void pesca(Mazzo mazzo, Mano mano) {
     	  Carta carta=mazzo.pesca();
     	  mano.mano.add(carta);
