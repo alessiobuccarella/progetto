@@ -2,6 +2,9 @@ package view2;
 
 import model.*;
 import javax.swing.*;
+
+import controller.Eventi;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +15,15 @@ import java.util.ArrayList;
 public class PartitaPanel extends JPanel {
 
 	Mazzo mazzo = new Mazzo();
+	public Postazione postazioneNord;
+	public Postazione postazioneOvest;
+	public Postazione postazioneEst;
+	public Postazione postazionePiatto;
+	public Mano manoOvest;
+	public Mano manoNord;
+	public Mano manoEst;
+	public Mano mano;
+	GridBagConstraints gbc10;
 	private JButton passo;
 	public Timer t;
 	public JLabel foto;
@@ -39,6 +51,11 @@ public class PartitaPanel extends JPanel {
     	do
             cartaScarto=mazzo.next();
         while (cartaScarto.getV() > 12);
+    	manoOvest = new Mano(mazzo);
+    	manoNord = new Mano(mazzo);
+    	manoEst = new Mano(mazzo);
+    	mano = new Mano(mazzo);
+    	
         JLabel redLabel = new JLabel(new ImageIcon("./src/immagini/0.png"));
         JLabel yellowLabel = new JLabel(new ImageIcon("./src/immagini/1.png"));
         JLabel blueLabel = new JLabel(new ImageIcon("./src/immagini/2.png"));
@@ -47,7 +64,7 @@ public class PartitaPanel extends JPanel {
         scartoButton = new JButton();
         passo= new JButton("PASSO");
         postazione = new Postazione(1);
-        Mano mano = new Mano(mazzo);
+        
         for (int i = 0; i < 30; i++)
             posti.add(new JButton());
         coloreRosso.add(redLabel);
@@ -62,7 +79,7 @@ public class PartitaPanel extends JPanel {
         deckButton.setBorder(null);
         deckButton.setHorizontalTextPosition(SwingConstants.CENTER);
         deckButton.add(deckLabel);
-        Postazione postazionePiatto = new Postazione(1);
+        postazionePiatto = new Postazione(1);
         Postazione postazioneColori = new Postazione(1);
         postazione.setBackground(null);
         postazione.setOpaque(false);
@@ -90,13 +107,13 @@ public class PartitaPanel extends JPanel {
             posti.set(i, DisegnaCarta.disegnaCarta(mano.mano.get(i)));
         for (int i = 0; i < mano.mano.size(); i++)
             postazione.add(posti.get(i));
-        Postazione postazioneOvest = new Postazione(0);
-        Postazione postazioneEst = new Postazione(0);
+        postazioneOvest = new Postazione(0);
+        postazioneEst = new Postazione(0);
         postazioneEst.setBackground(null);
         postazioneEst.setOpaque(false);
         postazioneOvest.setBackground(null);
         postazioneOvest.setOpaque(false);
-        Postazione postazioneNord = new Postazione(1);
+        postazioneNord = new Postazione(1);
         postazioneNord.add(new JLabel(new ImageIcon("./src/immagini/dorsonord7.png")));
         postazioneNord.setOpaque(false);
         tavolo = new Piatto();
@@ -104,10 +121,11 @@ public class PartitaPanel extends JPanel {
         foto1 = new JLabel(avatar2png);
         foto2 = new JLabel(avatar3png);
         //foto3 = new JLabel(avatar4png);
-        GridBagConstraints gbc10 = new GridBagConstraints();
+        gbc10 = new GridBagConstraints();
         this.add(tavolo, BorderLayout.CENTER);
         uno= new JButton("UNO!");
-        gbc10.anchor = GridBagConstraints.PAGE_START;
+        if (x==1)gbc10.anchor = GridBagConstraints.CENTER;
+        else gbc10.anchor = GridBagConstraints.LINE_START;
         gbc10.gridx = 6;
         gbc10.gridy = 0;
         gbc10.weightx = 0;
@@ -142,11 +160,11 @@ public class PartitaPanel extends JPanel {
         gbc10.weighty = 0;
         gbc10.gridwidth = 1;
         //tavolo.add(foto3,gbc10);
-        gbc10.anchor = GridBagConstraints.CENTER;
+        gbc10.anchor = GridBagConstraints.LINE_START;
         gbc10.gridx = 0;
         gbc10.gridy = 0;
         gbc10.weighty = 1;
-        gbc10.weightx = 1;
+        gbc10.weightx = 0;
         gbc10.gridwidth = 3;
         gbc10.gridheight = 1;
         postazioneColori.setBackground(null);
@@ -166,9 +184,11 @@ public class PartitaPanel extends JPanel {
         if (x==1) gbc10.gridx = 4;
         else gbc10.gridx = 3;
         gbc10.gridy = 5;
+        
         gbc10.weighty = 4;
         tavolo.add(postazione,gbc10);
-        gbc10.gridx = 5;
+        if (x==1)gbc10.gridx = 5;
+        else gbc10.gridx = 4;
         gbc10.gridy = 4;
         gbc10.weighty = 1;
         gbc10.weightx = 0;
@@ -224,13 +244,16 @@ public class PartitaPanel extends JPanel {
             }
         });
         */
-
+        
         for (JButton posto : posti) {
+        	
             posto.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     repaint();
                     	t.start();
-                    	//Eventi.cliccato(gbc10, mano, postazione.getComponentZOrder(posto), posto, postazione, tavolo,  manoOvest, manoNord, manoEst, postazioneOvest, postazioneNord, postazioneEst, posti, mazzo,postazionePiatto);
+                    	
+						eventi.cliccato(gbc10, mano, postazione.getComponentZOrder(posto), posto, postazione, tavolo, manoOvest, manoNord,
+								manoEst, postazioneOvest, postazioneNord, postazioneEst, posti, mazzo, postazionePiatto);
                     	//if (cartaScarto.getC()==4)
                     }
             }); 
@@ -245,7 +268,8 @@ public class PartitaPanel extends JPanel {
             ActionListener avanti = new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     repaint();
-                    //Eventi.avanti(gbc10, turno, manoOvest, manoNord, manoEst, tavolo, postazioneOvest, postazioneNord, postazioneEst, mazzo, postazione, mano,postazionePiatto);
+                    Eventi eventi = new Eventi();
+                    eventi.avanti(gbc10, turno, manoOvest, manoNord, manoEst, tavolo, postazioneOvest, postazioneNord, postazioneEst, mazzo, postazione, mano,postazionePiatto);
                 }
             };
             t = new Timer(3000, avanti);

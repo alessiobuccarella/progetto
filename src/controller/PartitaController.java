@@ -34,5 +34,6 @@ public class PartitaController {
 			if (eventi.getDeviGridareUno() == true)
 				eventi.setGridatoUno();
 		 });
+		 
 	 }
 }

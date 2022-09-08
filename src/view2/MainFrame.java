@@ -46,9 +46,9 @@ public class MainFrame extends JFrame {
         add(configuraPartita, "configuraPartita");
 
 
-        AudioManager musicObject = AudioManager.getInstance();
+        //AudioManager musicObject = AudioManager.getInstance();
         AudioButtonManager musicObjectButton = new AudioButtonManager();
-        musicObject.playMusic("./src/audio/background_menu_audio.wav");
+        //musicObject.playMusic("./src/audio/background_menu_audio.wav");
 
         inzioPanel.caricaProfilo(e -> {
             musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
@@ -101,10 +101,10 @@ public class MainFrame extends JFrame {
             PartitaPanel partitaPanel = new PartitaPanel(1);
             Eventi eventi = new Eventi();
             new PartitaController(partitaPanel,eventi);
-            add(partitaPanel, "partitaPanel");
-            musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
-            musicObject.playMusic("./src/audio/background_menu_audio.wav");
-            musicObject.playMusic("./src/audio/background_game_audio.wav");
+           add(partitaPanel, "partitaPanel");
+            //musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
+            //musicObject.playMusic("./src/audio/background_menu_audio.wav");
+            //musicObject.playMusic("./src/audio/background_game_audio.wav");
             cardLayout.show(MainFrame.this.getContentPane(), "partitaPanel");
         });
 
@@ -114,8 +114,8 @@ public class MainFrame extends JFrame {
             new PartitaController(partitaPanel,eventi);
             add(partitaPanel, "partitaPanel");
             musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
-            musicObject.playMusic("./src/audio/background_menu_audio.wav");
-            musicObject.playMusic("./src/audio/background_game_audio.wav");
+           // musicObject.playMusic("./src/audio/background_menu_audio.wav");
+            //musicObject.playMusic("./src/audio/background_game_audio.wav");
             cardLayout.show(MainFrame.this.getContentPane(), "partitaPanel");
         });
 
@@ -124,9 +124,9 @@ public class MainFrame extends JFrame {
             Eventi eventi = new Eventi();
             new PartitaController(partitaPanel,eventi);
             add(partitaPanel, "partitaPanel");
-            musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
-            musicObject.playMusic("./src/audio/background_menu_audio.wav");
-            musicObject.playMusic("./src/audio/background_game_audio.wav");
+            //musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
+            //musicObject.playMusic("./src/audio/background_menu_audio.wav");
+            //musicObject.playMusic("./src/audio/background_game_audio.wav");
             cardLayout.show(MainFrame.this.getContentPane(), "partitaPanel");
         });
     }

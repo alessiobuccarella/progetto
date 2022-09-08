@@ -9,7 +9,7 @@ import model.*;
 import view2.*;
 
 public class Eventi {
-
+    public Eventi eventi;
 	public int turno = 0;
 	PartitaPanel partitaPanel = new PartitaPanel(1);
 	public  boolean deviGridareUno=false;
