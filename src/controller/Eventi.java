@@ -31,15 +31,17 @@ public class Eventi {
     }
 	
 	public void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto,  Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo, Postazione postazionePiatto) {
-        if(senso == Senso.ORARIO) {
+        
+		System.out.println("cartaScarto colore"+cartaScarto.getC()+"cartaScarto numero"+cartaScarto.getV()+"colore"+mano.mano.get(indiceCarta).getC()+"numero"+mano.mano.get(indiceCarta).getV());
+		if(senso == Senso.ORARIO) {
             musicObjectBot.playButtonMusic("./src/audio/Bulbasaur_audio.wav");
-            partitaPanel.foto.setBorder(new LineBorder(Color.RED, 5));
-            partitaPanel.foto1.setBorder(null);partitaPanel.foto2.setBorder(null);
+            partitaPanel.getFoto().setBorder(new LineBorder(Color.RED, 5));
+            partitaPanel.getFoto1().setBorder(null);partitaPanel.getFoto2().setBorder(null);
         } else {
-            partitaPanel.foto.setBorder(null);
-            partitaPanel.foto1.setBorder(null);
+            partitaPanel.getFoto().setBorder(null);
+            partitaPanel.getFoto1().setBorder(null);
             musicObjectBot.playButtonMusic("./src/audio/Squirtle_audio.wav");
-            partitaPanel.foto2.setBorder(new LineBorder(Color.RED, 5));
+            partitaPanel.getFoto2().setBorder(new LineBorder(Color.RED, 5));
         }
         if (mano.mano.size() > 1) {
             deviGridareUno=false;
@@ -61,14 +63,14 @@ public class Eventi {
             }
             System.out.println("ok");
             cartaScarto = mano.mano.get(indiceCarta);
-            postazionePiatto.remove(partitaPanel.scartoButton);
-            partitaPanel.scartoButton = DisegnaCarta.disegnaCarta(cartaScarto);
+            postazionePiatto.remove(partitaPanel.getScartoButton());
+            partitaPanel.setScartoButton(DisegnaCarta.disegnaCarta(cartaScarto));
             gbc10.anchor = GridBagConstraints.LINE_END;
             gbc10.weightx = 0;
             gbc10.weighty = 0;
             gbc10.gridx = 7;
             gbc10.gridy = 1;
-            postazionePiatto.add(partitaPanel.scartoButton);
+            postazionePiatto.add(partitaPanel.getScartoButton());
             piatto.invalidate();
             piatto.validate();
             piatto.repaint();
@@ -109,14 +111,14 @@ public class Eventi {
         postazioneEst.validate();
         if (cartaScarto.getV() == 13) {
             // Menu.firstTime = true;
-            partitaPanel.coloreRosso.setIcon(partitaPanel.redLabel);
-            partitaPanel.coloreGiallo.setIcon(partitaPanel.yellowLabel);
-            partitaPanel.coloreVerde.setIcon(partitaPanel.greenLabel);
-            partitaPanel.coloreBlu.setIcon(partitaPanel.blueLabel);
-            partitaPanel.coloreRosso.setEnabled(true);
-            partitaPanel.coloreGiallo.setEnabled(true);
-            partitaPanel.coloreVerde.setEnabled(true);
-            partitaPanel.coloreBlu.setEnabled(true);
+            partitaPanel.getColoreRosso().setIcon(partitaPanel.getRedLabel());
+            partitaPanel.getColoreGiallo().setIcon(partitaPanel.getYellowLabel());
+            partitaPanel.getColoreVerde().setIcon(partitaPanel.getGreenLabel());
+            partitaPanel.getColoreBlu().setIcon(partitaPanel.getBlueLabel());
+            partitaPanel.getColoreRosso().setEnabled(true);
+            partitaPanel.getColoreGiallo().setEnabled(true);
+            partitaPanel.getColoreVerde().setEnabled(true);
+            partitaPanel.getColoreBlu().setEnabled(true);
         }
         if (cartaScarto.getV() == 14) {
             //Menu.firstTime = true;
@@ -143,58 +145,58 @@ public class Eventi {
             case 1:
                 mossaOvest(gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
                 if (senso == Senso.ORARIO && cartaScarto.getV() != 10 && cartaScarto.getV() != 11) {
-                    partitaPanel.foto2.setBorder(null);
+                    partitaPanel.getFoto2().setBorder(null);
                     musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
-                    partitaPanel.foto1.setBorder(new LineBorder(Color.RED, 5));
-                    partitaPanel.foto.setBorder(null);
+                    partitaPanel.getFoto1().setBorder(new LineBorder(Color.RED, 5));
+                    partitaPanel.getFoto().setBorder(null);
                 }
                 else if (senso == Senso.ANTIORARIO && cartaScarto.getV() != 10 && cartaScarto.getV() != 11) {
-                    partitaPanel.foto2.setBorder(null);
-                    partitaPanel.foto1.setBorder(null);
-                    partitaPanel.foto.setBorder(null);
+                    partitaPanel.getFoto2().setBorder(null);
+                    partitaPanel.getFoto1().setBorder(null);
+                    partitaPanel.getFoto().setBorder(null);
                 }
                 else {
-                    partitaPanel.foto2.setBorder(null);
-                    partitaPanel.foto1.setBorder(null);
-                    partitaPanel.foto.setBorder(null);
+                    partitaPanel.getFoto2().setBorder(null);
+                    partitaPanel.getFoto1().setBorder(null);
+                    partitaPanel.getFoto().setBorder(null);
                 }
                 break;
             case 2:
                 mossaNord(gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
                 if (senso == Senso.ORARIO && cartaScarto.getV() != 10 && cartaScarto.getV() != 11) {
                     musicObjectBot.playButtonMusic("./src/audio/Squirtle_audio.wav");
-                    partitaPanel.foto2.setBorder(new LineBorder(Color.RED, 5));
-                    partitaPanel.foto1.setBorder(null);
-                    partitaPanel.foto.setBorder(null);
+                    partitaPanel.getFoto2().setBorder(new LineBorder(Color.RED, 5));
+                    partitaPanel.getFoto1().setBorder(null);
+                    partitaPanel.getFoto().setBorder(null);
                 }
                 else if (senso == Senso.ANTIORARIO && cartaScarto.getV() != 10 && cartaScarto.getV() != 11) {
-                    partitaPanel.foto2.setBorder(null);
-                    partitaPanel.foto1.setBorder(null);
+                    partitaPanel.getFoto2().setBorder(null);
+                    partitaPanel.getFoto1().setBorder(null);
                     musicObjectBot.playButtonMusic("./src/audio/Bulbasaur_audio.wav");
-                    partitaPanel.foto.setBorder(new LineBorder(Color.RED, 5));
+                    partitaPanel.getFoto().setBorder(new LineBorder(Color.RED, 5));
                 }
                 else {
-                    partitaPanel.foto2.setBorder(null);
-                    partitaPanel.foto1.setBorder(null);
-                    partitaPanel.foto.setBorder(null);
+                    partitaPanel.getFoto2().setBorder(null);
+                    partitaPanel.getFoto1().setBorder(null);
+                    partitaPanel.getFoto().setBorder(null);
                 }
                 break;
             case 3:
                 mossaEst(gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
                 if (senso == Senso.ORARIO && cartaScarto.getV() != 10 && cartaScarto.getV() != 11) {
-                     partitaPanel.foto2.setBorder(null);
-                     partitaPanel.foto1.setBorder(null);
-                     partitaPanel.foto.setBorder(null);}
+                     partitaPanel.getFoto2().setBorder(null);
+                     partitaPanel.getFoto1().setBorder(null);
+                     partitaPanel.getFoto().setBorder(null);}
                 else if (senso == Senso.ANTIORARIO && cartaScarto.getV() != 10 && cartaScarto.getV() != 11) {
-                     partitaPanel.foto2.setBorder(null);
+                     partitaPanel.getFoto2().setBorder(null);
                      musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
-                     partitaPanel.foto1.setBorder(new LineBorder(Color.RED, 5));
-                     partitaPanel.foto.setBorder(null);
+                     partitaPanel.getFoto1().setBorder(new LineBorder(Color.RED, 5));
+                     partitaPanel.getFoto().setBorder(null);
                 }
                 else {
-                     partitaPanel.foto2.setBorder(null);
-                     partitaPanel.foto1.setBorder(null);
-                     partitaPanel.foto.setBorder(null);
+                     partitaPanel.getFoto2().setBorder(null);
+                     partitaPanel.getFoto1().setBorder(null);
+                     partitaPanel.getFoto().setBorder(null);
                 }
                 break;
             default:
@@ -209,15 +211,15 @@ public class Eventi {
         if (x != null) {
             lanciaCarta(gbc10,piatto,manoOvest,postazioneOvest,x,"./src/immagini/dorso90.png",postazionePiatto);
             if(senso == Senso.ORARIO) {
-                partitaPanel.foto.setBorder(null);
+                partitaPanel.getFoto().setBorder(null);
                 musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
-                partitaPanel.foto1.setBorder(new LineBorder(Color.RED, 5));
-                partitaPanel.foto2.setBorder(null);
+                partitaPanel.getFoto1().setBorder(new LineBorder(Color.RED, 5));
+                partitaPanel.getFoto2().setBorder(null);
             }
             else {
-                partitaPanel.foto.setBorder(null);
-                partitaPanel.foto1.setBorder(null);
-                partitaPanel.foto2.setBorder(null);
+                partitaPanel.getFoto().setBorder(null);
+                partitaPanel.getFoto1().setBorder(null);
+                partitaPanel.getFoto2().setBorder(null);
             }
             // lancia la carta
             System.out.println("turno: " + turno);
@@ -351,14 +353,14 @@ public class Eventi {
             lanciaCarta(gbc10,piatto,manoEst,postazioneEst,x,"./src/immagini/dorso90s.png",postazionePiatto);
             System.out.println("turno: " + turno);
             if(senso == Senso.ORARIO) {
-                partitaPanel.foto2.setBorder(null);
-                partitaPanel.foto1.setBorder(null);
-                partitaPanel.foto.setBorder(null);
+                partitaPanel.getFoto2().setBorder(null);
+                partitaPanel.getFoto1().setBorder(null);
+                partitaPanel.getFoto().setBorder(null);
             } else {
-                partitaPanel.foto2.setBorder(null);
+                partitaPanel.getFoto2().setBorder(null);
                 musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
-                partitaPanel.foto1.setBorder(new LineBorder(Color.RED, 5));
-                partitaPanel.foto.setBorder(null);
+                partitaPanel.getFoto1().setBorder(new LineBorder(Color.RED, 5));
+                partitaPanel.getFoto().setBorder(null);
             }
             // lancia la carta
             System.out.println("Est ha tirato " + x.toString());
@@ -438,10 +440,10 @@ public class Eventi {
     }
 
     public void lanciaCarta(GridBagConstraints gbc10, Piatto piatto, Mano mano, Postazione postazione, Carta carta,String pathDorso,Postazione postazionePiatto) {
-    	postazionePiatto.remove(partitaPanel.scartoButton);
-        partitaPanel.scartoButton = DisegnaCarta.disegnaCarta(carta);
+    	postazionePiatto.remove(partitaPanel.getScartoButton());
+        partitaPanel.setScartoButton(DisegnaCarta.disegnaCarta(carta));
         cartaScarto = carta;
-        postazionePiatto.add(partitaPanel.scartoButton);
+        postazionePiatto.add(partitaPanel.getScartoButton());
         piatto.repaint();
         mano.mano.remove(carta);
     }
@@ -457,7 +459,7 @@ public class Eventi {
             ImageIcon img = new ImageIcon(filename);
             JButton colore = new JButton(img);
             colore.setBorder(null);
-            partitaPanel.scartoButton.add(colore);
+            partitaPanel.getScartoButton().add(colore);
             System.out.println("colore: "+cartaScarto.getC());
         }
     	if (x.getV() == 14) {
@@ -470,7 +472,7 @@ public class Eventi {
             ImageIcon img = new ImageIcon(filename);
             JButton colore = new JButton(img);
             colore.setBorder(null);
-            partitaPanel.scartoButton.add(colore);
+            partitaPanel.getScartoButton().add(colore);
     	    System.out.println("colore: "+cartaScarto.getC());
     	}
     }
@@ -488,7 +490,7 @@ public class Eventi {
             ImageIcon img = new ImageIcon(filename);
             JButton colore = new JButton(img);
             colore.setBorder(null);
-            partitaPanel.scartoButton.add(colore);
+            partitaPanel.getScartoButton().add(colore);
             System.out.println(cartaScarto.getC());
         }
     	if (x.getV() == 14) {
@@ -498,7 +500,7 @@ public class Eventi {
             ImageIcon img = new ImageIcon(filename);
             JButton colore = new JButton(img);
             colore.setBorder(null);
-            partitaPanel.scartoButton.add(colore);
+            partitaPanel.getScartoButton().add(colore);
             System.out.println(cartaScarto.getC());
             System.out.print("la tua mano è: " + mano.mano.toString());
             pesca(mazzo,mano);
@@ -545,13 +547,13 @@ public class Eventi {
         Carta carta=mazzo.pesca();
         mano.mano.add(carta);
         Icon immagine = new ImageIcon("./src/immagini/" + carta.getV() + carta.getC() + ".png");
-        partitaPanel.posti.get(mano.mano.size() - 1).setIcon(immagine);
-        partitaPanel.posti.get(mano.mano.size() - 1).setBorder(null);
-        partitaPanel.postazione.add(partitaPanel.posti.get(mano.mano.size() - 1));
-        partitaPanel.postazione.invalidate();
-        partitaPanel.postazione.validate();
-        partitaPanel.tavolo.invalidate();
-        partitaPanel.tavolo.validate();
+        partitaPanel.getPosti().get(mano.mano.size() - 1).setIcon(immagine);
+        partitaPanel.getPosti().get(mano.mano.size() - 1).setBorder(null);
+        partitaPanel.getPostazione().add(partitaPanel.getPosti().get(mano.mano.size() - 1));
+        partitaPanel.getPostazione().invalidate();
+        partitaPanel.getPostazione().validate();
+        partitaPanel.getTavolo().invalidate();
+        partitaPanel.getTavolo().validate();
     }
 
     public  void passo() {

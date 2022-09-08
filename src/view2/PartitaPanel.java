@@ -49,8 +49,8 @@ public class PartitaPanel extends JPanel {
 	public PartitaPanel(int x) {
     	setLayout(new BorderLayout());
     	do
-            cartaScarto=mazzo.next();
-        while (cartaScarto.getV() > 12);
+            setCartaScarto(mazzo.next());
+        while (getCartaScarto().getV() > 12);
     	manoOvest = new Mano(mazzo);
     	manoNord = new Mano(mazzo);
     	manoEst = new Mano(mazzo);
@@ -61,30 +61,30 @@ public class PartitaPanel extends JPanel {
         JLabel blueLabel = new JLabel(new ImageIcon("./src/immagini/2.png"));
         JLabel greenLabel = new JLabel(new ImageIcon("./src/immagini/3.png"));
         JLabel deckLabel = new JLabel(new ImageIcon("./src/immagini/mazzo.png"));
-        scartoButton = new JButton();
+        setScartoButton(new JButton());
         passo= new JButton("PASSO");
-        postazione = new Postazione(1);
+        setPostazione(new Postazione(1));
         
         for (int i = 0; i < 30; i++)
-            posti.add(new JButton());
-        coloreRosso.add(redLabel);
-        coloreRosso.setBorder(null);
-        coloreGiallo.add(yellowLabel);
-        coloreGiallo.setBorder(null);
-        coloreBlu.add(blueLabel);
-        coloreBlu.setBorder(null);
-        coloreVerde.add(greenLabel);
-        coloreVerde.setBorder(null);
+            getPosti().add(new JButton());
+        getColoreRosso().add(redLabel);
+        getColoreRosso().setBorder(null);
+        getColoreGiallo().add(yellowLabel);
+        getColoreGiallo().setBorder(null);
+        getColoreBlu().add(blueLabel);
+        getColoreBlu().setBorder(null);
+        getColoreVerde().add(greenLabel);
+        getColoreVerde().setBorder(null);
         JButton deckButton = new JButton();
         deckButton.setBorder(null);
         deckButton.setHorizontalTextPosition(SwingConstants.CENTER);
         deckButton.add(deckLabel);
         postazionePiatto = new Postazione(1);
         Postazione postazioneColori = new Postazione(1);
-        postazione.setBackground(null);
-        postazione.setOpaque(false);
+        getPostazione().setBackground(null);
+        getPostazione().setOpaque(false);
         for (int i = 0; i < 30; i++)
-            posti.add(new JButton());
+            getPosti().add(new JButton());
         ImageIcon avatar1png = new ImageIcon("./src/immagini/Bulbasaur.png");
         Image image1 = avatar1png.getImage();
         Image newimg1 = image1.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
@@ -102,11 +102,11 @@ public class PartitaPanel extends JPanel {
         Image newimg4 = image4.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar4png = new ImageIcon(newimg4);
         System.out.println(profilo.getAvatarImg());*/
-        scartoButton = DisegnaCarta.disegnaCarta(cartaScarto);
+        setScartoButton(DisegnaCarta.disegnaCarta(getCartaScarto()));
         for (int i = 0;i < mano.mano.size(); i++)
-            posti.set(i, DisegnaCarta.disegnaCarta(mano.mano.get(i)));
+            getPosti().set(i, DisegnaCarta.disegnaCarta(mano.mano.get(i)));
         for (int i = 0; i < mano.mano.size(); i++)
-            postazione.add(posti.get(i));
+            getPostazione().add(getPosti().get(i));
         postazioneOvest = new Postazione(0);
         postazioneEst = new Postazione(0);
         postazioneEst.setBackground(null);
@@ -116,13 +116,13 @@ public class PartitaPanel extends JPanel {
         postazioneNord = new Postazione(1);
         postazioneNord.add(new JLabel(new ImageIcon("./src/immagini/dorsonord7.png")));
         postazioneNord.setOpaque(false);
-        tavolo = new Piatto();
-        foto = new JLabel(avatar1png);
-        foto1 = new JLabel(avatar2png);
-        foto2 = new JLabel(avatar3png);
+        setTavolo(new Piatto());
+        setFoto(new JLabel(avatar1png));
+        setFoto1(new JLabel(avatar2png));
+        setFoto2(new JLabel(avatar3png));
         //foto3 = new JLabel(avatar4png);
         gbc10 = new GridBagConstraints();
-        this.add(tavolo, BorderLayout.CENTER);
+        this.add(getTavolo(), BorderLayout.CENTER);
         uno= new JButton("UNO!");
         if (x==1)gbc10.anchor = GridBagConstraints.CENTER;
         else gbc10.anchor = GridBagConstraints.LINE_START;
@@ -131,28 +131,28 @@ public class PartitaPanel extends JPanel {
         gbc10.weightx = 0;
         gbc10.weighty = 0;
         gbc10.gridwidth = 3;
-        tavolo.add(foto1,gbc10);
+        getTavolo().add(getFoto1(),gbc10);
         if (x==1)gbc10.gridx = 4;
         else gbc10.gridx = 3;
         gbc10.gridy = 0;
         gbc10.weightx = 0;
         gbc10.weighty = 0;
         gbc10.gridwidth = 3;
-        tavolo.add(postazioneNord,gbc10);
+        getTavolo().add(postazioneNord,gbc10);
         gbc10.anchor=GridBagConstraints.LINE_END;
         gbc10.gridx = 3;
         gbc10.gridy = 7;
         gbc10.weightx = 0.0;
         gbc10.weighty = 1;
         gbc10.gridwidth = 1;
-        tavolo.add(uno,gbc10);
+        getTavolo().add(uno,gbc10);
         gbc10.anchor = GridBagConstraints.LINE_START;
         gbc10.gridx = 4;
         gbc10.gridy = 7;
         gbc10.weightx = 0;
         gbc10.weighty = 0;
         gbc10.gridwidth = 1;
-        tavolo.add(passo,gbc10);
+        getTavolo().add(passo,gbc10);
         gbc10.anchor = GridBagConstraints.LINE_START;
         gbc10.gridx = 5;
         gbc10.gridy = 7;
@@ -169,14 +169,14 @@ public class PartitaPanel extends JPanel {
         gbc10.gridheight = 1;
         postazioneColori.setBackground(null);
         postazioneColori.setOpaque(false);
-        postazioneColori.add(coloreRosso);
-        postazioneColori.add((coloreGiallo));
-        postazioneColori.add((coloreVerde));
-        postazioneColori.add((coloreBlu));
+        postazioneColori.add(getColoreRosso());
+        postazioneColori.add((getColoreGiallo()));
+        postazioneColori.add((getColoreVerde()));
+        postazioneColori.add((getColoreBlu()));
         gbc10.anchor = GridBagConstraints.LINE_START;
-        tavolo.add(postazioneColori,gbc10);
+        getTavolo().add(postazioneColori,gbc10);
         postazionePiatto.add(deckLabel);
-        postazionePiatto.add(scartoButton);
+        postazionePiatto.add(getScartoButton());
         postazionePiatto.setOpaque(false);
         deckButton.setBorder(null);
         
@@ -186,21 +186,21 @@ public class PartitaPanel extends JPanel {
         gbc10.gridy = 5;
         
         gbc10.weighty = 4;
-        tavolo.add(postazione,gbc10);
+        getTavolo().add(getPostazione(),gbc10);
         if (x==1)gbc10.gridx = 5;
         else gbc10.gridx = 4;
         gbc10.gridy = 4;
         gbc10.weighty = 1;
         gbc10.weightx = 0;
         gbc10.gridwidth = 1;
-        tavolo.add(postazionePiatto,gbc10);
+        getTavolo().add(postazionePiatto,gbc10);
         //////////////////////////////////////////////////// sinistra
         gbc10.gridx = 0;
         gbc10.gridy = 4;
         gbc10.weighty = 0;
         gbc10.weightx = 0;
         if (x==1) {
-        	tavolo.add(foto,gbc10);
+        	getTavolo().add(getFoto(),gbc10);
         }
         gbc10.gridx = 1;
         gbc10.gridy = 4;
@@ -208,7 +208,7 @@ public class PartitaPanel extends JPanel {
         gbc10.weightx = 1;
         gbc10.gridwidth = 3;
         if (x==1) {
-        	tavolo.add(postazioneOvest,gbc10);
+        	getTavolo().add(postazioneOvest,gbc10);
         	postazioneOvest.add((new JLabel(new ImageIcon("./src/immagini/dorsosx7.png"))),gbc10);
         }
         ///////////////////////////////////////////////////////destra
@@ -218,7 +218,7 @@ public class PartitaPanel extends JPanel {
         gbc10.weightx = 1;
         gbc10.gridwidth = 3;
         if (x==1) {
-        	tavolo.add(postazioneEst,gbc10);
+        	getTavolo().add(postazioneEst,gbc10);
         	postazioneEst.add((new JLabel(new ImageIcon("./src/immagini/dorsodx7.png"))),gbc10);
         }
         gbc10.gridx = 10;
@@ -227,7 +227,7 @@ public class PartitaPanel extends JPanel {
         gbc10.weightx = 0;
         gbc10.gridwidth = 1;
         if (x==1) {
-        	tavolo.add(foto2,gbc10);
+        	getTavolo().add(getFoto2(),gbc10);
         }
         gbc10.anchor = GridBagConstraints.PAGE_START;
         gbc10.gridx = 4;
@@ -245,15 +245,15 @@ public class PartitaPanel extends JPanel {
         });
         */
         
-        for (JButton posto : posti) {
+        for (JButton posto : getPosti()) {
         	
             posto.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     repaint();
                     	t.start();
-                    	
-						eventi.cliccato(gbc10, mano, postazione.getComponentZOrder(posto), posto, postazione, tavolo, manoOvest, manoNord,
-								manoEst, postazioneOvest, postazioneNord, postazioneEst, posti, mazzo, postazionePiatto);
+                    	Eventi eventi = new Eventi();
+						eventi.cliccato(gbc10, mano, getPostazione().getComponentZOrder(posto), posto, getPostazione(), getTavolo(), manoOvest, manoNord,
+								manoEst, postazioneOvest, postazioneNord, postazioneEst, getPosti(), mazzo, postazionePiatto);
                     	//if (cartaScarto.getC()==4)
                     }
             }); 
@@ -268,8 +268,8 @@ public class PartitaPanel extends JPanel {
             ActionListener avanti = new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     repaint();
-                    Eventi eventi = new Eventi();
-                    eventi.avanti(gbc10, turno, manoOvest, manoNord, manoEst, tavolo, postazioneOvest, postazioneNord, postazioneEst, mazzo, postazione, mano,postazionePiatto);
+                    
+                   // eventi.avanti(gbc10, turno, manoOvest, manoNord, manoEst, getTavolo(), postazioneOvest, postazioneNord, postazioneEst, mazzo, getPostazione(), mano,postazionePiatto);
                 }
             };
             t = new Timer(3000, avanti);
@@ -280,9 +280,9 @@ public class PartitaPanel extends JPanel {
     public JLabel getFoto(int foto) {
         switch(foto) {
             case 1:
-                return foto1;
+                return getFoto1();
             case 2:
-                return foto2;
+                return getFoto2();
             case 3:
                 return foto3;
             default:
@@ -291,14 +291,14 @@ public class PartitaPanel extends JPanel {
     }
 
     public  void aggiornaPostazione(Mano mano) {
-        postazione.removeAll();
+        getPostazione().removeAll();
         for (int i = 0; i < mano.mano.size(); i++)
-            posti.set(i, DisegnaCarta.disegnaCarta(mano.mano.get(i)));
+            getPosti().set(i, DisegnaCarta.disegnaCarta(mano.mano.get(i)));
         for (int i = 0; i < mano.mano.size(); i++)
-            postazione.add(posti.get(i));
-        postazione.invalidate();
-        postazione.validate();
-        postazione.repaint();
+            getPostazione().add(getPosti().get(i));
+        getPostazione().invalidate();
+        getPostazione().validate();
+        getPostazione().repaint();
     }
 
     public void funzioneUno(ActionListener actionListener) {
@@ -310,18 +310,146 @@ public class PartitaPanel extends JPanel {
     }
 
     public void funzioneRosso(ActionListener actionListener) {
-        coloreRosso.addActionListener(actionListener);
+        getColoreRosso().addActionListener(actionListener);
     }
 
     public void funzioneGiallo(ActionListener actionListener) {
-        coloreGiallo.addActionListener(actionListener);
+        getColoreGiallo().addActionListener(actionListener);
     }
 
     public void funzioneVerde(ActionListener actionListener) {
-        coloreVerde.addActionListener(actionListener);
+        getColoreVerde().addActionListener(actionListener);
     }
 
     public void funzioneBlu(ActionListener actionListener) {
-        coloreBlu.addActionListener(actionListener);
+        getColoreBlu().addActionListener(actionListener);
     }
+
+	public JLabel getFoto() {
+		return foto;
+	}
+
+	public void setFoto(JLabel foto) {
+		this.foto = foto;
+	}
+
+	public JLabel getFoto1() {
+		return foto1;
+	}
+
+	public void setFoto1(JLabel foto1) {
+		this.foto1 = foto1;
+	}
+
+	public JLabel getFoto2() {
+		return foto2;
+	}
+
+	public void setFoto2(JLabel foto2) {
+		this.foto2 = foto2;
+	}
+
+	public JButton getScartoButton() {
+		return scartoButton;
+	}
+
+	public void setScartoButton(JButton scartoButton) {
+		this.scartoButton = scartoButton;
+	}
+
+	public JButton getColoreRosso() {
+		return coloreRosso;
+	}
+
+	public void setColoreRosso(JButton coloreRosso) {
+		this.coloreRosso = coloreRosso;
+	}
+
+	public JButton getColoreGiallo() {
+		return coloreGiallo;
+	}
+
+	public void setColoreGiallo(JButton coloreGiallo) {
+		this.coloreGiallo = coloreGiallo;
+	}
+
+	public JButton getColoreVerde() {
+		return coloreVerde;
+	}
+
+	public void setColoreVerde(JButton coloreVerde) {
+		this.coloreVerde = coloreVerde;
+	}
+
+	public JButton getColoreBlu() {
+		return coloreBlu;
+	}
+
+	public void setColoreBlu(JButton coloreBlu) {
+		this.coloreBlu = coloreBlu;
+	}
+
+	public Icon getRedLabel() {
+		return redLabel;
+	}
+
+	public void setRedLabel(Icon redLabel) {
+		this.redLabel = redLabel;
+	}
+
+	public Icon getGreenLabel() {
+		return greenLabel;
+	}
+
+	public void setGreenLabel(Icon greenLabel) {
+		this.greenLabel = greenLabel;
+	}
+
+	public Icon getYellowLabel() {
+		return yellowLabel;
+	}
+
+	public void setYellowLabel(Icon yellowLabel) {
+		this.yellowLabel = yellowLabel;
+	}
+
+	public Icon getBlueLabel() {
+		return blueLabel;
+	}
+
+	public void setBlueLabel(Icon blueLabel) {
+		this.blueLabel = blueLabel;
+	}
+
+	public ArrayList<JButton> getPosti() {
+		return posti;
+	}
+
+	public void setPosti(ArrayList<JButton> posti) {
+		this.posti = posti;
+	}
+
+	public Postazione getPostazione() {
+		return postazione;
+	}
+
+	public void setPostazione(Postazione postazione) {
+		this.postazione = postazione;
+	}
+
+	public Piatto getTavolo() {
+		return tavolo;
+	}
+
+	public void setTavolo(Piatto tavolo) {
+		this.tavolo = tavolo;
+	}
+
+	public Carta getCartaScarto() {
+		return cartaScarto;
+	}
+
+	public void setCartaScarto(Carta cartaScarto) {
+		this.cartaScarto = cartaScarto;
+	}
 }

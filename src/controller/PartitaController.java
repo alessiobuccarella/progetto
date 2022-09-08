@@ -12,22 +12,22 @@ public class PartitaController {
 		 });
 		 partitaPanel.funzioneRosso(e -> {
 			 eventi.passo();
-			 partitaPanel.cartaScarto.setC(0);
+			 partitaPanel.getCartaScarto().setC(0);
 			 
 		 });
 		 partitaPanel.funzioneGiallo(e -> {
 			 eventi.passo();
-			 partitaPanel.cartaScarto.setC(1);
+			 partitaPanel.getCartaScarto().setC(1);
 			
 		 });
 		 partitaPanel.funzioneVerde(e -> {
 			 eventi.passo();
-			 partitaPanel.cartaScarto.setC(3);
+			 partitaPanel.getCartaScarto().setC(3);
 		
 		 });
 		 partitaPanel.funzioneBlu(e -> {
 			 eventi.passo();
-			 partitaPanel.cartaScarto.setC(2);
+			 partitaPanel.getCartaScarto().setC(2);
 			 
 		 });
 		 partitaPanel.funzioneUno(e -> {
