@@ -303,7 +303,7 @@ public class PartitaPanel extends JPanel {
                    eventi.avanti(gbc10, eventi.turno, manoOvest, manoNord, manoEst, tavolo, postazioneOvest, postazioneNord, postazioneEst, mazzo, getPostazione(), mano,postazionePiatto);
                 }
             };
-            t = new Timer(3000, avanti);
+            t = new Timer(6000, avanti);
           
         }
     }
