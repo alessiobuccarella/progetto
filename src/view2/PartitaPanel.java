@@ -114,7 +114,8 @@ public class PartitaPanel extends JPanel {
         gbc10.weighty = 0;
         gbc10.gridwidth = 3;
         tavolo.add(foto1,gbc10);
-        gbc10.gridx = 4;
+        if (x==1)gbc10.gridx = 4;
+        else gbc10.gridx = 3;
         gbc10.gridy = 0;
         gbc10.weightx = 0;
         gbc10.weighty = 0;
@@ -145,7 +146,7 @@ public class PartitaPanel extends JPanel {
         gbc10.gridx = 0;
         gbc10.gridy = 0;
         gbc10.weighty = 1;
-        gbc10.weightx = 0;
+        gbc10.weightx = 1;
         gbc10.gridwidth = 3;
         gbc10.gridheight = 1;
         postazioneColori.setBackground(null);
@@ -160,8 +161,10 @@ public class PartitaPanel extends JPanel {
         postazionePiatto.add(scartoButton);
         postazionePiatto.setOpaque(false);
         deckButton.setBorder(null);
+        
         gbc10.anchor = GridBagConstraints.CENTER;
-        gbc10.gridx = 4;
+        if (x==1) gbc10.gridx = 4;
+        else gbc10.gridx = 3;
         gbc10.gridy = 5;
         gbc10.weighty = 4;
         tavolo.add(postazione,gbc10);
@@ -176,28 +179,36 @@ public class PartitaPanel extends JPanel {
         gbc10.gridy = 4;
         gbc10.weighty = 0;
         gbc10.weightx = 0;
-        tavolo.add(foto,gbc10);
+        if (x==1) {
+        	tavolo.add(foto,gbc10);
+        }
         gbc10.gridx = 1;
         gbc10.gridy = 4;
         gbc10.weighty = 1;
         gbc10.weightx = 1;
         gbc10.gridwidth = 3;
-        tavolo.add(postazioneOvest,gbc10);
-        postazioneOvest.add((new JLabel(new ImageIcon("./src/immagini/dorsosx7.png"))),gbc10);
+        if (x==1) {
+        	tavolo.add(postazioneOvest,gbc10);
+        	postazioneOvest.add((new JLabel(new ImageIcon("./src/immagini/dorsosx7.png"))),gbc10);
+        }
         ///////////////////////////////////////////////////////destra
         gbc10.gridx = 7;
         gbc10.gridy = 4;
         gbc10.weighty = 1;
         gbc10.weightx = 1;
         gbc10.gridwidth = 3;
-        tavolo.add(postazioneEst,gbc10);
-        postazioneEst.add((new JLabel(new ImageIcon("./src/immagini/dorsodx7.png"))),gbc10);
+        if (x==1) {
+        	tavolo.add(postazioneEst,gbc10);
+        	postazioneEst.add((new JLabel(new ImageIcon("./src/immagini/dorsodx7.png"))),gbc10);
+        }
         gbc10.gridx = 10;
         gbc10.gridy = 4;
         gbc10.weighty = 1;
         gbc10.weightx = 0;
         gbc10.gridwidth = 1;
-        tavolo.add(foto2,gbc10);
+        if (x==1) {
+        	tavolo.add(foto2,gbc10);
+        }
         gbc10.anchor = GridBagConstraints.PAGE_START;
         gbc10.gridx = 4;
         gbc10.gridy = 6;
