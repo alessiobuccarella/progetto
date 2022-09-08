@@ -58,10 +58,10 @@ public class PartitaPanel extends JPanel {
     	mano = new Mano(mazzo);
     	partitaPanel=this;
     	tavolo=new Piatto();
-    	partitaPanel.getColoreRosso().setEnabled(true);
-        partitaPanel.getColoreGiallo().setEnabled(true);
-        partitaPanel.getColoreVerde().setEnabled(true);
-        partitaPanel.getColoreBlu().setEnabled(true);
+    	partitaPanel.coloreRosso.setEnabled(true);
+        partitaPanel.coloreGiallo.setEnabled(true);
+        partitaPanel.coloreVerde.setEnabled(true);
+        partitaPanel.coloreBlu.setEnabled(true);
         JLabel redLabel = new JLabel(new ImageIcon("./src/immagini/0.png"));
         JLabel yellowLabel = new JLabel(new ImageIcon("./src/immagini/1.png"));
         JLabel blueLabel = new JLabel(new ImageIcon("./src/immagini/2.png"));
@@ -73,14 +73,14 @@ public class PartitaPanel extends JPanel {
         
         for (int i = 0; i < 30; i++)
             getPosti().add(new JButton());
-        getColoreRosso().add(redLabel);
-        getColoreRosso().setBorder(null);
-        getColoreGiallo().add(yellowLabel);
-        getColoreGiallo().setBorder(null);
-        getColoreBlu().add(blueLabel);
-        getColoreBlu().setBorder(null);
-        getColoreVerde().add(greenLabel);
-        getColoreVerde().setBorder(null);
+        coloreRosso.add(redLabel);
+        coloreRosso.setBorder(null);
+        coloreGiallo.add(yellowLabel);
+        coloreGiallo.setBorder(null);
+        coloreBlu.add(blueLabel);
+        coloreBlu.setBorder(null);
+        coloreVerde.add(greenLabel);
+        coloreVerde.setBorder(null);
         JButton deckButton = new JButton();
         deckButton.setBorder(null);
         deckButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -249,7 +249,33 @@ public class PartitaPanel extends JPanel {
             }
         });
         
+        uno.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	if (eventi.getDeviGridareUno() == true)
+    				eventi.setGridatoUno();
+                }
+        }); 
         
+        coloreRosso.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	 eventi.setCartaScarto(0);
+                }
+        }); 
+        coloreGiallo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	 eventi.setCartaScarto(1);
+                }
+        }); 
+        coloreBlu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	 eventi.setCartaScarto(2);
+                }
+        }); 
+        coloreVerde.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	 eventi.setCartaScarto(3);
+                }
+        }); 
         for (JButton posto : getPosti()) {
         	
             posto.addActionListener(new ActionListener() {
@@ -311,21 +337,7 @@ public class PartitaPanel extends JPanel {
     }
 
 
-    public void funzioneRosso(ActionListener actionListener) {
-        getColoreRosso().addActionListener(actionListener);
-    }
-
-    public void funzioneGiallo(ActionListener actionListener) {
-        getColoreGiallo().addActionListener(actionListener);
-    }
-
-    public void funzioneVerde(ActionListener actionListener) {
-        getColoreVerde().addActionListener(actionListener);
-    }
-
-    public void funzioneBlu(ActionListener actionListener) {
-        getColoreBlu().addActionListener(actionListener);
-    }
+    
 
 	public JLabel getFoto() {
 		return foto;

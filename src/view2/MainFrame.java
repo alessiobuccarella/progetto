@@ -103,7 +103,7 @@ public class MainFrame extends JFrame {
         configuraPartita.classica(e -> { 	
             PartitaPanel partitaPanel = new PartitaPanel(1);
             Eventi eventi = new Eventi(partitaPanel);
-            new PartitaController(partitaPanel,eventi);
+          
            add(partitaPanel, "partitaPanel");
             //musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
             //musicObject.playMusic("./src/audio/background_menu_audio.wav");
@@ -114,7 +114,7 @@ public class MainFrame extends JFrame {
         configuraPartita.mod2(e -> {
             PartitaPanel partitaPanel = new PartitaPanel(2);
             Eventi eventi = new Eventi(partitaPanel);
-            new PartitaController(partitaPanel,eventi);
+           
             add(partitaPanel, "partitaPanel");
             musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
            // musicObject.playMusic("./src/audio/background_menu_audio.wav");
@@ -125,7 +125,7 @@ public class MainFrame extends JFrame {
         configuraPartita.mod3(e -> {
             PartitaPanel partitaPanel = new PartitaPanel(3);
             Eventi eventi = new Eventi(partitaPanel);
-            new PartitaController(partitaPanel,eventi);
+           
             add(partitaPanel, "partitaPanel");
             //musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
             //musicObject.playMusic("./src/audio/background_menu_audio.wav");
