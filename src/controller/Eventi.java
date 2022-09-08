@@ -143,6 +143,8 @@ public class Eventi {
         }
         if (mano.mano.size()==0) {
             musicObjectBot.playButtonMusic("./src/audio/victory_audio.wav");
+            JOptionPane.showMessageDialog(null, "CONGRATULAZIONI, HAI VINTO!!");
+            //cardLayout.show(MainFrame.this.getContentPane(), "inizio2");
             Database db2 = Database.getInstance();
         }
     }
