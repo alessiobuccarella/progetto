@@ -6,10 +6,7 @@ public class PartitaController {
 
 	 public PartitaController(PartitaPanel partitaPanel,Eventi eventi) {
 
-		 partitaPanel.funzionePasso(e -> {
-			 eventi.passo();
-			 System.out.println("ciao");
-		 });
+
 		 partitaPanel.funzioneRosso(e -> {
 			 eventi.passo();
 			 partitaPanel.getCartaScarto().setC(0);

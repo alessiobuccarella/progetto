@@ -10,7 +10,10 @@ public class MainFrame extends JFrame {
 
 	private static final long serialVersionUID = -5535790746189171625L;
 	private CardLayout cardLayout;
-
+    static Eventi eventi;
+    static PartitaPanel partitaPanel;
+	
+    
     public MainFrame() {
         super("JUno");
         setVisible(true);
@@ -21,7 +24,7 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
         cardLayout = new CardLayout();
-
+     
         //Panel
         InizioPanel inzioPanel = new InizioPanel();
         CercaProfiloPanel cercaProfilo = new CercaProfiloPanel();
@@ -97,9 +100,9 @@ public class MainFrame extends JFrame {
         });
 
 
-        configuraPartita.classica(e -> {
+        configuraPartita.classica(e -> { 	
             PartitaPanel partitaPanel = new PartitaPanel(1);
-            Eventi eventi = new Eventi();
+            Eventi eventi = new Eventi(partitaPanel);
             new PartitaController(partitaPanel,eventi);
            add(partitaPanel, "partitaPanel");
             //musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
@@ -110,7 +113,7 @@ public class MainFrame extends JFrame {
 
         configuraPartita.mod2(e -> {
             PartitaPanel partitaPanel = new PartitaPanel(2);
-            Eventi eventi = new Eventi();
+            Eventi eventi = new Eventi(partitaPanel);
             new PartitaController(partitaPanel,eventi);
             add(partitaPanel, "partitaPanel");
             musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
@@ -121,7 +124,7 @@ public class MainFrame extends JFrame {
 
         configuraPartita.mod3(e -> {
             PartitaPanel partitaPanel = new PartitaPanel(3);
-            Eventi eventi = new Eventi();
+            Eventi eventi = new Eventi(partitaPanel);
             new PartitaController(partitaPanel,eventi);
             add(partitaPanel, "partitaPanel");
             //musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
