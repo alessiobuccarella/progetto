@@ -38,6 +38,7 @@ public class Carta extends Thread {
     public int getC() {
         return colore;
     }
+
     public int getS() {
         return speciale;
     }

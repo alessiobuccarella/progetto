@@ -8,23 +8,23 @@ public class PartitaController {
 
 
 		 partitaPanel.funzioneRosso(e -> {
-			 eventi.passo();
-			 partitaPanel.getCartaScarto().setC(0);
+			 System.out.println("rosso");
+			 eventi.cartaScarto.setC(0);
 			 
 		 });
 		 partitaPanel.funzioneGiallo(e -> {
-			 eventi.passo();
-			 partitaPanel.getCartaScarto().setC(1);
+			 
+			 eventi.cartaScarto.setC(1);
 			
 		 });
 		 partitaPanel.funzioneVerde(e -> {
-			 eventi.passo();
-			 partitaPanel.getCartaScarto().setC(3);
+			 
+			 eventi.cartaScarto.setC(3);
 		
 		 });
 		 partitaPanel.funzioneBlu(e -> {
-			 eventi.passo();
-			 partitaPanel.getCartaScarto().setC(2);
+			
+			 eventi.cartaScarto.setC(2);
 			 
 		 });
 		 partitaPanel.funzioneUno(e -> {

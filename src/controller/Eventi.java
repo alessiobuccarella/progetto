@@ -15,7 +15,7 @@ public class Eventi {
 	public  boolean deviGridareUno=false;
 	public  boolean gridatoUno=false;
 	public Senso senso = Senso.ORARIO;
-	private Carta cartaScarto;
+	Carta cartaScarto;
 	private  boolean pescato=false;
     private boolean firstTime = true;
     PartitaPanel partitaPanel;
@@ -594,4 +594,9 @@ public class Eventi {
        
         }
     }
+
+	public void setColoreCartaScarto(int c) {
+		cartaScarto.setC(c);
+		
+	}
 }
