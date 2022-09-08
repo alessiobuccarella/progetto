@@ -33,9 +33,8 @@ public class PartitaPanel extends JPanel {
 	public JButton coloreGiallo = new JButton();
 	public JButton coloreVerde = new JButton();
 	public JButton coloreBlu = new JButton();
-    public int modalità;
 
-	public PartitaPanel() {
+	public PartitaPanel(int x) {
     	setLayout(new BorderLayout());
     	do
             cartaScarto=mazzo.next();

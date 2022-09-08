@@ -29,13 +29,12 @@ public class MainFrame extends JFrame {
         ProfiloPanel profilo = new ProfiloPanel();
         MenuPanel inizio2 = new MenuPanel();
         ConfiguraPanel configuraPartita = new ConfiguraPanel();
-        PartitaPanel partitaPanel = new PartitaPanel();
-        Eventi eventi = new Eventi();
+
         
         // initialize user controller
         new CercaProfiloController(cercaProfilo, profilo, cardLayout, MainFrame.this.getContentPane());
         new NuovoProfiloController(nuovoProfilo, profilo, cardLayout, MainFrame.this.getContentPane());
-        new PartitaController(partitaPanel,eventi);
+
         
         // aggiunge i panel al layout
         setLayout(cardLayout);
@@ -45,7 +44,7 @@ public class MainFrame extends JFrame {
         add(profilo, "profilo");
         add(inizio2, "inizio2");
         add(configuraPartita, "configuraPartita");
-        add(partitaPanel, "partitaPanel");
+
 
         AudioManager musicObject = AudioManager.getInstance();
         AudioButtonManager musicObjectButton = new AudioButtonManager();
@@ -97,27 +96,37 @@ public class MainFrame extends JFrame {
             cardLayout.show(MainFrame.this.getContentPane(), "inizio2");
         });
 
+
         configuraPartita.classica(e -> {
+            PartitaPanel partitaPanel = new PartitaPanel(1);
+            Eventi eventi = new Eventi();
+            new PartitaController(partitaPanel,eventi);
+            add(partitaPanel, "partitaPanel");
             musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
             musicObject.playMusic("./src/audio/background_menu_audio.wav");
             musicObject.playMusic("./src/audio/background_game_audio.wav");
-            partitaPanel.modalità = 1;
             cardLayout.show(MainFrame.this.getContentPane(), "partitaPanel");
         });
 
         configuraPartita.mod2(e -> {
+            PartitaPanel partitaPanel = new PartitaPanel(2);
+            Eventi eventi = new Eventi();
+            new PartitaController(partitaPanel,eventi);
+            add(partitaPanel, "partitaPanel");
             musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
             musicObject.playMusic("./src/audio/background_menu_audio.wav");
             musicObject.playMusic("./src/audio/background_game_audio.wav");
-            partitaPanel.modalità = 2;
             cardLayout.show(MainFrame.this.getContentPane(), "partitaPanel");
         });
 
         configuraPartita.mod3(e -> {
+            PartitaPanel partitaPanel = new PartitaPanel(3);
+            Eventi eventi = new Eventi();
+            new PartitaController(partitaPanel,eventi);
+            add(partitaPanel, "partitaPanel");
             musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
             musicObject.playMusic("./src/audio/background_menu_audio.wav");
             musicObject.playMusic("./src/audio/background_game_audio.wav");
-            partitaPanel.modalità = 3;
             cardLayout.show(MainFrame.this.getContentPane(), "partitaPanel");
         });
     }

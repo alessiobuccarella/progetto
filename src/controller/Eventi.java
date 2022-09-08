@@ -11,7 +11,7 @@ import view2.*;
 public class Eventi {
 
 	public int turno = 0;
-	PartitaPanel partitaPanel = new PartitaPanel();
+	PartitaPanel partitaPanel = new PartitaPanel(1);
 	public  boolean deviGridareUno=false;
 	public  boolean gridatoUno=false;
 	public Senso senso = Senso.ORARIO;

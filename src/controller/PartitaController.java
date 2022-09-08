@@ -31,7 +31,6 @@ public class PartitaController {
 			 
 		 });
 		 partitaPanel.funzioneUno(e -> {
-			 System.out.println(""+partitaPanel.modalità);
 			if (eventi.getDeviGridareUno() == true)
 				eventi.setGridatoUno();
 		 });
