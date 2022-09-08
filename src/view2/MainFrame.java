@@ -99,7 +99,7 @@ public class MainFrame extends JFrame {
         configuraPartita.classica(e -> {
             musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
             musicObject.playMusic("./src/audio/background_menu_audio.wav");
-            musicObject.playMusic("./src/audio/background_game_audio2.wav");
+            musicObject.playMusic("./src/audio/background_game_audio.wav");
         });
         configuraPartita.classica(e -> {
             musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");

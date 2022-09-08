@@ -21,6 +21,7 @@ public class Eventi {
 	public  Carta cartaScarto = new Carta(0, 0);
 	private  boolean pescato=false;
     private boolean firstTime = true;
+    AudioButtonManager musicObjectBot = new AudioButtonManager();
 
 	public Eventi() {}
 
@@ -34,11 +35,13 @@ public class Eventi {
 	
 	public void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto,  Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo, Postazione postazionePiatto) {
         if(senso == Senso.ORARIO) {
+            musicObjectBot.playButtonMusic("./src/audio/Bulbasaur_audio.wav");
             partitaPanel.foto.setBorder(new LineBorder(Color.RED, 5));
             partitaPanel.foto1.setBorder(null);partitaPanel.foto2.setBorder(null);
         } else {
             partitaPanel.foto.setBorder(null);
             partitaPanel.foto1.setBorder(null);
+            musicObjectBot.playButtonMusic("./src/audio/Squirtle_audio.wav");
             partitaPanel.foto2.setBorder(new LineBorder(Color.RED, 5));
         }
         if (mano.mano.size() > 1) {
@@ -54,6 +57,11 @@ public class Eventi {
             posti.get(mano.mano.size() - 1).setBorder(null);
         }
         if ((mano.mano.get(indiceCarta).getC() == cartaScarto.getC() || mano.mano.get(indiceCarta).getV() == cartaScarto.getV() || mano.mano.get(indiceCarta).getC() == 4) && (turno % 4 == 0)) {
+            if(cartaScarto.getV() < 10) {
+                musicObjectBot.playButtonMusic("./src/audio/normal_card_audio.wav");
+            } else {
+                musicObjectBot.playButtonMusic("./src/audio/special_card_audio.wav");
+            }
             System.out.println("ok");
             cartaScarto = mano.mano.get(indiceCarta);
             postazionePiatto.remove(partitaPanel.scartoButton);
@@ -129,8 +137,8 @@ public class Eventi {
                // Menu.rosso.setEnabled(true);Menu.giallo.setEnabled(true);Menu.verde.setEnabled(true);Menu.blu.setEnabled(true);
         }
         if (mano.mano.size()==0) {
+            musicObjectBot.playButtonMusic("./src/audio/victory_audio.wav");
             Database db2 = Database.getInstance();
-            //HAI VINTO
         }
     }
     public void avanti(GridBagConstraints gbc10, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, Mazzo mazzo, Postazione postazione, Mano mano,Postazione postazionePiatto) {
@@ -139,6 +147,7 @@ public class Eventi {
                 mossaOvest(gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
                 if (senso == Senso.ORARIO && cartaScarto.getV() != 10 && cartaScarto.getV() != 11) {
                     partitaPanel.foto2.setBorder(null);
+                    musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
                     partitaPanel.foto1.setBorder(new LineBorder(Color.RED, 5));
                     partitaPanel.foto.setBorder(null);
                 }
@@ -156,6 +165,7 @@ public class Eventi {
             case 2:
                 mossaNord(gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
                 if (senso == Senso.ORARIO && cartaScarto.getV() != 10 && cartaScarto.getV() != 11) {
+                    musicObjectBot.playButtonMusic("./src/audio/Squirtle_audio.wav");
                     partitaPanel.foto2.setBorder(new LineBorder(Color.RED, 5));
                     partitaPanel.foto1.setBorder(null);
                     partitaPanel.foto.setBorder(null);
@@ -163,6 +173,7 @@ public class Eventi {
                 else if (senso == Senso.ANTIORARIO && cartaScarto.getV() != 10 && cartaScarto.getV() != 11) {
                     partitaPanel.foto2.setBorder(null);
                     partitaPanel.foto1.setBorder(null);
+                    musicObjectBot.playButtonMusic("./src/audio/Bulbasaur_audio.wav");
                     partitaPanel.foto.setBorder(new LineBorder(Color.RED, 5));
                 }
                 else {
@@ -179,9 +190,10 @@ public class Eventi {
                      partitaPanel.foto.setBorder(null);}
                 else if (senso == Senso.ANTIORARIO && cartaScarto.getV() != 10 && cartaScarto.getV() != 11) {
                      partitaPanel.foto2.setBorder(null);
+                     musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
                      partitaPanel.foto1.setBorder(new LineBorder(Color.RED, 5));
                      partitaPanel.foto.setBorder(null);
-                 }
+                }
                 else {
                      partitaPanel.foto2.setBorder(null);
                      partitaPanel.foto1.setBorder(null);
@@ -201,6 +213,7 @@ public class Eventi {
             lanciaCarta(gbc10,piatto,manoOvest,postazioneOvest,x,"./src/immagini/dorso90.png",postazionePiatto);
             if(senso == Senso.ORARIO) {
                 partitaPanel.foto.setBorder(null);
+                musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
                 partitaPanel.foto1.setBorder(new LineBorder(Color.RED, 5));
                 partitaPanel.foto2.setBorder(null);
             }
@@ -263,6 +276,7 @@ public class Eventi {
            System.out.println("OVEST: " + manoOvest.mano.toString());
         }
         if (manoOvest.mano.size() == 0) {
+            musicObjectBot.playButtonMusic("./src/audio/defeat_audio.wav");
             Database db2 = Database.getInstance();
             //HA VINTO
         }
@@ -326,6 +340,7 @@ public class Eventi {
            System.out.println("NORD: " + manoNord.mano.toString());
         }
         if (manoNord.mano.size() == 0) {
+            musicObjectBot.playButtonMusic("./src/audio/defeat_audio.wav");
             Database db2 = Database.getInstance();
             //HA VINTO
         }
@@ -344,6 +359,7 @@ public class Eventi {
                 partitaPanel.foto.setBorder(null);
             } else {
                 partitaPanel.foto2.setBorder(null);
+                musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
                 partitaPanel.foto1.setBorder(new LineBorder(Color.RED, 5));
                 partitaPanel.foto.setBorder(null);
             }
@@ -405,6 +421,7 @@ public class Eventi {
             System.out.println("EST: " + manoEst.mano.toString());
         }
         if (manoEst.mano.size() == 0) {
+            musicObjectBot.playButtonMusic("./src/audio/defeat_audio.wav");
             Database db2 = Database.getInstance();
         }
 }
