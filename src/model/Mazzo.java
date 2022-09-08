@@ -15,16 +15,23 @@ public class Mazzo implements Iterator<Carta> {
             for (v = 1; v <= 12; v++) {
                 mazzo.add(new Carta(v, c));
                 mazzo.add(new Carta(v, c));
+                mazzo.add(new Carta(v, c));
+                mazzo.add(new Carta(v, c));
             }
         }
         c = 0;
         v = 0;
         for (c = 0; c <= 1; c++) {
             mazzo.add(new Carta(v, c));
+            mazzo.add(new Carta(v, c));
         }
         c = 4;
         for ( v=13; v<=14;v++) {
        		mazzo.add(new Carta(v,c));
+            mazzo.add(new Carta(v,c));
+            mazzo.add(new Carta(v,c));
+            mazzo.add(new Carta(v,c));
+            mazzo.add(new Carta(v,c));
             mazzo.add(new Carta(v,c));
             mazzo.add(new Carta(v,c));
             mazzo.add(new Carta(v,c));
