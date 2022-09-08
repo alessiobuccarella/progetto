@@ -77,8 +77,11 @@ public class ProfiloPanel extends JPanel {
         this.partiteVinte.setText("PARTITE VINTE: " + profilo.getPartiteVinte());
 	}
 
-    public String immagine(Profilo profilo) {
-        System.out.println(profilo.getAvatarImg());
+    public String getName(Profilo profilo) {
+        return profilo.getNickname();
+    }
+
+    public String getImmagine(Profilo profilo) {
         return profilo.getAvatarImg();
     }
 

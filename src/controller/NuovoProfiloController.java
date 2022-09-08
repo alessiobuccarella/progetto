@@ -9,6 +9,7 @@ import view2.NuovoProfiloPanel;
 import view2.ProfiloPanel;
 
 public class NuovoProfiloController {
+
     AudioButtonManager musicObjectButton = new AudioButtonManager();
 
     public NuovoProfiloController(NuovoProfiloPanel nuovoProfiloPanel, ProfiloPanel profiloPanel, CardLayout cardLayout, Container parent) {
@@ -27,10 +28,11 @@ public class NuovoProfiloController {
             }
             Database db = Database.getInstance();
             Profilo profilo = db.creaProfilo(nickname, avatarImg);
-            if ( profilo != null ) {
+            if (profilo != null) {
                 musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/success_button_audio.wav");
             	profiloPanel.printProfilo(profilo);
-                profiloPanel.immagine(profilo);
+                profiloPanel.getName(profilo);
+                profiloPanel.getImmagine(profilo);
                 JOptionPane.showMessageDialog(null, "Benvenuto " + nickname);
             	cardLayout.show(parent, "inizio2");
             }
