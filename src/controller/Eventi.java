@@ -121,17 +121,11 @@ public class Eventi {
         if (cartaScarto.getV() == 13) {
             // Menu.firstTime = true;
         
-            partitaPanel.getColoreRosso().setIcon(partitaPanel.getRedLabel());
-            partitaPanel.getColoreGiallo().setIcon(partitaPanel.getYellowLabel());
-            partitaPanel.getColoreVerde().setIcon(partitaPanel.getGreenLabel());
-            partitaPanel.getColoreBlu().setIcon(partitaPanel.getBlueLabel());
-            partitaPanel.getColoreRosso().setEnabled(true);
-            partitaPanel.getColoreGiallo().setEnabled(true);
-            partitaPanel.getColoreVerde().setEnabled(true);
-            partitaPanel.getColoreBlu().setEnabled(true);
-        
+    
+   
         }
         if (cartaScarto.getV() == 14) {
+        	
             //Menu.firstTime = true;
             if (turno == 1) {
                 for (int i = 0; i < 4; i++)

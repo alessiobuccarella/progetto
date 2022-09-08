@@ -58,6 +58,10 @@ public class PartitaPanel extends JPanel {
     	mano = new Mano(mazzo);
     	partitaPanel=this;
     	tavolo=new Piatto();
+    	partitaPanel.getColoreRosso().setEnabled(true);
+        partitaPanel.getColoreGiallo().setEnabled(true);
+        partitaPanel.getColoreVerde().setEnabled(true);
+        partitaPanel.getColoreBlu().setEnabled(true);
         JLabel redLabel = new JLabel(new ImageIcon("./src/immagini/0.png"));
         JLabel yellowLabel = new JLabel(new ImageIcon("./src/immagini/1.png"));
         JLabel blueLabel = new JLabel(new ImageIcon("./src/immagini/2.png"));
