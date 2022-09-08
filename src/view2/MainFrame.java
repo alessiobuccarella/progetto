@@ -96,13 +96,28 @@ public class MainFrame extends JFrame {
             musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
             cardLayout.show(MainFrame.this.getContentPane(), "inizio2");
         });
+
         configuraPartita.classica(e -> {
             musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
             musicObject.playMusic("./src/audio/background_menu_audio.wav");
             musicObject.playMusic("./src/audio/background_game_audio.wav");
+            partitaPanel.modalità = 1;
+            cardLayout.show(MainFrame.this.getContentPane(), "partitaPanel");
         });
-        configuraPartita.classica(e -> {
+
+        configuraPartita.mod2(e -> {
             musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
+            musicObject.playMusic("./src/audio/background_menu_audio.wav");
+            musicObject.playMusic("./src/audio/background_game_audio.wav");
+            partitaPanel.modalità = 2;
+            cardLayout.show(MainFrame.this.getContentPane(), "partitaPanel");
+        });
+
+        configuraPartita.mod3(e -> {
+            musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
+            musicObject.playMusic("./src/audio/background_menu_audio.wav");
+            musicObject.playMusic("./src/audio/background_game_audio.wav");
+            partitaPanel.modalità = 3;
             cardLayout.show(MainFrame.this.getContentPane(), "partitaPanel");
         });
     }

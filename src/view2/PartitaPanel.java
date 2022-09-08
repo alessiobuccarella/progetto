@@ -1,19 +1,17 @@
 package view2;
 
-import controller.Eventi;
 import model.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class PartitaPanel extends JPanel {
 
 	Mazzo mazzo = new Mazzo();
-	public boolean deviGridareUno = false;
-	public boolean gridatoUno = false;
 	private JButton passo;
 	public Timer t;
 	public JLabel foto;
@@ -35,6 +33,7 @@ public class PartitaPanel extends JPanel {
 	public JButton coloreGiallo = new JButton();
 	public JButton coloreVerde = new JButton();
 	public JButton coloreBlu = new JButton();
+    public int modalità;
 
 	public PartitaPanel() {
     	setLayout(new BorderLayout());
@@ -50,9 +49,6 @@ public class PartitaPanel extends JPanel {
         passo= new JButton("PASSO");
         postazione = new Postazione(1);
         Mano mano = new Mano(mazzo);
-        Mano manoOvest = new Mano(mazzo);
-        Mano manoNord = new Mano(mazzo);
-        Mano manoEst = new Mano(mazzo);
         for (int i = 0; i < 30; i++)
             posti.add(new JButton());
         coloreRosso.add(redLabel);
@@ -85,6 +81,11 @@ public class PartitaPanel extends JPanel {
         Image image3 = avatar3png.getImage();
         Image newimg3 = image3.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar3png = new ImageIcon(newimg3);
+        /*ImageIcon avatar4png = new ImageIcon(profilo.getAvatarImg());
+        Image image4 = avatar4png.getImage();
+        Image newimg4 = image4.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+        avatar4png = new ImageIcon(newimg4);
+        System.out.println(profilo.getAvatarImg());*/
         scartoButton = DisegnaCarta.disegnaCarta(cartaScarto);
         for (int i = 0;i < mano.mano.size(); i++)
             posti.set(i, DisegnaCarta.disegnaCarta(mano.mano.get(i)));
@@ -103,6 +104,7 @@ public class PartitaPanel extends JPanel {
         foto = new JLabel(avatar1png);
         foto1 = new JLabel(avatar2png);
         foto2 = new JLabel(avatar3png);
+        //foto3 = new JLabel(avatar4png);
         GridBagConstraints gbc10 = new GridBagConstraints();
         this.add(tavolo, BorderLayout.CENTER);
         uno= new JButton("UNO!");
@@ -134,7 +136,7 @@ public class PartitaPanel extends JPanel {
         gbc10.gridwidth = 1;
         tavolo.add(passo,gbc10);
         gbc10.anchor = GridBagConstraints.LINE_START;
-        gbc10.gridx = 4;
+        gbc10.gridx = 5;
         gbc10.gridy = 7;
         gbc10.weightx = 0;
         gbc10.weighty = 0;
@@ -223,10 +225,10 @@ public class PartitaPanel extends JPanel {
                     }
             }); 
             posto.addMouseListener(new MouseAdapter() {
-                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                public void mouseEntered(MouseEvent evt) {
                     posto.setLocation(posto.getX(), posto.getY() - 5);
                 }
-                public void mouseExited(java.awt.event.MouseEvent evt) {
+                public void mouseExited(MouseEvent evt) {
                     posto.setLocation(posto.getX(), posto.getY() + 5);
                 }
             });

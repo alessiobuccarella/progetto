@@ -77,6 +77,11 @@ public class ProfiloPanel extends JPanel {
         this.partiteVinte.setText("PARTITE VINTE: " + profilo.getPartiteVinte());
 	}
 
+    public String immagine(Profilo profilo) {
+        System.out.println(profilo.getAvatarImg());
+        return profilo.getAvatarImg();
+    }
+
     public void paginaPrec(ActionListener actionListener) {
     	indietroButton.addActionListener(actionListener);
     }

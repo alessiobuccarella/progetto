@@ -5,6 +5,7 @@ import view2.PartitaPanel;
 public class PartitaController {
 
 	 public PartitaController(PartitaPanel partitaPanel,Eventi eventi) {
+
 		 partitaPanel.funzionePasso(e -> {
 			 eventi.passo();
 			 System.out.println("ciao");
@@ -30,6 +31,7 @@ public class PartitaController {
 			 
 		 });
 		 partitaPanel.funzioneUno(e -> {
+			 System.out.println(""+partitaPanel.modalità);
 			if (eventi.getDeviGridareUno() == true)
 				eventi.setGridatoUno();
 		 });

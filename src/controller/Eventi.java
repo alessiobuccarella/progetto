@@ -6,15 +6,12 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import model.*;
-import view2.DisegnaCarta;
-import view2.PartitaPanel;
-import view2.Piatto;
-import view2.Postazione;
+import view2.*;
 
 public class Eventi {
 
 	public int turno = 0;
-	public PartitaPanel partitaPanel = new PartitaPanel();
+	PartitaPanel partitaPanel = new PartitaPanel();
 	public  boolean deviGridareUno=false;
 	public  boolean gridatoUno=false;
 	public Senso senso = Senso.ORARIO;

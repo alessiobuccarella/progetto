@@ -9,7 +9,7 @@ public class Profilo {
 	private int partiteVinte;
 	private int partitePerse;
 
-	private Profilo() {}
+	public Profilo() {}
 
 	public static class ProfiloBuilder {
 

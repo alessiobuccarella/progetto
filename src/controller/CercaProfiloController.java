@@ -26,6 +26,7 @@ public class CercaProfiloController {
 				if ( profilo != null ) {
 					musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/success_button_audio.wav");
 					profiloPanel.printProfilo(profilo);
+					profiloPanel.immagine(profilo);
 					JOptionPane.showMessageDialog(null, "Benvenuto " + nickname);
 					cardLayout.show(parent, "inizio2");
 				} else {

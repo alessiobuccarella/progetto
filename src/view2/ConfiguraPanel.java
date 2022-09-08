@@ -44,4 +44,12 @@ public class ConfiguraPanel extends JPanel {
     public void classica(ActionListener actionListener) {
     	classica.addActionListener(actionListener);
     }
+
+    public void mod2(ActionListener actionListener) {
+        mod2.addActionListener(actionListener);
+    }
+
+    public void mod3(ActionListener actionListener) {
+        mod3.addActionListener(actionListener);
+    }
 }
