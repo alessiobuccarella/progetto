@@ -17,7 +17,7 @@ public class MainFrame extends JFrame {
     public MainFrame() {
         super("JUno");
         setVisible(true);
-        setSize(1200, 680);
+        setSize(2400, 1360);
         setLayout(new BorderLayout());
         setResizable(false);
         setLocationRelativeTo(null);
