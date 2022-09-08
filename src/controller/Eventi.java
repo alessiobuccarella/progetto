@@ -569,10 +569,16 @@ public class Eventi {
 
     public  void passo() {
     	
-        if (senso == Senso.ANTIORARIO)
+        if (senso == Senso.ANTIORARIO) {
             turno = 3;
-        if (senso == Senso.ORARIO)
+            partitaPanel.getFoto2().setBorder(new LineBorder(Color.RED, 5));
+            musicObjectBot.playButtonMusic("./src/audio/Squirtle_audio.wav");
+        }
+        if (senso == Senso.ORARIO) {
             turno = 1;
+            partitaPanel.getFoto().setBorder(new LineBorder(Color.RED, 5));
+            musicObjectBot.playButtonMusic("./src/audio/Bulbasaur_audio.wav");
        
+        }
     }
 }

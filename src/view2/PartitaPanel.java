@@ -240,8 +240,7 @@ public class PartitaPanel extends JPanel {
         Eventi eventi = new Eventi(partitaPanel);
         passo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-           
-      
+            	t.start();
                 eventi.passo();
             }
         });
