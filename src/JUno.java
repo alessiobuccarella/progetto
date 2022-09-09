@@ -7,7 +7,7 @@ import view.MainFrame;
  * @author Alessio e Fabio
  * 
  */
-public class App {
+public class JUno {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(MainFrame::new);
     }
