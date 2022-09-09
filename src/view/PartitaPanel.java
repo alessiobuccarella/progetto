@@ -12,38 +12,107 @@ import java.util.ArrayList;
 import static view.ProfiloPanel.immagine;
 import static view.ProfiloPanel.nome;
 
+/**
+ * @author Fabio
+ *
+ */
+/**
+ * @author Fabio
+ *
+ */
 public class PartitaPanel extends JPanel {
-
+     
+    /**
+     * Timer che gestisce la cadenza dei turni di gioco
+     */
     public static Timer t;
+    /**
+     * intero che determina la modalita di gioco
+     */
     private int mod;
+    
+    /**
+     * JLabel che rappresentano gli avatar dei giocatori
+     */
     private JLabel foto;
     private JLabel foto1;
     private JLabel foto2;
     private JLabel foto3;
+    
+    /**
+     * JLabel che rappresenta il nome del giocatore
+     */
     private JLabel nomegiocatore;
+    /**
+     * JButton che il giocatore deve cliccare quando rimane con una sola carta
+     */
     private JButton uno;
+    /**
+     * JButton che conterrà la rappresentazione grafica della carta scartata
+     */
     private JButton scartoButton ;
+    /**
+     * JButton che permette al giocatore di passare il turno
+     */
     private JButton passo;
+    /**
+     * JButton che rappresentano i quattro colori tra i quali il giocatore deve scegliere quando tira una carta cambio colore
+     */
     private JButton coloreRosso; 
     private JButton coloreGiallo; 
     private JButton coloreVerde;
     private JButton coloreBlu; 
+    
+    /**
+     * ArrayList di JButton composto dalle carte cliccabili in mano al giocatore
+     */
     private ArrayList<JButton> posti;
+    
+    /**
+     * mazzo dal quale vengono generate tutte le carte della partita
+     */
     private Mazzo mazzo; 
+    /**
+     * mani di tutti e quattro i giocatori, di tipo Mano
+     */
     private Mano manoOvest;
     private Mano manoNord;
     private Mano manoEst;
     private Mano mano;
+    
+    /**
+     * Carta che rappresenta l'ultima carta scartata posizionata vicino al mazzo
+     */
     private Carta cartaScarto;
+    /**
+     * panel della schermata della partita
+     */
     private PiattoPanel tavolo;
+    /**
+     * istanza di partitaPanel
+     */
     public PartitaPanel partitaPanel;
+    /**
+     * GridBagConstraints della schermata della partita
+     */
     private GridBagConstraints gbc10;
+    /**
+     * panels che rappresentano le postazioni dei rispettivi giocatori
+     */
     private PostazionePanel postazione;
     private PostazionePanel postazioneNord;
     private PostazionePanel postazioneOvest;
     private PostazionePanel postazioneEst;
+    
+    /**
+     * panel che rappresenta la postazione delle carte centrali del gioco, mazzo e carta scarto
+     */
     private PostazionePanel postazionePiatto;
 
+    /**
+     * costruttore che prende in input la modalita della partita e posiziona tutti gli elementi grafici sul JPanel
+     * @param x intero che rappresenta la modalita della partita selezionata
+     */
     public PartitaPanel(int x) {
     	
         setLayout(new BorderLayout());
@@ -303,94 +372,168 @@ public class PartitaPanel extends JPanel {
         }
     }
 
+    /**
+     *getter della modalita di gioco
+     * @return intero che rappresenta la modalita di gioco
+     */
     public int getMod() {
         return mod;
     }
 
+    /**
+     * getter immagine giocatore
+     * @return Jlabel che rappresenta l'immagine del giocatore
+     */
     public JLabel getFoto() {
         return foto;
     }
-
+    /**
+     * setter immagine giocatore
+     */
     public void setFoto(JLabel foto) {
         this.foto = foto;
     }
-
+    /**
+     * getter immagine giocatore
+     * @return Jlabel che rappresenta l'immagine del giocatore
+     */
     public JLabel getFoto1() {
         return foto1;
     }
-
+    /**
+     * setter immagine giocatore
+     */
     public void setFoto1(JLabel foto1) {
         this.foto1 = foto1;
     }
-
+    /**
+     * getter immagine giocatore
+     */
     public JLabel getFoto2() {
         return foto2;
     }
-
+    /**
+     * setter immagine giocatore
+     */
     public void setFoto2(JLabel foto2) {
         this.foto2 = foto2;
     }
-
+    /**
+     * getter immagine giocatore
+     * @return Jlabel che rappresenta l'immagine del giocatore
+     */
     public JLabel getFoto3() {
         return foto3;
     }
-
+    /**
+     * setter immagine giocatore
+     */
     public void setFoto3(JLabel foto3) {
         this.foto3 = foto3;
     }
-
+    
+    /**
+     * getter nome giocatore
+     * @return JLabel del nome del giocatore
+     */
     public JLabel getNomegiocatore() {
         return nomegiocatore;
     }
 
+    /**
+     * setter nomegiocatore
+     * @param nomegiocatore
+     */
     public void setNomegiocatore(JLabel nomegiocatore) {
         this.nomegiocatore = nomegiocatore;
     }
 
+    /**
+     * getter del bottone che rappresenta la carta scartata
+     * @return JButton scartoButton
+     */
     public JButton getScartoButton() {
         return scartoButton;
     }
 
+    /**
+     * setter del bottone che rappresenta la carta scartata
+     * @param scartoButton
+     */
     public void setScartoButton(JButton scartoButton) {
         this.scartoButton = scartoButton;
     }
-
+    /**
+     * getter dei JButton che rappresentano i quattro colori tra i quali il giocatore deve scegliere quando tira una carta cambio colore
+     * @return JButton coloreRosso
+     */
     public JButton getColoreRosso() {
         return coloreRosso;
     }
-
+    /**
+     * getter dei JButton che rappresentano i quattro colori tra i quali il giocatore deve scegliere quando tira una carta cambio colore
+     * @return JButton coloreGiallo
+     */
     public JButton getColoreGiallo() {
         return coloreGiallo;
     }
-
+    /**
+     * getter dei JButton che rappresentano i quattro colori tra i quali il giocatore deve scegliere quando tira una carta cambio colore
+     * @return JButton coloreVerde
+     */
     public JButton getColoreVerde() {
         return coloreVerde;
     }
-
+    /**
+     * getter dei JButton che rappresentano i quattro colori tra i quali il giocatore deve scegliere quando tira una carta cambio colore
+     * @return JButton coloreBlu
+     */
     public JButton getColoreBlu() {
         return coloreBlu;
     }
-
+    
+    /**
+     * getter dell'arrayList posti
+     * @return posti
+     */
     public ArrayList<JButton> getPosti() {
         return posti;
     }
-
+    /**
+     * getter postazione 
+     * @return postazione
+     */
     public PostazionePanel getPostazione() {
         return postazione;
     }
-
+    /**
+     * setter  postazione
+     * @param postazione
+     */
     public void setPostazione(PostazionePanel postazione) {
         this.postazione = postazione;
     }
-
+    
+    /**
+     * getter tavolo
+     * @return tavolo
+     */
     public PiattoPanel getTavolo() {
         return tavolo;
     }
 
+    /**
+     * getter cartaScarto
+     * @return cartaScarto
+     */
     public Carta getCartaScarto() {
         return cartaScarto;
     }
 
+    /**
+     * setter cartaScarto
+     * @param cartaScarto la carta scartata vicino al mazzo
+     */
     public void setCartaScarto(Carta cartaScarto) {
         this.cartaScarto = cartaScarto;
     }
