@@ -5,8 +5,8 @@ import java.awt.Container;
 import javax.swing.JOptionPane;
 import model.Database;
 import model.Profilo;
-import view2.CercaProfiloPanel;
-import view2.ProfiloPanel;
+import view.CercaProfiloPanel;
+import view.ProfiloPanel;
 
 public class CercaProfiloController {
 

@@ -1,4 +1,4 @@
-package view2;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -10,13 +10,27 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * Questa classe crea il pannello con il menu principale del gioco
+ */
 public class MenuPanel extends JPanel {
-	
-	private static final long serialVersionUID = -6284533655497930757L;
+
+    /**
+     * button per iniziare una nuova partita
+     */
 	private JButton nuovaPartita;
+    /**
+     * button per visualizzare i propri dati del profilo
+     */
 	private JButton opzioniProfilo;
+    /**
+     * button per uscire dall'applicazione
+     */
 	private JButton esci;
 
+    /**
+     * costruttore che costruisce il design del pannello con il menu principale del gioco
+     */
 	public MenuPanel() {
         JPanel noe = new JPanel();
         noe.setBackground(Color.red);
@@ -38,15 +52,27 @@ public class MenuPanel extends JPanel {
         noe.add(esci, gbc5);
         this.add(noe, BorderLayout.CENTER);
 	}
-	
+
+    /**
+     * actionlistener sul button nuovaPartita
+     * @param actionListener
+     */
     public void nuovaPartita(ActionListener actionListener) {
     	nuovaPartita.addActionListener(actionListener);
     }
-    
+
+    /**
+     * actionlistener sul button opzioniProfilo
+     * @param actionListener
+     */
     public void opzioniProfilo(ActionListener actionListener) {
     	opzioniProfilo.addActionListener(actionListener);
     }
-    
+
+    /**
+     * actionlistener sul button esci
+     * @param actionListener
+     */
     public void esci(ActionListener actionListener) {
     	esci.addActionListener(actionListener);
     }

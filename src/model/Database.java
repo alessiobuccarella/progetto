@@ -4,12 +4,27 @@ import controller.AudioButtonManager;
 import javax.swing.*;
 import java.sql.*;
 
+/**
+ * Questa classe è utilizzata per la connessione con il database e utilizza il singleton pattern
+ */
 public class Database {
 
+    /**
+     * connessione del database
+     */
     private Connection connection;
+    /**
+     *  unica istanza della classe
+     */
     private static Database singleton;
+    /**
+     * oggetto audio
+     */
     AudioButtonManager musicObjectButton = new AudioButtonManager();
 
+    /**
+     * Costruttore privato che nessuno può chiamare, tranne metodi (statici) della classe stessa, creo l'unica connessione al database
+     */
     private Database() {
         try {
             this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jUno", "root", "AlessioFabio");
@@ -20,6 +35,10 @@ public class Database {
         }
     }
 
+    /**
+     * metodo punto di accesso per la costruzione
+     * @return
+     */
     public static Database getInstance(){
         if (singleton == null){
             return new Database();
@@ -27,6 +46,11 @@ public class Database {
         return singleton;
     }
 
+    /**
+     * metodo che tramite una query cerca il profilo nel database secondo il nickname del profilo in uso
+     * @param nick del profilo in utilizzo
+     * @return il profilo
+     */
     public Profilo cercaProfilo(String nick) {
         try {
             String query = "SELECT * FROM jUno.Profilo WHERE nickname = '" + nick + "'";
@@ -50,6 +74,12 @@ public class Database {
         return null;
     }
 
+    /**
+     * metodo che tramite una query crea il profilo nel database secondo il nickname e l'avatar scelti del profilo in uso
+     * @param nick del profilo
+     * @param img avatar del profilo
+     * @return il profilo
+     */
     public Profilo creaProfilo(String nick, String img) {
         try {
             Statement statement = connection.createStatement();
@@ -65,7 +95,6 @@ public class Database {
                     .setPartiteGiocate(0)
                     .setPartitePerse(0)
                     .setPartiteVinte(0).build();
-
             return profilo;
         } catch (SQLException e2) {
             switch (e2.getSQLState()) {
@@ -83,8 +112,13 @@ public class Database {
         }
         return null;
     }
-
-    public void updateBD2(String nickname, boolean risultato) {
+    /**
+     * metodo che tramite una query aggiorna il profilo nel database secondo il nickname del profilo in uso e il risultato dopo una partita giocata
+     * @param nickname del profilo in utilizzo
+     * @param risultato della partita
+     * @return il profilo
+     */
+    public void updateDatabase(String nickname, boolean risultato) {
         if (risultato == true) {
             try {
                 Statement statement = connection.createStatement();
@@ -116,6 +150,9 @@ public class Database {
         }
     }
 
+    /**
+     * metodo che chiude la connessione al database
+     */
     public void close() {
         if (this.connection != null) {
             try {
