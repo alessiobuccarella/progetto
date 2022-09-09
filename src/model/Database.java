@@ -90,7 +90,7 @@ public class Database {
                 Statement statement = connection.createStatement();
                 try {
                     String query3 = "UPDATE jUno.Profilo"
-                                  + " SET partite_giocate = partite_giocate + 1, partite_vinte = partite_vinte + 1"
+                                  + " SET partite_giocate = partite_giocate + 1, partite_vinte = partite_vinte + 1, livello = livello + 2"
                                   + " WHERE nickname = '" + nickname + "'";
                     statement.executeUpdate(query3);
                 } catch (Exception e1) {
@@ -104,7 +104,7 @@ public class Database {
                 Statement statement = connection.createStatement();
                 try {
                     String query4 = "UPDATE jUno.Profilo"
-                                  + " SET partite_giocate = partite_giocate + 1, partite_perse = partite_perse + 1"
+                                  + " SET partite_giocate = partite_giocate + 1, partite_perse = partite_perse + 1, livello = livello - 1"
                                   + " WHERE nickname = '" + nickname + "'";
                     statement.executeUpdate(query4);
                 } catch (Exception e1) {

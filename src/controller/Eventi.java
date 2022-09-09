@@ -477,8 +477,8 @@ public class Eventi {
             musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
             JOptionPane.showMessageDialog(null, "PURTROPPO HAI PERSO!!");
             //cardLayout.show(MainFrame.this.getContentPane(), "inizio2");
-            Database db2 = Database.getInstance();
-            db2.updateBD2(nome, vinto);
+            Database database = Database.getInstance();
+            database.updateBD2(nome, vinto);
             Database.getInstance().close();
             System.exit(0);
         }
