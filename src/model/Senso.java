@@ -6,5 +6,8 @@ package model;
 
 public enum Senso {
 
+    /**
+     * enum senso orario e antiorario della partita
+     */
     ORARIO, ANTIORARIO;
 }
