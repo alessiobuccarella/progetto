@@ -168,6 +168,8 @@ public class PartitaPanel extends JPanel {
         gbc10.weighty = 0;
         gbc10.gridwidth = 1;
         tavolo.add(getNomegiocatore(),gbc10);
+        nomegiocatore.setFont(new Font("Dialog", Font.PLAIN, 20));
+        nomegiocatore.setForeground(Color.green);
         gbc10.anchor = GridBagConstraints.LINE_START;
         gbc10.gridx = 6;
         gbc10.gridy = 6;
@@ -248,7 +250,6 @@ public class PartitaPanel extends JPanel {
         gbc10.gridx = 4;
         gbc10.gridy = 6;
         gbc10.weighty = 2;
-        //tavolo.add(xxxxxx,gbc10);
 
         Eventi eventi = new Eventi(partitaPanel);
         passo.addActionListener(new ActionListener() {
@@ -260,7 +261,6 @@ public class PartitaPanel extends JPanel {
 
         uno.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
                 eventi.setGridatoUno(true);
             }
         });
@@ -291,7 +291,6 @@ public class PartitaPanel extends JPanel {
                 public void actionPerformed(ActionEvent e) {
                     repaint();
                     t.start();
-
                     eventi.cliccato(gbc10, mano, getPostazione().getComponentZOrder(posto), posto, getPostazione(), getTavolo(), manoOvest, manoNord,
                             manoEst, postazioneOvest, postazioneNord, postazioneEst, getPosti(), mazzo, postazionePiatto);
                     //if (cartaScarto.getC()==4)
