@@ -18,6 +18,7 @@ public class Eventi {
 	private Carta cartaScarto;
 	private  boolean pescato=false;
     private boolean firstTime = true;
+    private boolean vinto;
     PartitaPanel partitaPanel;
     AudioButtonManager musicObjectBot = new AudioButtonManager();
 
@@ -126,12 +127,9 @@ public class Eventi {
         postazioneEst.validate();
         if (getCartaScarto().getV() == 13) {
             // Menu.firstTime = true;
-        
-    
-   
         }
+
         if (getCartaScarto().getV() == 14) {
-        	
             //Menu.firstTime = true;
             if (turno == 1) {
                 for (int i = 0; i < 4; i++)
@@ -139,19 +137,22 @@ public class Eventi {
                 postazioneOvest.invalidate();
                 postazioneOvest.validate();
             } else {
-                    for (int i = 0; i < 4; i++)
-                        manoEst.mano.add(mazzo.pesca());
-                    postazioneEst.invalidate();
-                    postazioneEst.validate();
-                }
+                for (int i = 0; i < 4; i++)
+                    manoEst.mano.add(mazzo.pesca());
+                postazioneEst.invalidate();
+                postazioneEst.validate();
+            }
            aggiornaTurno(mano,mazzo);
                // Menu.rosso.setEnabled(true);Menu.giallo.setEnabled(true);Menu.verde.setEnabled(true);Menu.blu.setEnabled(true);
         }
-        if (mano.mano.size()==0) {
+        if (mano.mano.size() == 0) {
+            vinto = true;
             musicObjectBot.playButtonMusic("./src/audio/victory_audio.wav");
             JOptionPane.showMessageDialog(null, "CONGRATULAZIONI, HAI VINTO!!");
             //cardLayout.show(MainFrame.this.getContentPane(), "inizio2");
             Database db2 = Database.getInstance();
+            db2.updateBD2(nome, vinto);
+            Database.getInstance().close();
             System.exit(0);
         }
     }
@@ -303,9 +304,14 @@ public class Eventi {
            System.out.println("OVEST: " + manoOvest.mano.toString());
         }
         if (manoOvest.mano.size() == 0) {
+            vinto = false;
             musicObjectBot.playButtonMusic("./src/audio/defeat_audio.wav");
+            JOptionPane.showMessageDialog(null, "PURTROPPO HAI PERSO!!");
+            //cardLayout.show(MainFrame.this.getContentPane(), "inizio2");
             Database db2 = Database.getInstance();
-            //HA VINTO
+            db2.updateBD2(nome, vinto);
+            Database.getInstance().close();
+            System.exit(0);
         }
         
     }
@@ -369,9 +375,14 @@ public class Eventi {
            System.out.println("NORD: " + manoNord.mano.toString());
         }
         if (manoNord.mano.size() == 0) {
+            vinto = false;
             musicObjectBot.playButtonMusic("./src/audio/defeat_audio.wav");
+            JOptionPane.showMessageDialog(null, "PURTROPPO HAI PERSO!!");
+            //cardLayout.show(MainFrame.this.getContentPane(), "inizio2");
             Database db2 = Database.getInstance();
-            //HA VINTO
+            db2.updateBD2(nome, vinto);
+            Database.getInstance().close();
+            System.exit(0);
         }
         System.out.println("turno: " + turno);
     }
@@ -457,8 +468,14 @@ public class Eventi {
             System.out.println("EST: " + manoEst.mano.toString());
         }
         if (manoEst.mano.size() == 0) {
+            vinto = false;
             musicObjectBot.playButtonMusic("./src/audio/defeat_audio.wav");
+            JOptionPane.showMessageDialog(null, "PURTROPPO HAI PERSO!!");
+            //cardLayout.show(MainFrame.this.getContentPane(), "inizio2");
             Database db2 = Database.getInstance();
+            db2.updateBD2(nome, vinto);
+            Database.getInstance().close();
+            System.exit(0);
         }
 }
     public void cambiaSenso() {
