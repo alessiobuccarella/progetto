@@ -71,6 +71,7 @@ public class Eventi {
             if (getCartaScarto().getV() == 11) {
             	musicObjectBot.playButtonMusic("./src/audio/special_card_audio.wav");
                 cambiaSenso();
+                if (partitaPanel.getMod() ==2) turno=0;
             }
             if (senso == Senso.ORARIO) {
                 if (partitaPanel.getMod() !=2) {
@@ -88,7 +89,7 @@ public class Eventi {
             		 if (turno==0) musicObjectBot.playButtonMusic("./src/audio/Squirtle_audio.wav");
             		 partitaPanel.getFoto().setBorder(new LineBorder(null));
             	 }
-            	 else turno = 2;
+            	 else if  (partitaPanel.getMod() !=2)turno = 2;
             }
             if (getCartaScarto().getV() == 10) {
             	  if (partitaPanel.getMod() !=2) {
@@ -223,12 +224,23 @@ public class Eventi {
     }
 
     public void mossaOvest(GridBagConstraints gbc10,Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
-        Carta x = cartaUtile(manoOvest);
+    	if (cartaScarto.getC()==4){
+    		int x=(int)(Math.random() * 4);
+    		if (cartaScarto.getV()>=13) {
+    			getCartaScarto().setC(x);
+    			String filename = "./src/immagini/" + getCartaScarto().getC() + "+0.png";
+                ImageIcon img = new ImageIcon(filename);
+                JButton colore = new JButton(img);
+    		}
+    	
+    	}
+    	Carta x = cartaUtile(manoOvest);
         // se il giocatore ha una carta utile
         System.out.println("Ovest: " + manoOvest.mano.toString());
         if (x != null) {
             lanciaCarta(gbc10, piatto, manoOvest, postazioneOvest, x,"./src/immagini/dorso90.png", postazionePiatto);
             // lancia la carta
+            
             System.out.println("turno: " + turno);
             System.out.println("Bulbasaur ha tirato " + x.toString());
             postazioneOvest.removeAll();
@@ -313,7 +325,16 @@ public class Eventi {
     }
 
     public void mossaNord(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
-        Carta x = cartaUtile(manoNord);
+    	if (cartaScarto.getC()==4){
+    		int x=(int)(Math.random() * 4);
+    		if (cartaScarto.getV()>=13) {
+    			getCartaScarto().setC(x);
+    			String filename = "./src/immagini/" + getCartaScarto().getC() + "+0.png";
+                ImageIcon img = new ImageIcon(filename);
+                JButton colore = new JButton(img);
+    		}
+    	}
+    	Carta x = cartaUtile(manoNord);
         System.out.println("Nord: " + manoNord.mano.toString());
         // se il giocatore ha una carta utile
         if (x != null) {
@@ -384,7 +405,16 @@ public class Eventi {
         System.out.println("turno: " + turno);
     }
     public void mossaEst(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
-        Carta x = cartaUtile(manoEst);
+    	if (cartaScarto.getC()==4){
+    		int x=(int)(Math.random() * 4);
+    		if (cartaScarto.getV()>=13) {
+    			getCartaScarto().setC(x);
+    			String filename = "./src/immagini/" + getCartaScarto().getC() + "+0.png";
+                ImageIcon img = new ImageIcon(filename);
+                JButton colore = new JButton(img);
+    		}
+    	}
+    	Carta x = cartaUtile(manoEst);
         System.out.println("Est: " + manoOvest.mano.toString());
         System.out.println("pescato: "+pescato);
         // se il giocatore ha una carta utile
@@ -434,7 +464,7 @@ public class Eventi {
                 partitaPanel.getFoto().setBorder(null);
                 if (getCartaScarto().getV() == 11) {
                 	if (partitaPanel.getMod() ==2) turno=0;
-                	partitaPanel.getFoto2().setBorder(null);
+                	partitaPanel.getFoto1().setBorder(null);
                 	if (partitaPanel.getMod() !=2)partitaPanel.getFoto1().setBorder(new LineBorder(Color.RED, 5));
                     partitaPanel.getFoto().setBorder(null);
                     if (partitaPanel.getMod() !=2)musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
@@ -622,25 +652,8 @@ public class Eventi {
     }
 
     public  void passo() {
-    	if (cartaScarto.getC()==4){
-    		int x=(int)(Math.random() * 4);
-    		if (cartaScarto.getV()==13) {
-    			getCartaScarto().setC(x);
-    			String filename = "./src/immagini/" + getCartaScarto().getC() + "+0.png";
-                ImageIcon img = new ImageIcon(filename);
-                JButton colore = new JButton(img);
-                colore.setBorder(null);
-                partitaPanel.getScartoButton().add(colore);
-    		}
-    		if (cartaScarto.getV()==14) {
-    			getCartaScarto().setC(x);
-    			String filename = "./src/immagini/" + getCartaScarto().getC() + "+4.png";
-                ImageIcon img = new ImageIcon(filename);
-                JButton colore = new JButton(img);
-                colore.setBorder(null);
-                partitaPanel.getScartoButton().add(colore);
-    		}
-    	}
+   
+
         if (senso == Senso.ANTIORARIO) {
         	if (partitaPanel.getMod() !=2) turno = 3;
         	else turno = 2;
