@@ -166,8 +166,12 @@ public class Eventi {
         }
     }
     public void avanti(GridBagConstraints gbc10, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, PostazionePanel postazioneNord, PostazionePanel postazioneEst, Mazzo mazzo, PostazionePanel postazione, Mano mano, PostazionePanel postazionePiatto) {
-        contatore++;
-        System.out.println("contatore= "+contatore);
+        if (partitaPanel.getMod() ==3) {
+        	contatore++;
+        	if (contatore>=4) {vincitoreLampo(manoOvest,manoNord,manoEst,mano);}
+        	System.out.println("contatore= "+contatore);
+        }
+       
     	switch (turno % 4) {
             case 1:
                 mossaOvest(gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst, postazionePiatto);
@@ -676,7 +680,30 @@ public class Eventi {
        
         }
     }
-   
+    public void vincitoreLampo(Mano manoOvest, Mano manoNord, Mano manoEst, Mano mano)
+    {
+    	
+        String vincitore;
+        int y=0;
+    	int ovest=0;
+    	int nord=0;
+    	int est=0;
+    	int giocatore=0;
+    	for (Carta x:manoOvest.mano) {ovest+=x.getV();}
+    	for (Carta x:manoNord.mano) {nord+=x.getV();}
+    	for (Carta x:manoEst.mano) {est+=x.getV();}
+    	for (Carta x:mano.mano) {giocatore+=x.getV();}
+    	int min=Math.min(Math.min(Math.min(ovest,nord),est),giocatore);
+    	
+    	System.out.println("bulbasaur: "+ovest+" Charmander: "+nord+" squirtle: "+est+" "+nome+": "+ovest);
+    	vinto = false;
+        musicObjectBot.playButtonMusic("./src/audio/defeat_audio.wav");
+        JOptionPane.showMessageDialog(null, "PURTROPPO HAI PERSO!!");
+        Database db2 = Database.getInstance();
+        db2.updateBD2(nome, vinto);
+        Database.getInstance().close();
+        System.exit(0);
+    }
     
 
     public void setGridatoUno(boolean x) {
