@@ -54,8 +54,7 @@ public class Eventi {
         	 
         	if(getCartaScarto().getV() < 10) {
                 musicObjectBot.playButtonMusic("./src/audio/normal_card_audio.wav");
-            } 
-            System.out.println("ok");
+            }
             cartaScarto=mano.mano.get(indiceCarta);
             postazionePiatto.remove(partitaPanel.getScartoButton());
             partitaPanel.setScartoButton(DisegnaCarta.disegnaCarta(getCartaScarto()));
