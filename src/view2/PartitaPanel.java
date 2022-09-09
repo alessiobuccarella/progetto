@@ -2,15 +2,15 @@ package view2;
 
 import model.*;
 import javax.swing.*;
-
 import controller.Eventi;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+
+import static view2.ProfiloPanel.immagine;
 
 public class PartitaPanel extends JPanel {
 
@@ -103,11 +103,10 @@ public class PartitaPanel extends JPanel {
         Image image3 = avatar3png.getImage();
         Image newimg3 = image3.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar3png = new ImageIcon(newimg3);
-        /*ImageIcon avatar4png = new ImageIcon(profilo.getAvatarImg());
+        ImageIcon avatar4png = new ImageIcon(immagine);
         Image image4 = avatar4png.getImage();
         Image newimg4 = image4.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar4png = new ImageIcon(newimg4);
-        System.out.println(profilo.getAvatarImg());*/
         setScartoButton(DisegnaCarta.disegnaCarta(getCartaScarto()));
         for (int i = 0;i < mano.mano.size(); i++)
             getPosti().set(i, DisegnaCarta.disegnaCarta(mano.mano.get(i)));
@@ -122,11 +121,10 @@ public class PartitaPanel extends JPanel {
         postazioneNord = new PostazionePanel(1);
         postazioneNord.add(new JLabel(new ImageIcon("./src/immagini/dorsonord7.png")));
         postazioneNord.setOpaque(false);
-    
         setFoto(new JLabel(avatar1png));
         setFoto1(new JLabel(avatar2png));
         setFoto2(new JLabel(avatar3png));
-        //foto3 = new JLabel(avatar4png);
+        setFoto3(new JLabel(avatar4png));
         gbc10 = new GridBagConstraints();
         this.add(tavolo, BorderLayout.CENTER);
         uno= new JButton("UNO!");
@@ -172,7 +170,7 @@ public class PartitaPanel extends JPanel {
         gbc10.weightx = 0;
         gbc10.weighty = 0;
         gbc10.gridwidth = 1;
-        //tavolo.add(fotogiocatore,gbc10);
+        tavolo.add(getFoto3(),gbc10);
         gbc10.anchor = GridBagConstraints.LINE_START;
         gbc10.gridx = 0;
         gbc10.gridy = 0;
@@ -371,6 +369,14 @@ public class PartitaPanel extends JPanel {
 	public void setFoto2(JLabel foto2) {
 		this.foto2 = foto2;
 	}
+
+    public JLabel getFoto3() {
+        return foto3;
+    }
+
+    public void setFoto3(JLabel foto3) {
+        this.foto3 = foto3;
+    }
 
 	public JButton getScartoButton() {
 		return scartoButton;
