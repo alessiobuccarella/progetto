@@ -605,7 +605,6 @@ public class Eventi {
                 if (partitaPanel.getMod() !=2) musicObjectBot.playButtonMusic("./src/audio/Bulbasaur_audio.wav");;
             }
         }
-        //se il giocatore non ha una carta utile e non ha ancora pescato
         else if (pescato == false) {
             System.out.println("Est non ha la carta e dovrebbe pescare");
             //pesca
@@ -614,7 +613,6 @@ public class Eventi {
             pescato = true;
             mossaEst(gbc10, mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
         }
-        //se il giocatore non ha una carta utile e ma ha già pescato
         else if (x == null && pescato == true) {
             pescato = false;
             if (senso == Senso.ORARIO) {
@@ -630,14 +628,13 @@ public class Eventi {
             risultatoPartita(false, nome, frase);
         }
     }
+
     /**
      * metodo che viene invocato quando un giocatore tira la carta cambiogiro e inverte il senso
      * da orario a antiorario e viceversa
      */
     public void cambiaSenso() {
-        if (senso == Senso.ANTIORARIO) {
-            senso = Senso.ORARIO;
-        }
+        if (senso == Senso.ANTIORARIO) senso = Senso.ORARIO;
         else senso = Senso.ANTIORARIO;
     }
 
@@ -717,14 +714,12 @@ public class Eventi {
      * @param x
      * @param postazione
      */
-    public  void aggiornaSpecialeUmano(Mano mano, Mazzo mazzo, Carta x, PostazionePanel postazione)
-    {
-        if (x.getV()==12) {
+    public  void aggiornaSpecialeUmano(Mano mano, Mazzo mazzo, Carta x, PostazionePanel postazione) {
+        if (x.getV() == 12) {
             pesca(mazzo,mano);
             pesca(mazzo,mano);
         }
-        if (x.getV()==13) {
-
+        if (x.getV() == 13) {
             getCartaScarto().setC((int)(Math.random() * 4));
             String filename = "./src/immagini/" + getCartaScarto().getC() + "+0.png";
             ImageIcon img = new ImageIcon(filename);
@@ -734,7 +729,6 @@ public class Eventi {
             System.out.println(getCartaScarto().getC());
         }
         if (x.getV() == 14) {
-
             getCartaScarto().setC((int)(Math.random() * 4));
             String filename = "./src/immagini/" + getCartaScarto().getC() + "+4.png";
             ImageIcon img = new ImageIcon(filename);
