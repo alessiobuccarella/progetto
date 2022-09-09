@@ -225,19 +225,19 @@ public class Eventi {
     /**
      * metodo che viene invocato dal timer e designa il prossimo giocatore a tirare tramite la variabile turno
      * gestisce anche il contatore usato nella modalita lampo e chiama la fine della partita
-     * @param gbc10
-     * @param turno
-     * @param manoOvest
-     * @param manoNord
-     * @param manoEst
-     * @param piatto
-     * @param postazioneOvest
-     * @param postazioneNord
-     * @param postazioneEst
-     * @param mazzo
-     * @param postazione
-     * @param mano
-     * @param postazionePiatto
+     * @param gbc10 gridBagConstraints del panel della partita
+     * @param turno indica il giocatore che effettuerà la prossima mossa
+     * @param manoOvest indica le carte in mano al giocatore
+     * @param manoNord indica le carte in mano al giocatore
+     * @param manoEst indica le carte in mano al giocatore
+     * @param piatto panel della postazione centrale
+     * @param postazioneOvest postazione del giocatore
+     * @param postazioneNord postazione del giocatore
+     * @param postazioneEst postazione del giocatore
+     * @param mazzo mazzo della partita
+     * @param postazione postazione del giocatore
+     * @param mano mano del giocatore
+     * @param postazionePiatto postazione centrale
      */
     public void avanti(GridBagConstraints gbc10, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, PostazionePanel postazioneNord, PostazionePanel postazioneEst, Mazzo mazzo, PostazionePanel postazione, Mano mano, PostazionePanel postazionePiatto) {
         if (partitaPanel.getMod() == 3) {
@@ -312,18 +312,18 @@ public class Eventi {
 
     /**
      * metodo che gestisce la mossa del giocatore a ovest e la rappresentazione grafica delle sue carte
-     * @param gbc10
-     * @param mano
-     * @param manoOvest
-     * @param manoNord
-     * @param manoEst
-     * @param piatto
-     * @param postazioneOvest
-     * @param mazzo
-     * @param postazione
-     * @param postazioneNord
-     * @param postazioneEst
-     * @param postazionePiatto
+     * @param gbc10 GridBagConstraints del panel della partita
+     * @param mano mano del giocatore
+     * @param manoOvest mano del giocatore
+     * @param manoNord mano del giocatore
+     * @param manoEst mano del giocatore
+     * @param piatto postazione centrale
+     * @param postazioneOvest postazione del giocatore
+     * @param mazzo mazzo della partita
+     * @param postazione postazione del giocatore
+     * @param postazioneNord postazione del giocatore
+     * @param postazioneEst postazione del giocatore
+     * @param postazionePiatto postazione del giocatore
      */
     public void mossaOvest(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
         if (cartaScarto.getC() == 4){
@@ -412,18 +412,18 @@ public class Eventi {
 
     /** metodo che gestisce le mosse del giocatore a nord e la rappresentazione grafica delle sue carte, inoltre tramite dei 
      * controlli designati dalla modalita due gestisce i diversi tipi di partite
-     * @param gbc10
-     * @param mano
-     * @param manoOvest
-     * @param manoNord
-     * @param manoEst
-     * @param piatto
-     * @param postazioneOvest
-     * @param mazzo
-     * @param postazione
-     * @param postazioneNord
-     * @param postazioneEst
-     * @param postazionePiatto
+     * @param gbc10 GridBagConstraints del panel della partita
+     * @param mano mano del giocatore
+     * @param manoOvest mano del giocatore
+     * @param manoNord mano del giocatore
+     * @param manoEst mano del giocatore
+     * @param piatto postazione centrale 
+     * @param postazioneOvest postazione del giocatore
+     * @param mazzo mazzo della partita
+     * @param postazione postazione del giocatore
+     * @param postazioneNord postazione del giocatore
+     * @param postazioneEst postazione del giocatore
+     * @param postazionePiatto panel della partita
      */
     public void mossaNord(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
         if (cartaScarto.getC() == 4){
@@ -496,18 +496,18 @@ public class Eventi {
     }
     /**
      * metodo che gestisce le mosse del giocatore a est e la rappresentazione grafica delle sue carte
-     * @param gbc10
-     * @param mano
-     * @param manoOvest
-     * @param manoNord
-     * @param manoEst
-     * @param piatto
-     * @param postazioneOvest
-     * @param mazzo
-     * @param postazione
-     * @param postazioneNord
-     * @param postazioneEst
-     * @param postazionePiatto
+     * @param gbc10 GridBagConstraints del panel della partita
+     * @param mano mano del giocatore
+     * @param manoOvest mano del giocatore
+     * @param manoNord mano del giocatore
+     * @param manoEst mano del giocatore
+     * @param piatto postazione centrale
+     * @param postazioneOvest postazione del giocatore
+     * @param mazzo mazzo della partita
+     * @param postazione postazione del giocatore
+     * @param postazioneNord postazione del giocatore
+     * @param postazioneEst postazione del giocatore
+     * @param postazionePiatto postazione centrale
      */
     public void mossaEst(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
         if (cartaScarto.getC() == 4){
@@ -622,13 +622,13 @@ public class Eventi {
 
     /**
      * metodo che aggiorna graficamente la situazione dopo il lancio di una carta
-     * @param gbc10
-     * @param piatto
-     * @param mano
-     * @param postazione
-     * @param carta
-     * @param pathDorso
-     * @param postazionePiatto
+     * @param gbc10 GridBagConstraints del panel della partita
+     * @param piatto postazione centrale
+     * @param mano mano del giocatore
+     * @param postazione postazione del giocatore
+     * @param carta carta lanciata
+     * @param pathDorso il percorso dell'immagine del dorso della carta
+     * @param postazionePiatto panel della partita
      */
     public void lanciaCarta(GridBagConstraints gbc10, PiattoPanel piatto, Mano mano, PostazionePanel postazione, Carta carta, String pathDorso, PostazionePanel postazionePiatto) {
         postazionePiatto.remove(partitaPanel.getScartoButton());
@@ -646,7 +646,7 @@ public class Eventi {
      * @param piatto il panel che rappresenta il centro del tavolo con mazzo e carta scartata
      * @param x la carta speciale che è stata lanciata
      * @param mazzo il mazzo della partita
-     * @param path
+     * @param path percorso dell'immagine della carta
      */
     public  void aggiornaSpeciale(Mano manoVittima, PostazionePanel postazioneVittima, PiattoPanel piatto, Carta x, Mazzo mazzo, String path) {
         if (x.getV() == 12) {
@@ -678,10 +678,10 @@ public class Eventi {
 
     /**
      * metodo che gestisce il lancio di carte speciali quando la vittima è il giocatore umano
-     * @param mano
-     * @param mazzo
-     * @param x
-     * @param postazione
+     * @param mano mano del giocatore
+     * @param mazzo mazzo della partita
+     * @param x carta lanciata
+     * @param postazione postazione del giocatore
      */
     public  void aggiornaSpecialeUmano(Mano mano, Mazzo mazzo, Carta x, PostazionePanel postazione) {
         if (x.getV() == 12) {
@@ -713,8 +713,8 @@ public class Eventi {
 
     /**
      * metodo che aggiorna la vista del panel piatto e del panel postazione
-     * @param piatto
-     * @param postazione
+     * @param piatto postazione centrale
+     * @param postazione postazione del giocatore
      */
     public  void aggiornaVista(PiattoPanel piatto, PostazionePanel postazione) {
         piatto.invalidate();
@@ -725,8 +725,8 @@ public class Eventi {
 
     /**
      * metodo che gestisce il turno successivo in base al senso e alla carta lanciata
-     * @param mano
-     * @param mazzo
+     * @param mano mano del giocatore
+     * @param mazzo mazzo della partita
      */
     public  void aggiornaTurno(Mano mano,Mazzo mazzo) {
         if (getCartaScarto().getV() == 11) {
@@ -759,8 +759,8 @@ public class Eventi {
     /**
      * metodo usato per far pescare una carta a un giocatore quando è sprovvisto di una carta utile
      * o per dare le carte quando un giocatore subisce un attacco o una penalita
-     * @param mazzo
-     * @param mano
+     * @param mazzo mazzo della partita
+     * @param mano mano del giocatore
      */
     public  void pesca(Mazzo mazzo, Mano mano) {
         Carta carta=mazzo.pesca();
@@ -796,10 +796,10 @@ public class Eventi {
 
     /**
      * metodo che conta i punteggi rimanenti nelle mani dei giocatori e calcola il vincitore
-     * @param manoOvest
-     * @param manoNord
-     * @param manoEst
-     * @param mano
+     * @param manoOvest mano del giocatore 
+     * @param manoNord mano del giocatore
+     * @param manoEst mano del giocatore
+     * @param mano mano del giocatore
      */
     public void vincitoreLampo(Mano manoOvest, Mano manoNord, Mano manoEst, Mano mano)
     {
