@@ -258,8 +258,8 @@ public class PartitaPanel extends JPanel {
         
         uno.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	if (eventi.getDeviGridareUno() == true)
-    				eventi.setGridatoUno();
+            
+    				eventi.setGridatoUno(true);
                 }
         }); 
         

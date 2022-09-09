@@ -31,8 +31,8 @@ public class Eventi {
 		return deviGridareUno;
 	}
 
-	public void setGridatoUno() {
-		gridatoUno=true;
+	public void setGridatoUno(boolean x) {
+		gridatoUno=x;
     }
 	
 	public void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto,  Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo, Postazione postazionePiatto) {
@@ -293,7 +293,8 @@ public class Eventi {
         else if (pescato == false) {
             //pesca
             manoOvest.mano.add(mazzo.pesca());
-            //aggiornaPostazione(postazioneOvest, manoOvest,"./src/immagini/dorso90.png" );
+            aggiornaVista(piatto, postazioneOvest);
+            
             pescato = true;
             mossaOvest(gbc10, mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
         }
@@ -364,6 +365,7 @@ public class Eventi {
         else if (pescato == false) {
             //pesca
             manoNord.mano.add(mazzo.pesca());
+            aggiornaVista(piatto, postazioneNord);
             //aggiornaPostazione(postazioneNord, manoNord,"./src/immagini/dorso.png" );
             pescato = true;
             mossaNord(gbc10, mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
@@ -452,7 +454,8 @@ public class Eventi {
         else if (pescato == false) {
             //pesca
            manoEst.mano.add(mazzo.pesca());
-            //aggiornaPostazione(postazioneEst, manoEst,"./src/immagini/dorso90s.png" );
+           aggiornaVista(piatto, postazioneEst);
+
             pescato = true;
             mossaEst(gbc10, mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
         }
@@ -504,10 +507,12 @@ public class Eventi {
 
     public  void aggiornaSpeciale(Mano manoVittima, Postazione postazioneVittima, Piatto piatto, Carta x, Mazzo mazzo, String path) {
     	if (x.getV() == 12) {
-    		 { manoVittima.mano.add(mazzo.pesca());manoVittima.mano.add(mazzo.pesca());}
-    		
-    		//aggiornaPostazione(postazioneVittima, manoVittima,path);
+    		manoVittima.mano.add(mazzo.pesca());manoVittima.mano.add(mazzo.pesca());
+    	    aggiornaVista(piatto, postazioneVittima);
     	}
+    		
+    	
+    	
     	if (x.getV() == 13) {
             getCartaScarto().setC((int)(Math.random() * 4));
             String filename = "./src/immagini/" + getCartaScarto().getC() + "+0.png";
@@ -522,6 +527,7 @@ public class Eventi {
             manoVittima.mano.add(mazzo.pesca());
             manoVittima.mano.add(mazzo.pesca());
             manoVittima.mano.add(mazzo.pesca());
+            aggiornaVista(piatto, postazioneVittima);
     		getCartaScarto().setC((int)(Math.random() * 4));
             String filename = "./src/immagini/" + getCartaScarto().getC() + "+4.png";
             ImageIcon img = new ImageIcon(filename);
@@ -636,10 +642,7 @@ public class Eventi {
         }
     }
 
-	public void ciao() {
-		System.out.println("ciaoooooooooooooooooo");
-		
-	}
+
 
 	public Carta getCartaScarto() {
 		return cartaScarto;
