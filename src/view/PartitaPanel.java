@@ -12,14 +12,6 @@ import java.util.ArrayList;
 import static view.ProfiloPanel.immagine;
 import static view.ProfiloPanel.nome;
 
-/**
- * @author Fabio
- *
- */
-/**
- * @author Fabio
- *
- */
 public class PartitaPanel extends JPanel {
      
     /**
@@ -30,15 +22,10 @@ public class PartitaPanel extends JPanel {
      * intero che determina la modalita di gioco
      */
     private int mod;
-    
     /**
      * JLabel che rappresentano gli avatar dei giocatori
      */
-    private JLabel foto;
-    private JLabel foto1;
-    private JLabel foto2;
-    private JLabel foto3;
-    
+    private JLabel foto, foto1, foto2, foto3;
     /**
      * JLabel che rappresenta il nome del giocatore
      */
@@ -58,16 +45,11 @@ public class PartitaPanel extends JPanel {
     /**
      * JButton che rappresentano i quattro colori tra i quali il giocatore deve scegliere quando tira una carta cambio colore
      */
-    private JButton coloreRosso; 
-    private JButton coloreGiallo; 
-    private JButton coloreVerde;
-    private JButton coloreBlu; 
-    
+    private JButton coloreRosso, coloreGiallo, coloreVerde, coloreBlu;
     /**
      * ArrayList di JButton composto dalle carte cliccabili in mano al giocatore
      */
     private ArrayList<JButton> posti;
-    
     /**
      * mazzo dal quale vengono generate tutte le carte della partita
      */
@@ -75,11 +57,7 @@ public class PartitaPanel extends JPanel {
     /**
      * mani di tutti e quattro i giocatori, di tipo Mano
      */
-    private Mano manoOvest;
-    private Mano manoNord;
-    private Mano manoEst;
-    private Mano mano;
-    
+    private Mano manoOvest, manoNord, manoEst, mano;
     /**
      * Carta che rappresenta l'ultima carta scartata posizionata vicino al mazzo
      */
@@ -99,11 +77,7 @@ public class PartitaPanel extends JPanel {
     /**
      * panels che rappresentano le postazioni dei rispettivi giocatori
      */
-    private PostazionePanel postazione;
-    private PostazionePanel postazioneNord;
-    private PostazionePanel postazioneOvest;
-    private PostazionePanel postazioneEst;
-    
+    private PostazionePanel postazione, postazioneNord, postazioneOvest, postazioneEst;
     /**
      * panel che rappresenta la postazione delle carte centrali del gioco, mazzo e carta scarto
      */
@@ -114,7 +88,6 @@ public class PartitaPanel extends JPanel {
      * @param x intero che rappresenta la modalita della partita selezionata
      */
     public PartitaPanel(int x) {
-    	
         setLayout(new BorderLayout());
         mazzo = new Mazzo();
         do
@@ -331,21 +304,25 @@ public class PartitaPanel extends JPanel {
                 eventi.setCartaScarto(0);
             }
         });
+
         coloreGiallo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 eventi.setCartaScarto(1);
             }
         });
+
         coloreBlu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 eventi.setCartaScarto(2);
             }
         });
+
         coloreVerde.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 eventi.setCartaScarto(3);
             }
         });
+
         for (JButton posto : getPosti()) {
             posto.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -373,7 +350,7 @@ public class PartitaPanel extends JPanel {
     }
 
     /**
-     *getter della modalita di gioco
+     * getter della modalita di gioco
      * @return intero che rappresenta la modalita di gioco
      */
     public int getMod() {
@@ -463,6 +440,7 @@ public class PartitaPanel extends JPanel {
     public void setScartoButton(JButton scartoButton) {
         this.scartoButton = scartoButton;
     }
+
     /**
      * getter dei JButton che rappresentano i quattro colori tra i quali il giocatore deve scegliere quando tira una carta cambio colore
      * @return JButton coloreRosso
@@ -470,6 +448,7 @@ public class PartitaPanel extends JPanel {
     public JButton getColoreRosso() {
         return coloreRosso;
     }
+
     /**
      * getter dei JButton che rappresentano i quattro colori tra i quali il giocatore deve scegliere quando tira una carta cambio colore
      * @return JButton coloreGiallo
@@ -477,6 +456,7 @@ public class PartitaPanel extends JPanel {
     public JButton getColoreGiallo() {
         return coloreGiallo;
     }
+
     /**
      * getter dei JButton che rappresentano i quattro colori tra i quali il giocatore deve scegliere quando tira una carta cambio colore
      * @return JButton coloreVerde
@@ -484,6 +464,7 @@ public class PartitaPanel extends JPanel {
     public JButton getColoreVerde() {
         return coloreVerde;
     }
+
     /**
      * getter dei JButton che rappresentano i quattro colori tra i quali il giocatore deve scegliere quando tira una carta cambio colore
      * @return JButton coloreBlu
@@ -499,6 +480,7 @@ public class PartitaPanel extends JPanel {
     public ArrayList<JButton> getPosti() {
         return posti;
     }
+    
     /**
      * getter postazione 
      * @return postazione
@@ -506,6 +488,7 @@ public class PartitaPanel extends JPanel {
     public PostazionePanel getPostazione() {
         return postazione;
     }
+
     /**
      * setter  postazione
      * @param postazione
