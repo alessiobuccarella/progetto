@@ -4,9 +4,9 @@ import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-public class Postazione extends JPanel {
+public class PostazionePanel extends JPanel {
 
-    public Postazione(int layout) {
+    public PostazionePanel(int layout) {
         if (layout==0) {
             setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         }

@@ -18,8 +18,8 @@ public class ConfiguraPanel extends JPanel {
          gbc6.gridwidth = GridBagConstraints.REMAINDER;
          gbc6.fill = GridBagConstraints.HORIZONTAL;
          classica = new JButton("CLASSICA");
-         mod2 = new JButton("MOD2");
-         mod3 = new JButton("MOD3");
+         mod2 = new JButton("1 VS 1");
+         mod3 = new JButton("LAMPO");
          classica.setPreferredSize(new Dimension(150, 50));
          mod2.setPreferredSize(new Dimension(150, 50));
          mod3.setPreferredSize(new Dimension(150, 50));
