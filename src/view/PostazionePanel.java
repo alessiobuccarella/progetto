@@ -1,4 +1,4 @@
-package view2;
+package view;
 
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;

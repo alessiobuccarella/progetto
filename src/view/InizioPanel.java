@@ -1,4 +1,4 @@
-package view2;
+package view;
 
 import java.awt.*;
 import java.awt.event.ActionListener;

@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-import view2.MainFrame;
+import view.MainFrame;
 
 /**
  * Questa è la classe main del progetto

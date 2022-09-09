@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import model.*;
-import view2.*;
-import static view2.ProfiloPanel.nome;
+import view.*;
+import static view.ProfiloPanel.nome;
 
 public class Eventi {
     private int contatore;
@@ -693,14 +693,14 @@ public class Eventi {
             musicObjectBot.playButtonMusic("./src/audio/defeat_audio.wav");
             JOptionPane.showMessageDialog(null, "" + frase);
             Database db2 = Database.getInstance();
-            db2.updateBD2(giocatore, false);
+            db2.updateDatabase(giocatore, false);
             Database.getInstance().close();
             System.exit(0);
         } else {
             musicObjectBot.playButtonMusic("./src/audio/victory_audio.wav");
             JOptionPane.showMessageDialog(null, "" + frase);
             Database db2 = Database.getInstance();
-            db2.updateBD2(giocatore, true);
+            db2.updateDatabase(giocatore, true);
             Database.getInstance().close();
             System.exit(0);
         }

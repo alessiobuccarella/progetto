@@ -1,4 +1,4 @@
-package view2;
+package view;
 
 import model.*;
 import javax.swing.*;
@@ -9,8 +9,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import static view2.ProfiloPanel.immagine;
-import static view2.ProfiloPanel.nome;
+import static view.ProfiloPanel.immagine;
+import static view.ProfiloPanel.nome;
 
 public class PartitaPanel extends JPanel {
 
