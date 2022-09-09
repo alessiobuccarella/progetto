@@ -35,7 +35,7 @@ public class Eventi {
 		gridatoUno=x;
     }
 	
-	public void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto,  Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo, Postazione postazionePiatto) {
+	public void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, PostazionePanel postazione, PiattoPanel piatto,  Mano manoOvest, Mano manoNord, Mano manoEst, PostazionePanel postazioneOvest, PostazionePanel postazioneNord, PostazionePanel postazioneEst, ArrayList<JButton> posti, Mazzo mazzo, PostazionePanel postazionePiatto) {
 		System.out.println(nome);
 		System.out.println("cartaScarto colore"+getCartaScarto().getC()+"cartaScarto numero"+getCartaScarto().getV()+"colore"+mano.mano.get(indiceCarta).getC()+"numero"+mano.mano.get(indiceCarta).getV());
         if (mano.mano.size() > 1) {
@@ -156,7 +156,7 @@ public class Eventi {
             System.exit(0);
         }
     }
-    public void avanti(GridBagConstraints gbc10, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, Mazzo mazzo, Postazione postazione, Mano mano,Postazione postazionePiatto) {
+    public void avanti(GridBagConstraints gbc10, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, PostazionePanel postazioneNord, PostazionePanel postazioneEst, Mazzo mazzo, PostazionePanel postazione, Mano mano, PostazionePanel postazionePiatto) {
         switch (turno % 4) {
             case 1:
                 mossaOvest(gbc10,mano, manoOvest, manoNord, manoEst, piatto, postazioneOvest, mazzo, postazione, postazioneNord, postazioneEst,postazionePiatto);
@@ -222,7 +222,7 @@ public class Eventi {
         
     }
 
-    public void mossaOvest(GridBagConstraints gbc10,Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst,Postazione postazionePiatto) {
+    public void mossaOvest(GridBagConstraints gbc10,Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
     	
     	System.out.println("OVEST: " + manoOvest.mano.toString());
         Carta x = cartaUtile(manoOvest);
@@ -317,7 +317,7 @@ public class Eventi {
         
     }
 
-    public void mossaNord(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst,Postazione postazionePiatto) {
+    public void mossaNord(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
         System.out.println("NORD: " + manoNord.mano.toString());
         System.out.println("EST: "+mano.mano.toString());
         Carta x = cartaUtile(manoNord);
@@ -388,7 +388,7 @@ public class Eventi {
         }
         System.out.println("turno: " + turno);
     }
-    public void mossaEst(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Mazzo mazzo, Postazione postazione, Postazione postazioneNord, Postazione postazioneEst,Postazione postazionePiatto) {
+    public void mossaEst(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
         System.out.println("EST: " + manoEst.mano.toString());
         Carta x = cartaUtile(manoEst);
         // se il giocatore ha una carta utile
@@ -496,7 +496,7 @@ public class Eventi {
     	return null;
     }
 
-    public void lanciaCarta(GridBagConstraints gbc10, Piatto piatto, Mano mano, Postazione postazione, Carta carta,String pathDorso,Postazione postazionePiatto) {
+    public void lanciaCarta(GridBagConstraints gbc10, PiattoPanel piatto, Mano mano, PostazionePanel postazione, Carta carta,String pathDorso, PostazionePanel postazionePiatto) {
     	postazionePiatto.remove(partitaPanel.getScartoButton());
         partitaPanel.setScartoButton(DisegnaCarta.disegnaCarta(carta));
         cartaScarto=carta;
@@ -505,7 +505,7 @@ public class Eventi {
         mano.mano.remove(carta);
     }
 
-    public  void aggiornaSpeciale(Mano manoVittima, Postazione postazioneVittima, Piatto piatto, Carta x, Mazzo mazzo, String path) {
+    public  void aggiornaSpeciale(Mano manoVittima, PostazionePanel postazioneVittima, PiattoPanel piatto, Carta x, Mazzo mazzo, String path) {
     	if (x.getV() == 12) {
     		manoVittima.mano.add(mazzo.pesca());manoVittima.mano.add(mazzo.pesca());
     	    aggiornaVista(piatto, postazioneVittima);
@@ -538,7 +538,7 @@ public class Eventi {
     	}
     }
 
-    public  void aggiornaSpecialeUmano(Mano mano,Mazzo mazzo,Carta x,Postazione postazione)
+    public  void aggiornaSpecialeUmano(Mano mano, Mazzo mazzo, Carta x, PostazionePanel postazione)
     {
     	if (x.getV()==12) {
             pesca(mazzo,mano);
@@ -573,7 +573,7 @@ public class Eventi {
         }
     }
 
-    public  void aggiornaVista(Piatto piatto, Postazione postazione) {
+    public  void aggiornaVista(PiattoPanel piatto, PostazionePanel postazione) {
     	piatto.invalidate();
         piatto.validate();
         postazione.invalidate();

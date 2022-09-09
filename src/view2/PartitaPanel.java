@@ -15,10 +15,10 @@ import java.util.ArrayList;
 public class PartitaPanel extends JPanel {
 
 	Mazzo mazzo = new Mazzo();
-	private Postazione postazioneNord;
-	private Postazione postazioneOvest;
-	private Postazione postazioneEst;
-	private Postazione postazionePiatto;
+	private PostazionePanel postazioneNord;
+	private PostazionePanel postazioneOvest;
+	private PostazionePanel postazioneEst;
+	private PostazionePanel postazionePiatto;
 	private Mano manoOvest;
 	private Mano manoNord;
 	private Mano manoEst;
@@ -31,8 +31,8 @@ public class PartitaPanel extends JPanel {
 	private JLabel foto2;
 	private JLabel foto3;
 	private ArrayList<JButton> posti = new ArrayList<>();
-	private Piatto tavolo;
-	private Postazione postazione;
+	private PiattoPanel tavolo;
+	private PostazionePanel postazione;
 	private Carta cartaScarto;
 	private Icon redLabel = new ImageIcon("./src/immagini/0.png");
 	private Icon yellowLabel = new ImageIcon("./src/immagini/1.png");
@@ -57,7 +57,7 @@ public class PartitaPanel extends JPanel {
     	manoEst = new Mano(mazzo);
     	mano = new Mano(mazzo);
     	partitaPanel=this;
-    	tavolo=new Piatto();
+    	tavolo=new PiattoPanel();
     	partitaPanel.coloreRosso.setEnabled(true);
         partitaPanel.coloreGiallo.setEnabled(true);
         partitaPanel.coloreVerde.setEnabled(true);
@@ -69,7 +69,7 @@ public class PartitaPanel extends JPanel {
         JLabel deckLabel = new JLabel(new ImageIcon("./src/immagini/mazzo.png"));
         setScartoButton(new JButton());
         passo= new JButton("PASSO");
-        setPostazione(new Postazione(1));
+        setPostazione(new PostazionePanel(1));
         mod=x;
         for (int i = 0; i < 30; i++)
             getPosti().add(new JButton());
@@ -85,8 +85,8 @@ public class PartitaPanel extends JPanel {
         deckButton.setBorder(null);
         deckButton.setHorizontalTextPosition(SwingConstants.CENTER);
         deckButton.add(deckLabel);
-        postazionePiatto = new Postazione(1);
-        Postazione postazioneColori = new Postazione(1);
+        postazionePiatto = new PostazionePanel(1);
+        PostazionePanel postazioneColori = new PostazionePanel(1);
         getPostazione().setBackground(null);
         getPostazione().setOpaque(false);
         for (int i = 0; i < 30; i++)
@@ -113,13 +113,13 @@ public class PartitaPanel extends JPanel {
             getPosti().set(i, DisegnaCarta.disegnaCarta(mano.mano.get(i)));
         for (int i = 0; i < mano.mano.size(); i++)
             getPostazione().add(getPosti().get(i));
-        postazioneOvest = new Postazione(0);
-        postazioneEst = new Postazione(0);
+        postazioneOvest = new PostazionePanel(0);
+        postazioneEst = new PostazionePanel(0);
         postazioneEst.setBackground(null);
         postazioneEst.setOpaque(false);
         postazioneOvest.setBackground(null);
         postazioneOvest.setOpaque(false);
-        postazioneNord = new Postazione(1);
+        postazioneNord = new PostazionePanel(1);
         postazioneNord.add(new JLabel(new ImageIcon("./src/immagini/dorsonord7.png")));
         postazioneNord.setOpaque(false);
     
@@ -452,19 +452,19 @@ public class PartitaPanel extends JPanel {
 		this.posti = posti;
 	}
 
-	public Postazione getPostazione() {
+	public PostazionePanel getPostazione() {
 		return postazione;
 	}
 
-	public void setPostazione(Postazione postazione) {
+	public void setPostazione(PostazionePanel postazione) {
 		this.postazione = postazione;
 	}
 
-	public Piatto getTavolo() {
+	public PiattoPanel getTavolo() {
 		return tavolo;
 	}
 
-	public void setTavolo(Piatto tavolo) {
+	public void setTavolo(PiattoPanel tavolo) {
 		this.tavolo = tavolo;
 	}
 
