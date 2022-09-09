@@ -8,10 +8,23 @@ import model.Profilo;
 import view.CercaProfiloPanel;
 import view.ProfiloPanel;
 
+/**
+ * classe controller per la gestione del caricamento di un profilo già creato
+ */
 public class CercaProfiloController {
 
+	/**
+	 * oggetto audio
+	 */
 	AudioButtonManager musicObjectButton = new AudioButtonManager();
 
+	/**
+	 * costruttore che gestisce la corretta creazione di un nuovo profilo, richiamando anche il database
+	 * @param cercaProfiloPanel pannello per il caricamento di un nuovo profilo
+	 * @param profiloPanel dove poter visualizzare le statistiche e dati del profilo utilizzato
+	 * @param cardLayout layout manager utilizzato
+	 * @param parent contenitore padre
+	 */
 	public CercaProfiloController(CercaProfiloPanel cercaProfiloPanel, ProfiloPanel profiloPanel, CardLayout cardLayout, Container parent) {
 		cercaProfiloPanel.cercaProfilo(e -> {
 			String nickname = cercaProfiloPanel.getNickname();
@@ -19,8 +32,6 @@ public class CercaProfiloController {
 				musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/error_button_audio.wav");
 	            JOptionPane.showMessageDialog(null, "Nickname Obbligatorio");
 	        } else {
-				//funzione di ricerca
-				//con il risultato
 				Database db = Database.getInstance();
 				Profilo profilo = db.cercaProfilo(nickname);
 				if (profilo != null) {

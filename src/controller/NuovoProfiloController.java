@@ -8,10 +8,23 @@ import model.Profilo;
 import view.NuovoProfiloPanel;
 import view.ProfiloPanel;
 
+/**
+ * classe controller per la gestione della corretta creazione di un nuovo profilo
+ */
 public class NuovoProfiloController {
 
+    /**
+     * oggetto audio
+     */
     AudioButtonManager musicObjectButton = new AudioButtonManager();
 
+    /**
+     * costruttore che gestisce la corretta creazione di un nuovo profilo, richiamando anche il database
+     * @param nuovoProfiloPanel pannello per la creazione di un nuovo profilo
+     * @param profiloPanel dove poter visualizzare le statistiche e dati del profilo utilizzato
+     * @param cardLayout layout manager utilizzato
+     * @param parent contenitore padre
+     */
     public NuovoProfiloController(NuovoProfiloPanel nuovoProfiloPanel, ProfiloPanel profiloPanel, CardLayout cardLayout, Container parent) {
         nuovoProfiloPanel.creaProfilo(e -> {
             String nickname = nuovoProfiloPanel.getNickname();

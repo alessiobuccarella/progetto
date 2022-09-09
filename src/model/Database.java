@@ -37,7 +37,7 @@ public class Database {
 
     /**
      * metodo punto di accesso per la costruzione
-     * @return
+     * @return l'istanza
      */
     public static Database getInstance(){
         if (singleton == null){
