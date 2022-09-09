@@ -2,20 +2,38 @@ package model;
 
 public class Profilo {
 
+	/**
+	 * stringa che rappresenta il nickname del giocatore
+	 */
 	private String nickname;
+	/**
+	 * stringa che rappresenta il percorso dell'immagine di profilo del giocatore
+	 */
 	private String avatarImg;
+	/**
+	 * int oche rappresenta il livello del giocatore
+	 */
 	private int livello;
+	/**
+	 * int che rappresenta il numero di partite giocate
+	 */
 	private int partiteGiocate;
+	/**
+	 * int che rappresenta il numero di partite vinte
+	 */
 	private int partiteVinte;
+	/**
+	 * int che rappresenta il numero di partite perse
+	 */
 	private int partitePerse;
 
 	/**
-	 * classe che costruisce il profilo utilizzando il builder pattern
+	 * costruttore vuoto
 	 */
 	public Profilo() {}
 
 	/**
-	 *builder del profilo
+	 * builder del profilo dotato di metodi per l'impostazione dei valori iniziali dei campi del profilo da costruire
 	 */
 	public static class ProfiloBuilder {
 
@@ -28,7 +46,7 @@ public class Profilo {
 		 */
 		private String avatarImg;
 		/**
-		 * inter oche rappresenta il livello del giocatore
+		 * int oche rappresenta il livello del giocatore
 		 */
 		private int livello;
 		/**
@@ -46,7 +64,7 @@ public class Profilo {
 
 		/**
 		 * metodo che costruisce il profilo
-		 * @return il profilo
+		 * @return il profilo in uso
 		 */
 		public Profilo build() {
 			Profilo profilo = new Profilo();
@@ -61,7 +79,7 @@ public class Profilo {
 
 		/**
 		 * setter del nickname del profilo
-		 * @param nickname scelto dal giocatore
+		 * @param nickname nome scelto dal giocatore
 		 * @return il profilo aggiornato
 		 */
 		public ProfiloBuilder setNickname(String nickname) {
@@ -121,8 +139,8 @@ public class Profilo {
 	}
 
 	/**
-	 * getter nickname
-	 * @return nickname
+	 * getter del nickname
+	 * @return nickname del profilo
 	 */
 	public String getNickname() {
 		return nickname;

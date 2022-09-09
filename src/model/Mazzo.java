@@ -5,7 +5,6 @@ import java.util.Iterator;
 
 /**
  * classe per la creazione del mazzo di carte
- *
  */
 public class Mazzo implements Iterator<Carta> {
 
@@ -84,6 +83,10 @@ public class Mazzo implements Iterator<Carta> {
         return st;
     }
 
+    /**
+     * metodo della classe Java Scanner che restituisce true se questo scanner ha un altro token nel suo input
+     * @return
+     */
     @Override
     public boolean hasNext() {
         if (cont < mazzo.size())
@@ -91,6 +94,10 @@ public class Mazzo implements Iterator<Carta> {
         return false;
     }
 
+    /**
+     * metodo della classe Java Scanner che trova e restituisce il prossimo token completo dallo scanner in uso.
+     * @return
+     */
     @Override
     public Carta next() {
         return mazzo.get(cont++);

@@ -50,7 +50,7 @@ public class CercaProfiloPanel extends JPanel {
 	}
 
     /**
-     * getter per il nickname
+     * getter del nickname
      * @return il nickname del profilo
      */
 	public String getNickname() {
@@ -59,6 +59,7 @@ public class CercaProfiloPanel extends JPanel {
 
     /**
      * actionlistener sul button inviaButton
+     * @param actionListener
      */
     public void cercaProfilo(ActionListener actionListener) {
         inviaButton.addActionListener(actionListener);
@@ -66,6 +67,7 @@ public class CercaProfiloPanel extends JPanel {
 
     /**
      * actionlistener sul button indietroButton
+     * @param actionListener
      */
     public void paginaPrec(ActionListener actionListener) {
         indietroButton.addActionListener(actionListener);

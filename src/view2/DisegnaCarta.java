@@ -10,8 +10,7 @@ import model.Carta;
 public class DisegnaCarta {
 
     /**
-     * metodo che disegna la carta su un JButton costruendo il percorso dell'immagine 
-     * tramite i getter della cart
+     * metodo che disegna la carta su un JButton costruendo il percorso dell'immagine tramite i getter della cart
      * @param carta da disegnare
      * @return JButton che rappresenta graficamente la carta
      */

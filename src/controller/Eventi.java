@@ -14,7 +14,6 @@ public class Eventi {
     private boolean deviGridareUno;
     private boolean gridatoUno;
     private boolean pescato;
-    private boolean vinto;
     AudioButtonManager musicObjectBot;
     private Senso senso;
     private Carta cartaScarto;

@@ -1,7 +1,5 @@
 package model;
 
-import java.awt.image.BufferedImage;
-
 /**
  * classe per la creazione di una carta
  */
@@ -15,12 +13,10 @@ public class Carta extends Thread {
      * intero che rappresenta il colore di una carta
      */
     private int colore;
-    
     /**
      * intero che rappresenta il valore della carta speciale
      */
     private int speciale;
-    
     /**
      * booleano per distinguere una carta speciale da una normale
      */
@@ -53,6 +49,7 @@ public class Carta extends Thread {
         this.isSpecial = false;
         this.path = "./src/immagini/" + v + c + ".png";
     }
+
     /**
      * costruttore carte speciali
      * @param s intero che rappresenta il valore della carta speciale
@@ -62,6 +59,7 @@ public class Carta extends Thread {
         this.isSpecial = true;
         this.path = "./src/immagini/" + s + ".png";
     }
+
     /**
      * setter del colore di una carta
      * @param colore intero che rappresenta il colore di una carta
@@ -69,6 +67,7 @@ public class Carta extends Thread {
     public void setC(int colore) {
         this.colore = colore;
     }
+
     /**
      * getter del valore di una carta
      * @return il valore della carta
@@ -76,6 +75,7 @@ public class Carta extends Thread {
     public int getV() {
         return valore;
     }
+
     /**
      * getter del colore di una carta
      * @return il colore della carta
@@ -91,6 +91,7 @@ public class Carta extends Thread {
     public int getS() {
         return speciale;
     }
+
     /**
      * getter del percorso dell'immagine della carta
      * @return il percorso dell'immagine della carta
@@ -98,6 +99,7 @@ public class Carta extends Thread {
     public String getPath() {
         return path;
     }
+
     /**
      *stampa la carta sottoforma di stringa
      */

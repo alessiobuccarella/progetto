@@ -156,12 +156,14 @@ public class NuovoProfiloPanel extends JPanel {
 
     /**
      * actionlistener sul button inviaButton
+     * @param actionListener
      */
     public void creaProfilo(ActionListener actionListener) {
         inviaButton.addActionListener(actionListener);
     }
     /**
      * actionlistener sul button indietroButton
+     * @param actionListener
      */
     public void paginaPrec(ActionListener actionListener) {
         indietroButton.addActionListener(actionListener);

@@ -6,24 +6,50 @@ import javax.swing.*;
 import model.Profilo;
 
 /**
- * Questa classe
+ * Questa classe crea il pannello dove poter visualizzare le statistiche e dati del profilo utilizzato
  */
 public class ProfiloPanel extends JPanel {
 
     /**
-     * @param
+     * JLabel per il nickname
      */
-	private static final long serialVersionUID = 3960043400919881397L;
-
     private JLabel nickname;
+    /**
+     * JLabel per il myavatar
+     */
 	private JLabel myavatar;
+    /**
+     * JLabel per il livello
+     */
 	private JLabel livello;
+    /**
+     * JLabel per il partiteGiocate
+     */
 	private JLabel partiteGiocate;
+    /**
+     * JLabel per il partiteVinte
+     */
 	private JLabel partiteVinte;
+    /**
+     * JLabel per il partitePerse
+     */
 	private JLabel partitePerse;
+    /**
+     * JLabel per il indietroButton
+     */
 	private JButton indietroButton;
+    /**
+     * campo statico per il nickname del profilo utilizzato
+     */
     public static String nome;
+    /**
+     * campo statico per l'avatar del profilo utilizzato
+     */
     public static String immagine;
+
+    /**
+     * costruttore che costruisce il design del pannello con le statistiche e dati del profilo utilizzato
+     */
 	public ProfiloPanel() {
         JPanel oa = new JPanel();
         JPanel oa2 = new JPanel();
@@ -71,6 +97,10 @@ public class ProfiloPanel extends JPanel {
         this.add(indietro, BorderLayout.PAGE_END);
 	}
 
+    /**
+     * metodo che stampa il profilo con i relativi dati aggiornati
+     * @param profilo
+     */
     public void printProfilo(Profilo profilo) {
 		this.nickname.setText("NICKNAME: " + profilo.getNickname());
         nome = profilo.getNickname();
@@ -86,6 +116,10 @@ public class ProfiloPanel extends JPanel {
         this.partiteVinte.setText("PARTITE VINTE: " + profilo.getPartiteVinte());
 	}
 
+    /**
+     * actionlistener sul button indietroButton
+     * @param actionListener
+     */
     public void paginaPrec(ActionListener actionListener) {
     	indietroButton.addActionListener(actionListener);
     }

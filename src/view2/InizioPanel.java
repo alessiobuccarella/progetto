@@ -47,18 +47,21 @@ public class InizioPanel extends JPanel {
 	}
     /**
      * actionlistener sul button nuovoProfilo
+     * @param actionListener
      */
     public void nuovoProfilo(ActionListener actionListener) {
     	nuovoProfilo.addActionListener(actionListener);
     }
     /**
      * actionlistener sul button caricaProfiloBtn
+     * @param actionListener
      */
     public void caricaProfilo(ActionListener actionListener) {
     	caricaProfiloBtn.addActionListener(actionListener);
     }
     /**
      * actionlistener sul button esci
+     * @param actionListener
      */
     public void esci(ActionListener actionListener) {
     	esci.addActionListener(actionListener);

@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Questa classe crea una mano di 7 carte;
- * 
- * ogni giocatore inizia con 7 carte in mano
- *
+ * Questa classe crea una mano di 7 carte, ogni giocatore inizia con 7 carte in mano
  */
 
 public class Mano implements Iterator<Carta> {
@@ -26,13 +23,14 @@ public class Mano implements Iterator<Carta> {
     public ArrayList<Carta> mano = new ArrayList<Carta>();
 
     /**
+     * costruttore che prende in input un'istanza di mazzo
      * @param m
-     * costruttore che chiede in input un'istanza di mazzo
      */
     public Mano(Mazzo m) {
         this.m = m;
         distribuisci();
     }
+
     /**
      * metodo che pesca 7 carte dal mazzo e distribuisce la mano iniziale al giocatore
      */

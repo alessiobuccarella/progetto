@@ -4,10 +4,22 @@ import controller.AudioButtonManager;
 import javax.swing.*;
 import java.sql.*;
 
+/**
+ * Questa classe è utilizzata per la connessione con il database e utilizza il singleton pattern
+ */
 public class Database {
 
+    /**
+     * connessione del database
+     */
     private Connection connection;
+    /**
+     *  unica istanza della classe
+     */
     private static Database singleton;
+    /**
+     *
+     */
     AudioButtonManager musicObjectButton = new AudioButtonManager();
 
     private Database() {
