@@ -5,12 +5,12 @@ import java.awt.GridBagLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class Piatto extends JPanel {
+public class PiattoPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private ImageIcon imgIconSfondo;
 
-    public Piatto() {
+    public PiattoPanel() {
         imgIconSfondo = new ImageIcon(getClass().getResource("/immagini/sfondo.png"));
     	setLayout(new GridBagLayout());
      }

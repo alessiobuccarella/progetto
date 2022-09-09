@@ -1,6 +1,5 @@
 package model;
 
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 public class Carta extends Thread {
@@ -12,10 +11,6 @@ public class Carta extends Thread {
     public final String[] V = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "salta", "cambioGiro", "+2", "cambioColore", "+4"};
     public final String[] C = {"rosso", "giallo", "blu", "verde", "speciale"};
     public final String[] S = {"cambioColore", "+4"};
-    private int x;
-    private int y;
-    private int altezza;
-    private int larghezza;
     String path;
     BufferedImage dorso;
     public Carta(int v, int c) {
@@ -52,8 +47,5 @@ public class Carta extends Thread {
         } else
             st = S[this.speciale] + "";
         return st;
-    }
-    public void disegna(Graphics g) {
-        g.drawImage(dorso, x, y, larghezza, altezza, null);
     }
 }
