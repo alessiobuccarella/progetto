@@ -221,6 +221,7 @@ public class Eventi {
     public void mossaOvest(GridBagConstraints gbc10,Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
         Carta x = cartaUtile(manoOvest);
         // se il giocatore ha una carta utile
+        System.out.println("Ovest: " + manoOvest.mano.toString());
         if (x != null) {
             lanciaCarta(gbc10, piatto, manoOvest, postazioneOvest, x,"./src/immagini/dorso90.png", postazionePiatto);
             // lancia la carta
@@ -309,6 +310,7 @@ public class Eventi {
 
     public void mossaNord(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
         Carta x = cartaUtile(manoNord);
+        System.out.println("Nord: " + manoNord.mano.toString());
         // se il giocatore ha una carta utile
         if (x != null) {
             lanciaCarta(gbc10,piatto,manoNord,postazioneNord,x,"./src/immagini/dorso.png",postazionePiatto);
@@ -379,6 +381,8 @@ public class Eventi {
     }
     public void mossaEst(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
         Carta x = cartaUtile(manoEst);
+        System.out.println("Est: " + manoOvest.mano.toString());
+        System.out.println("pescato: "+pescato);
         // se il giocatore ha una carta utile
         if (x != null) {
             lanciaCarta(gbc10,piatto,manoEst,postazioneEst,x,"./src/immagini/dorso90s.png",postazionePiatto);
@@ -445,6 +449,7 @@ public class Eventi {
         }
         //se il giocatore non ha una carta utile e non ha ancora pescato
         else if (pescato == false) {
+        	System.out.println("Est non ha la carta e dovrebbe pescare");
             //pesca
             manoEst.mano.add(mazzo.pesca());
             aggiornaVista(piatto, postazioneEst);
