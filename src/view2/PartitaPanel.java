@@ -14,35 +14,35 @@ import static view2.ProfiloPanel.nome;
 
 public class PartitaPanel extends JPanel {
 
-    Mazzo mazzo = new Mazzo();
-    private PostazionePanel postazioneNord;
-    private PostazionePanel postazioneOvest;
-    private PostazionePanel postazioneEst;
-    private PostazionePanel postazionePiatto;
-    private Mano manoOvest;
-    private Mano manoNord;
-    private Mano manoEst;
-    private Mano mano;
-    private GridBagConstraints gbc10;
-    private JButton passo;
     private Timer t;
+    private int mod;
     private JLabel foto;
     private JLabel foto1;
     private JLabel foto2;
     private JLabel foto3;
     private JLabel nomegiocatore;
-    private ArrayList<JButton> posti = new ArrayList<>();
-    private PiattoPanel tavolo;
-    private PostazionePanel postazione;
-    private Carta cartaScarto;
     private JButton uno;
     private JButton scartoButton ;
+    private JButton passo;
     private JButton coloreRosso = new JButton();
     private JButton coloreGiallo = new JButton();
     private JButton coloreVerde = new JButton();
     private JButton coloreBlu = new JButton();
-    PartitaPanel partitaPanel;
-    private int mod;
+    private ArrayList<JButton> posti = new ArrayList<>();
+    Mazzo mazzo = new Mazzo();
+    private Mano manoOvest;
+    private Mano manoNord;
+    private Mano manoEst;
+    private Mano mano;
+    private Carta cartaScarto;
+    private PiattoPanel tavolo;
+    public PartitaPanel partitaPanel;
+    private GridBagConstraints gbc10;
+    private PostazionePanel postazione;
+    private PostazionePanel postazioneNord;
+    private PostazionePanel postazioneOvest;
+    private PostazionePanel postazioneEst;
+    private PostazionePanel postazionePiatto;
 
     public PartitaPanel(int x) {
         setLayout(new BorderLayout());
