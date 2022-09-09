@@ -13,13 +13,13 @@ public class Eventi {
 	public int turno = 0;
 	public  boolean deviGridareUno = false;
 	public  boolean gridatoUno = false;
+    private  boolean pescato=false;
+    private boolean firstTime;
+    private boolean vinto;
+    AudioButtonManager musicObjectBot = new AudioButtonManager();
 	public Senso senso = Senso.ORARIO;
 	private Carta cartaScarto;
-	private  boolean pescato=false;
-    private boolean vinto;
-    private boolean firstTime;
     public PartitaPanel partitaPanel;
-    AudioButtonManager musicObjectBot = new AudioButtonManager();
 
 	public Eventi(PartitaPanel partitaPanel) {
 		this.partitaPanel = partitaPanel;
@@ -507,8 +507,8 @@ public class Eventi {
             musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
             JOptionPane.showMessageDialog(null, "PURTROPPO HAI PERSO!!");
             //cardLayout.show(MainFrame.this.getContentPane(), "inizio2");
-            Database db2 = Database.getInstance();
-            db2.updateBD2(nome, vinto);
+            Database database = Database.getInstance();
+            database.updateBD2(nome, vinto);
             Database.getInstance().close();
             System.exit(0);
         }

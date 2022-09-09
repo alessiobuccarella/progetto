@@ -2,7 +2,6 @@ package view2;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.sql.*;
 import javax.swing.*;
 import model.Profilo;
 
