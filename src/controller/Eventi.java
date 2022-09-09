@@ -43,8 +43,7 @@ public class Eventi {
                 musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
                 partitaPanel.getFoto1().setBorder(new LineBorder(Color.RED, 5));
                 }
-            } 
-            System.out.println("ok");
+            }
             cartaScarto=mano.mano.get(indiceCarta);
             postazionePiatto.remove(partitaPanel.getScartoButton());
             partitaPanel.setScartoButton(DisegnaCarta.disegnaCarta(getCartaScarto()));
@@ -226,7 +225,7 @@ public class Eventi {
             lanciaCarta(gbc10, piatto, manoOvest, postazioneOvest, x,"./src/immagini/dorso90.png", postazionePiatto);
             // lancia la carta
             System.out.println("turno: " + turno);
-            System.out.println("Ovest ha tirato " + x.toString());
+            System.out.println("Bulbasaur ha tirato " + x.toString());
             postazioneOvest.removeAll();
             switch(manoOvest.mano.size()) {
                 case 0: break;
@@ -295,7 +294,7 @@ public class Eventi {
         else if (x == null && pescato == true) {
            pescato = false;
            aggiornaTurno(mano,mazzo);
-           System.out.println("OVEST HA PASSATO");
+           System.out.println("BULBASAUR HA PASSATO");
         }
         if (manoOvest.mano.size() == 0) {
             vinto = false;
@@ -314,7 +313,7 @@ public class Eventi {
         // se il giocatore ha una carta utile
         if (x != null) {
             lanciaCarta(gbc10,piatto,manoNord,postazioneNord,x,"./src/immagini/dorso.png",postazionePiatto);
-            System.out.println("Nord ha tirato " + x.toString());
+            System.out.println("Charmandar ha tirato " + x.toString());
             postazioneNord.removeAll();
             switch(manoNord.mano.size()) {
                 case 0: break;
@@ -366,7 +365,7 @@ public class Eventi {
         else if (x == null && pescato == true) {
            pescato = false;
            aggiornaTurno(mano,mazzo);
-           System.out.println("NORD HA PASSATO");
+           System.out.println("CHARMANDAR HA PASSATO");
         }
         if (manoNord.mano.size() == 0) {
             vinto = false;
@@ -388,7 +387,7 @@ public class Eventi {
             lanciaCarta(gbc10,piatto,manoEst,postazioneEst,x,"./src/immagini/dorso90s.png",postazionePiatto);
             System.out.println("turno: " + turno);
             // lancia la carta
-            System.out.println("Est ha tirato " + x.toString());
+            System.out.println("Squirtle ha tirato " + x.toString());
             postazioneEst.removeAll();
             switch(manoEst.mano.size()) {
                 case 0: break;
@@ -465,7 +464,7 @@ public class Eventi {
             else {
                turno-=1;
             }
-            System.out.println("EST HA PASSATO");
+            System.out.println("SQUIRTLE HA PASSATO");
         }
         if (manoEst.mano.size() == 0) {
             vinto = false;
