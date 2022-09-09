@@ -166,7 +166,14 @@ public class PartitaPanel extends JPanel {
         gbc10.weightx = 0;
         gbc10.weighty = 0;
         gbc10.gridwidth = 1;
-        //tavolo.add(foto3,gbc10);
+        //tavolo.add(nomegiocatore,gbc10);
+        gbc10.anchor = GridBagConstraints.LINE_START;
+        gbc10.gridx = 6;
+        gbc10.gridy = 7;
+        gbc10.weightx = 0;
+        gbc10.weighty = 0;
+        gbc10.gridwidth = 1;
+        //tavolo.add(fotogiocatore,gbc10);
         gbc10.anchor = GridBagConstraints.LINE_START;
         gbc10.gridx = 0;
         gbc10.gridy = 0;
