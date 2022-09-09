@@ -58,7 +58,7 @@ public class Eventi {
     /**
      * costruttore che prende in input un'istanza di partitaPanel
      * e inizializza i campi
-     * @param partitaPanel
+     * @param partitaPanel istanza di partitaPanel
      */
     public Eventi(PartitaPanel partitaPanel) {
         this.partitaPanel = partitaPanel;
@@ -69,6 +69,9 @@ public class Eventi {
         deviGridareUno=false;
         gridatoUno=false;
         pescato=false;
+        /**
+         * enum senso
+         */
         senso = Senso.ORARIO;
     }
 
