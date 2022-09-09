@@ -46,6 +46,7 @@ public class PartitaPanel extends JPanel {
 	private JButton coloreVerde = new JButton();
 	private JButton coloreBlu = new JButton();
     PartitaPanel partitaPanel;
+    private int mod;
 	
 	public PartitaPanel(int x) {
     	setLayout(new BorderLayout());
@@ -70,7 +71,7 @@ public class PartitaPanel extends JPanel {
         setScartoButton(new JButton());
         passo= new JButton("PASSO");
         setPostazione(new Postazione(1));
-        
+        mod=x;
         for (int i = 0; i < 30; i++)
             getPosti().add(new JButton());
         coloreRosso.add(redLabel);
@@ -337,7 +338,9 @@ public class PartitaPanel extends JPanel {
     }
 
 
-    
+    public int getMod() {
+    	return mod;
+    }
 
 	public JLabel getFoto() {
 		return foto;
