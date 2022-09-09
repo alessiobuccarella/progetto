@@ -683,7 +683,7 @@ public class Eventi {
     public void vincitoreLampo(Mano manoOvest, Mano manoNord, Mano manoEst, Mano mano)
     {
     	
-        String vincitore;
+        String frase="";
         int y=0;
     	int ovest=0;
     	int nord=0;
@@ -694,11 +694,15 @@ public class Eventi {
     	for (Carta x:manoEst.mano) {est+=x.getV();}
     	for (Carta x:mano.mano) {giocatore+=x.getV();}
     	int min=Math.min(Math.min(Math.min(ovest,nord),est),giocatore);
+    	if (ovest==min) {System.out.println("Ha vinto Bulbasaur con "+min+" punti");vinto = false;}
+    	else if (nord==min) {frase="Ha vinto Charmander con "+min+" punti";vinto = false;}
+    	else if (est==min) {frase="Ha vinto Squirtle con "+min+" punti";vinto = false;}
+    	else {frase="Ha vinto "+nome+" con "+min+" punti";vinto = true;}
     	
-    	System.out.println("bulbasaur: "+ovest+" Charmander: "+nord+" squirtle: "+est+" "+nome+": "+ovest);
-    	vinto = false;
-        musicObjectBot.playButtonMusic("./src/audio/defeat_audio.wav");
-        JOptionPane.showMessageDialog(null, "PURTROPPO HAI PERSO!!");
+    	//vinto = false;
+        if (vinto=false) musicObjectBot.playButtonMusic("./src/audio/defeat_audio.wav");
+        else musicObjectBot.playButtonMusic("./src/audio/victory_audio.wav");
+        JOptionPane.showMessageDialog(null, frase);
         Database db2 = Database.getInstance();
         db2.updateBD2(nome, vinto);
         Database.getInstance().close();
