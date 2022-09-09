@@ -9,7 +9,7 @@ public class ProfiloPanel extends JPanel {
 
 	private static final long serialVersionUID = 3960043400919881397L;
 
-	private JLabel nickname;
+    private JLabel nickname;
 	private JLabel myavatar;
 	private JLabel livello;
 	private JLabel partiteGiocate;
@@ -17,6 +17,7 @@ public class ProfiloPanel extends JPanel {
 	private JLabel partitePerse;
 	private JButton indietroButton;
 
+    public static String nome;
 	public ProfiloPanel() {
         JPanel oa = new JPanel();
         JPanel oa2 = new JPanel();
@@ -63,9 +64,10 @@ public class ProfiloPanel extends JPanel {
         this.add(oa, BorderLayout.CENTER);
         this.add(indietro, BorderLayout.PAGE_END);
 	}
-	
-	public void printProfilo(Profilo profilo) {
+
+    public void printProfilo(Profilo profilo) {
 		this.nickname.setText("NICKNAME: " + profilo.getNickname());
+        nome = profilo.getNickname();
 		ImageIcon avatar4png = new ImageIcon(profilo.getAvatarImg());
         Image image4 = avatar4png.getImage();
         Image newimg4 = image4.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
@@ -76,14 +78,6 @@ public class ProfiloPanel extends JPanel {
         this.partitePerse.setText("PARTITE PERSE: " + profilo.getPartitePerse());
         this.partiteVinte.setText("PARTITE VINTE: " + profilo.getPartiteVinte());
 	}
-
-    public String getName(Profilo profilo) {
-        return profilo.getNickname();
-    }
-
-    public String getImmagine(Profilo profilo) {
-        return profilo.getAvatarImg();
-    }
 
     public void paginaPrec(ActionListener actionListener) {
     	indietroButton.addActionListener(actionListener);

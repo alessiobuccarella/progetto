@@ -33,7 +33,6 @@ public class PartitaPanel extends JPanel {
 	private ArrayList<JButton> posti = new ArrayList<>();
 	private Piatto tavolo;
 	private Postazione postazione;
-	
 	private Carta cartaScarto;
 	private Icon redLabel = new ImageIcon("./src/immagini/0.png");
 	private Icon yellowLabel = new ImageIcon("./src/immagini/1.png");

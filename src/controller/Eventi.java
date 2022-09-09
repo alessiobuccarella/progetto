@@ -1,17 +1,17 @@
 package controller;
 
-import java.awt.Color;
-import java.awt.GridBagConstraints;
+import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import model.*;
 import view2.*;
 
+import static view2.ProfiloPanel.nome;
+
 public class Eventi {
-    public Eventi eventi;
+
 	public int turno = 0;
-	
 	public  boolean deviGridareUno=false;
 	public  boolean gridatoUno=false;
 	public Senso senso = Senso.ORARIO;
@@ -35,7 +35,7 @@ public class Eventi {
     }
 	
 	public void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, Postazione postazione, Piatto piatto,  Mano manoOvest, Mano manoNord, Mano manoEst, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, ArrayList<JButton> posti, Mazzo mazzo, Postazione postazionePiatto) {
-		System.out.println("modalità "+ partitaPanel.getMod());
+		System.out.println(nome);
 		System.out.println("cartaScarto colore"+getCartaScarto().getC()+"cartaScarto numero"+getCartaScarto().getV()+"colore"+mano.mano.get(indiceCarta).getC()+"numero"+mano.mano.get(indiceCarta).getV());
         if (mano.mano.size() > 1) {
             deviGridareUno=false;
@@ -152,6 +152,7 @@ public class Eventi {
             JOptionPane.showMessageDialog(null, "CONGRATULAZIONI, HAI VINTO!!");
             //cardLayout.show(MainFrame.this.getContentPane(), "inizio2");
             Database db2 = Database.getInstance();
+            System.exit(0);
         }
     }
     public void avanti(GridBagConstraints gbc10, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, Piatto piatto, Postazione postazioneOvest, Postazione postazioneNord, Postazione postazioneEst, Mazzo mazzo, Postazione postazione, Mano mano,Postazione postazionePiatto) {

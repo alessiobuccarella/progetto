@@ -42,7 +42,7 @@ public class CercaProfiloPanel extends JPanel {
 
     public void cercaProfilo(ActionListener actionListener) {
 		 inviaButton.addActionListener(actionListener);
-     }
+    }
 
     public void paginaPrec(ActionListener actionListener) {
         indietroButton.addActionListener(actionListener);
