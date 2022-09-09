@@ -13,13 +13,13 @@ public class Eventi {
 	public int turno = 0;
 	public  boolean deviGridareUno = false;
 	public  boolean gridatoUno = false;
+    private  boolean pescato=false;
+    private boolean firstTime;
+    private boolean vinto;
+    AudioButtonManager musicObjectBot = new AudioButtonManager();
 	public Senso senso = Senso.ORARIO;
 	private Carta cartaScarto;
-	private  boolean pescato=false;
-    private boolean vinto;
-    private boolean firstTime;
     public PartitaPanel partitaPanel;
-    AudioButtonManager musicObjectBot = new AudioButtonManager();
 
 	public Eventi(PartitaPanel partitaPanel) {
 		this.partitaPanel = partitaPanel;
