@@ -434,9 +434,12 @@ public class Eventi {
             aggiornaVista(piatto, postazioneEst);
             aggiornaTurno(mano,mazzo);
             if(senso == Senso.ORARIO) {
-                partitaPanel.getFoto2().setBorder(null);
-                partitaPanel.getFoto1().setBorder(null);
-                partitaPanel.getFoto().setBorder(null);
+                partitaPanel.getFoto2().setBorder(null); partitaPanel.getFoto1().setBorder(null); partitaPanel.getFoto().setBorder(null);
+                if (getCartaScarto().getV()==11) {
+                	partitaPanel.getFoto2().setBorder(null); partitaPanel.getFoto1().setBorder(new LineBorder(Color.RED, 5)); partitaPanel.getFoto().setBorder(null);
+                	musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
+                }
+                
             } else {
                 partitaPanel.getFoto2().setBorder(null);
                 partitaPanel.getFoto1().setBorder(new LineBorder(Color.RED, 5));
