@@ -8,18 +8,58 @@ import model.*;
 import view2.*;
 import static view2.ProfiloPanel.nome;
 
+/**
+ *questa classe gestisce il comportamento dei giocatori e tutti gli eventi della partita
+ */
 public class Eventi {
+	
+    /**
+     * intero che conta il numero di turni giocati
+     */
     private int contatore;
+    /**
+     * intero che designa il giocatore che effettuera la prossima mossa
+     */
     private int turno;
+    /**
+     * booleano che assume il valore true quando si presenta
+     * la circostanza di dover gridare uno
+     */
     private boolean deviGridareUno;
+    /**
+     * booleano che indica se è stato gridato uno
+     */
     private boolean gridatoUno;
+    /**
+     * booleano che indica se il giocatore ha gia pescato
+     */
     private boolean pescato;
+    /**
+     * booleano che indica il verdetto finale
+     */
     private boolean vinto;
-    AudioButtonManager musicObjectBot;
+    /**
+     * AudioButtonManager per l'audio della partita
+     */
+    private AudioButtonManager musicObjectBot;
+    /**
+     * enum di tipo Senso che indica se il senso attuale è orario o antiorario
+     */
     private Senso senso;
+    /**
+     * carta che rappresenta l'ultima carta lanciata
+     */
     private Carta cartaScarto;
+    /**
+     * panel della partita
+     */
     private PartitaPanel partitaPanel;
 
+    /**
+     * costruttore che prende in input un'istanza di partitaPanel
+     * e inizializza i campi
+     * @param partitaPanel
+     */
     public Eventi(PartitaPanel partitaPanel) {
         this.partitaPanel = partitaPanel;
         musicObjectBot = new AudioButtonManager();
@@ -32,6 +72,28 @@ public class Eventi {
         senso = Senso.ORARIO;
     }
 
+    /**
+     * metodo che gestisce il click del giocatore su una carta
+     * controlla se è stato cliccato "uno" prima di terminare le carte altrimenti pesca due carte di penalita
+     * controlla che la carta cliccata sia valida, se lo è controlla il senso della partita, gestisce le carte speciali,
+     * gestisce la riproduzione di suoni ed effetti grafici
+     * gestisce tutte le modalita di gioco tramite controlli che fanno uso della variabile mod
+     * @param gbc10 gridBagConstraints del panel della partita
+     * @param mano di carte del giocatore
+     * @param indiceCarta posizione della carta nella mano del giocatore
+     * @param posto JButton corrispondente alla carta cliccata
+     * @param postazione panel corrispondente alla postazione del giocatore
+     * @param piatto panel corrispondente alla parte centrale del tavolo (mazzo e carta scartata)
+     * @param manoOvest mano di carte del giocatore a ovest
+     * @param manoNord mano di carte del giocatore a nord
+     * @param manoEst mano di carte del giocatore a est
+     * @param postazioneOvest panel corrispondente alla postazione del giocatore a ovest
+     * @param postazioneNord panel corrispondente alla postazione del giocatore a nord
+     * @param postazioneEst panel corrispondente alla postazione del giocatore a est
+     * @param posti array di jbutton che rappresentano le carte cliccabili dal giocatore
+     * @param mazzo mazzo di carte
+     * @param postazionePiatto panel corrispondente alla schermata di gioco 
+     */
     public void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, PostazionePanel postazione, PiattoPanel piatto,  Mano manoOvest, Mano manoNord, Mano manoEst, PostazionePanel postazioneOvest, PostazionePanel postazioneNord, PostazionePanel postazioneEst, ArrayList<JButton> posti, Mazzo mazzo, PostazionePanel postazionePiatto) {
         if (mano.mano.size() > 1) deviGridareUno = false;
         else deviGridareUno = true;
@@ -160,10 +222,27 @@ public class Eventi {
             risultatoPartita(true, nome, frase);
         }
     }
+    /**
+     * metodo che viene invocato dal timer e designa il prossimo giocatore a tirare tramite la variabile turno
+     * gestisce anche il contatore usato nella modalita lampo e chiama la fine della partita
+     * @param gbc10
+     * @param turno
+     * @param manoOvest
+     * @param manoNord
+     * @param manoEst
+     * @param piatto
+     * @param postazioneOvest
+     * @param postazioneNord
+     * @param postazioneEst
+     * @param mazzo
+     * @param postazione
+     * @param mano
+     * @param postazionePiatto
+     */
     public void avanti(GridBagConstraints gbc10, int turno, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, PostazionePanel postazioneNord, PostazionePanel postazioneEst, Mazzo mazzo, PostazionePanel postazione, Mano mano, PostazionePanel postazionePiatto) {
         if (partitaPanel.getMod() == 3) {
             contatore++;
-            if (contatore >= 4) {
+            if (contatore >= 20) {
                 vincitoreLampo(manoOvest,manoNord,manoEst,mano);
             }
             System.out.println("contatore= "+contatore);
@@ -232,6 +311,21 @@ public class Eventi {
         }
     }
 
+    /**
+     * metodo che gestisce la mossa del giocatore a ovest e la rappresentazione grafica delle sue carte
+     * @param gbc10
+     * @param mano
+     * @param manoOvest
+     * @param manoNord
+     * @param manoEst
+     * @param piatto
+     * @param postazioneOvest
+     * @param mazzo
+     * @param postazione
+     * @param postazioneNord
+     * @param postazioneEst
+     * @param postazionePiatto
+     */
     public void mossaOvest(GridBagConstraints gbc10,Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
         if (cartaScarto.getC()==4){
             int x=(int)(Math.random() * 4);
@@ -328,6 +422,21 @@ public class Eventi {
         }
     }
 
+    /** metodo che gestisce le mosse del giocatore a nord e la rappresentazione grafica delle sue carte, inoltre tramite dei 
+     * controlli designati dalla modalita due gestisce i diversi tipi di partite
+     * @param gbc10
+     * @param mano
+     * @param manoOvest
+     * @param manoNord
+     * @param manoEst
+     * @param piatto
+     * @param postazioneOvest
+     * @param mazzo
+     * @param postazione
+     * @param postazioneNord
+     * @param postazioneEst
+     * @param postazionePiatto
+     */
     public void mossaNord(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
         if (cartaScarto.getC()==4){
             int x=(int)(Math.random() * 4);
@@ -403,6 +512,21 @@ public class Eventi {
         }
         System.out.println("turno: " + getTurno());
     }
+    /**
+     * metodo che gestisce le mosse del giocatore a est e la rappresentazione grafica delle sue carte
+     * @param gbc10
+     * @param mano
+     * @param manoOvest
+     * @param manoNord
+     * @param manoEst
+     * @param piatto
+     * @param postazioneOvest
+     * @param mazzo
+     * @param postazione
+     * @param postazioneNord
+     * @param postazioneEst
+     * @param postazionePiatto
+     */
     public void mossaEst(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
         if (cartaScarto.getC()==4){
             int x=(int)(Math.random() * 4);
@@ -506,6 +630,10 @@ public class Eventi {
             risultatoPartita(false, nome, frase);
         }
     }
+    /**
+     * metodo che viene invocato quando un giocatore tira la carta cambiogiro e inverte il senso
+     * da orario a antiorario e viceversa
+     */
     public void cambiaSenso() {
         if (senso == Senso.ANTIORARIO) {
             senso = Senso.ORARIO;
@@ -513,6 +641,11 @@ public class Eventi {
         else senso = Senso.ANTIORARIO;
     }
 
+    /**
+     * controlla se il giocatore di turno ha una carta affine all'ultima carta scartata e in caso affermativo la ritorna
+     * @param manoGiocatore la mano del giocatore da analizzare
+     * @return la carta da lanciare
+     */
     public Carta cartaUtile(Mano manoGiocatore) {
         for (Carta x : manoGiocatore.mano)
             if (x.getV() == getCartaScarto().getV() || x.getC() == getCartaScarto().getC() || x.getC() == 4)
@@ -520,6 +653,16 @@ public class Eventi {
         return null;
     }
 
+    /**
+     * metodo che aggiorna graficamente la situazione dopo il lancio di una carta
+     * @param gbc10
+     * @param piatto
+     * @param mano
+     * @param postazione
+     * @param carta
+     * @param pathDorso
+     * @param postazionePiatto
+     */
     public void lanciaCarta(GridBagConstraints gbc10, PiattoPanel piatto, Mano mano, PostazionePanel postazione, Carta carta, String pathDorso, PostazionePanel postazionePiatto) {
         postazionePiatto.remove(partitaPanel.getScartoButton());
         partitaPanel.setScartoButton(DisegnaCarta.disegnaCarta(carta));
@@ -529,6 +672,15 @@ public class Eventi {
         mano.mano.remove(carta);
     }
 
+    /**
+     * metodo che gestisce il lancio di carte speciali
+     * @param manoVittima la mano del giocatore che subira i danni del lancio della carta speciale
+     * @param postazioneVittima la postazione della vittima
+     * @param piatto il panel che rappresenta il centro del tavolo con mazzo e carta scartata
+     * @param x la carta speciale che è stata lanciata
+     * @param mazzo il mazzo della partita
+     * @param path
+     */
     public  void aggiornaSpeciale(Mano manoVittima, PostazionePanel postazioneVittima, PiattoPanel piatto, Carta x, Mazzo mazzo, String path) {
         if (x.getV() == 12) {
             manoVittima.mano.add(mazzo.pesca());manoVittima.mano.add(mazzo.pesca());
@@ -558,6 +710,13 @@ public class Eventi {
         }
     }
 
+    /**
+     * metodo che gestisce il lancio di carte speciali quando la vittima è il giocatore umano
+     * @param mano
+     * @param mazzo
+     * @param x
+     * @param postazione
+     */
     public  void aggiornaSpecialeUmano(Mano mano, Mazzo mazzo, Carta x, PostazionePanel postazione)
     {
         if (x.getV()==12) {
@@ -593,6 +752,11 @@ public class Eventi {
         }
     }
 
+    /**
+     * metodo che aggiorna la vista del panel piatto e del panel postazione
+     * @param piatto
+     * @param postazione
+     */
     public  void aggiornaVista(PiattoPanel piatto, PostazionePanel postazione) {
         piatto.invalidate();
         piatto.validate();
@@ -600,6 +764,11 @@ public class Eventi {
         postazione.validate();
     }
 
+    /**
+     * metodo che gestisce il turno successivo in base al senso e alla carta lanciata
+     * @param mano
+     * @param mazzo
+     */
     public  void aggiornaTurno(Mano mano,Mazzo mazzo) {
 
         if (getCartaScarto().getV() == 11) {
@@ -631,6 +800,12 @@ public class Eventi {
 
     }
 
+    /**
+     * metodo usato per far pescare una carta a un giocatore quando è sprovvisto di una carta utile
+     * o per dare le carte quando un giocatore subisce un attacco o una penalita
+     * @param mazzo
+     * @param mano
+     */
     public  void pesca(Mazzo mazzo, Mano mano) {
         Carta carta=mazzo.pesca();
         mano.mano.add(carta);
@@ -644,6 +819,9 @@ public class Eventi {
         partitaPanel.getTavolo().validate();
     }
 
+    /**
+     * metodo che chiama il giocatore successivo quando un giocatore deve passare il turno
+     */
     public  void passo() {
 
 
@@ -661,6 +839,13 @@ public class Eventi {
 
         }
     }
+    /**
+     * metodo che conta i punteggi rimanenti nelle mani dei giocatori e calcola il vincitore
+     * @param manoOvest
+     * @param manoNord
+     * @param manoEst
+     * @param mano
+     */
     public void vincitoreLampo(Mano manoOvest, Mano manoNord, Mano manoEst, Mano mano)
     {
         String frase = "";
@@ -689,6 +874,12 @@ public class Eventi {
         }
     }
 
+    /**
+     * metodo che lancia il joptionpane alla fine della partita con un messaggio che include il verdetto
+     * @param b booleano che indica se il giocatore ha vinto o meno la partita
+     * @param giocatore nome del giocatore
+     * @param frase stringa che comunica il verdetto finale
+     */
     public void risultatoPartita(boolean b, String giocatore, String frase) {
         if (b == false) {
             musicObjectBot.playButtonMusic("./src/audio/defeat_audio.wav");
@@ -707,22 +898,42 @@ public class Eventi {
         }
     }
 
+    /**
+     * setter di gridatoUno
+     * @param x booleano che indica se è stato gridato uno
+     */
     public void setGridatoUno(boolean x) {
         gridatoUno=x;
     }
 
+    /**
+     * getter di cartaScarto
+     * @return cartaScarto
+     */
     public Carta getCartaScarto() {
         return cartaScarto;
     }
 
+    /**
+     * setter del colore della carta scarto
+     * @param c intero che rappresenta il colore scelto
+     */
     public void setCartaScarto(int c) {
         this.cartaScarto.setC(c);
     }
 
+    /**
+     * getter di turno
+     * @return intero che rappresenta il giocatore di turno
+     */
     public int getTurno() {
         return turno;
     }
 
+    /**
+     * setter di turno
+     * @param turno intero che rappresenta il giocatore di turno
+     */
     public void setTurno(int turno) {
         this.turno = turno;
     }
