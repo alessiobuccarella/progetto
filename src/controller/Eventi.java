@@ -36,8 +36,8 @@ public class Eventi {
     }
 	
 	public void cliccato(GridBagConstraints gbc10, Mano mano, int indiceCarta, JButton posto, PostazionePanel postazione, PiattoPanel piatto,  Mano manoOvest, Mano manoNord, Mano manoEst, PostazionePanel postazioneOvest, PostazionePanel postazioneNord, PostazionePanel postazioneEst, ArrayList<JButton> posti, Mazzo mazzo, PostazionePanel postazionePiatto) {
-		System.out.println(nome);
-		System.out.println("cartaScarto colore"+getCartaScarto().getC()+"cartaScarto numero"+getCartaScarto().getV()+"colore"+mano.mano.get(indiceCarta).getC()+"numero"+mano.mano.get(indiceCarta).getV());
+		//System.out.println(nome);
+		//System.out.println("cartaScarto colore"+getCartaScarto().getC()+"cartaScarto numero"+getCartaScarto().getV()+"colore"+mano.mano.get(indiceCarta).getC()+"numero"+mano.mano.get(indiceCarta).getV());
         if (mano.mano.size() > 1) {
             deviGridareUno=false;
         } else {
@@ -112,12 +112,13 @@ public class Eventi {
         }
         if (getCartaScarto().getV() == 12) {
             firstTime = true;
-            if (turno % 4 == 1) {
+            if (partitaPanel.getMod()==2) {manoNord.mano.add(mazzo.pesca());manoNord.mano.add(mazzo.pesca());}
+            if (turno % 4 == 1&&partitaPanel.getMod()==1 ) {
                 for (int i = 0; i < 2; i++)
                     manoOvest.mano.add(mazzo.pesca());
                 	postazioneOvest.invalidate();
                 	postazioneOvest.validate();
-            } else {
+            } else if (partitaPanel.getMod()==1) {
             	for (int i = 0; i < 2; i++)
             		manoEst.mano.add(mazzo.pesca());
             }    
@@ -130,8 +131,9 @@ public class Eventi {
         }
 
         if (getCartaScarto().getV() == 14) {
+        	if (partitaPanel.getMod()==2) {manoNord.mano.add(mazzo.pesca());manoNord.mano.add(mazzo.pesca());manoNord.mano.add(mazzo.pesca());manoNord.mano.add(mazzo.pesca());}
             //Menu.firstTime = true;
-            if (turno == 1) {
+            if (turno == 1&&partitaPanel.getMod()==1) {
                 for (int i = 0; i < 4; i++)
                     manoOvest.mano.add(mazzo.pesca());
                 postazioneOvest.invalidate();
@@ -222,7 +224,7 @@ public class Eventi {
 
     public void mossaOvest(GridBagConstraints gbc10,Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
     	
-    	System.out.println("OVEST: " + manoOvest.mano.toString());
+    	//System.out.println("OVEST: " + manoOvest.mano.toString());
         Carta x = cartaUtile(manoOvest);
         // se il giocatore ha una carta utile
         if (x != null) {
@@ -300,7 +302,8 @@ public class Eventi {
         else if (x == null && pescato == true) {
            pescato = false;
            aggiornaTurno(mano,mazzo);
-           System.out.println("OVEST: " + manoOvest.mano.toString());
+           //System.out.println("OVEST: " + manoOvest.mano.toString());
+           System.out.println("OVEST HA PASSATO");
         }
         if (manoOvest.mano.size() == 0) {
             vinto = false;
@@ -316,8 +319,8 @@ public class Eventi {
     }
 
     public void mossaNord(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
-        System.out.println("NORD: " + manoNord.mano.toString());
-        System.out.println("EST: "+mano.mano.toString());
+        //System.out.println("NORD: " + manoNord.mano.toString());
+        //System.out.println("EST: "+mano.mano.toString());
         Carta x = cartaUtile(manoNord);
         // se il giocatore ha una carta utile
         if (x != null) {
@@ -351,10 +354,13 @@ public class Eventi {
                     postazioneNord.add((new JLabel(new ImageIcon("./src/immagini/dorsonord7+.png"))),gbc10);
             }
             if(x.getV() >= 12 && senso == Senso.ORARIO) {
-                aggiornaSpeciale(manoEst,postazioneEst,piatto, x,mazzo,"./src/immagini/dorso90s.png");
+            	if (partitaPanel.getMod()==1) aggiornaSpeciale(manoEst,postazioneEst,piatto, x,mazzo,"./src/immagini/dorso90s.png");
+            	else aggiornaSpecialeUmano(mano, mazzo, x, postazione);
+                
             }
             if(x.getV() >= 12 && senso == Senso.ANTIORARIO) {
-                aggiornaSpeciale(manoOvest,postazioneOvest,piatto, x,mazzo,"./src/immagini/dorso90.png");
+            	if (partitaPanel.getMod()==1)aggiornaSpeciale(manoOvest,postazioneOvest,piatto, x,mazzo,"./src/immagini/dorso90.png");
+            	else aggiornaSpecialeUmano(mano, mazzo, x, postazione);
             }
             aggiornaVista(piatto, postazioneNord);
             aggiornaTurno(mano,mazzo);
@@ -372,7 +378,8 @@ public class Eventi {
         else if (x == null && pescato == true) {
            pescato = false;
            aggiornaTurno(mano,mazzo);
-           System.out.println("NORD: " + manoNord.mano.toString());
+           //System.out.println("NORD: " + manoNord.mano.toString());
+           System.out.println("NORD HA PASSATO");
         }
         if (manoNord.mano.size() == 0) {
             vinto = false;
@@ -387,7 +394,7 @@ public class Eventi {
         System.out.println("turno: " + turno);
     }
     public void mossaEst(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
-        System.out.println("EST: " + manoEst.mano.toString());
+        //System.out.println("EST: " + manoEst.mano.toString());
         Carta x = cartaUtile(manoEst);
         // se il giocatore ha una carta utile
         if (x != null) {
@@ -469,7 +476,8 @@ public class Eventi {
             else {
                turno-=1;
             }
-            System.out.println("EST: " + manoEst.mano.toString());
+            //System.out.println("EST: " + manoEst.mano.toString());
+            System.out.println("EST HA PASSATO");
         }
         if (manoEst.mano.size() == 0) {
             vinto = false;
@@ -521,7 +529,7 @@ public class Eventi {
             JButton colore = new JButton(img);
             colore.setBorder(null);
             partitaPanel.getScartoButton().add(colore);
-            System.out.println("colore: "+getCartaScarto().getC());
+            //System.out.println("colore: "+getCartaScarto().getC());
         }
     	if (x.getV() == 14) {
     		manoVittima.mano.add(mazzo.pesca());
