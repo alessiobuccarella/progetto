@@ -107,11 +107,14 @@ public class Eventi {
             	 else turno = 2;
             }
             if (getCartaScarto().getV() == 10) {
-                turno = 2;
-                musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
-                partitaPanel.getFoto1().setBorder(new LineBorder(Color.RED, 5));
-            	partitaPanel.getFoto2().setBorder(new LineBorder(null));
-            	partitaPanel.getFoto().setBorder(new LineBorder(null));
+            	if (partitaPanel.getMod()==1) {
+            		turno = 2;
+            		musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
+            		partitaPanel.getFoto1().setBorder(new LineBorder(Color.RED, 5));
+            		partitaPanel.getFoto2().setBorder(new LineBorder(null));
+            		partitaPanel.getFoto().setBorder(new LineBorder(null));
+            	}
+            	else turno=0;           	
             }
         }
         if (getCartaScarto().getV() == 12) {
@@ -238,7 +241,7 @@ public class Eventi {
 
     public void mossaOvest(GridBagConstraints gbc10,Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
     	
-    	//System.out.println("OVEST: " + manoOvest.mano.toString());
+    	System.out.println("OVEST: " + manoOvest.mano.toString());
         Carta x = cartaUtile(manoOvest);
         // se il giocatore ha una carta utile
         if (x != null) {
@@ -333,7 +336,7 @@ public class Eventi {
     }
 
     public void mossaNord(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
-        //System.out.println("NORD: " + manoNord.mano.toString());
+        System.out.println("NORD: " + manoNord.mano.toString());
         //System.out.println("EST: "+mano.mano.toString());
         Carta x = cartaUtile(manoNord);
         // se il giocatore ha una carta utile
@@ -408,7 +411,7 @@ public class Eventi {
         System.out.println("turno: " + turno);
     }
     public void mossaEst(GridBagConstraints gbc10, Mano mano, Mano manoOvest, Mano manoNord, Mano manoEst, PiattoPanel piatto, PostazionePanel postazioneOvest, Mazzo mazzo, PostazionePanel postazione, PostazionePanel postazioneNord, PostazionePanel postazioneEst, PostazionePanel postazionePiatto) {
-        //System.out.println("EST: " + manoEst.mano.toString());
+        System.out.println("EST: " + manoEst.mano.toString());
         Carta x = cartaUtile(manoEst);
         // se il giocatore ha una carta utile
         if (x != null) {
@@ -652,17 +655,26 @@ public class Eventi {
     	
         if (senso == Senso.ANTIORARIO) {
         	if (partitaPanel.getMod()==1) turno = 3;
-        	else turno =2;
+        	else {
+        		turno =2;
+        		partitaPanel.getFoto1().setBorder(new LineBorder(Color.RED, 5));
+        		musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
+        	}
             partitaPanel.getFoto2().setBorder(new LineBorder(Color.RED, 5));
             if (partitaPanel.getMod()==1) musicObjectBot.playButtonMusic("./src/audio/Squirtle_audio.wav");
         }
         if (senso == Senso.ORARIO) {
         	if (partitaPanel.getMod()==1)turno = 1;
-        	else turno =2;
+        	else {
+        		turno =2;
+        		partitaPanel.getFoto1().setBorder(new LineBorder(Color.RED, 5));
+        		musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
+        	}
+        	}
             partitaPanel.getFoto().setBorder(new LineBorder(Color.RED, 5));
             if (partitaPanel.getMod()==1) musicObjectBot.playButtonMusic("./src/audio/Bulbasaur_audio.wav");
        
-        }
+        
     }
 
 
