@@ -4,11 +4,23 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * Questa classe crea il pannello per la selezione della modalià di gioco della partita
+ */
 public class ConfiguraPanel extends JPanel {
 
+    /**
+     * buttons corrispettivi alla modalià di gioco
+     */
     private JButton classica, mod2, mod3;
+    /**
+     * button che torna indietro al precedente pannello
+     */
     private JButton indietroButton;
 
+    /**
+     * costruttore che costruisce il design del pannello per scegliere la modalità di gioco della partita
+     */
      public ConfiguraPanel() {
          JPanel cmm = new JPanel();
          JPanel indietro3 = new JPanel();
@@ -37,18 +49,30 @@ public class ConfiguraPanel extends JPanel {
          this.add(indietro3, BorderLayout.PAGE_END);
      }
 
+    /**
+     * actionlistener sul button paginaPrec
+     */
     public void paginaPrec(ActionListener actionListener) {
         indietroButton.addActionListener(actionListener);
     }
 
+    /**
+     * actionlistener sul button classica
+     */
     public void classica(ActionListener actionListener) {
     	classica.addActionListener(actionListener);
     }
 
+    /**
+     * actionlistener sul button mod2
+     */
     public void mod2(ActionListener actionListener) {
         mod2.addActionListener(actionListener);
     }
 
+    /**
+     * actionlistener sul button mod3
+     */
     public void mod3(ActionListener actionListener) {
         mod3.addActionListener(actionListener);
     }

@@ -5,8 +5,14 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import model.Profilo;
 
+/**
+ * Questa classe
+ */
 public class ProfiloPanel extends JPanel {
 
+    /**
+     * @param
+     */
 	private static final long serialVersionUID = 3960043400919881397L;
 
     private JLabel nickname;

@@ -6,11 +6,18 @@ import javax.swing.JFrame;
 import controller.*;
 import model.Database;
 
+/**
+ * Questa classe crea il frame, inizializza i pannelli e stabilisce i collegamenti tra essi
+ */
 public class MainFrame extends JFrame {
-
-	private static final long serialVersionUID = -5535790746189171625L;
+    /**
+     * layout manager per MainFrame
+     */
 	private CardLayout cardLayout;
-    
+
+    /**
+     * costruttore che inizializza i pannelli, inizializza i controller e stabilisce i collegamenti
+     */
     public MainFrame() {
         super("JUno");
         setVisible(true);

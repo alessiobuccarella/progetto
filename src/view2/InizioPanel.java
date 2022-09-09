@@ -4,13 +4,26 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+/**
+ * Questa classe crea il pannello iniziale
+ */
 public class InizioPanel extends JPanel {
-
-	private static final long serialVersionUID = -513177980532526192L;
+    /**
+     * button per creare un nuovo profilo
+     */
 	private JButton nuovoProfilo;
+    /**
+     * button per caricare un profilo
+     */
 	private JButton caricaProfiloBtn;
+    /**
+     * button per uscire dall'applicazione
+     */
 	private JButton esci;
 
+    /**
+     * costruttore che costruisce il design del pannello iniziale
+     */
 	public InizioPanel() {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
@@ -32,15 +45,21 @@ public class InizioPanel extends JPanel {
         nce.add(esci, gbc);
         this.add(nce, BorderLayout.CENTER);
 	}
-	
+    /**
+     * actionlistener sul button nuovoProfilo
+     */
     public void nuovoProfilo(ActionListener actionListener) {
     	nuovoProfilo.addActionListener(actionListener);
     }
-    
+    /**
+     * actionlistener sul button caricaProfiloBtn
+     */
     public void caricaProfilo(ActionListener actionListener) {
     	caricaProfiloBtn.addActionListener(actionListener);
     }
-    
+    /**
+     * actionlistener sul button esci
+     */
     public void esci(ActionListener actionListener) {
     	esci.addActionListener(actionListener);
     }

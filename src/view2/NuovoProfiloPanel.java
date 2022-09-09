@@ -1,23 +1,49 @@
 package view2;
 
-import controller.AudioButtonManager;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * Questa classe crea il pannello per la creazione di un nuovo profilo
+ */
 public class NuovoProfiloPanel extends JPanel {
-
-	private static final long serialVersionUID = -4924450993476714670L;
+    /**
+     * box per inserire testo
+     */
 	private JTextField textnickname;
+    /**
+     * button per inviare i dati database
+     */
     private JButton inviaButton;
+    /**
+     * button che torna indietro al precedente panel
+     */
     private JButton indietroButton;
+    /**
+     * button per la selezione del primo avatar
+     */
     private JToggleButton radio1;
+    /**
+     * button per la selezione del secondo avatar
+     */
     private JToggleButton radio2;
+    /**
+     * button per la selezione del terzo avatar
+     */
     private JToggleButton radio3;
+    /**
+     * button per la selezione del quarto avatar
+     */
     private JToggleButton radio4;
+    /**
+     * button per la selezione del quinto avatar
+     */
     private JToggleButton radio5;
 
+    /**
+     * costruttore che costruisce il design del pannello per creare un profilo
+     */
     public NuovoProfiloPanel(){
         JPanel nickname = new JPanel();
         JPanel image = new JPanel();
@@ -96,10 +122,18 @@ public class NuovoProfiloPanel extends JPanel {
         this.add(indietro, BorderLayout.PAGE_END);
     }
 
+    /**
+     * getter per il nickname
+     * @return il nickname del profilo
+     */
     public String getNickname() {
         return this.textnickname.getText();
     }
-    
+
+    /**
+     * metodo che seleziona un solo avatar tra quelli proposti
+     * @return avatar selezionato
+     */
     public String getAvatar() {
     	String img = null;
         if(radio1.isSelected()){
@@ -120,10 +154,15 @@ public class NuovoProfiloPanel extends JPanel {
         return img;
     }
 
+    /**
+     * actionlistener sul button inviaButton
+     */
     public void creaProfilo(ActionListener actionListener) {
         inviaButton.addActionListener(actionListener);
     }
-
+    /**
+     * actionlistener sul button indietroButton
+     */
     public void paginaPrec(ActionListener actionListener) {
         indietroButton.addActionListener(actionListener);
     }

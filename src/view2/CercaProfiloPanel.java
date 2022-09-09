@@ -4,13 +4,26 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
+/**
+ * Questa classe crea il pannello per caricare un profilo
+ */
 public class CercaProfiloPanel extends JPanel {
-	
-	private static final long serialVersionUID = 4831030812782264284L;
+    /**
+     * box per inserire testo
+     */
 	private JTextField textnickname;
+    /**
+     * button per inviare i dati database
+     */
 	private JButton inviaButton;
+    /**
+     * button che torna indietro al precedente pannello
+     */
 	private JButton indietroButton;
-	
+
+    /**
+     * costruttore che costruisce il design del pannello per caricare un profilo
+     */
 	public CercaProfiloPanel() {
         JPanel nickname = new JPanel();
         JPanel indietro = new JPanel();
@@ -35,15 +48,25 @@ public class CercaProfiloPanel extends JPanel {
         this.add(nickname, BorderLayout.CENTER);
         this.add(indietro, BorderLayout.PAGE_END);
 	}
-	
+
+    /**
+     * getter per il nickname
+     * @return il nickname del profilo
+     */
 	public String getNickname() {
 		return this.textnickname.getText();
 	}
 
+    /**
+     * actionlistener sul button inviaButton
+     */
     public void cercaProfilo(ActionListener actionListener) {
-		 inviaButton.addActionListener(actionListener);
+        inviaButton.addActionListener(actionListener);
     }
 
+    /**
+     * actionlistener sul button indietroButton
+     */
     public void paginaPrec(ActionListener actionListener) {
         indietroButton.addActionListener(actionListener);
     }
