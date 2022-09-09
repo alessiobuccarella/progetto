@@ -54,6 +54,10 @@ public class Eventi {
         	 
         	if(getCartaScarto().getV() < 10) {
                 musicObjectBot.playButtonMusic("./src/audio/normal_card_audio.wav");
+                if (partitaPanel.getMod()==2) {
+                musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
+                partitaPanel.getFoto1().setBorder(new LineBorder(Color.RED, 5));
+                }
             } 
             System.out.println("ok");
             cartaScarto=mano.mano.get(indiceCarta);
@@ -131,7 +135,10 @@ public class Eventi {
         }
 
         if (getCartaScarto().getV() == 14) {
-        	if (partitaPanel.getMod()==2) {manoNord.mano.add(mazzo.pesca());manoNord.mano.add(mazzo.pesca());manoNord.mano.add(mazzo.pesca());manoNord.mano.add(mazzo.pesca());}
+        	if (partitaPanel.getMod()==2) {manoNord.mano.add(mazzo.pesca());manoNord.mano.add(mazzo.pesca());manoNord.mano.add(mazzo.pesca());manoNord.mano.add(mazzo.pesca());
+        		
+        	}
+        	
             //Menu.firstTime = true;
             if (turno == 1&&partitaPanel.getMod()==1) {
                 for (int i = 0; i < 4; i++)
@@ -144,7 +151,14 @@ public class Eventi {
                 postazioneEst.invalidate();
                 postazioneEst.validate();
             }
-           aggiornaTurno(mano,mazzo);
+            if (partitaPanel.getMod()==1) aggiornaTurno(mano,mazzo);
+            else {
+            	turno=2;
+            	musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
+                partitaPanel.getFoto1().setBorder(new LineBorder(Color.RED, 5));
+             	partitaPanel.getFoto2().setBorder(new LineBorder(null));
+             	partitaPanel.getFoto().setBorder(new LineBorder(null));
+            }
                // Menu.rosso.setEnabled(true);Menu.giallo.setEnabled(true);Menu.verde.setEnabled(true);Menu.blu.setEnabled(true);
         }
         if (mano.mano.size() == 0) {
