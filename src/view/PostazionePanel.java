@@ -11,7 +11,7 @@ public class PostazionePanel extends JPanel {
 
     /**
      * costruttore che costruisce il design delle postazioni di gioco
-     * @param layout
+     * @param layout layout
      */
     public PostazionePanel(int layout) {
         if (layout==0) {

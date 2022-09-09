@@ -59,7 +59,7 @@ public class CercaProfiloPanel extends JPanel {
 
     /**
      * actionlistener sul button inviaButton
-     * @param actionListener
+     * @param actionListener actionlistener
      */
     public void cercaProfilo(ActionListener actionListener) {
         inviaButton.addActionListener(actionListener);
@@ -67,7 +67,7 @@ public class CercaProfiloPanel extends JPanel {
 
     /**
      * actionlistener sul button indietroButton
-     * @param actionListener
+     * @param actionListener actionlistener
      */
     public void paginaPrec(ActionListener actionListener) {
         indietroButton.addActionListener(actionListener);

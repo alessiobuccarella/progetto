@@ -99,7 +99,7 @@ public class ProfiloPanel extends JPanel {
 
     /**
      * metodo che stampa il profilo con i relativi dati aggiornati
-     * @param profilo
+     * @param profilo profilo del gicatore
      */
     public void printProfilo(Profilo profilo) {
 		this.nickname.setText("NICKNAME: " + profilo.getNickname());
@@ -118,7 +118,7 @@ public class ProfiloPanel extends JPanel {
 
     /**
      * actionlistener sul button indietroButton
-     * @param actionListener
+     * @param actionListener actionListener
      */
     public void paginaPrec(ActionListener actionListener) {
     	indietroButton.addActionListener(actionListener);

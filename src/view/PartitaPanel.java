@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import static view.ProfiloPanel.immagine;
 import static view.ProfiloPanel.nome;
 
+/**
+ * Questa classe crea il pannello per la partita
+ */
 public class PartitaPanel extends JPanel {
      
     /**
@@ -359,38 +362,42 @@ public class PartitaPanel extends JPanel {
 
     /**
      * getter immagine giocatore
-     * @return Jlabel che rappresenta l'immagine del giocatore
+     * @return Jlabel che rappresenta l'immagine del bo0
      */
     public JLabel getFoto() {
         return foto;
     }
     /**
      * setter immagine giocatore
+     * @param foto immagine giocatore
      */
     public void setFoto(JLabel foto) {
         this.foto = foto;
     }
     /**
      * getter immagine giocatore
-     * @return Jlabel che rappresenta l'immagine del giocatore
+     * @return Jlabel che rappresenta l'immagine del bot1
      */
     public JLabel getFoto1() {
         return foto1;
     }
     /**
      * setter immagine giocatore
+     * @param foto1 immagine bo1
      */
     public void setFoto1(JLabel foto1) {
         this.foto1 = foto1;
     }
     /**
      * getter immagine giocatore
+     * @return Jlabel che rappresenta l'immagine del bot2
      */
     public JLabel getFoto2() {
         return foto2;
     }
     /**
      * setter immagine giocatore
+     * @param foto2 immagine bot2
      */
     public void setFoto2(JLabel foto2) {
         this.foto2 = foto2;
@@ -404,6 +411,7 @@ public class PartitaPanel extends JPanel {
     }
     /**
      * setter immagine giocatore
+     * @param foto3 immagine giocatore
      */
     public void setFoto3(JLabel foto3) {
         this.foto3 = foto3;
@@ -419,7 +427,7 @@ public class PartitaPanel extends JPanel {
 
     /**
      * setter nomegiocatore
-     * @param nomegiocatore
+     * @param nomegiocatore nome del giocatore
      */
     public void setNomegiocatore(JLabel nomegiocatore) {
         this.nomegiocatore = nomegiocatore;
@@ -435,7 +443,7 @@ public class PartitaPanel extends JPanel {
 
     /**
      * setter del bottone che rappresenta la carta scartata
-     * @param scartoButton
+     * @param scartoButton carta scarto
      */
     public void setScartoButton(JButton scartoButton) {
         this.scartoButton = scartoButton;
@@ -480,7 +488,7 @@ public class PartitaPanel extends JPanel {
     public ArrayList<JButton> getPosti() {
         return posti;
     }
-    
+
     /**
      * getter postazione 
      * @return postazione
@@ -491,7 +499,7 @@ public class PartitaPanel extends JPanel {
 
     /**
      * setter  postazione
-     * @param postazione
+     * @param postazione postazione del giocatore
      */
     public void setPostazione(PostazionePanel postazione) {
         this.postazione = postazione;

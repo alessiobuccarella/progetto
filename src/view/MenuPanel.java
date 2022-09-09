@@ -55,7 +55,7 @@ public class MenuPanel extends JPanel {
 
     /**
      * actionlistener sul button nuovaPartita
-     * @param actionListener
+     * @param actionListener actionListener
      */
     public void nuovaPartita(ActionListener actionListener) {
     	nuovaPartita.addActionListener(actionListener);
@@ -63,7 +63,7 @@ public class MenuPanel extends JPanel {
 
     /**
      * actionlistener sul button opzioniProfilo
-     * @param actionListener
+     * @param actionListener actionListener
      */
     public void opzioniProfilo(ActionListener actionListener) {
     	opzioniProfilo.addActionListener(actionListener);
@@ -71,7 +71,7 @@ public class MenuPanel extends JPanel {
 
     /**
      * actionlistener sul button esci
-     * @param actionListener
+     * @param actionListener actionListener
      */
     public void esci(ActionListener actionListener) {
     	esci.addActionListener(actionListener);

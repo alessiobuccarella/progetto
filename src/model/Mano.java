@@ -24,7 +24,7 @@ public class Mano implements Iterator<Carta> {
 
     /**
      * costruttore che prende in input un'istanza di mazzo
-     * @param m
+     * @param m mazzo di carte
      */
     public Mano(Mazzo m) {
         this.m = m;

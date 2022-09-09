@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Questa classe costruisce il profilo del giocatore
+ */
 public class Profilo {
 
 	/**
@@ -99,7 +102,7 @@ public class Profilo {
 
 		/**
 		 * setter del livello del giocatore
-		 * @param livello 
+		 * @param livello livello del giocatore
 		 * @return il profilo aggiornato
 		 */
 		public ProfiloBuilder setLivello(int livello) {
@@ -109,7 +112,7 @@ public class Profilo {
 
 		/**
 		 * setter del numero di partite giocater
-		 * @param partiteGiocate
+		 * @param partiteGiocate partiteGiocate del giocatore
 		 * @return il profilo aggiornato
 		 */
 		public ProfiloBuilder setPartiteGiocate(int partiteGiocate) {
@@ -119,7 +122,7 @@ public class Profilo {
 
 		/**
 		 * setter delle partite vinte
-		 * @param partiteVinte
+		 * @param partiteVinte partiteVinte del giocatore
 		 * @return il profilo aggiornato
 		 */
 		public ProfiloBuilder setPartiteVinte(int partiteVinte) {
@@ -129,7 +132,7 @@ public class Profilo {
 
 		/**
 		 * setter delle partite perse
-		 * @param partitePerse
+		 * @param partitePerse partitePerse del giocatore
 		 * @return il profilo aggiornato
 		 */
 		public ProfiloBuilder setPartitePerse(int partitePerse) {

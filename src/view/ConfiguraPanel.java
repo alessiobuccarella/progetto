@@ -51,7 +51,7 @@ public class ConfiguraPanel extends JPanel {
 
     /**
      * actionlistener sul button paginaPrec
-     * @param actionListener
+     * @param actionListener actionlistener
      */
     public void paginaPrec(ActionListener actionListener) {
         indietroButton.addActionListener(actionListener);
@@ -59,7 +59,7 @@ public class ConfiguraPanel extends JPanel {
 
     /**
      * actionlistener sul button classica
-     * @param actionListener
+     * @param actionListener actionlistener
      */
     public void classica(ActionListener actionListener) {
     	classica.addActionListener(actionListener);
@@ -67,7 +67,7 @@ public class ConfiguraPanel extends JPanel {
 
     /**
      * actionlistener sul button mod2
-     * @param actionListener
+     * @param actionListener actionlistener
      */
     public void mod2(ActionListener actionListener) {
         mod2.addActionListener(actionListener);
@@ -75,7 +75,7 @@ public class ConfiguraPanel extends JPanel {
 
     /**
      * actionlistener sul button mod3
-     * @param actionListener
+     * @param actionListener actionlistener
      */
     public void mod3(ActionListener actionListener) {
         mod3.addActionListener(actionListener);

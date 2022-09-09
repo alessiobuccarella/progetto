@@ -85,7 +85,7 @@ public class Mazzo implements Iterator<Carta> {
 
     /**
      * metodo della classe Java Scanner che restituisce true se questo scanner ha un altro token nel suo input
-     * @return
+     * @return un booleano che conferma se c'è o meno una carta nel mazzo
      */
     @Override
     public boolean hasNext() {
@@ -96,7 +96,7 @@ public class Mazzo implements Iterator<Carta> {
 
     /**
      * metodo della classe Java Scanner che trova e restituisce il prossimo token completo dallo scanner in uso.
-     * @return
+     * @return la carta successiva
      */
     @Override
     public Carta next() {
