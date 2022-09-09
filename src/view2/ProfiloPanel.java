@@ -18,7 +18,6 @@ public class ProfiloPanel extends JPanel {
 	private JLabel partitePerse;
 	private JButton indietroButton;
 
-    private Connection connection;
     public static String nome;
 	public ProfiloPanel() {
         JPanel oa = new JPanel();
@@ -79,7 +78,7 @@ public class ProfiloPanel extends JPanel {
         this.partiteGiocate.setText("PARTITE GIOCATE: " + profilo.getPartiteGiocate());
         this.partitePerse.setText("PARTITE PERSE: " + profilo.getPartitePerse());
         this.partiteVinte.setText("PARTITE VINTE: " + profilo.getPartiteVinte());
-        System.out.println("partite perse " + profilo.getPartitePerse());
+
 	}
 
     public void paginaPrec(ActionListener actionListener) {

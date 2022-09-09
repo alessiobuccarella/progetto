@@ -40,12 +40,6 @@ public class Database {
                         .setPartiteGiocate(rs.getInt(5))
                         .setPartiteVinte(rs.getInt(6))
                         .setPartitePerse(rs.getInt(7)).build();
-                System.out.println(rs.getString(2));
-                System.out.println(rs.getString(3));
-                System.out.println(rs.getString(4));
-                System.out.println(rs.getString(5));
-                System.out.println(rs.getString(6));
-                System.out.println(rs.getString(7));
                 return profilo;
             }
         } catch (Exception e1) {

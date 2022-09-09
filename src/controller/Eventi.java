@@ -469,7 +469,7 @@ public class Eventi {
         }
         if (manoEst.mano.size() == 0) {
             vinto = false;
-            musicObjectBot.playButtonMusic("./src/audio/defeat_audio.wav");
+            musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
             JOptionPane.showMessageDialog(null, "PURTROPPO HAI PERSO!!");
             //cardLayout.show(MainFrame.this.getContentPane(), "inizio2");
             Database db2 = Database.getInstance();
