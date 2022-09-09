@@ -770,28 +770,26 @@ public class Eventi {
      * @param mazzo
      */
     public  void aggiornaTurno(Mano mano,Mazzo mazzo) {
-
         if (getCartaScarto().getV() == 11) {
             musicObjectBot.playButtonMusic("./src/audio/special_card_audio.wav");
             cambiaSenso();
             if (senso == Senso.ORARIO) {
-                if (partitaPanel.getMod() !=2)setTurno(getTurno() + 1);
+                if (partitaPanel.getMod() != 2) setTurno(getTurno() + 1);
             }
             else {
-                if (partitaPanel.getMod() !=2)setTurno(getTurno() - 1);
+                if (partitaPanel.getMod() != 2) setTurno(getTurno() - 1);
             }
         }
         if (getCartaScarto().getV() == 10)
-            if (partitaPanel.getMod()!=2) setTurno(getTurno() + 2);
+            if (partitaPanel.getMod() != 2) setTurno(getTurno() + 2);
             else setTurno(getTurno() + 4);
         if (senso == Senso.ORARIO && getCartaScarto().getV() != 10 && getCartaScarto().getV() != 11)
-            if (partitaPanel.getMod()!=2)setTurno(getTurno() + 1);
+            if (partitaPanel.getMod() != 2)setTurno(getTurno() + 1);
             else setTurno(getTurno() + 2);
         if (senso == Senso.ANTIORARIO && getCartaScarto().getV() != 10 && getCartaScarto().getV() != 11)
-            if (partitaPanel.getMod()!=2) setTurno(getTurno() - 1);
+            if (partitaPanel.getMod() != 2) setTurno(getTurno() - 1);
             else setTurno(getTurno() + 2);
         Carta x = cartaUtile(mano);
-        //if (Menu.turno % 4 == 0) Menu.evidenzia(0);
         if (getTurno() % 4 == 0) musicObjectBot.playButtonMusic("./src/audio/it's me_audio.wav");
         if (getTurno() % 4 == 0 && x == null) {
             System.out.println("non hai la carta da giocare");
@@ -823,22 +821,21 @@ public class Eventi {
      * metodo che chiama il giocatore successivo quando un giocatore deve passare il turno
      */
     public  void passo() {
-
-
         if (senso == Senso.ANTIORARIO) {
-            if (partitaPanel.getMod() !=2) setTurno(3);
+            if (partitaPanel.getMod() != 2) setTurno(3);
             else setTurno(2);
             partitaPanel.getFoto2().setBorder(new LineBorder(Color.RED, 5));
-            if (partitaPanel.getMod() !=2) musicObjectBot.playButtonMusic("./src/audio/Squirtle_audio.wav");
+            if (partitaPanel.getMod() != 2) musicObjectBot.playButtonMusic("./src/audio/Squirtle_audio.wav");
         }
         if (senso == Senso.ORARIO) {
-            if (partitaPanel.getMod() !=2) setTurno(1);
+            if (partitaPanel.getMod() != 2) setTurno(1);
             else setTurno(2);
             partitaPanel.getFoto().setBorder(new LineBorder(Color.RED, 5));
-            if (partitaPanel.getMod() !=2) musicObjectBot.playButtonMusic("./src/audio/Bulbasaur_audio.wav");
+            if (partitaPanel.getMod() != 2) musicObjectBot.playButtonMusic("./src/audio/Bulbasaur_audio.wav");
 
         }
     }
+
     /**
      * metodo che conta i punteggi rimanenti nelle mani dei giocatori e calcola il vincitore
      * @param manoOvest
@@ -849,16 +846,16 @@ public class Eventi {
     public void vincitoreLampo(Mano manoOvest, Mano manoNord, Mano manoEst, Mano mano)
     {
         String frase = "";
-        int y=0;
+        int y = 0;
         int ovest=0;
         int nord=0;
         int est=0;
         int giocatore=0;
-        for (Carta x:manoOvest.mano) {ovest+=x.getV();}
-        for (Carta x:manoNord.mano) {nord+=x.getV();}
-        for (Carta x:manoEst.mano) {est+=x.getV();}
-        for (Carta x:mano.mano) {giocatore+=x.getV();}
-        int min=Math.min(Math.min(Math.min(ovest,nord),est),giocatore);
+        for (Carta x:manoOvest.mano) {ovest += x.getV();}
+        for (Carta x:manoNord.mano) {nord += x.getV();}
+        for (Carta x:manoEst.mano) {est += x.getV();}
+        for (Carta x:mano.mano) {giocatore += x.getV();}
+        int min = Math.min(Math.min(Math.min(ovest,nord),est),giocatore);
         if (ovest == min) {
             frase =  "Ha vinto Bulbasaur con " + min + " punti";
             risultatoPartita(false, nome, frase);
@@ -903,7 +900,7 @@ public class Eventi {
      * @param x booleano che indica se è stato gridato uno
      */
     public void setGridatoUno(boolean x) {
-        gridatoUno=x;
+        gridatoUno = x;
     }
 
     /**
