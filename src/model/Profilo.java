@@ -9,15 +9,39 @@ public class Profilo {
 	private int partiteVinte;
 	private int partitePerse;
 
+	/**
+	 * classe che costruisce il profilo utilizzando il builder pattern
+	 */
 	public Profilo() {}
 
+	/**
+	 *builder del profilo
+	 */
 	public static class ProfiloBuilder {
 
+		/**
+		 * stringa che rappresenta il nickname del giocatore
+		 */
 		private String nickname;
+		/**
+		 * stringa che rappresenta il percorso dell'immagine di profilo del giocatore
+		 */
 		private String avatarImg;
+		/**
+		 * inter oche rappresenta il livello del giocatore
+		 */
 		private int livello;
+		/**
+		 * intero che rappresenta il numero di partite giocate
+		 */
 		private int partiteGiocate;
+		/**
+		 * intero che rappresenta il numero di partite vinte
+		 */
 		private int partiteVinte;
+		/**
+		 * intero che rappresenta il numero di partite perse
+		 */
 		private int partitePerse;
 
 		public Profilo build() {

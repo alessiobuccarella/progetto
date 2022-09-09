@@ -3,11 +3,24 @@ package model;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * classe per la creazione del mazzo di carte
+ *
+ */
 public class Mazzo implements Iterator<Carta> {
 
+    /**
+     * contatore per i metodi next e hasNext
+     */
     private int cont = 0;
+    /**
+     * inizializzazione del mazzo tramite un array di carte
+     */
     public static ArrayList<Carta> mazzo = new ArrayList<Carta>();
 
+    /**
+     * costruttore che crea il mazzo di carte
+     */
     public Mazzo() {
         int c = 0;
         int v = 0;
@@ -39,6 +52,11 @@ public class Mazzo implements Iterator<Carta> {
        	mescola();
     }
 
+    /**
+     * scambia due carte, metodo usato nel metodo mescola
+     * @param i prima carta
+     * @param j seconda carta
+     */
     public void scambia(int i, int j) {
         Carta x;
         x = mazzo.get(i);
@@ -46,6 +64,9 @@ public class Mazzo implements Iterator<Carta> {
         mazzo.set(j, x);
     }
 
+    /**
+     * metodo che scambia ripetutamente due carte a caso nel mazzo mescolandolo
+     */
     public void mescola() {
         for (int i = mazzo.size() - 1; i > 0; i--) {
             int j = (int) (Math.random() * (i));
@@ -53,6 +74,9 @@ public class Mazzo implements Iterator<Carta> {
         }
     }
 
+    /**
+     *metodo che stampa le carte del mazzo sottoforma di stringa
+     */
     public String toString() {
         String st = "";
         for (int i = 0; i < mazzo.size(); i++)
@@ -72,6 +96,10 @@ public class Mazzo implements Iterator<Carta> {
         return mazzo.get(cont++);
     }
 
+    /**
+     * metodo per pescare una carta dal mazzo
+     * @return la carta pescata
+     */
     public Carta pesca() {
         Carta cartaPescata = mazzo.get(mazzo.size() - 1);
         mazzo.remove(mazzo.size() - 1);
