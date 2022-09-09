@@ -98,7 +98,7 @@ public class Eventi {
         if (mano.mano.size() > 1) deviGridareUno = false;
         else deviGridareUno = true;
         if (deviGridareUno == true && gridatoUno == false) {
-            System.out.println("Penalità: non hai gridato 1!");
+            System.out.println("Penalità: non hai gridato 1! Peschi due carte.");
             mano.mano.add(mazzo.pesca());
             posti.get(mano.mano.size() - 1).setBorder(null);
             mano.mano.add(mazzo.pesca());
@@ -245,7 +245,6 @@ public class Eventi {
             if (contatore >= 20) {
                 vincitoreLampo(manoOvest,manoNord,manoEst,mano);
             }
-            System.out.println("contatore= " + contatore);
         }
 
         switch (turno % 4) {
@@ -337,11 +336,8 @@ public class Eventi {
             }
         }
         Carta x = cartaUtile(manoOvest);
-        System.out.println("Ovest: " + manoOvest.mano.toString());
         if (x != null) {
             lanciaCarta(gbc10, piatto, manoOvest, postazioneOvest, x,"./src/immagini/dorso90.png", postazionePiatto);
-            System.out.println("turno: " + getTurno());
-            System.out.println("Bulbasaur ha tirato " + x.toString());
             postazioneOvest.removeAll();
             switch(manoOvest.mano.size()) {
                 case 0: break;
@@ -440,11 +436,9 @@ public class Eventi {
             }
         }
         Carta x = cartaUtile(manoNord);
-        System.out.println("Nord: " + manoNord.mano.toString());
         // se il giocatore ha una carta utile
         if (x != null) {
             lanciaCarta(gbc10,piatto,manoNord,postazioneNord,x,"./src/immagini/dorso.png",postazionePiatto);
-            System.out.println("Charmandar ha tirato " + x.toString());
             postazioneNord.removeAll();
             switch(manoNord.mano.size()) {
                 case 0: break;
@@ -499,7 +493,6 @@ public class Eventi {
             String frase = "Purtroppo hai perso!!";
             risultatoPartita(false, nome, frase);
         }
-        System.out.println("turno: " + getTurno());
     }
     /**
      * metodo che gestisce le mosse del giocatore a est e la rappresentazione grafica delle sue carte
@@ -527,12 +520,8 @@ public class Eventi {
             }
         }
         Carta x = cartaUtile(manoEst);
-        System.out.println("Est: " + manoOvest.mano.toString());
-        System.out.println("pescato: " + pescato);
         if (x != null) {
             lanciaCarta(gbc10,piatto,manoEst,postazioneEst,x,"./src/immagini/dorso90s.png",postazionePiatto);
-            System.out.println("turno: " + getTurno());
-            System.out.println("Squirtle ha tirato " + x.toString());
             postazioneEst.removeAll();
             switch(manoEst.mano.size()) {
                 case 0: break;
@@ -593,7 +582,6 @@ public class Eventi {
             }
         }
         else if (pescato == false) {
-            System.out.println("Est non ha la carta e dovrebbe pescare");
             manoEst.mano.add(mazzo.pesca());
             aggiornaVista(piatto, postazioneEst);
             pescato = true;
@@ -685,7 +673,6 @@ public class Eventi {
             JButton colore = new JButton(img);
             colore.setBorder(null);
             partitaPanel.getScartoButton().add(colore);
-            System.out.println("colore: " + getCartaScarto().getC());
         }
     }
 
@@ -708,7 +695,6 @@ public class Eventi {
             JButton colore = new JButton(img);
             colore.setBorder(null);
             partitaPanel.getScartoButton().add(colore);
-            System.out.println(getCartaScarto().getC());
         }
         if (x.getV() == 14) {
             getCartaScarto().setC((int)(Math.random() * 4));
@@ -717,13 +703,10 @@ public class Eventi {
             JButton colore = new JButton(img);
             colore.setBorder(null);
             partitaPanel.getScartoButton().add(colore);
-            System.out.println(getCartaScarto().getC());
-            System.out.print("la tua mano è: " + mano.mano.toString());
             pesca(mazzo,mano);
             pesca(mazzo,mano);
             pesca(mazzo,mano);
             pesca(mazzo,mano);
-            System.out.println(" e dopo diventa: " + mano.mano.toString());
             postazione.repaint();
         }
     }
@@ -768,7 +751,6 @@ public class Eventi {
         Carta x = cartaUtile(mano);
         if (getTurno() % 4 == 0) musicObjectBot.playButtonMusic("./src/audio/it's me_audio.wav");
         if (getTurno() % 4 == 0 && x == null) {
-            System.out.println("non hai la carta da giocare");
             pesca(mazzo, mano);
         }
 
