@@ -115,7 +115,7 @@ public class Database {
     /**
      * metodo che tramite una query aggiorna il profilo nel database secondo il nickname del profilo in uso e il risultato dopo una partita giocata
      * @param nickname del profilo in utilizzo
-     * @param risultato 
+     * @param risultato della partita
      * @return il profilo
      */
     public void updateDatabase(String nickname, boolean risultato) {
@@ -150,6 +150,9 @@ public class Database {
         }
     }
 
+    /**
+     * metodo che chiude la connessione al database
+     */
     public void close() {
         if (this.connection != null) {
             try {
