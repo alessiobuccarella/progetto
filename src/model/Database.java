@@ -45,6 +45,7 @@ public class Database {
         } catch (Exception e1) {
             musicObjectButton.playButtonMusic("./src/audio/error_button_audio.wav");
             JOptionPane.showMessageDialog(null, "" + e1);
+
         }
         return null;
     }
