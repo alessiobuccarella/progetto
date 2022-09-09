@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import model.*;
-import view2.*;
-import static view2.ProfiloPanel.nome;
+import view.*;
+import static view.ProfiloPanel.nome;
 
 /**
  *questa classe gestisce il comportamento dei giocatori e tutti gli eventi della partita
