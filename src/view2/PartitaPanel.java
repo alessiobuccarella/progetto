@@ -24,12 +24,12 @@ public class PartitaPanel extends JPanel {
     private JButton uno;
     private JButton scartoButton ;
     private JButton passo;
-    private JButton coloreRosso = new JButton();
-    private JButton coloreGiallo = new JButton();
-    private JButton coloreVerde = new JButton();
-    private JButton coloreBlu = new JButton();
-    private ArrayList<JButton> posti = new ArrayList<>();
-    Mazzo mazzo = new Mazzo();
+    private JButton coloreRosso; 
+    private JButton coloreGiallo; 
+    private JButton coloreVerde;
+    private JButton coloreBlu; 
+    private ArrayList<JButton> posti;
+    private Mazzo mazzo; 
     private Mano manoOvest;
     private Mano manoNord;
     private Mano manoEst;
@@ -47,9 +47,16 @@ public class PartitaPanel extends JPanel {
     public PartitaPanel(int x) {
     	
         setLayout(new BorderLayout());
+        mazzo = new Mazzo();
         do
             setCartaScarto(mazzo.next());
         while (getCartaScarto().getV() > 12);
+        coloreRosso = new JButton();
+        coloreGiallo = new JButton();
+        coloreVerde = new JButton();
+        coloreBlu = new JButton();
+        posti = new ArrayList<>();
+        
         manoOvest = new Mano(mazzo);
         manoNord = new Mano(mazzo);
         manoEst = new Mano(mazzo);
@@ -295,7 +302,7 @@ public class PartitaPanel extends JPanel {
             ActionListener avanti = new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     repaint();
-                    eventi.avanti(gbc10, eventi.turno, manoOvest, manoNord, manoEst, tavolo, postazioneOvest, postazioneNord, postazioneEst, mazzo, getPostazione(), mano,postazionePiatto);
+                    eventi.avanti(gbc10, eventi.getTurno(), manoOvest, manoNord, manoEst, tavolo, postazioneOvest, postazioneNord, postazioneEst, mazzo, getPostazione(), mano,postazionePiatto);
                 }
             };
             t = new Timer(6000, avanti);
