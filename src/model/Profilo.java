@@ -24,6 +24,10 @@ public class Profilo {
 			Profilo profilo = new Profilo();
 			profilo.nickname = this.nickname;
 			profilo.avatarImg = this.avatarImg;
+			profilo.livello = this.livello;
+			profilo.partiteGiocate = this.partiteGiocate;
+			profilo.partiteVinte = this.partiteVinte;
+			profilo.partitePerse = this.partitePerse;
 			return profilo;
 		}
 
