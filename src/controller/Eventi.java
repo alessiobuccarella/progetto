@@ -160,7 +160,7 @@ public class Eventi {
                     if (getTurno() == 0) musicObjectBot.playButtonMusic("./src/audio/Squirtle_audio.wav");
                     partitaPanel.getFoto().setBorder(new LineBorder(null));
                 }
-                else if  (partitaPanel.getMod() !=2)setTurno(2);
+                else setTurno(2);
             }
             if (getCartaScarto().getV() == 10) {
                 if (partitaPanel.getMod() != 2) {
@@ -200,7 +200,7 @@ public class Eventi {
                 manoNord.mano.add(mazzo.pesca());
 
             }
-            if (getTurno() == 1 && partitaPanel.getMod() != 2) {
+            if (getTurno() % 4 == 1 && partitaPanel.getMod() != 2) {
                 for (int i = 0; i < 4; i++)
                     manoOvest.mano.add(mazzo.pesca());
                 postazioneOvest.invalidate();

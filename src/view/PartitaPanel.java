@@ -138,8 +138,6 @@ public class PartitaPanel extends JPanel {
         PostazionePanel postazioneColori = new PostazionePanel(1);
         getPostazione().setBackground(null);
         getPostazione().setOpaque(false);
-        for (int i = 0; i < 30; i++)
-            getPosti().add(new JButton());
         ImageIcon avatar1png = new ImageIcon("./src/immagini/Bulbasaur.png");
         Image image1 = avatar1png.getImage();
         Image newimg1 = image1.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
@@ -289,6 +287,7 @@ public class PartitaPanel extends JPanel {
         gbc10.gridy = 6;
         gbc10.weighty = 2;
         Eventi eventi = new Eventi(partitaPanel);
+        
         passo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 t.start();
