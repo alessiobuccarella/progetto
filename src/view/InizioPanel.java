@@ -45,6 +45,7 @@ public class InizioPanel extends JPanel {
         nce.add(esci, gbc);
         this.add(nce, BorderLayout.CENTER);
 	}
+
     /**
      * actionlistener sul button nuovoProfilo
      * @param actionListener actionlistener

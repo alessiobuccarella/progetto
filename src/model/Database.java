@@ -69,7 +69,6 @@ public class Database {
         } catch (Exception e1) {
             musicObjectButton.playButtonMusic("./src/audio/error_button_audio.wav");
             JOptionPane.showMessageDialog(null, "" + e1);
-
         }
         return null;
     }
@@ -87,7 +86,6 @@ public class Database {
                     + " (`nickname`, `avatar`)"
                     + " VALUES ('" + nick + "','" + img + "')";
             statement.executeUpdate(query1);
-
             Profilo profilo = new Profilo.ProfiloBuilder()
                     .setNickname(nick)
                     .setAvatarImg(img)

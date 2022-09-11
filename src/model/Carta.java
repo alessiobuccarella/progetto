@@ -37,7 +37,6 @@ public class Carta extends Thread {
      * stringa che rappresenta il percorso del file dell'immagine
      */
     String path;
-
     /**
      * costruttore della generica carta non speciale
      * @param v valore della carta

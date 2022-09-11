@@ -29,7 +29,7 @@ public class MainFrame extends JFrame {
         setVisible(true);
         cardLayout = new CardLayout();
      
-        //Panel
+        // initialize Panel
         InizioPanel inizioPanel = new InizioPanel();
         CercaProfiloPanel cercaProfilo = new CercaProfiloPanel();
         NuovoProfiloPanel nuovoProfilo = new NuovoProfiloPanel();   
