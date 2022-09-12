@@ -88,6 +88,9 @@ public class EventiPartitaController {
      * costruttore che prende in input un'istanza di partitaPanel
      * e inizializza i campi
      * @param partitaPanel istanza di partitaPanel
+     * @param profiloPanel istanza di profiloPanel
+     * @param cardLayout layout manager utilizzato
+     * @param parent contenitore padre
      */
     public EventiPartitaController(PartitaPanel partitaPanel, ProfiloPanel profiloPanel, CardLayout cardLayout, Container parent) {
         this.partitaPanel = partitaPanel;
@@ -884,14 +887,15 @@ public class EventiPartitaController {
             musicObjectBot.playButtonMusic("./src/audio/victory_audio.wav");
             JOptionPane.showMessageDialog(null, "" + frase);
         }
-        
         Database db2 = Database.getInstance();
         db2.updateDatabase(giocatore, b);
-        
         Profilo profilo = db2.cercaProfilo(giocatore);
         profiloPanel.printProfilo(profilo);
     }
-    
+
+    /**
+     * metodo che mostra la pagina per iniziare una nuova partita o vedere le statistiche del profilo utilizzato
+     */
     public void vaiMenu() {
     	this.cardLayout.show(parent, "inizio2");
     }

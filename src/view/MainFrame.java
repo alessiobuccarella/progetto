@@ -2,9 +2,7 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
-
 import javax.swing.JFrame;
-
 import controller.AudioButtonManager;
 import controller.AudioManager;
 import controller.CercaProfiloController;

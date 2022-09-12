@@ -101,21 +101,28 @@ public class PartitaPanel extends JPanel {
      * panel che rappresenta la postazione delle carte centrali del gioco, mazzo e carta scarto
      */
     private PostazionePanel postazionePiatto;
-	
-	public PartitaPanel(ProfiloPanel profiloPanel, CardLayout cardLayout, Container parent) {
 
+    /**
+     * costruttore di PartitaPanel
+     * @param profiloPanel il pannello della partita corrente
+     * @param cardLayout layout manager utilizzato
+     * @param parent contenitore padre
+     */
+	public PartitaPanel(ProfiloPanel profiloPanel, CardLayout cardLayout, Container parent) {
         setLayout(new BorderLayout());
         mazzo = new Mazzo();
         do
             setCartaScarto(mazzo.next());
         while (getCartaScarto().getV() > 12);
-        
 		this.eventiPartitaController = new EventiPartitaController(this, profiloPanel, cardLayout, parent);
 	}
 
+    /**
+     * metodo che costruisce il design del pannello partita
+     * @param mod modalità scelta
+     */
     public void init(int mod) {
     	this.mod = mod;
-    	
     	coloreRosso = new JButton();
         coloreGiallo = new JButton();
         coloreVerde = new JButton();
@@ -125,7 +132,6 @@ public class PartitaPanel extends JPanel {
         manoNord = new Mano(mazzo);
         manoEst = new Mano(mazzo);
         mano = new Mano(mazzo);
-
         tavolo = new PiattoPanel();
         this.coloreRosso.setEnabled(true);
         this.coloreGiallo.setEnabled(true);
@@ -169,8 +175,6 @@ public class PartitaPanel extends JPanel {
         Image image3 = avatar3png.getImage();
         Image newimg3 = image3.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar3png = new ImageIcon(newimg3);
-        
-
         setScartoButton(DisegnaCarta.disegnaCarta(getCartaScarto()));
         for (int i = 0;i < mano.mano.size(); i++)
             getPosti().set(i, DisegnaCarta.disegnaCarta(mano.mano.get(i)));
@@ -189,7 +193,6 @@ public class PartitaPanel extends JPanel {
         setFoto1(new JLabel(avatar2png));
         setFoto2(new JLabel(avatar3png));
         setFoto3(foto3);
-    	
         gbc10 = new GridBagConstraints();
         this.add(tavolo, BorderLayout.CENTER);
         uno = new JButton("UNO!");
@@ -228,7 +231,6 @@ public class PartitaPanel extends JPanel {
         gbc10.weightx = 0;
         gbc10.weighty = 0;
         gbc10.gridwidth = 1;
-        
         tavolo.add(this.nomegiocatore,gbc10);
         nomegiocatore.setFont(new Font("Dialog", Font.PLAIN, 20));
         nomegiocatore.setForeground(Color.green);
