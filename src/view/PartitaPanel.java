@@ -122,6 +122,7 @@ public class PartitaPanel extends JPanel {
      * @param mod modalità scelta
      */
     public void init(int mod) {
+        
     	this.mod = mod;
     	coloreRosso = new JButton();
         coloreGiallo = new JButton();
@@ -233,7 +234,7 @@ public class PartitaPanel extends JPanel {
         gbc10.gridwidth = 1;
         tavolo.add(this.nomegiocatore,gbc10);
         nomegiocatore.setFont(new Font("Dialog", Font.PLAIN, 20));
-        nomegiocatore.setForeground(Color.green);
+        nomegiocatore.setForeground(new Color(54, 73, 33));
         gbc10.anchor = GridBagConstraints.LINE_START;
         gbc10.gridx = 6;
         gbc10.gridy = 6;
