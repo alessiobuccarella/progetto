@@ -2,8 +2,13 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+
 import javax.swing.JFrame;
-import controller.*;
+
+import controller.AudioButtonManager;
+import controller.AudioManager;
+import controller.CercaProfiloController;
+import controller.NuovoProfiloController;
 import model.Database;
 
 /**
@@ -36,10 +41,11 @@ public class MainFrame extends JFrame {
         ProfiloPanel profilo = new ProfiloPanel();
         MenuPanel inizio2 = new MenuPanel();
         ConfiguraPanel configuraPartita = new ConfiguraPanel();
+        PartitaPanel partitaPanel = new PartitaPanel(profilo, cardLayout, MainFrame.this.getContentPane());
 
         // initialize user controller
-        new CercaProfiloController(cercaProfilo, profilo, cardLayout, MainFrame.this.getContentPane());
-        new NuovoProfiloController(nuovoProfilo, profilo, cardLayout, MainFrame.this.getContentPane());
+        new CercaProfiloController(cercaProfilo, profilo, partitaPanel, cardLayout, MainFrame.this.getContentPane());
+        new NuovoProfiloController(nuovoProfilo, profilo, partitaPanel, cardLayout, MainFrame.this.getContentPane());
 
         // aggiunge i panel al layout
         setLayout(cardLayout);
@@ -96,8 +102,8 @@ public class MainFrame extends JFrame {
             musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
             cardLayout.show(MainFrame.this.getContentPane(), "inizio2");
         });
-        configuraPartita.classica(e -> { 	
-            PartitaPanel partitaPanel = new PartitaPanel(1);
+        configuraPartita.classica(e -> {
+        	partitaPanel.init(1);
             add(partitaPanel, "partitaPanel");
             musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
             musicObject.playMusic("./src/audio/background_menu_audio.wav");
@@ -105,7 +111,7 @@ public class MainFrame extends JFrame {
             cardLayout.show(MainFrame.this.getContentPane(), "partitaPanel");
         });
         configuraPartita.mod2(e -> {
-            PartitaPanel partitaPanel = new PartitaPanel(2);
+        	partitaPanel.init(2);
             add(partitaPanel, "partitaPanel");
             musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
             musicObject.playMusic("./src/audio/background_menu_audio.wav");
@@ -113,7 +119,7 @@ public class MainFrame extends JFrame {
             cardLayout.show(MainFrame.this.getContentPane(), "partitaPanel");
         });
         configuraPartita.mod3(e -> {
-            PartitaPanel partitaPanel = new PartitaPanel(3);
+        	partitaPanel.init(3);
             add(partitaPanel, "partitaPanel");
             musicObjectButton.playButtonMusic("./src/audio/general_menu_button_audio.wav");
             musicObject.playMusic("./src/audio/background_menu_audio.wav");

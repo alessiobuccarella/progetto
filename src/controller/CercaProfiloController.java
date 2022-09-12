@@ -2,10 +2,13 @@ package controller;
 
 import java.awt.CardLayout;
 import java.awt.Container;
+
 import javax.swing.JOptionPane;
+
 import model.Database;
 import model.Profilo;
 import view.CercaProfiloPanel;
+import view.PartitaPanel;
 import view.ProfiloPanel;
 
 /**
@@ -25,7 +28,7 @@ public class CercaProfiloController {
 	 * @param cardLayout layout manager utilizzato
 	 * @param parent contenitore padre
 	 */
-	public CercaProfiloController(CercaProfiloPanel cercaProfiloPanel, ProfiloPanel profiloPanel, CardLayout cardLayout, Container parent) {
+	public CercaProfiloController(CercaProfiloPanel cercaProfiloPanel, ProfiloPanel profiloPanel, PartitaPanel partitaPanel, CardLayout cardLayout, Container parent) {
 		cercaProfiloPanel.cercaProfilo(e -> {
 			String nickname = cercaProfiloPanel.getNickname();
 			if (nickname.equals("") || nickname.equals(null)) {
@@ -37,6 +40,7 @@ public class CercaProfiloController {
 				if (profilo != null) {
 					musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/success_button_audio.wav");
 					profiloPanel.printProfilo(profilo);
+					partitaPanel.initProfilo(profilo);
 					JOptionPane.showMessageDialog(null, "Benvenuto " + nickname);
 					cardLayout.show(parent, "inizio2");
 				} else {
