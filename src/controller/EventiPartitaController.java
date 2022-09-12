@@ -3,6 +3,7 @@ package controller;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.util.ArrayList;
 
@@ -83,6 +84,8 @@ public class EventiPartitaController {
      * in container padre per navigare
      */
     private Container parent;
+    
+    private JLabel passato;
 
     /**
      * costruttore che prende in input un'istanza di partitaPanel
@@ -102,6 +105,9 @@ public class EventiPartitaController {
         deviGridareUno=false;
         gridatoUno=false;
         pescato=false;
+        passato= new JLabel("Il giocatore ha passato il turno");
+        passato.setFont(new Font("Dialog", Font.PLAIN, 20));
+        passato.setForeground(Color.white);
         /**
          * enum senso
          */
@@ -141,7 +147,9 @@ public class EventiPartitaController {
             posti.get(mano.mano.size() - 1).setBorder(null);
         }
         if ((mano.mano.get(indiceCarta).getC() == getCartaScarto().getC() || mano.mano.get(indiceCarta).getV() == getCartaScarto().getV() || mano.mano.get(indiceCarta).getC() == 4) && (getTurno() % 4 == 0)) {
-            if(getCartaScarto().getV() < 10) {
+        	piatto.remove(passato);
+
+        	if(getCartaScarto().getV() < 10) {
                 musicObjectBot.playButtonMusic("./src/audio/normal_card_audio.wav");
                 if ((partitaPanel.getMod() == 2)&&(getCartaScarto().getV()!=10 )&&(getCartaScarto().getV() != 11 )) {
                     musicObjectBot.playButtonMusic("./src/audio/Charmander_audio.wav");
@@ -374,6 +382,7 @@ public class EventiPartitaController {
         }
         Carta x = cartaUtile(manoOvest);
         if (x != null) {
+        	piatto.remove(passato);
             lanciaCarta(gbc10, piatto, manoOvest, postazioneOvest, x,"./src/immagini/dorso90.png", postazionePiatto);
             postazioneOvest.removeAll();
             switch(manoOvest.mano.size()) {
@@ -440,6 +449,7 @@ public class EventiPartitaController {
             pescato = false;
             aggiornaTurno(mano,mazzo);
             System.out.println("BULBASAUR HA PASSATO");
+            piatto.add(passato);
         }
         if (manoOvest.mano.size() == 0) {
             String frase = "Purtroppo hai perso!!";
@@ -476,6 +486,7 @@ public class EventiPartitaController {
         Carta x = cartaUtile(manoNord);
         // se il giocatore ha una carta utile
         if (x != null) {
+        	piatto.remove(passato);
             lanciaCarta(gbc10,piatto,manoNord,postazioneNord,x,"./src/immagini/dorso.png",postazionePiatto);
             postazioneNord.removeAll();
             switch(manoNord.mano.size()) {
@@ -526,6 +537,7 @@ public class EventiPartitaController {
             pescato = false;
             aggiornaTurno(mano,mazzo);
             System.out.println("CHARMANDAR HA PASSATO");
+            piatto.add(passato);
         }
         if (manoNord.mano.size() == 0) {
             String frase = "Purtroppo hai perso!!";
@@ -560,6 +572,7 @@ public class EventiPartitaController {
         }
         Carta x = cartaUtile(manoEst);
         if (x != null) {
+        	piatto.remove(passato);
             lanciaCarta(gbc10,piatto,manoEst,postazioneEst,x,"./src/immagini/dorso90s.png",postazionePiatto);
             postazioneEst.removeAll();
             switch(manoEst.mano.size()) {
@@ -631,6 +644,7 @@ public class EventiPartitaController {
             if (senso == Senso.ORARIO) setTurno(getTurno() + 1);
             else setTurno(getTurno() - 1);
             System.out.println("SQUIRTLE HA PASSATO");
+            piatto.add(passato);
         }
         if (manoEst.mano.size() == 0) {
             String frase = "Purtroppo hai perso!!";
