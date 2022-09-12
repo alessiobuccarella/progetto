@@ -6,3 +6,4 @@
 .settings
 target
 **/out
+.DS_Store
