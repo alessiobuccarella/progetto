@@ -38,14 +38,7 @@ public class ProfiloPanel extends JPanel {
      * JLabel per il indietroButton
      */
 	private JButton indietroButton;
-    /**
-     * campo statico per il nickname del profilo utilizzato
-     */
-    public static String nome;
-    /**
-     * campo statico per l'avatar del profilo utilizzato
-     */
-    public static String immagine;
+
 
     /**
      * costruttore che costruisce il design del pannello con le statistiche e dati del profilo utilizzato
@@ -103,13 +96,11 @@ public class ProfiloPanel extends JPanel {
      */
     public void printProfilo(Profilo profilo) {
 		this.nickname.setText("NICKNAME: " + profilo.getNickname());
-        nome = profilo.getNickname();
 		ImageIcon avatar4png = new ImageIcon(profilo.getAvatarImg());
         Image image4 = avatar4png.getImage();
         Image newimg4 = image4.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         avatar4png = new ImageIcon(newimg4);
         this.myavatar.setIcon(avatar4png);
-        immagine = profilo.getAvatarImg();
         this.livello.setText("LIVELLO: " + profilo.getLivello());
         this.partiteGiocate.setText("PARTITE GIOCATE: " + profilo.getPartiteGiocate());
         this.partitePerse.setText("PARTITE PERSE: " + profilo.getPartitePerse());

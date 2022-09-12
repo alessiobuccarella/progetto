@@ -1,17 +1,34 @@
 package controller;
 
-import java.awt.*;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.GridBagConstraints;
 import java.util.ArrayList;
-import javax.swing.*;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
-import model.*;
-import view.*;
-import static view.ProfiloPanel.nome;
+
+import model.Carta;
+import model.Database;
+import model.Mano;
+import model.Mazzo;
+import model.Profilo;
+import model.Senso;
+import view.DisegnaCarta;
+import view.PartitaPanel;
+import view.PiattoPanel;
+import view.PostazionePanel;
+import view.ProfiloPanel;
 
 /**
  *questa classe gestisce il comportamento dei giocatori e tutti gli eventi della partita
  */
-public class Eventi {
+public class EventiPartitaController {
 	
     /**
      * intero che conta il numero di turni giocati
@@ -54,14 +71,30 @@ public class Eventi {
      * panel della partita
      */
     private PartitaPanel partitaPanel;
+    /**
+     * panel del profilo
+     */
+    private ProfiloPanel profiloPanel;
+    /**
+     * la card layout per navigare
+     */
+    private CardLayout cardLayout;
+    /**
+     * in container padre per navigare
+     */
+    private Container parent;
 
     /**
      * costruttore che prende in input un'istanza di partitaPanel
      * e inizializza i campi
      * @param partitaPanel istanza di partitaPanel
      */
-    public Eventi(PartitaPanel partitaPanel) {
+    public EventiPartitaController(PartitaPanel partitaPanel, ProfiloPanel profiloPanel, CardLayout cardLayout, Container parent) {
         this.partitaPanel = partitaPanel;
+        this.profiloPanel = profiloPanel;
+        this.cardLayout = cardLayout;
+        this.parent = parent;
+        
         musicObjectBot = new AudioButtonManager();
         cartaScarto = partitaPanel.getCartaScarto();
         contatore = 0;
@@ -222,7 +255,8 @@ public class Eventi {
         }
         if (mano.mano.size() == 0) {
             String frase = "Congratulazioni hai vinto!!";
-            risultatoPartita(true, nome, frase);
+            risultatoPartita(true, partitaPanel.getNomegiocatore().getText(), frase);
+            vaiMenu();
         }
     }
     /**
@@ -409,7 +443,8 @@ public class Eventi {
         }
         if (manoOvest.mano.size() == 0) {
             String frase = "Purtroppo hai perso!!";
-            risultatoPartita(false, nome, frase);
+            risultatoPartita(false, partitaPanel.getNomegiocatore().getText(), frase);
+            vaiMenu();
         }
     }
 
@@ -494,7 +529,8 @@ public class Eventi {
         }
         if (manoNord.mano.size() == 0) {
             String frase = "Purtroppo hai perso!!";
-            risultatoPartita(false, nome, frase);
+            risultatoPartita(false, partitaPanel.getNomegiocatore().getText(), frase);
+            vaiMenu();
         }
     }
     /**
@@ -598,7 +634,8 @@ public class Eventi {
         }
         if (manoEst.mano.size() == 0) {
             String frase = "Purtroppo hai perso!!";
-            risultatoPartita(false, nome, frase);
+            risultatoPartita(false, partitaPanel.getNomegiocatore().getText(), frase);
+            vaiMenu();
         }
     }
 
@@ -819,17 +856,18 @@ public class Eventi {
         int min = Math.min(Math.min(Math.min(ovest,nord),est),giocatore);
         if (ovest == min) {
             frase =  "Ha vinto Bulbasaur con " + min + " punti";
-            risultatoPartita(false, nome, frase);
+            risultatoPartita(false, partitaPanel.getNomegiocatore().getText(), frase);
         } else if (nord == min) {
             frase =  "Ha vinto Charamnder con " + min + " punti";
-            risultatoPartita(false, nome, frase);
+            risultatoPartita(false, partitaPanel.getNomegiocatore().getText(), frase);
         } else if (est == min) {
             frase =  "Ha vinto Squirtle con " + min + " punti";
-            risultatoPartita(false, nome, frase);
+            risultatoPartita(false, partitaPanel.getNomegiocatore().getText(), frase);
         } else {
-            frase =  "Ha vinto " + nome + " con " + min + " punti";
-            risultatoPartita(true, nome, frase);
+            frase =  "Ha vinto " + partitaPanel.getNomegiocatore().getText() + " con " + min + " punti";
+            risultatoPartita(true, partitaPanel.getNomegiocatore().getText(), frase);
         }
+        vaiMenu();
     }
 
     /**
@@ -839,21 +877,23 @@ public class Eventi {
      * @param frase stringa che comunica il verdetto finale
      */
     public void risultatoPartita(boolean b, String giocatore, String frase) {
-        if (b == false) {
+        if (!b) {
             musicObjectBot.playButtonMusic("./src/audio/defeat_audio.wav");
             JOptionPane.showMessageDialog(null, "" + frase);
-            Database db2 = Database.getInstance();
-            db2.updateDatabase(giocatore, false);
-            Database.getInstance().close();
-            System.exit(0);
         } else {
             musicObjectBot.playButtonMusic("./src/audio/victory_audio.wav");
             JOptionPane.showMessageDialog(null, "" + frase);
-            Database db2 = Database.getInstance();
-            db2.updateDatabase(giocatore, true);
-            Database.getInstance().close();
-            System.exit(0);
         }
+        
+        Database db2 = Database.getInstance();
+        db2.updateDatabase(giocatore, b);
+        
+        Profilo profilo = db2.cercaProfilo(giocatore);
+        profiloPanel.printProfilo(profilo);
+    }
+    
+    public void vaiMenu() {
+    	this.cardLayout.show(parent, "inizio2");
     }
 
     /**

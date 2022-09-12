@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import model.Database;
 import model.Profilo;
 import view.NuovoProfiloPanel;
+import view.PartitaPanel;
 import view.ProfiloPanel;
 
 /**
@@ -25,7 +26,7 @@ public class NuovoProfiloController {
      * @param cardLayout layout manager utilizzato
      * @param parent contenitore padre
      */
-    public NuovoProfiloController(NuovoProfiloPanel nuovoProfiloPanel, ProfiloPanel profiloPanel, CardLayout cardLayout, Container parent) {
+    public NuovoProfiloController(NuovoProfiloPanel nuovoProfiloPanel, ProfiloPanel profiloPanel, PartitaPanel partitaPanel, CardLayout cardLayout, Container parent) {
         nuovoProfiloPanel.creaProfilo(e -> {
             String nickname = nuovoProfiloPanel.getNickname();
             if (nickname == null || nickname.isEmpty()) {
@@ -44,6 +45,7 @@ public class NuovoProfiloController {
             if (profilo != null) {
                 musicObjectButton.playButtonMusic("/Users/alessiobuccarella/eclipse-workspace/progetto/src/audio/success_button_audio.wav");
             	profiloPanel.printProfilo(profilo);
+				partitaPanel.initProfilo(profilo);
                 JOptionPane.showMessageDialog(null, "Benvenuto " + nickname);
             	cardLayout.show(parent, "inizio2");
             }
